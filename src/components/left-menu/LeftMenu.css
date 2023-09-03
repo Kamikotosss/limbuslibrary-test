@@ -1,0 +1,32 @@
+.left-menu{
+    width: 200px;
+    height: 100%;
+    min-height: 100vh;
+    background-color: rgb(23, 23, 23);
+    position: fixed;
+}
+  
+  .left-menu ul {
+    list-style: none; 
+    padding: 20px; 
+    margin: 0; 
+    box-sizing: border-box;
+  }
+  
+  .left-menu  li {
+    margin-bottom: 10px; 
+  }
+  
+  .left-menu  a {
+    color: rgba(255, 255, 255, 0.664); 
+    text-decoration: none; 
+    display: block; 
+    padding: 10px 0; 
+    transition: 0.5s;
+  }
+  
+  /* Изменение цвета ссылки при наведении */
+  .left-menu a:hover {
+    color: #fff; 
+  }
+  

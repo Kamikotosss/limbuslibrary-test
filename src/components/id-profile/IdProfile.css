@@ -1,0 +1,26 @@
+.id-profile-container{
+    width: 150px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.id-profile-rarity{
+    width: 150px;
+    height: 20px;
+    display: flex;
+    color: rgb(235, 223, 201);
+    justify-content: center;
+    align-items: center;
+}
+.id-profile-image{
+    width: 150px;
+    height: 150px;
+}
+.id-profile-name{
+    width: 150px;
+    height: 80px;
+    display: flex;
+    color: rgb(235, 223, 201);
+    justify-content: center;
+    align-items: center;
+}

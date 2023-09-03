@@ -1,16 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { AppRouter } from './components/AppRouter';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Limbus library test
-        </p>
-      </header>
+      <Provider store={store}>
+        <AppRouter></AppRouter>
+      </Provider>
     </div>
   );
 }

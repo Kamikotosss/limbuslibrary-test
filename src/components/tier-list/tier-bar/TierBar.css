@@ -1,0 +1,53 @@
+.tier-bar-container{
+    width: 1000px;
+    min-height: 150px;
+    height: fit-content;
+    background-color: rgb(62, 62, 62);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.tier-bar-items{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    width: calc(100% - 50px);
+    text-align: center;
+    justify-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+  
+.tier-bar-rating{
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+}
+.tier-bar-rating--SS{
+    background-color: rgb(236, 24, 48);
+    
+}
+.tier-bar-rating--S{
+    
+    background-color: rgb(225, 95, 40);
+}
+.tier-bar-rating--A{
+    background-color: rgb(243, 188, 48);
+    
+}
+.tier-bar-rating--B{
+    background-color: rgb(213, 229, 43);
+    
+}
+.tier-bar-rating--C{
+    background-color: rgb(125, 235, 23);
+    
+}
+.tier-bar-rating--D{
+    background-color: rgb(61, 193, 149);
+}
