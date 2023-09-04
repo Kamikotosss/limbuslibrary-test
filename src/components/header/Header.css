@@ -4,4 +4,5 @@
     background-color: rgb(16, 15, 15);
     position: fixed;
     margin-top: -70px;
+    z-index: 100;
 }

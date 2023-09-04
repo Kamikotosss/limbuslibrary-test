@@ -10,6 +10,7 @@
 
 .tier-bar-items{
     display: grid;
+    row-gap: 25px;
     grid-template-columns: repeat(5, 1fr); 
     width: calc(100% - 50px);
     text-align: center;

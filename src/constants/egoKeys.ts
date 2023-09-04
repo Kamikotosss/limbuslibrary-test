@@ -1,4 +1,4 @@
-const egoKeys = {
+const egoKeys: { [key: string]: string } = {
     "B":"imgUrl",
     "C":"sinner",
     "D":"name",
@@ -11,7 +11,8 @@ const egoKeys = {
     "K":"gloom",
     "L":"pride",
     "M":"envy",
-    "N":"idTier",
+    "N":"egoRes",
+    "O":"egoTier",
 }
 
 export {egoKeys}

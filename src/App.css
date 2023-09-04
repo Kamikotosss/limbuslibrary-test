@@ -1,3 +1,25 @@
+:root {
+  --OOO-color: #f9d715;
+  --OO-color: #e0a300;
+  --O-color: #aa6f38;
+  --OOO-frame-color:#f3b703bc;
+  --OO-frame-color:#8e2220;
+  --O-frame-color:#332b21;
+  --wrath-color: #f0d3af;
+  --lust-color: #f0d3af;
+  --sloth-color: #f0d3af;
+  --glut-color: #f0d3af;
+  --gloom-color: #f0d3af;
+  --pride-color: #f0d3af;
+  --envy-color: #f0d3af;
+  --wrath-frame-color: #c9100f;
+  --lust-frame-color: #e66728;
+  --sloth-frame-color: #f2b53f;
+  --glut-frame-color: #6c9c20;
+  --gloom-frame-color: #16849b;
+  --pride-frame-color: #185188;
+  --envy-frame-color: #5c0288;
+}
 .global-content-wrapper{
   width: 100%;
   min-height: 100vh;

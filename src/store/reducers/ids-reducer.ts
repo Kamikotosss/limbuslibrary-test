@@ -3,7 +3,7 @@ export interface IdentityInterface{
     sinner:string,
     name:string,
     rarity:string,
-    season:string,
+    season:number,
     sin1:string,
     sin2:string,
     sin3:string,

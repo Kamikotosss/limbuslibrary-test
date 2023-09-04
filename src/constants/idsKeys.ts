@@ -1,4 +1,4 @@
-const idsKeys:any = {
+const idsKeys: { [key: string]: string } = {
     "B":"imgUrl",
     "C":"sinner",
     "D":"name",

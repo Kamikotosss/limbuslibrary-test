@@ -1,16 +1,16 @@
 import React from "react";
+import { IdentityInterface } from "../../store/reducers/ids-reducer";
 import "./IdProfile.css";
 interface IdProfileInterface{
-    rarity:string;
-    name:string;
-    imgUrl:string;
+    identity:IdentityInterface;
 }
-export const IdProfile:React.FC<IdProfileInterface> = ({rarity , name,imgUrl}) => {
+export const IdProfile:React.FC<IdProfileInterface> = ({identity}) => {
+    const {rarity , imgUrl,name} =identity;
     const rarityStyled = rarity.replaceAll("O","Ø");
     return (
         <div className={"id-profile-container"}>
-            <div className={"id-profile-rarity"} >{rarityStyled}</div>
             <img className={"id-profile-image"} src={imgUrl} alt=""></img>
+            <div className={["id-profile-rarity",`id-profile-rarity--${rarity}`].join(" ")} >{rarityStyled}</div>
             <div className={"id-profile-name"} >{name}</div>
         </div>
     )
