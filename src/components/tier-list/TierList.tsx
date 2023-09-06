@@ -4,7 +4,7 @@ interface TierListInterface {
    
 }
 export const TierList:React.FC<TierListInterface> = () => {
-    const ratings = ["SS","S","A","B","C","D"];
+    const ratings = ["SSS","SS","S","A","B","C"];
     return (
         //TODO routing list
         <>

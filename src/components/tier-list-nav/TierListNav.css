@@ -1,40 +1,52 @@
 .tier-list-nav-container{
-    width: 620px;
+  margin-top: 20px;
+  width: 80%;
 }
 .tier-list-nav{
     width: 100%;
 }
 .tier-list-nav ul {
     list-style: none; 
-    padding: 20px; 
-    margin: 0; 
+    padding: 0px; 
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   
   .tier-list-nav  li {
     margin-bottom: 10px; 
-    height: 40px;
-    width: 130px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 5%;
+    margin: 0 6px 0px 0px; 
+    height: 48px;
+    width: 125px;
+    background-color: var(--grey-1);
     display: flex;
     justify-content: center;
     align-items: center;
+    color: rgba(255, 255, 255, 0.664); 
   }
   
-  .tier-list-nav  a {
-    color: rgba(255, 255, 255, 0.664); 
+ .tier-list-nav  a {
     text-decoration: none; 
     display: block; 
     padding: 10px 0; 
     transition: 0.5s;
+    color: rgb(206, 206, 206); 
+
   }
   
-  /* Изменение цвета ссылки при наведении */
   .tier-list-nav a:hover {
     color: #fff; 
+  } 
+  .tier-list-nav-filters{
+    display: flex;
+    flex-direction: row;
+  }
+  .tier-list-nav-filters-image{
+    width: 50px;
+    height: 50px;
+  }
+  .tier-list-nav-filters-image-container--active{
+    background-color: antiquewhite;
   }

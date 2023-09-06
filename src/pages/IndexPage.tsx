@@ -9,6 +9,7 @@ export const IndexPage:React.FC = () => {
         <Header></Header>
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
+            
         </main>
         <Footer></Footer>
     </>

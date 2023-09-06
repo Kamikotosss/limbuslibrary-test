@@ -4,8 +4,8 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../../store/reducers/ids-reducer";
 import { getLocationLastParam } from "../../../tools/getLocationLastParam";
-import { EGOProfile } from "../../ego-profile/EGOProfile";
-import { IdProfile } from "../../id-profile/IdProfile";
+import { ItemEGO } from "../../item-ego/ItemEGO";
+import { ItemIdentity } from "../../item-identity/ItemIdentity";
 import "./TierBar.css";
 interface TierBarProps {
     rating:string;
@@ -17,16 +17,16 @@ export const TierBar:React.FC<TierBarProps> = ({rating}) => {
     const location = useLocation();
     const tierlistParam = getLocationLastParam(location.pathname);
     const setupEGO = () =>{
-        return ego?.map((id:EGOInterface)=>{
+        return ego?.map((item:EGOInterface)=>{
             return (<>
-                {id.egoTier === rating && <EGOProfile ego={id} key={`${Math.random()}`}></EGOProfile>}
+                {item.egoTier === rating && <ItemEGO ego={item} key={`${Math.random()}`}></ItemEGO>}
             </>);
         });
     }
     const setupIds = () =>{
-        return ids?.map((id:IdentityInterface)=>{
+        return ids?.map((item:IdentityInterface)=>{
             return (<>
-                {id.idTier === rating && <IdProfile identity={id} key={`${Math.random()}`}></IdProfile>}
+                {item.idTier === rating && <ItemIdentity identity={item} key={`${Math.random()}`}></ItemIdentity>}
             </>);
         });
     }
@@ -50,12 +50,18 @@ export const TierBar:React.FC<TierBarProps> = ({rating}) => {
     return (
         //TODO routing list
         <div className={"tier-bar-container"}>
-            <div className={["tier-bar-rating" , `tier-bar-rating--${rating}`].join(" ")}>
-                <span>{rating}</span>
+            <div className={"tier-bar-left-subcontainer"}>
+                <div className={["tier-bar-line" , `tier-bar-line--${rating}`].join(" ")}></div>
+                <div className={["tier-bar-dot" , `tier-bar-dot--${rating}`].join(" ")}></div>
             </div>
-            <div className={"tier-bar-items"}>
-                {setupItems()} 
+            <div className={"tier-bar-right-subcontainer"}>
+                <span className={"tier-bar-rating"}>{`${rating.toUpperCase()} tier`}</span>
+                <span className={["tier-bar-description" , `tier-bar-description--${rating}`].join(" ")}> description description description description description </span>
+                <div className={"tier-bar-items"}>
+                    {setupItems()} 
+                </div>
             </div>
+            
         </div>
     )
 }

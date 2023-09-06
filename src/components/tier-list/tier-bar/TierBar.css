@@ -1,26 +1,91 @@
 .tier-bar-container{
-    width: 1000px;
+    width: 80%;
     min-height: 150px;
     height: fit-content;
-    background-color: rgb(62, 62, 62);
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
 }
-
+.tier-bar-left-subcontainer{
+    width: 71px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.tier-bar-line{
+    width: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.tier-bar-line--SSS{
+    background-color: rgb(236, 24, 48);
+}
+.tier-bar-line--SS{
+    background-color: rgba(255, 97, 74);
+}
+.tier-bar-line--S{
+    background-color: rgba(255, 188, 58);
+}
+.tier-bar-line--A{
+    background-color: rgb(143, 255, 58);
+}
+.tier-bar-line--B{
+    background-color: rgb(58, 255, 166);
+}
+.tier-bar-line--C{
+    background-color: rgb(58, 255, 248);
+}
+.tier-bar-dot{
+    width: 13px;
+    height: 13px;
+    border-radius: 50%; /* Делаем элемент круглым */
+    margin-right:6.5px ;
+    margin-top:6.5px ;
+}
+.tier-bar-dot--SSS{
+    outline: 6.5px solid rgba(255, 58, 58, 0.30);
+    background-color: rgb(236, 24, 48);
+}
+.tier-bar-dot--SS{
+    outline: 6.5px solid rgba(255, 97, 74,0.3);
+    background-color: rgba(255, 97, 74);
+}
+.tier-bar-dot--S{
+    outline: 6.5px solid rgba(255, 188, 58, 0.3);
+    background-color: rgba(255, 188, 58);
+}
+.tier-bar-dot--A{
+    outline: 6.5px solid rgba(143, 255, 58, 0.3);
+    background-color: rgb(143, 255, 58);
+}
+.tier-bar-dot--B{
+    outline: 6.5px solid rgba(58, 255, 166, 0.3);
+    background-color: rgb(58, 255, 166);
+}
+.tier-bar-dot--C{
+    outline: 6.5px solid rgba(58, 255, 248, 0.3);
+    background-color: rgb(58, 255, 248);
+}
+.tier-bar-right-subcontainer{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 15px ;
+    width: calc(100% - 71px);
+}
 .tier-bar-items{
     display: grid;
     row-gap: 25px;
-    grid-template-columns: repeat(5, 1fr); 
-    width: calc(100% - 50px);
+    column-gap: 15px;
+    grid-template-columns: repeat(auto-fill,174px);
+    width: 100%;
     text-align: center;
-    justify-items: center;
-    padding: 20px;
+    padding: 40px 20px 60px 0px;
     box-sizing: border-box;
+    justify-content: space-between;
 }
   
-.tier-bar-rating{
-    width: 50px;
+.tier-bar-rating-container{
+    width: 74px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,26 +94,20 @@
     font-size: 2em;
     font-weight: bold;
 }
-.tier-bar-rating--SS{
-    background-color: rgb(236, 24, 48);
-    
+.tier-bar-rating{
+    display: inline-block;
+    align-items: flex-start;
+    color: #FFF;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: -5px;
 }
-.tier-bar-rating--S{
-    
-    background-color: rgb(225, 95, 40);
-}
-.tier-bar-rating--A{
-    background-color: rgb(243, 188, 48);
-    
-}
-.tier-bar-rating--B{
-    background-color: rgb(213, 229, 43);
-    
-}
-.tier-bar-rating--C{
-    background-color: rgb(125, 235, 23);
-    
-}
-.tier-bar-rating--D{
-    background-color: rgb(61, 193, 149);
+
+.tier-bar-description{
+    color: #FFF;
+    font-size: 18.41px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24.78px; 
 }

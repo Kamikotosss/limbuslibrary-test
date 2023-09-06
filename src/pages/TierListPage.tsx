@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../components/footer/Footer";
 import { Header } from "../components/header/Header";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
@@ -21,12 +21,12 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
     const navigate = useNavigate();
     const dispatch =useDispatch();
     const location =useLocation();
-    
+ 
     const fetchIds = async () =>{
         let result:IdentityInterface[] = [];
         try{
             dispatch<FetchIdsAction>({type: IdsActionTypes.FETCH_IDS});
-            const response = await axios.get(`https://docs.google.com/spreadsheets/d/18-JZl9LlsJLT9sLH-ob1DEez4jYDcxJZYWCVQGmhL1o/`, {responseType: "arraybuffer",});
+            const response = await axios.get(`https://docs.google.com/spreadsheets/d/15DuUvVJP_F3KEAAQIMDdMf2NPfinft0jYffzYJXuok8/`, {responseType: "arraybuffer",});
             const workbook = XLSX.read(response.data, { type: 'array' });
             const sheetName = workbook.SheetNames[0];
             const sheet = workbook.Sheets[sheetName];
@@ -55,7 +55,7 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
         let result:EGOInterface[] = [];
         try{
             dispatch<FetchEGOAction>({type: EGOActionTypes.FETCH_EGO});
-            const response = await axios.get(`https://docs.google.com/spreadsheets/d/1k_TaGK7vOfYdIS5-6GxJBEjFsxjZyzb1x_0Zi1k6kao/`, {responseType: "arraybuffer",});
+            const response = await axios.get(`https://docs.google.com/spreadsheets/d/17Qwv0_UamLyfe7ypTKuTjTAxHk7kWuIa5IqsJ0RUuoA/`, {responseType: "arraybuffer",});
             const workbook = XLSX.read(response.data, { type: 'array' });
             const sheetName = workbook.SheetNames[0];
             const sheet = workbook.Sheets[sheetName];

@@ -1,5 +1,5 @@
 export interface IdentityInterface{
-    imgUrl:string,
+    imgUrl:number,
     sinner:string,
     name:string,
     rarity:string,

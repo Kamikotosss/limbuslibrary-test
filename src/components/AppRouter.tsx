@@ -21,7 +21,7 @@ export const AppRouter:React.FC = () => {
             params: ["/identities" , "/ego" ,"/passives"]
         },
         {
-            path:"/",
+            path:"/ego",
             element:<EGOPage />,
         },
     ]
