@@ -33,35 +33,6 @@ export const TierListNav:React.FC = () => {
                     <li><Link to="/tierlist/passives">Пассивки</Link></li>
                 </ul>
             </nav>
-            <div className={"tier-list-nav-filters"}>
-                {
-                    sinTypes.map((type)=>{
-                        return(
-                            <div className={["tier-list-nav-filters-image-container" , (filterState["sin"][type] ) ? "tier-list-nav-filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("sin",type)}>
-                                <img className={"tier-list-nav-filters-image"} src={`/images/sins/${type}.png`} alt={`${type}`}></img>
-                            </div>
-                        )
-                    })
-                }
-                {
-                    damageTypes.map((type)=>{
-                        return(
-                            <div  className={["tier-list-nav-filters-image-container" , (filterState["dmgType"][type] ) ? "tier-list-nav-filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("dmgType",type)}>
-                                <img className={"tier-list-nav-filters-image"} src={`/images/dmg-type/${type}.png`} alt={`${type}`}></img>
-                            </div>
-                        )
-                    })
-                }
-                {
-                    guardTypes.map((type)=>{
-                        return(
-                            <div  className={["tier-list-nav-filters-image-container" , (filterState["guardType"][type] ) ? "tier-list-nav-filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("guardType",type)}>
-                                <img className={"tier-list-nav-filters-image"} src={`/images/guard-type/${type}.png`} alt={`${type}`}></img>
-                            </div>
-                        )
-                    })
-                }
-            </div>
         </div>
     )
 }

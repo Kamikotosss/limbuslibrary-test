@@ -14,19 +14,21 @@ interface TierBarProps {
 export const TierBar:React.FC<TierBarProps> = ({rating}) => {
     const {loading,ids,error} = useTypedSelector(state => state.idsReducer);
     const {ego} = useTypedSelector(state => state.egoReducer);
+    
     const location = useLocation();
     const tierlistParam = getLocationLastParam(location.pathname);
+   
     const setupEGO = () =>{
         return ego?.map((item:EGOInterface)=>{
             return (<>
-                {item.egoTier === rating && <ItemEGO ego={item} key={`${Math.random()}`}></ItemEGO>}
+                {(item.egoTier === rating ) && <ItemEGO ego={item} key={`ego${Math.random()}`}></ItemEGO>}
             </>);
         });
     }
     const setupIds = () =>{
         return ids?.map((item:IdentityInterface)=>{
             return (<>
-                {item.idTier === rating && <ItemIdentity identity={item} key={`${Math.random()}`}></ItemIdentity>}
+                {(item.idTier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>}
             </>);
         });
     }

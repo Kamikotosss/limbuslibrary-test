@@ -1,8 +1,7 @@
-import { FetchIdsAction, FetchIdsActionError, FetchIdsActionSuccess, IdentityInterface, IdsAction, IdsActionTypes } from "../../store/reducers/ids-reducer";
 import * as XLSX from "xlsx";
 import axios from "axios";
-import { EGOInterface, FetchEGOAction ,EGOActionTypes, FetchEGOActionSuccess, FetchEGOActionError, EGOAction} from "../../store/reducers/ego-reducer";
-import { egoKeys } from "../../constants/egoKeys";
+import { EGOInterface, FetchEGOAction ,EGOActionTypes, FetchEGOActionSuccess, FetchEGOActionError, EGOAction} from "../store/reducers/ego-reducer";
+import { egoKeys } from "../constants/egoKeys";
 export const fetchEGO = () => {
         return  async (dispatch: (arg0: EGOAction) => void) =>{
             let result:EGOInterface[] = [];

@@ -13,9 +13,9 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
         {imageUrl:`guard-type/${guardType}` , type:guardType ,count:1 , sin:sinGuard},
     ];
     const passives = [
-        {imageUrl:`sins/${sin1}` , count:`x${3}` , description: "Description" , tier:passive1Tier},
-        {imageUrl:`sins/${sin1}` , count:`x${3}` , description: "Description" , tier:passive2Tier},
-        {imageUrl:`sins/${sin1}` , count:`x${3}` , description: "Description" , tier:idTier},
+        {imageUrl:`sins/${sin1}` , count:3 , description: "Description" , tier:passive1Tier},
+        {imageUrl:`sins/${sin1}` , count:2 , description: "Description" , tier:passive2Tier},
+        {imageUrl:`identities/${imgUrl}` , count:0 , description: "Description" , tier:idTier},
     ]
     //const rarityStyled = rarity.replaceAll("O","Ø");
     return (
@@ -41,10 +41,10 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
                                 <div className="item-identity-info-tier-description">
                                     <img src={`/images/${imageUrl}.png`} className="item-identity-info-tier-description-sin">
                                     </img>
-                                    <span className="item-identity-info-tier-description" >{count}</span>
+                                    {count > 0 && <span>{`x${count}`}</span>}
                                 </div>
                                 <div className="item-identity-info-tier-rank-container">
-                                    <span className="item-identity-info-tier-rank-description" >{description}</span>
+                                    <span >{description}</span>
                                     <span className={["item-identity-info-tier-rank", `item-identity-info-tier-rank--${tier}`].join(" ")} >{tier}</span>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
                 }
             </div>
             <div className={"item-identity-info-arrow"}>
-                
+
             </div>
         </div>
     )

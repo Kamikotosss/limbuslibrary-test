@@ -1,0 +1,31 @@
+.filters{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin-bottom: 48px;
+  }
+  .filters-image{
+    width: 30px;
+    height: 30px;
+  }
+  .filters-image-container{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    background-color: #646262;
+    margin-right: 4px;
+    cursor: pointer;
+  }
+    .filters-image-container:nth-of-type(7){
+      margin-right: 16px;
+    }
+    .filters-image-container:nth-of-type(10){
+      margin-right: 16px;
+    }
+  .filters-image-container--active{
+    background-color: #b4b3b3;
+  }

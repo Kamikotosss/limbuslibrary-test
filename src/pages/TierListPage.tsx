@@ -7,8 +7,9 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { TierListNav } from "../components/tier-list-nav/TierListNav";
 import { getLocationLastParam } from "../tools/getLocationLastParam";
-import { fetchIds } from "../components/api/fetchIds";
-import { fetchEGO } from "../components/api/fetchEGO";
+import { fetchIds } from "../api/fetchIds";
+import { fetchEGO } from "../api/fetchEGO";
+import { Filters } from "../components/filters/Filters";
 interface TierListPageInterface{
     redirect?:string
 }
@@ -41,6 +42,7 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
             <TierListNav></TierListNav>
+            <Filters></Filters>
             <TierList></TierList>
         </main>
         <Footer></Footer>

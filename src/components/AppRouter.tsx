@@ -3,6 +3,7 @@ import React, { ReactElement } from "react";
 import { IndexPage } from "../pages/IndexPage";
 import { TierListPage } from "../pages/TierListPage";
 import { EGOPage } from "../pages/EGOPage";
+import { IdentitiesPage } from "../pages/IdentitiesPage";
 
 export const AppRouter:React.FC = () => {
     const routes = [
@@ -23,6 +24,10 @@ export const AppRouter:React.FC = () => {
         {
             path:"/ego",
             element:<EGOPage />,
+        },
+        {
+            path:"/identities",
+            element:<IdentitiesPage />,
         },
     ]
     return (

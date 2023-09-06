@@ -39,14 +39,4 @@
   .tier-list-nav a:hover {
     color: #fff; 
   } 
-  .tier-list-nav-filters{
-    display: flex;
-    flex-direction: row;
-  }
-  .tier-list-nav-filters-image{
-    width: 50px;
-    height: 50px;
-  }
-  .tier-list-nav-filters-image-container--active{
-    background-color: antiquewhite;
-  }
+  

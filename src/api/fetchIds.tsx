@@ -1,7 +1,7 @@
-import { FetchIdsAction, FetchIdsActionError, FetchIdsActionSuccess, IdentityInterface, IdsAction, IdsActionTypes } from "../../store/reducers/ids-reducer";
+import { FetchIdsAction, FetchIdsActionError, FetchIdsActionSuccess, IdentityInterface, IdsAction, IdsActionTypes } from "../store/reducers/ids-reducer";
 import * as XLSX from "xlsx";
 import axios from "axios";
-import { idsKeys } from "../../constants/idsKeys";
+import { idsKeys } from "../constants/idsKeys";
 export const fetchIds = () => {
         return async (dispatch: (arg0: IdsAction) => void) =>{
             let result:IdentityInterface[] = [];

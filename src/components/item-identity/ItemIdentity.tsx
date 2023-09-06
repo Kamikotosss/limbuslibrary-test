@@ -8,12 +8,13 @@ import "./ItemIdentity.css";
 interface ItemIdentityInterface{
     identity:IdentityInterface;
 }
-export const ItemIdentity:React.FC<ItemIdentityInterface> = ({identity}) => {
+export const ItemIdentity:React.FC<ItemIdentityInterface> = ({identity}) =>{
+    const ItemIdentityMemorized = React.memo((identity:IdentityInterface) => {
     const {rarity , imgUrl,name ,dmgType1,dmgType2,dmgType3,guardType,sin1,sin2,sin3,sinGuard} =identity;
     const rarityStyled = rarity.replaceAll("O","Ø");
+    const filterState = useTypedSelector(state => state.filterReducer);
     const refItem = useRef(null);
     const isHovering = useHover(refItem);
-    const filterState = useTypedSelector(state => state.filterReducer);
     const isFilterMatching = () =>{
         for(const key in filterState.guardType){
             const value = filterState.guardType[key as keyof GuardTypeFilterInterface];
@@ -32,7 +33,7 @@ export const ItemIdentity:React.FC<ItemIdentityInterface> = ({identity}) => {
         }
         return true;
     }
-    if(isFilterMatching() === false) return <></>
+    if(isFilterMatching() === false) return null;
     return (
         <div ref={refItem} className={"item-identity-container"} style={{
             backgroundImage: `linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%), url("/images/identities/${identity.imgUrl}.png")`,
@@ -50,4 +51,6 @@ export const ItemIdentity:React.FC<ItemIdentityInterface> = ({identity}) => {
             </div>
         </div>
     )
+    });
+    return <ItemIdentityMemorized {...identity} />
 }
