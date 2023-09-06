@@ -61,4 +61,5 @@ export const idsReducer = (state = initialState,action : IdsAction):IdsState =>{
     }
 }
 
+//export const fetchIdsAction = (payload) => ({type:IdsActionTypes.FETCH_IDS,payload});
 
