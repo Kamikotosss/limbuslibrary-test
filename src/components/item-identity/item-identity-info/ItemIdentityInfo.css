@@ -9,6 +9,7 @@
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
+    z-index: 101;
 }
 .item-identity-info-skills{
     display: flex;
@@ -40,27 +41,6 @@
 .item-identity-info-line{
     width: 100%;
     height: 4px;
-}
-.item-identity-info-line--wrath{
-    background-color : var(--wrath-frame-color);
-}
-.item-identity-info-line--lust{
-    background-color : var(--lust-frame-color);
-}
-.item-identity-info-line--gloom{
-    background-color : var(--gloom-frame-color);
-}
-.item-identity-info-line--pride{
-    background-color : var(--pride-frame-color);
-}
-.item-identity-info-line--glut{
-    background-color : var(--glut-frame-color);
-}
-.item-identity-info-line--sloth{
-    background-color : var(--sloth-frame-color);
-}
-.item-identity-info-line--envy{
-    background-color : var(--envy-frame-color);
 }
 
 .item-identity-info-tiers{
@@ -110,7 +90,6 @@
     width: calc(100% - 54px);
 }
 .item-identity-info-tier-rank{
-    background-color : var(--envy-frame-color);
     justify-content: center;
     align-items: center;
     display: flex;

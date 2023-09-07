@@ -19,15 +19,15 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
     ]
     //const rarityStyled = rarity.replaceAll("O","Ø");
     return (
-        <div className={"item-identity-info-container"}  >
+        <div  className={"item-identity-info-container"} >
             <div className={"item-identity-info-skills"}>
                 {skills.map(({imageUrl,count,sin,type})=>{
                     return (
-                        <div className="item-identity-info-sin">
+                        <div key={`skill${Math.random()}`} className="item-identity-info-sin">
                             <div className={"item-identity-info-skill-container"}>
                                 <img className={"item-identity-info-skill-dmgType"} src={`/images/${imageUrl}.png`}></img>
                             </div>
-                            <div className={["item-identity-info-line", `item-identity-info-line--${sin}`].join(" ")}></div>
+                            <div className={["item-identity-info-line", `${sin}-sin-color`].join(" ")}></div>
                         </div>
                     )
                 })}
@@ -37,7 +37,7 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
                 {
                     passives.map(({imageUrl,count,description,tier})=>{
                             return(
-                            <div className="item-identity-info-tier">
+                            <div key={`passive${Math.random()}`} className="item-identity-info-tier">
                                 <div className="item-identity-info-tier-description">
                                     <img src={`/images/${imageUrl}.png`} className="item-identity-info-tier-description-sin">
                                     </img>

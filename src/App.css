@@ -23,6 +23,27 @@
   --grey-1:#494747;
   --grey-2:#4D4B4B;
 }
+.wrath-sin-color{
+  background-color:var(--wrath-frame-color);
+}
+.lust-sin-color{
+  background-color:var(--lust-frame-color);
+}
+.sloth-sin-color{
+  background-color:var(--sloth-frame-color);
+}
+.glut-sin-color{
+  background-color:var(--glut-frame-color);
+}
+.gloom-sin-color{
+  background-color:var(--gloom-frame-color);
+}
+.pride-sin-color{
+  background-color:var(--pride-frame-color);
+}
+.envy-sin-color{
+  background-color:var(--envy-frame-color);
+}
 .global-content-wrapper{
   width: 100%;
   min-height: 100vh;
@@ -33,4 +54,7 @@
   padding-left: 200px;
   box-sizing: border-box;
   align-items: center;
+}
+.display-none{
+  display: none !important;
 }

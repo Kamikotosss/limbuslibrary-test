@@ -1,25 +1,3 @@
-.item-ego-frame--wrath{
-    background-color: var(--wrath-frame-color);
-}
-.item-ego-frame--lust{
-    background-color: var(--lust-frame-color);
-}
-.item-ego-frame--sloth{
-    background-color: var(--sloth-frame-color);
-}
-.item-ego-frame--glut{
-    background-color: var(--glut-frame-color);
-}
-.item-ego-frame--gloom{
-    background-color: var(--gloom-frame-color);
-}
-.item-ego-frame--pride{
-    background-color: var(--pride-frame-color);
-}
-.item-ego-frame--envy{
-    background-color: var(--envy-frame-color);
-}
-
 .item-ego-container{
     width: 174px;
     height: 225px;

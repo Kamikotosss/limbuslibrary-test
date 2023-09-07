@@ -28,6 +28,9 @@ export const EGOPage:React.FC = () => {
         <Header></Header>
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
+            <div style={{width:"80%" ,color:"white"}}>
+                <h1>Список ЭГО</h1>
+            </div>
         <Filters></Filters>
             <div className={"tier-bar-items"} style={{width:"80%"}}>
                 {setupEGO()}

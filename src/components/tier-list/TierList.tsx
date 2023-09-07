@@ -10,7 +10,7 @@ export const TierList:React.FC<TierListInterface> = () => {
         <>
             {ratings.map((rating)=>{
                 return(
-                    <TierBar  rating={rating} key={Math.random()}></TierBar>
+                    <TierBar  rating={rating} key={`${rating}${Math.random()}`}></TierBar>
                 )
             })}
         </>

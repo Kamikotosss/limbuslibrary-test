@@ -28,7 +28,7 @@ export const Filters:React.FC = () => {
                 {
                     sinTypes.map((type)=>{
                         return(
-                            <div className={["filters-image-container" , (filterState["sin"][type] ) ? "filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("sin",type)}>
+                            <div key={`${type}${Math.random()}`} className={["filters-image-container" , (filterState["sin"][type] ) ? "filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("sin",type)}>
                                 <img className={"filters-image"} src={`/images/sins/${type}.png`} alt={`${type}`}></img>
                             </div>
                         )
@@ -37,7 +37,7 @@ export const Filters:React.FC = () => {
                 {
                     damageTypes.map((type)=>{
                         return(
-                            <div  className={["filters-image-container" , (filterState["dmgType"][type] ) ? "filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("dmgType",type)}>
+                            <div key={`${type}${Math.random()}`}  className={["filters-image-container" , (filterState["dmgType"][type] ) ? "filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("dmgType",type)}>
                                 <img className={"filters-image"} src={`/images/dmg-type/${type}.png`} alt={`${type}`}></img>
                             </div>
                         )
@@ -46,7 +46,7 @@ export const Filters:React.FC = () => {
                 {
                     guardTypes.map((type)=>{
                         return(
-                            <div  className={["filters-image-container" , (filterState["guardType"][type] ) ? "filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("guardType",type)}>
+                            <div key={`${type}${Math.random()}`} className={["filters-image-container" , (filterState["guardType"][type] ) ? "filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("guardType",type)}>
                                 <img className={"filters-image"} src={`/images/guard-type/${type}.png`} alt={`${type}`}></img>
                             </div>
                         )

@@ -20,16 +20,14 @@ export const TierBar:React.FC<TierBarProps> = ({rating}) => {
    
     const setupEGO = () =>{
         return ego?.map((item:EGOInterface)=>{
-            return (<>
-                {(item.egoTier === rating ) && <ItemEGO ego={item} key={`ego${Math.random()}`}></ItemEGO>}
-            </>);
+            return (
+                (item.egoTier === rating ) && <ItemEGO ego={item} key={`ego${Math.random()}`}></ItemEGO>
+            );
         });
     }
     const setupIds = () =>{
         return ids?.map((item:IdentityInterface)=>{
-            return (<>
-                {(item.idTier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>}
-            </>);
+            return ((item.idTier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>);
         });
     }
     const setupPassives = () =>{
@@ -50,7 +48,6 @@ export const TierBar:React.FC<TierBarProps> = ({rating}) => {
         }
     }
     return (
-        //TODO routing list
         <div className={"tier-bar-container"}>
             <div className={"tier-bar-left-subcontainer"}>
                 <div className={["tier-bar-line" , `tier-bar-line--${rating}`].join(" ")}></div>
@@ -63,7 +60,6 @@ export const TierBar:React.FC<TierBarProps> = ({rating}) => {
                     {setupItems()} 
                 </div>
             </div>
-            
         </div>
     )
 }
