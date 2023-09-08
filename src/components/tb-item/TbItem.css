@@ -1,6 +1,6 @@
-.item-identity-container{
-    width: 174px;
-    height: 225px;
+.tb-item-container{
+    width: 150px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -8,10 +8,10 @@
     transition: 0.6s;
     cursor: pointer;
 }
-.item-identity-container:hover{
+.tb-item-container:hover{
     opacity:1;
 }
-.item-identity-rarity{
+.tb-item-rarity{
     width: fit-content;
     height: fit-content;
     justify-content: center;
@@ -25,34 +25,26 @@
     background: rgba(0, 0, 0, 0.40);
     padding: 5px 8px 1px;
     margin: 6px 0px 0px 6px;
+    color: var(--O-color);
 }
-.item-identity-frame{
+.tb-item-frame{
     width: 100%;
     height: 6px;
 }
-.item-identity-frame--OOO{
+.tb-item-frame--OOO{
     background: var(--OOO-frame-color);
 }
-.item-identity-frame--OO{
+.tb-item-frame--OO{
     background: var(--OO-frame-color);
 }
-.item-identity-frame--O{
+.tb-item-frame--O{
     background: var(--O-frame-color);
 }
-.item-identity-rarity--OOO{
-    color: var(--OOO-color);
-}
-.item-identity-rarity--OO{
-    color: var(--OO-color);
-}
-.item-identity-rarity--O{
-    color: var(--O-color);
-}
-.item-identity-image{
+.tb-item-image{
     width: 150px;
     height: 150px;
 }
-.item-identity-name{
+.tb-item-name{
     color: #FFF;
     font-size: 20px;
     font-weight: 200;

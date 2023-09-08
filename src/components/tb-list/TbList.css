@@ -1,0 +1,19 @@
+.tb-list-container{
+    margin-top: 40px;
+    width: 80%;
+}
+.tb-list-header{
+   font-size: 48px;
+   color:white;
+}
+.tb-list-content{
+    display: grid;
+    row-gap: 25px;
+    column-gap: 5px;
+    grid-template-columns: repeat(auto-fill,150px);
+    width: 100%;
+    text-align: center;
+    padding: 20px 0px 0px 0px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}

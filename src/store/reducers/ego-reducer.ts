@@ -1,5 +1,5 @@
 export interface EGOInterface{
-    imgUrl:string,
+    imgUrl:number,
     sinner:string,
     name:string,
     rarity:string,

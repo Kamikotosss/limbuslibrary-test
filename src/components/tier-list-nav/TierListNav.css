@@ -29,11 +29,10 @@
   
  .tier-list-nav  a {
     text-decoration: none; 
-    display: block; 
-    padding: 10px 0; 
+    padding: 4px 0px 0px 0; 
     transition: 0.5s;
     color: rgb(206, 206, 206); 
-
+    font-size: 16px;
   }
   
   .tier-list-nav a:hover {

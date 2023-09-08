@@ -95,7 +95,7 @@
     display: flex;
     font-size: 16px;
     width: 44px;
-    height: 22px;
+    height: 20px;
     color: rgba(0, 0, 0, 0.5);
 }
 .item-identity-info-tier-rank--SSS{
@@ -123,4 +123,10 @@
     background: #4D4B4B;
     position: absolute;
     bottom: -9px;
+}
+.item-identity-info-tier-description span{
+    padding-top: 4px;
+}
+.item-identity-info-tier-rank-container span {
+    padding-top: 4px;
 }

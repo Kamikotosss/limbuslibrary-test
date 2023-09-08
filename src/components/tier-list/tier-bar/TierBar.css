@@ -40,7 +40,7 @@
     height: 13px;
     border-radius: 50%; /* Делаем элемент круглым */
     margin-right:6.5px ;
-    margin-top:6.5px ;
+    margin-top:7.5px ;
 }
 .tier-bar-dot--SSS{
     outline: 6.5px solid rgba(255, 58, 58, 0.30);
@@ -69,7 +69,7 @@
 .tier-bar-right-subcontainer{
     display: flex;
     flex-direction: column;
-    padding: 0px 15px ;
+    padding: 3px 15px 0px;
     width: calc(100% - 71px);
 }
 .tier-bar-items{
