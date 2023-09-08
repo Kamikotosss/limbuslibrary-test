@@ -21,6 +21,7 @@
     height: 250px;
     padding: 6px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 .tb-slots-container-ego--5{
     margin-top: 8px;
@@ -33,6 +34,7 @@
     width: 35px;
     height: 35px;
     background-color: rgb(139, 135, 135);
+    cursor: pointer;
 }
 .tb-slots-id-sin--5{
     display: flex;

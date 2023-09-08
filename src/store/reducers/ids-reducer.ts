@@ -1,17 +1,20 @@
+import { dmgType, guardType, sinType } from "../../constants/types";
+
+
 export interface IdentityInterface{
     imgUrl:number,
     sinner:string,
     name:string,
     rarity:string,
     season:number,
-    sin1:string,
-    sin2:string,
-    sin3:string,
-    sinGuard:string,
-    dmgType1:string,
-    dmgType2:string,
-    dmgType3:string,
-    guardType:string,
+    sin1:sinType,
+    sin2:sinType,
+    sin3:sinType,
+    sinGuard:sinType,
+    dmgType1:dmgType,
+    dmgType2:dmgType,
+    dmgType3:dmgType,
+    guardType:guardType,
     idTier:string,
     passive2Tier:string,
     passive1Tier:string,

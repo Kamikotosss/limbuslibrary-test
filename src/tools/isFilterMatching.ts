@@ -1,3 +1,4 @@
+import { dmgType, sinType } from "../constants/types";
 import { EGOInterface } from "../store/reducers/ego-reducer";
 import { DmgTypeFilterInterface, FilterInterface, GuardTypeFilterInterface, SinFilterInterface } from "../store/reducers/filter-reducer";
 import { IdentityInterface } from "../store/reducers/ids-reducer";
@@ -14,12 +15,12 @@ export const isFilterMatching = (filterState:FilterInterface,entity:IdentityInte
         for(const key in filterState.dmgType){
             const value = filterState.dmgType[key as keyof DmgTypeFilterInterface];
             if(value === false)continue;
-            if( !([dmgType1,dmgType2,dmgType3].includes(key)) ) return false;
+            if( !([dmgType1,dmgType2,dmgType3].includes(key as dmgType)) ) return false;
         }
         for(const key in filterState.sin){
             const value = filterState.sin[key as keyof SinFilterInterface];
             if(value === false)continue;
-            if( !([sin1,sin2,sin3,sinGuard].includes(key)) ) return false;
+            if( !([sin1,sin2,sin3,sinGuard].includes(key as sinType)) ) return false;
         }
     }
 
