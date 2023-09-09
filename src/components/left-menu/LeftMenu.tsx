@@ -8,11 +8,11 @@ export const LeftMenu:React.FC = () => {
         <div className={"left-menu"}>
             <nav>
                 <ul>
-                    <li><Link to="/">Главная</Link></li>
-                    <li><Link to="/tierlist">Тир лист</Link></li>
-                    <li><Link to="/teambuilder">Тим билдер</Link></li>
-                    <li><Link to="/identities">Личности</Link></li>
-                    <li><Link to="/ego">ЭГО</Link></li>
+                    <Link to="/"><li className={"left-menu-title"}>GREAT<br/>LIMBUS<br/>LIBRARY</li></Link>
+                    <Link to="/tierlist"><li>Тир лист</li></Link>
+                    <Link to="/teambuilder"><li>Тим билдер</li></Link>
+                    <Link to="/identities"><li>Личности</li></Link>
+                    <Link to="/ego"><li>ЭГО</li></Link>
                 </ul>
             </nav>
         </div>

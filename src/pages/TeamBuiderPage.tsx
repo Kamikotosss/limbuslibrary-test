@@ -18,10 +18,10 @@ export const TeamBuilderPage:React.FC = () => {
         fetchIds()(dispatch);
     }, []);
     return  <>
-        <Header></Header>
+        {/* <Header></Header> */}
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
-            <TbSins></TbSins>
+            {/* <TbSins></TbSins> */}
             <TbSlots></TbSlots>
             <TbList children={<TbListIds></TbListIds>} header="Identities"></TbList>
             <TbList children={<TbListEGO></TbListEGO>} header="EGO"></TbList>

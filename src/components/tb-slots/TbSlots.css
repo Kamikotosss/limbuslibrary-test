@@ -1,48 +1,78 @@
 .tb-slots-container{
     display: flex;
     flex-direction: row;
-    width: 80%;
-    justify-content: space-between;
-    margin-top: 24px;
+    width: 85%;
+    margin-top: 30px;
+    margin-bottom: 24px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 30px;
+    z-index: 80;
+    background-color: rgb(32, 32, 32);
 }
 
 .tb-slots-slot--5{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    background-color: #474747;
+    padding: 10px;
+    margin-right: 24px;
 }
 
 .tb-slots-container-id--5{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: grey;
-    width: 200px;
-    height: 250px;
-    padding: 6px;
+    width: 99.2px;
+    height: 100%;
+    margin-left: 4px;
     box-sizing: border-box;
     cursor: pointer;
 }
 .tb-slots-container-ego--5{
-    margin-top: 8px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 .tb-slots-slot-ego--5{
-    width: 35px;
-    height: 35px;
+    width: 24px;
+    height: 24px;
+    margin-top: 4px;
     background-color: rgb(139, 135, 135);
     cursor: pointer;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.tb-slots-slot-ego--5:nth-of-type(1){
+    margin-top: 0px;
+
 }
 .tb-slots-id-sin--5{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
+    color: rgba(0, 0, 0, 0.51);
 }
 .tb-slots-id-sin--5 div {
-    width: 56px;
-    height: 24px;
+    width: 33.33%;
+    font-size: 10.4px;
+    height: 12px;
+    display: flex;
+    padding-top: 3px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+.tb-ego-frame{
+    width: 100%;
+    height: 2px;
+}
+.tb-slots-id-img--5{
+    width: 100%;
+    height: 120px;
+    background-color: rgb(139, 135, 135);
 }

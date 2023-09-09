@@ -1,113 +1,131 @@
-.tier-bar-container{
+.tier-bar-container {
     width: 80%;
-    min-height: 150px;
+    min-height: 120px;
     height: fit-content;
     display: flex;
     flex-direction: row;
 }
-.tier-bar-left-subcontainer{
-    width: 71px;
+
+.tier-bar-left-subcontainer {
+    width: 56.8px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.tier-bar-line{
-    width: 3px;
+
+.tier-bar-line {
+    width: 2.4px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.tier-bar-line--SSS{
+
+.tier-bar-line--SSS {
     background-color: rgb(236, 24, 48);
 }
-.tier-bar-line--SS{
-    background-color: rgba(255, 97, 74);
+
+.tier-bar-line--SS {
+    background-color: rgba(255, 97, 74, 0.8);
 }
-.tier-bar-line--S{
-    background-color: rgba(255, 188, 58);
+
+.tier-bar-line--S {
+    background-color: rgba(255, 188, 58, 0.8);
 }
-.tier-bar-line--A{
+
+.tier-bar-line--A {
     background-color: rgb(143, 255, 58);
 }
-.tier-bar-line--B{
+
+.tier-bar-line--B {
     background-color: rgb(58, 255, 166);
 }
-.tier-bar-line--C{
+
+.tier-bar-line--C {
     background-color: rgb(58, 255, 248);
 }
-.tier-bar-dot{
-    width: 13px;
-    height: 13px;
-    border-radius: 50%; /* Делаем элемент круглым */
-    margin-right:6.5px ;
-    margin-top:7.5px ;
+
+.tier-bar-dot {
+    width: 10.4px;
+    height: 10.4px;
+    border-radius: 50%;
+    margin-right: 5.2px;
+    margin-top: 6px;
 }
-.tier-bar-dot--SSS{
-    outline: 6.5px solid rgba(255, 58, 58, 0.30);
+
+.tier-bar-dot--SSS {
+    outline: 5.2px solid rgba(255, 58, 58, 0.24);
     background-color: rgb(236, 24, 48);
 }
-.tier-bar-dot--SS{
-    outline: 6.5px solid rgba(255, 97, 74,0.3);
-    background-color: rgba(255, 97, 74);
+
+.tier-bar-dot--SS {
+    outline: 5.2px solid rgba(255, 97, 74, 0.24);
+    background-color: rgba(255, 97, 74, 0.8);
 }
-.tier-bar-dot--S{
-    outline: 6.5px solid rgba(255, 188, 58, 0.3);
-    background-color: rgba(255, 188, 58);
+
+.tier-bar-dot--S {
+    outline: 5.2px solid rgba(255, 188, 58, 0.24);
+    background-color: rgba(255, 188, 58, 0.8);
 }
-.tier-bar-dot--A{
-    outline: 6.5px solid rgba(143, 255, 58, 0.3);
+
+.tier-bar-dot--A {
+    outline: 5.2px solid rgba(143, 255, 58, 0.24);
     background-color: rgb(143, 255, 58);
 }
-.tier-bar-dot--B{
-    outline: 6.5px solid rgba(58, 255, 166, 0.3);
+
+.tier-bar-dot--B {
+    outline: 5.2px solid rgba(58, 255, 166, 0.24);
     background-color: rgb(58, 255, 166);
 }
-.tier-bar-dot--C{
-    outline: 6.5px solid rgba(58, 255, 248, 0.3);
+
+.tier-bar-dot--C {
+    outline: 5.2px solid rgba(58, 255, 248, 0.24);
     background-color: rgb(58, 255, 248);
 }
-.tier-bar-right-subcontainer{
+
+.tier-bar-right-subcontainer {
     display: flex;
     flex-direction: column;
-    padding: 3px 15px 0px;
-    width: calc(100% - 71px);
+    padding: 2.4px 12px 0px;
+    width: calc(100% - 56.8px);
 }
-.tier-bar-items{
+
+.tier-bar-items {
     display: grid;
-    row-gap: 25px;
-    column-gap: 15px;
-    grid-template-columns: repeat(auto-fill,174px);
+    row-gap: 20px;
+    column-gap: 12px;
+    grid-template-columns: repeat(auto-fill, 139.2px);
     width: 100%;
     text-align: center;
-    padding: 40px 20px 60px 0px;
+    padding: 32px 16px 48px 0px;
     box-sizing: border-box;
     justify-content: space-between;
 }
-  
-.tier-bar-rating-container{
-    width: 74px;
+
+.tier-bar-rating-container {
+    width: 59.2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: black;
-    font-size: 2em;
+    font-size: 1.6em;
     font-weight: bold;
 }
-.tier-bar-rating{
+
+.tier-bar-rating {
     display: inline-block;
     align-items: flex-start;
     color: #FFF;
-    font-size: 32px;
+    font-size: 25.6px;
     font-style: normal;
     font-weight: 500;
-    margin-top: -5px;
+    margin-top: -4px;
 }
 
-.tier-bar-description{
+.tier-bar-description {
     color: #FFF;
-    font-size: 18.41px;
+    font-size: 14.728px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24.78px; 
+    line-height: 19.824px;
 }

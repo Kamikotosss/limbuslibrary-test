@@ -1,15 +1,15 @@
 .tb-item-container{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    opacity:0.8;
+    opacity: 0.8;
     transition: 0.6s;
     cursor: pointer;
 }
 .tb-item-container:hover{
-    opacity:1;
+    opacity: 1;
 }
 .tb-item-rarity{
     width: fit-content;
@@ -18,18 +18,18 @@
     align-items: center;
     display: flex;
     box-sizing: border-box;
-    font-size: 17.055px;
+    font-size: 13.644px;
     font-style: normal;
     font-weight: 400;
-    line-height: 19.458px;
+    line-height: 15.5664px;
     background: rgba(0, 0, 0, 0.40);
-    padding: 5px 8px 1px;
-    margin: 6px 0px 0px 6px;
+    padding: 4px 6.4px 0.8px 8.4px;
+    margin: 4.8px 0px 0px 4.8px;
     color: var(--O-color);
 }
 .tb-item-frame{
     width: 100%;
-    height: 6px;
+    height: 4.8px;
 }
 .tb-item-frame--OOO{
     background: var(--OOO-frame-color);
@@ -41,16 +41,16 @@
     background: var(--O-frame-color);
 }
 .tb-item-image{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
 }
 .tb-item-name{
     color: #FFF;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 200;
-    margin-bottom: 12px;
-    line-height: 24px;
+    margin-bottom: 9.6px;
+    line-height: 19.2px;
     box-sizing: border-box;
     text-align: left;
-    padding: 0px 15px 0px 15px;
+    padding: 0px 12px 0px 12px;
 }

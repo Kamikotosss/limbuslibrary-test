@@ -1,132 +1,153 @@
-.item-identity-info-container{
+.item-identity-info-container {
     background-color: #4D4B4B;
     display: flex;
     flex-direction: column;
     transition: 0.6s;
     position: absolute;
-    padding: 24px;
-    transform: translate(calc(-25% + 12px), calc(-100% - 18px));
+    padding: 19.2px;
+    transform: translate(calc(-25% + 9.6px), calc(-100% - 14.4px));
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
     z-index: 101;
 }
-.item-identity-info-skills{
+
+.item-identity-info-skills {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.item-identity-info-sin{
+
+.item-identity-info-sin {
     background-color: #646262;
-    margin-right: 5px;
-   
+    margin-right: 4px;
 }
-.item-identity-info-sin:last-of-type{
+
+.item-identity-info-sin:last-of-type {
     margin-right: 0px;
 }
-.item-identity-info-skill-container{
-    width: 60px;
-    height: 56px;
-    padding: 6px;
+
+.item-identity-info-skill-container {
+    width: 48px;
+    height: 44.8px;
+    padding: 4.8px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.item-identity-info-skill-dmgType{
-    width: 30px;
-    height: 30px;
-    padding: 5px;
-}
-.item-identity-info-line{
-    width: 100%;
-    height: 4px;
+
+.item-identity-info-skill-dmgType {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
 }
 
-.item-identity-info-tiers{
+.item-identity-info-line {
+    width: 100%;
+    height: 3.2px;
+}
+
+.item-identity-info-tiers {
     display: flex;
     flex-direction: column;
-    margin-top: 18px;
+    margin-top: 14.4px;
     min-width: 100%;
-
 }
-.item-identity-info-tier{
+
+.item-identity-info-tier {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 5px;
+    margin-right: 4px;
     min-width: 100%;
-    height: 30px;
-    margin-bottom: 4px;
+    height: 24px;
+    margin-bottom: 3.2px;
 }
-.item-identity-info-tier:last-of-type{
+
+.item-identity-info-tier:last-of-type {
     margin-bottom: 0px;
 }
-.item-identity-info-tier-description{
+
+.item-identity-info-tier-description {
     background-color: #646262;
-    width: 54px;
+    width: 43.2px;
     height: 100%;
     display: flex;
     color: white;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin-right: 4px;
+    margin-right: 3.2px;
     box-sizing: border-box;
-    padding: 6px;
-}
-.item-identity-info-tier-description-sin{
-    width: 20px;
-    height: 20px;
+    padding: 4.8px;
 }
 
-.item-identity-info-tier-rank-container{
-    padding: 4px;
+.item-identity-info-tier-description-sin {
+    width: 16px;
+    height: 16px;
+}
+
+.item-identity-info-tier-rank-container {
+    padding: 3.2px;
+    padding-left: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #646262;
     color: white;
-    width: calc(100% - 54px);
+    width: calc(100% - 43.2px);
 }
-.item-identity-info-tier-rank{
+
+.item-identity-info-tier-rank {
     justify-content: center;
     align-items: center;
     display: flex;
-    font-size: 16px;
-    width: 44px;
-    height: 20px;
+    font-size: 12.8px;
+    width: 35.2px;
+    height: 16px;
     color: rgba(0, 0, 0, 0.5);
 }
-.item-identity-info-tier-rank--SSS{
+
+.item-identity-info-tier-rank--SSS {
     background-color: rgb(236, 24, 48);
 }
-.item-identity-info-tier-rank--SS{
-    background-color: rgba(255, 97, 74);
+
+.item-identity-info-tier-rank--SS {
+    background-color: rgba(255, 97, 74, 0.8);
 }
-.item-identity-info-tier-rank--S{
-    background-color: rgba(255, 188, 58);
+
+.item-identity-info-tier-rank--S {
+    background-color: rgba(255, 188, 58, 0.8);
 }
-.item-identity-info-tier-rank--A{
+
+.item-identity-info-tier-rank--A {
     background-color: rgb(143, 255, 58);
 }
-.item-identity-info-tier-rank--B{
+
+.item-identity-info-tier-rank--B {
     background-color: rgb(58, 255, 166);
 }
-.item-identity-info-tier-rank--C{
+
+.item-identity-info-tier-rank--C {
     background-color: rgb(58, 255, 248);
 }
-.item-identity-info-arrow{
-    width: 18px;
-    height: 18px;
+
+.item-identity-info-arrow {
+    width: 14.4px;
+    height: 14.4px;
     transform: rotate(-45deg);
     background: #4D4B4B;
     position: absolute;
-    bottom: -9px;
+    bottom: -7.2px;
 }
-.item-identity-info-tier-description span{
-    padding-top: 4px;
+
+.item-identity-info-tier-description span {
+    padding-top: 3.2px;
+    font-size: 12px;
 }
+
 .item-identity-info-tier-rank-container span {
-    padding-top: 4px;
+    padding-top: 3.2px;
+    font-size: 12px;
 }
