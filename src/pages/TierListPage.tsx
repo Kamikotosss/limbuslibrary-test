@@ -31,6 +31,7 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
                 fetchEGO()(dispatch);
                 break;
             case "passives":
+                fetchIds()(dispatch);
                 break;
             default:
                 break;

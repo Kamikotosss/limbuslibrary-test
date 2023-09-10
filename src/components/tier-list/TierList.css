@@ -1,0 +1,21 @@
+.tier-list-container{
+    display: flex;
+    flex-direction: row;
+}
+.tier-list{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-right: 20px;
+}
+.tier-list--ego-ids{
+    width: 80%;
+}
+.tier-list--passives{
+    width: 45%;
+}
+.tier-list-name{
+    font-size: 32px;
+    color: #FFF;
+    padding: 0px 0px 24px 0px;
+}

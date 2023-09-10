@@ -9,40 +9,46 @@ import { ItemIdentity } from "../../item-identity/ItemIdentity";
 import "./TierBar.css";
 interface TierBarProps {
     rating:string;
+    tierListParam:string;
     children?:any;
 }
-export const TierBar:React.FC<TierBarProps> = ({rating}) => {
+export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam}) => {
     const {loading,ids,error} = useTypedSelector(state => state.idsReducer);
     const {ego} = useTypedSelector(state => state.egoReducer);
-    
-    const location = useLocation();
-    const tierlistParam = getLocationLastParam(location.pathname);
-   
+
     const setupEGO = () =>{
         return ego?.map((item:EGOInterface)=>{
             return (
                 (item.egoTier === rating ) && <ItemEGO ego={item} key={`ego${Math.random()}`}></ItemEGO>
-            );
-        });
-    }
+                );
+            });
+        }
+
     const setupIds = () =>{
         return ids?.map((item:IdentityInterface)=>{
             return ((item.idTier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>);
         });
     }
-    const setupPassives = () =>{
-        return (<>
-        </>
-        )
+    const setupBattlePassives = () =>{
+        return ids?.map((item:IdentityInterface)=>{
+            return ((item.passive1Tier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>);
+        });
+    }
+    const setupSupportPassives = () =>{
+        return ids?.map((item:IdentityInterface)=>{
+            return ((item.passive2Tier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>);
+        });
     }
     const setupItems = () =>{
-        switch (tierlistParam){
+        switch (tierListParam){
             case "identities":
                 return setupIds()
             case "ego":
                 return setupEGO()
-            case "passives":
-                return setupPassives();
+            case "battlePassives":
+                return setupBattlePassives();
+            case "supportPassives":
+                return setupSupportPassives();
             default:
                 return;
         }
