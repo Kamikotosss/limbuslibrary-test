@@ -5,10 +5,13 @@ export default function useHover<T extends HTMLElement>(ref: RefObject<T>) {
 
   const on = () => {
     setHovering(true);
+    console.log("hovering")
   };
 
   const off = () => {
     setHovering(false);
+    console.log("stop hovering")
+
   };
 
   useEffect(() => {

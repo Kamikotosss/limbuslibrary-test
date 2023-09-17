@@ -7,6 +7,10 @@ import { isIdentity } from "./isIdentity";
 export const isFilterMatching = (filterState:FilterInterface,entity:IdentityInterface|EGOInterface) =>{
     if(isIdentity(entity)){
         const {rarity , imgUrl,name ,dmgType1,dmgType2,dmgType3,guardType,sin1,sin2,sin3,sinGuard} =entity;
+        const searchString = filterState.search;
+        const regex = new RegExp(searchString, 'i');
+        if(!regex.test(name)) return false; 
+
         for(const key in filterState.guardType){
             const value = filterState.guardType[key as keyof GuardTypeFilterInterface];
             if(value === false)continue;

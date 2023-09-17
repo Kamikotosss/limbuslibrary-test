@@ -26,26 +26,26 @@ export const TierList:React.FC<TierListInterface> = () => {
         if (locationParam === "passives") return ["battlePassives" , "supportPassives"];
         return [locationParam];
     }
-    const tierListName = (tierListParam:string) =>{
-        switch (tierListParam){
-            case "identities":
-                return "Identities tier list";
-            case "ego":
-                return "EGO tier list";
-            case "battlePassives":
-                return "Battle passives tier list";      
-            case "supportPassives":
-                return "Support passives tier list";        
-        }
-        return "";
-    }
+    // const tierListName = (tierListParam:string) =>{
+    //     switch (tierListParam){
+    //         case "identities":
+    //             return "Identities tier list";
+    //         case "ego":
+    //             return "EGO tier list";
+    //         case "battlePassives":
+    //             return "Battle passives tier list";      
+    //         case "supportPassives":
+    //             return "Support passives tier list";        
+    //     }
+    //     return "";
+    // }
     return (
         //TODO routing list
         <div className="tier-list-container">
             {setupTierlist().map((tierListParam)=>{
                 return (
                     <div key={`${Math.random()}`} className={["tier-list" , tierListClass()].join(" ")}>
-                        <span className="tier-list-name">{tierListName(tierListParam)}</span>
+                        {/* <span className="tier-list-name">{tierListName(tierListParam)}</span> */}
                             {ratings.map((rating)=>{
                                 return(
                                     <TierBar  rating={rating} tierListParam={tierListParam} key={`${Math.random()}`}></TierBar>

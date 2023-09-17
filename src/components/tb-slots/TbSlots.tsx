@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { sinType } from "../../constants/types";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { IdentityInterface } from "../../store/reducers/ids-reducer";
-import { tbRemoveEntityAction } from "../../store/reducers/tb-reducer";
+import { tbRemoveEntityAction, tbResetSlotAction, tbTriggerModalAction } from "../../store/reducers/tb-reducer";
 import "./TbSlots.css";
 export const TbSlots:React.FC = () => {
     const {slots,energy} = useTypedSelector(store => store.tbReducer);
     const dispatch = useDispatch();
     const count = ["x3","x2","x1"];
     return (
-        <div className="tb-slots-container">
-            {slots.map(({ego,identity},index)=>{
+        <div className="tb-slots-container" >
+            <button className="tb-slots-reset">X Reset</button>
+            {slots.map((slot,index)=>{
+                const {ego,identity} = slot;
                 const {ZAYIN,ALEPH,HE,TETH,WAW} = ego;
                 let backgroundStyle ={};
                 let sins:sinType[] = [];
@@ -27,7 +29,17 @@ export const TbSlots:React.FC = () => {
                 }
 
                 return(
-                    <div className="tb-slots-slot--5"  key={`${Math.random()}`}>
+                    <div className="tb-slots-slot--5" onClick={()=> tbTriggerModalAction(dispatch,slot)} key={`${Math.random()}`}>
+                        <div className="tb-slots-X" onClick={(e)=>{ e.stopPropagation(); tbResetSlotAction(dispatch,index)}} >х</div>
+                        <div className="tb-slots-container-id--5" >
+                            <div className="tb-slots-id-img--5"  style={backgroundStyle}>
+                            </div>
+                            <div className="tb-slots-id-sin--5">
+                                {sins.map((sin,indx)=>{
+                                    return <div className={`${sin}-sin-color`} key={`${sin}${Math.random()}`}>{count[indx]}</div>
+                                })}
+                            </div>
+                        </div>
 
                         <div className="tb-slots-container-ego--5" >
                             {[ZAYIN,ALEPH,HE,TETH,WAW].map((ego)=>{
@@ -46,25 +58,18 @@ export const TbSlots:React.FC = () => {
                                     }
                                 }
                                 return(
-                                    <div onClick={()=>{ego !==null && tbRemoveEntityAction(dispatch,index,rarity)}} className="tb-slots-slot-ego--5" key={`${Math.random()}`} style={bgStyle}>
+                                    <div className="tb-slots-slot-ego--5" key={`${Math.random()}`} style={bgStyle}>
                                         <div className={["tb-ego-frame",`${egoResAffinity}-sin-color`].join(" ")} ></div>
                                     </div>
                                     
                                 )
                             })}
                         </div>
-                        <div className="tb-slots-container-id--5" >
-                            <div className="tb-slots-id-img--5" onClick={()=>{identity !==null && tbRemoveEntityAction(dispatch,index)}} style={backgroundStyle}>
-                            </div>
-                            <div className="tb-slots-id-sin--5">
-                                {sins.map((sin,indx)=>{
-                                    return <div className={`${sin}-sin-color`} key={`${sin}${Math.random()}`}>{count[indx]}</div>
-                                })}
-                            </div>
-                        </div>
+
                     </div>
                 )
             })}
+
         </div>
     )
 }

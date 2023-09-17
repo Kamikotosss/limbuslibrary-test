@@ -24,7 +24,7 @@ export const IdentitiesPage:React.FC = () => {
         <Header></Header>
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
-            <div style={{width:"80%" ,color:"white"}}>
+            <div style={{width:"85%" ,color:"white"}}>
                 <h1>Список личностей</h1>
             </div>
             <Filters></Filters>

@@ -1,22 +1,23 @@
 .tb-slots-container{
     display: flex;
     flex-direction: row;
-    width: 85%;
-    margin-top: 30px;
+    width: 90%;
+    margin-top: 48px;
     margin-bottom: 24px;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 30px;
-    z-index: 80;
-    background-color: rgb(32, 32, 32);
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
 }
 
 .tb-slots-slot--5{
     display: flex;
-    flex-direction: row;
-    background-color: #474747;
-    padding: 10px;
-    margin-right: 24px;
+    flex-direction: column;
+    background: #25272D;
+    padding: 20px;
+    width: 220px;
+    position: relative;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .tb-slots-container-id--5{
@@ -24,30 +25,25 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 99.2px;
-    height: 100%;
-    margin-left: 4px;
+    width:  100%;
+    height: 250px;
     box-sizing: border-box;
-    cursor: pointer;
 }
 .tb-slots-container-ego--5{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 4px;
 }
 .tb-slots-slot-ego--5{
-    width: 24px;
-    height: 24px;
-    margin-top: 4px;
+    width: 37px;
+    height: 37px;
     background-color: rgb(139, 135, 135);
-    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 4px;
     display: flex;
     flex-direction: column-reverse;
-}
-.tb-slots-slot-ego--5:nth-of-type(1){
-    margin-top: 0px;
-
 }
 .tb-slots-id-sin--5{
     display: flex;
@@ -73,6 +69,35 @@
 }
 .tb-slots-id-img--5{
     width: 100%;
-    height: 120px;
+    height: 100%;
     background-color: rgb(139, 135, 135);
+    border-radius: 4px;
+}
+.tb-slots-X{
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: -28px;
+    right: 0;
+    color:#E8E8E8;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 4px 0px 0px 2px;
+    cursor: pointer;
+    transition: 0.6s;
+}
+.tb-slots-X:hover{
+    color:white;
+}
+.tb-slots-reset{
+    position: absolute;
+    top:-40px;
+    right: 20px;
+    cursor: pointer;
+    padding: 2px 0;
+    color:#E8E8E8;
+    font-size: 24px;
 }

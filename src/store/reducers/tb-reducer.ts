@@ -52,16 +52,12 @@ const EnergyInterfaceInitial:EnergyInterface ={
 export interface SlotInterface{
     "identity":IdentityInterface|null,
     "ego":{
-        "ZAYIN":EGOInterface|null;
-        "TETH":EGOInterface|null;
-        "HE":EGOInterface|null;
-        "WAW":EGOInterface|null;
-        "ALEPH":EGOInterface|null;
-    }
+        [key: string]: EGOInterface | null;
+    };
 }
 const SlotInterfaceInitial:SlotInterface = {
     "identity":null,
-    "ego":{
+    "ego": {
         "ZAYIN":null,
         "TETH":null,
         "HE":null,
@@ -69,18 +65,30 @@ const SlotInterfaceInitial:SlotInterface = {
         "ALEPH":null,
     }
 }
+
 export interface TbInterface{
     slots:SlotInterface[],
-    energy: EnergyInterface
+    energy: EnergyInterface,
+    modalTrigger:SlotInterface|null
 }
 
 
 export enum TbActionTypes {
     ADD_ENTITY = "ADD_ENTITY",
     REMOVE_ENTITY = "REMOVE_ENTITY",
-    RESET = "RESET",
+    RESET_ALL = "RESET_ALL",
+    RESET_SLOT = "RESET",
+    TRIGGER_MODAL = "TRIGGER_MODAL",
+    CLOSE_MODAL = "CLOSE_MODAL"
 }
+export interface TriggerModalTbAction {
+    type: TbActionTypes.TRIGGER_MODAL;
+    payload: {slot:SlotInterface};
 
+}
+export interface CloseModalTbAction {
+    type: TbActionTypes.CLOSE_MODAL;
+}
 export interface AddEntityTbAction {
     type: TbActionTypes.ADD_ENTITY;
     payload: {entity:IdentityInterface|EGOInterface};
@@ -90,30 +98,48 @@ export interface RemoveEntityTbAction {
     type: TbActionTypes.REMOVE_ENTITY;
     payload: {slotIndx:number ,ego?:string};
 }
-export interface ResetTbAction {
-    type: TbActionTypes.RESET;
+export interface ResetAllTbAction {
+    type: TbActionTypes.RESET_ALL;
+}
+export interface ResetSlotTbAction {
+    type: TbActionTypes.RESET_SLOT;
+    payload: {slotIndx:number};
 }
 
-export type TbAction = RemoveEntityTbAction | AddEntityTbAction|ResetTbAction;
+export type TbAction = RemoveEntityTbAction | AddEntityTbAction|ResetAllTbAction|ResetSlotTbAction|TriggerModalTbAction|CloseModalTbAction;
 
 const initialState : TbInterface = {
     slots:[{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity}],
-    energy: EnergyInterfaceInitial
+    energy: EnergyInterfaceInitial,
+    modalTrigger:null
 }
 
 export const tbReducer = (state = initialState,action : TbAction):TbInterface =>{
     switch(action.type){
+        case TbActionTypes.TRIGGER_MODAL:
+            return { ...state, modalTrigger:action.payload.slot };
+        case TbActionTypes.CLOSE_MODAL:
+            return { ...state, modalTrigger:null };
         case TbActionTypes.ADD_ENTITY:
-            return { ...add(action.payload.entity, state) };
+            return { ...state,...add(action.payload.entity, state) };
         case TbActionTypes.REMOVE_ENTITY:
-            return {...remove(action.payload, state)};
-        case TbActionTypes.RESET:
+            return {...state,...remove(action.payload, state)};
+        case TbActionTypes.RESET_ALL:
             return {...initialState};
+        case TbActionTypes.RESET_SLOT:
+            return {...state,...resetSlot(state.slots,action.payload.slotIndx,state.energy)};
         default: 
             return state;
     }
 }
-
+const resetSlot = (slots:SlotInterface[] , slotIndx:number,energy:EnergyInterface) =>{
+    removeIdentityFromSlot(slots[slotIndx],energy);
+    for(const key in slots[slotIndx].ego){
+        removeEGOFromSlot(slots[slotIndx],energy,slots[slotIndx].ego[key]);
+    }
+    slots[slotIndx] = {ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity};
+    return {slots,energy};
+}
 const add = (entity:IdentityInterface|EGOInterface,state: TbInterface) =>{
     const {energy,slots} = state;
     if (isIdentity(entity)){
@@ -280,6 +306,15 @@ export const tbAddEntityAction = (dispatch: Dispatch<AddEntityTbAction>,entity:I
 export const tbRemoveEntityAction = (dispatch: Dispatch<RemoveEntityTbAction>,slotIndx:number,ego?:string) => {
     dispatch({ type: TbActionTypes.REMOVE_ENTITY , payload: {slotIndx ,ego} })
 }
-export const tbResetAction = (dispatch: Dispatch<ResetTbAction>) => {
-    dispatch({ type: TbActionTypes.RESET })
+export const tbResetAllAction = (dispatch: Dispatch<ResetAllTbAction>) => {
+    dispatch({ type: TbActionTypes.RESET_ALL })
+}
+export const tbResetSlotAction = (dispatch: Dispatch<ResetSlotTbAction> ,slotIndx:number) => {
+    dispatch({ type: TbActionTypes.RESET_SLOT ,payload : {slotIndx}})
+}
+export const tbTriggerModalAction = (dispatch: Dispatch<TriggerModalTbAction> ,slot:SlotInterface) => {
+    dispatch({ type: TbActionTypes.TRIGGER_MODAL ,payload : {slot}})
+}
+export const tbCloseModalAction = (dispatch: Dispatch<CloseModalTbAction> ) => {
+    dispatch({ type: TbActionTypes.CLOSE_MODAL })
 }

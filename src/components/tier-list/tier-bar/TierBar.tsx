@@ -54,17 +54,12 @@ export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam}) => {
         }
     }
     return (
-        <div className={"tier-bar-container"}>
-            <div className={"tier-bar-left-subcontainer"}>
-                <div className={["tier-bar-line" , `tier-bar-line--${rating}`].join(" ")}></div>
-                <div className={["tier-bar-dot" , `tier-bar-dot--${rating}`].join(" ")}></div>
-            </div>
-            <div className={"tier-bar-right-subcontainer"}>
-                <span className={"tier-bar-rating"}>{`${rating.toUpperCase()} tier`}</span>
-                <span className={["tier-bar-description" , `tier-bar-description--${rating}`].join(" ")}> description description description description description </span>
-                <div className={"tier-bar-items"}>
-                    {setupItems()} 
-                </div>
+        <div className={["tier-bar-container" , `tier-bar-container--${rating}`].join(" ")}>
+            <div className={["tier-bar-line" , `tier-bar-line--${rating}`].join(" ")}></div>
+            <span className={"tier-bar-rating"}>{`${rating.toUpperCase()} tier`}</span>
+            <span className={["tier-bar-description" , `tier-bar-description--${rating}`].join(" ")}> description description description description description </span>
+            <div className={"tier-bar-items"}>
+                {setupItems()} 
             </div>
         </div>
     )

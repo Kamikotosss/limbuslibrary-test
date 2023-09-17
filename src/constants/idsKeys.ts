@@ -15,6 +15,14 @@ const idsKeys: { [key: string]: string } = {
 "O":"idTier",
 "P":"passive1Tier",
 "Q":"passive2Tier",
+"R":"sinPassive1",
+"S":"countPassive1",
+"T":"sinPassive2",
+"U":"countPassive2",
+"V":"slash",
+"W":"pierce",
+"X":"blunt",
+"Y":"status",
 };
 
 export {idsKeys}

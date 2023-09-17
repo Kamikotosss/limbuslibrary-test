@@ -17,8 +17,23 @@ export const TbItem:React.FC<TbItemInterface> = ({entity}) => {
     const rarity = isIdentity ? entity.rarity.replaceAll("O","Ø") : entity.rarity;
     const frameColorClass = isIdentity ? `tb-item-frame--${entity.rarity}` : `${entity.egoRes}-sin-color`;
     const isHovering = useHover(refItem);
-    const {slots,energy} = useTypedSelector(store => store.tbReducer);
+    const {slots,energy,modalTrigger} = useTypedSelector(store => store.tbReducer);
     const dispatch = useDispatch();
+    const isSameSinner = () => {
+        let sinner = entity.sinner;
+
+        for (const key in modalTrigger?.ego) {
+            const currEGO = modalTrigger?.ego[key as keyof typeof  modalTrigger.ego];
+            if (currEGO) return sinner === currEGO.sinner ;
+        }  
+
+        if (modalTrigger?.identity) return sinner === modalTrigger?.identity.sinner 
+
+        return true; 
+    }
+    
+    if (modalTrigger !== null && !isSameSinner()) return <></>;
+    
     return (
         <div onClick={()=>tbAddEntityAction(dispatch,entity)} ref={refItem} className={"tb-item-container"} style={{
             backgroundImage: `linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%), url("/images/${imgUrl}.png")`,

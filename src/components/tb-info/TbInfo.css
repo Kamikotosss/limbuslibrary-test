@@ -1,0 +1,35 @@
+.tb-info{
+    background: #535353;
+    width: 200px;
+    padding: 15px;
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(calc(-50% + 17.5px + 14.4px) , calc(-100% - 15px));
+    display: flex;
+    flex-direction: column;
+}
+.tb-info-header{
+    margin-bottom: 8px;
+}
+.tb-info-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,50px);    
+}
+.tb-info-img{
+    object-fit: contain;
+    width: 30px;
+    height: 30px;
+}
+.tb-info-arrow {
+    width: 14.4px;
+    height: 14.4px;
+    transform: rotate(-45deg);
+    background: #c9c9cc;
+    position: absolute;
+    bottom: -7.2px;
+    left: 50%;
+    z-index: 98;
+}

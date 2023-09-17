@@ -1,23 +1,37 @@
 .tier-bar-container {
     width: 100%;
     min-height: 120px;
-    height: fit-content;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    border-radius: 0px 10px 10px 0px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0px 15px 0 72px;
 }
-
-.tier-bar-left-subcontainer {
-    width: 56.8px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.tier-bar-container--SSS{
+    background: linear-gradient(90deg, #FF3A3A -98.8%, #202228 14.97%);
 }
-
+.tier-bar-container--SS{
+    background: linear-gradient(90deg, rgba(255, 97, 74, 0.8) -98.8%, #202228 14.97%);
+}
+.tier-bar-container--S{
+    background: linear-gradient(90deg, rgba(255, 188, 58, 0.8) -98.8%, #202228 14.97%);
+}
+.tier-bar-container--A{
+    background: linear-gradient(90deg, rgb(143, 255, 58) -98.8%, #202228 14.97%);
+}
+.tier-bar-container--B{
+    background: linear-gradient(90deg, rgb(58, 255, 166) -98.8%, #202228 14.97%);
+}
+.tier-bar-container--C{
+    background: linear-gradient(90deg, rgb(58, 255, 248) -98.8%, #202228 14.97%);
+}
 .tier-bar-line {
+    position: absolute;
     width: 2.4px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    height: 100%;
+    margin-left: -72px;
 }
 
 .tier-bar-line--SSS {
@@ -52,53 +66,16 @@
     margin-top: 6px;
 }
 
-.tier-bar-dot--SSS {
-    outline: 5.2px solid rgba(255, 58, 58, 0.24);
-    background-color: rgb(236, 24, 48);
-}
-
-.tier-bar-dot--SS {
-    outline: 5.2px solid rgba(255, 97, 74, 0.24);
-    background-color: rgba(255, 97, 74, 0.8);
-}
-
-.tier-bar-dot--S {
-    outline: 5.2px solid rgba(255, 188, 58, 0.24);
-    background-color: rgba(255, 188, 58, 0.8);
-}
-
-.tier-bar-dot--A {
-    outline: 5.2px solid rgba(143, 255, 58, 0.24);
-    background-color: rgb(143, 255, 58);
-}
-
-.tier-bar-dot--B {
-    outline: 5.2px solid rgba(58, 255, 166, 0.24);
-    background-color: rgb(58, 255, 166);
-}
-
-.tier-bar-dot--C {
-    outline: 5.2px solid rgba(58, 255, 248, 0.24);
-    background-color: rgb(58, 255, 248);
-}
-
-.tier-bar-right-subcontainer {
-    display: flex;
-    flex-direction: column;
-    padding: 2.4px 12px 0px;
-    width: calc(100% - 56.8px);
-}
-
 .tier-bar-items {
     display: grid;
     row-gap: 20px;
     column-gap: 12px;
-    grid-template-columns: repeat(auto-fill, 139.2px);
-    width: 100%;
+    grid-template-columns: repeat(auto-fill, 173px);
+    width: calc(100%);
     text-align: center;
-    padding: 32px 16px 48px 0px;
+    margin-top: 24px;
     box-sizing: border-box;
-    justify-content: space-between;
+    margin-bottom: 24px;
 }
 
 .tier-bar-rating-container {
@@ -116,16 +93,13 @@
     display: inline-block;
     align-items: flex-start;
     color: #FFF;
-    font-size: 25.6px;
-    font-style: normal;
-    font-weight: 500;
-    margin-top: -4px;
+    font-size: 48px;
+    margin-top: 40px;
 }
 
 .tier-bar-description {
-    color: #FFF;
-    font-size: 14.728px;
+    color: #AFAEB4;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 19.824px;
 }

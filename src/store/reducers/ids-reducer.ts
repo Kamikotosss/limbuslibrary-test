@@ -16,8 +16,16 @@ export interface IdentityInterface{
     dmgType3:dmgType,
     guardType:guardType,
     idTier:string,
-    passive2Tier:string,
     passive1Tier:string,
+    passive2Tier:string,
+    sinPassive1:string,
+    countPassive1:number,
+    sinPassive2:string,
+    countPassive2:number,
+    slash:string,
+    pierce:string,
+    blunt:string,
+    status:string,
 }
 
 export enum IdsActionTypes {

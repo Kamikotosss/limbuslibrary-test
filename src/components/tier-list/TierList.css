@@ -1,6 +1,8 @@
 .tier-list-container{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 85%;
 }
 .tier-list{
     display: flex;
@@ -9,13 +11,8 @@
     padding-right: 20px;
 }
 .tier-list--ego-ids{
-    width: 80%;
+    width: 100%;
 }
 .tier-list--passives{
-    width: 45%;
-}
-.tier-list-name{
-    font-size: 32px;
-    color: #FFF;
-    padding: 0px 0px 24px 0px;
+    width: 48%;
 }

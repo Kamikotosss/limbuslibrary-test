@@ -1,18 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import "./LeftMenu.css"
 export const LeftMenu:React.FC = () => {
-    
+    const location = useLocation();
+    const isCurrentLocation = (route:string)=>{
+        return location.pathname.split("/")[1].includes(route);
+    }
+    const links = [
+        {route:"tierlist" ,name:"ТИР ЛИСТ"},
+        {route:"teambuilder" ,name:"ТИМ БИЛДЕР"},
+        {route:"identities" ,name:"ЛИЧНОСТИ"},
+        {route:"ego" ,name:"ЭГО"},
+    ];
     return (
         //TODO routing list
         <div className={"left-menu"}>
             <nav>
                 <ul>
-                    <Link to="/"><li className={"left-menu-title"}>GREAT<br/>LIMBUS<br/>LIBRARY</li></Link>
-                    <Link to="/tierlist"><li>Тир лист</li></Link>
-                    <Link to="/teambuilder"><li>Тим билдер</li></Link>
-                    <Link to="/identities"><li>Личности</li></Link>
-                    <Link to="/ego"><li>ЭГО</li></Link>
+                    <li className={"left-menu-title"}><Link to="/">GREAT<br/>LIMBUS<br/>LIBRARY</Link></li>
+                    {
+                        links.map(({route,name}) =>{
+                            return(
+                                <li><Link className={(isCurrentLocation(route) ? "left-menu-route--active":"")} to={`/${route}`}>{name}</Link></li>
+                            )
+                        })
+                    }
                 </ul>
             </nav>
         </div>
