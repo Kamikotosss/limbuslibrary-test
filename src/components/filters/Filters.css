@@ -3,6 +3,22 @@
     flex-direction: row;
     width: 85%;
     margin-bottom: 56px;
+    flex-wrap: wrap;
+
+  }
+  .filters section {
+    display: flex;
+    flex-direction: row;
+    margin-right: 28px;
+    flex-wrap: wrap;
+  }
+  .filters section:nth-of-type(4){
+    display: flex;
+    margin-top: 4px;
+
+  }
+  .filters section:nth-of-type(4) button{
+    margin-top: 4px;
   }
   .filters form {
     display: flex;
@@ -48,15 +64,8 @@
     position: relative;
     background: #25272D;
   }
-    .filters-image-container:nth-of-type(7){
-      margin-right: 28px;
-    }
-    .filters-image-container:nth-of-type(10){
-      margin-right: 28px;
-    }
-    .filters-image-container:nth-of-type(13){
-      margin-right: 28px;
-    }
+
+    
   .filters-image-container--active{
     background: linear-gradient(180deg, #474A56 0%, rgba(71, 74, 86, 0.00) 193.52%);
   }

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { sinType } from "../../constants/types";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { IdentityInterface } from "../../store/reducers/ids-reducer";
-import { tbRemoveEntityAction, tbResetSlotAction, tbTriggerModalAction } from "../../store/reducers/tb-reducer";
+import { tbRemoveEntityAction, tbResetSlotAction, tbTriggerModalAction ,tbResetAllAction} from "../../store/reducers/tb-reducer";
 import "./TbSlots.css";
 export const TbSlots:React.FC = () => {
     const {slots,energy} = useTypedSelector(store => store.tbReducer);
@@ -11,7 +11,7 @@ export const TbSlots:React.FC = () => {
     const count = ["x3","x2","x1"];
     return (
         <div className="tb-slots-container" >
-            <button className="tb-slots-reset">X Reset</button>
+            <button className="tb-slots-reset" onClick={()=> tbResetAllAction(dispatch) }>X Reset</button>
             {slots.map((slot,index)=>{
                 const {ego,identity} = slot;
                 const {ZAYIN,ALEPH,HE,TETH,WAW} = ego;

@@ -1,28 +1,22 @@
 import { Dispatch } from "react";
-
+import { damageTypes,guardTypes,sinTypes,tagsIds } from "../../constants/skillBasedTypes";
 export interface SinFilterInterface{
-    wrath:boolean,
-    glut:boolean,
-    gloom:boolean,
-    envy:boolean,
-    lust:boolean,
-    pride:boolean,
-    sloth:boolean,
+    [key:string]:boolean;
 }
 export interface DmgTypeFilterInterface{
-    pierce:boolean,
-    blunt:boolean,
-    slash:boolean,
+    [key:string]:boolean;
 }
 export interface GuardTypeFilterInterface{
-    counter:boolean,
-    guard:boolean,
-    evade:boolean,
+    [key:string]:boolean;
+}
+export interface TagsFilterInterface{
+    [key:string]:boolean;
 }
 export interface FilterInterface{
     sin:SinFilterInterface,
     dmgType:DmgTypeFilterInterface,
     guardType:GuardTypeFilterInterface,
+    tags:TagsFilterInterface,
     search:string;
 }
 
@@ -31,12 +25,16 @@ export enum FilterActionTypes {
     CHANGE_GUARD_TYPE_FILTER = "CHANGE_GUARD_TYPE_FILTER",
     CHANGE_SIN_TYPE_FILTER = "CHANGE_SIN_TYPE_FILTER",
     SEARCH_FILTER = "SEARCH_FILTER",
+    CHANGE_TAG_TYPE_FILTER = "CHANGE_TAG_TYPE_FILTER",
 }
 
 export interface ChangeDmgTypeFilterAction {
     type: FilterActionTypes.CHANGE_DMG_TYPE_FILTER;
     payload: string;
-
+}
+export interface ChangeTagTypeFilterAction {
+    type: FilterActionTypes.CHANGE_TAG_TYPE_FILTER;
+    payload: string;
 }
 export interface ChangeGuardTypeFilterAction {
     type: FilterActionTypes.CHANGE_GUARD_TYPE_FILTER;
@@ -50,39 +48,34 @@ export interface SearchFilterAction {
     type: FilterActionTypes.SEARCH_FILTER;
     payload: string;
 }
-export type FilterAction = ChangeDmgTypeFilterAction | ChangeGuardTypeFilterAction | ChangeSinFilterAction |SearchFilterAction;
+export type FilterAction = ChangeDmgTypeFilterAction | ChangeGuardTypeFilterAction | ChangeSinFilterAction |SearchFilterAction|ChangeTagTypeFilterAction;
+
+const initStateParam = (keys:string[]) => { 
+    let obj:{[key:string]:boolean} = {};
+    keys.forEach(key=>{
+        obj[key] = false;
+    })
+    return obj;
+}
 
 const initialState : FilterInterface = {
-    dmgType:{
-        blunt:false,
-        pierce:false,
-        slash:false,
-    },
-    guardType:{
-        counter:false,
-        evade:false,
-        guard:false,
-    },
-    sin:{
-        wrath:false,
-        lust:false,
-        sloth:false,
-        glut:false,
-        gloom:false,
-        pride:false,
-        envy:false,
-    },
+    dmgType:initStateParam(damageTypes),
+    guardType:initStateParam(guardTypes),
+    sin:initStateParam(sinTypes),
+    tags:initStateParam(tagsIds),
     search:""
 }
 
 export const filterReducer = (state = initialState,action : FilterAction):FilterInterface =>{
     switch(action.type){
         case FilterActionTypes.CHANGE_DMG_TYPE_FILTER:
-            return { ...state, dmgType: applyFilter(action.payload as keyof DmgTypeFilterInterface, state.dmgType) };
+            return { ...state, dmgType: applyFilter(action.payload, state.dmgType) };
         case FilterActionTypes.CHANGE_GUARD_TYPE_FILTER:
-            return { ...state, guardType: applyFilter(action.payload as keyof GuardTypeFilterInterface, state.guardType) };
+            return { ...state, guardType: applyFilter(action.payload, state.guardType) };
         case FilterActionTypes.CHANGE_SIN_TYPE_FILTER:
-            return { ...state, sin: applyFilter(action.payload as keyof SinFilterInterface, state.sin) };
+            return { ...state, sin: applyFilter(action.payload, state.sin) };
+        case FilterActionTypes.CHANGE_TAG_TYPE_FILTER:
+            return { ...state, tags: applyFilter(action.payload, state.tags) };
         case FilterActionTypes.SEARCH_FILTER:
             return { ...state, search: action.payload };
         default: 
@@ -111,7 +104,9 @@ export interface ChangeSinFilterAction {
 
 }
 
-
+export const filterTagTypeAction = (dispatch: Dispatch<ChangeTagTypeFilterAction>,tag:string) => {
+    dispatch({ type: FilterActionTypes.CHANGE_TAG_TYPE_FILTER , payload: tag})
+}
 export const filterDamageTypeAction = (dispatch: Dispatch<ChangeDmgTypeFilterAction>,dmgType:string) => {
     dispatch({ type: FilterActionTypes.CHANGE_DMG_TYPE_FILTER , payload: dmgType})
 }

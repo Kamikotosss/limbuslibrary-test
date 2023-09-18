@@ -1,8 +1,62 @@
-import { DmgTypeFilterInterface, GuardTypeFilterInterface, SinFilterInterface } from "../store/reducers/filter-reducer";
+const damageTypes = ["blunt","slash","pierce"];
+const sinTypes= ["wrath","lust","sloth","glut","gloom","pride","envy"];
+const guardTypes = ["evade","counter","guard"];
+const tagsIds = [
+    "protection",
+    "fragile",
+    "envyFragility",
+    "slothFragility",
+    "gloomFragility",
+    "wrathFragility",
+    "prideFragility",
+    "lustFragility",
+    "glutFragility",
+    "slashFragility",
+    "pierceFragility",
+    "bluntFragility",
+    "rupturFragility",
+    "ruptureProtection",
+    "sinkingFragility",
+    "defenceLevelUp",
+    "defenceLevelDown",
+    "damageUp",
+    "envyDamageUp",
+    "slothDamageUp",
+    "gloomDamageUp",
+    "wrathDamageUp",
+    "prideDamageUp",
+    "lustDamageUp",
+    "glutDamageUp",
+    "pierceDamageUp",
+    "slashDamageUp",
+    "bluntDamageUp",
+    "offenseLevelUp",
+    "offenseLevelDown",
+    "attackPowerUp",
+    "attackPowerDown",
+    "defencePowerUp",
+    "defencePowerDown",
+    "haste",
+    "bind",
+    "burnResistance",
+    "bleedResistance",
+    "attackPowerUp2",
+    "powerDown",
+    "maxHpUp",
+    "moraleBoost",
+    "tipsy",
+    "plusCoinDrop",
+    "plusCoinBoost",
+    "rupture",
+    "bleed",
+    "burn",
+    "tremor",
+    "sinking",
+    "poise",
+    "charge",
+    "poison",
+    "paralyze"
+]
 
-const damageTypes:(keyof DmgTypeFilterInterface)[] = ["blunt","slash","pierce"];
-const sinTypes:(keyof SinFilterInterface)[] = ["wrath","lust","sloth","glut","gloom","pride","envy"];
-const guardTypes:(keyof GuardTypeFilterInterface)[] = ["evade","counter","guard"];
 
-
-export {damageTypes ,sinTypes , guardTypes };
+export {damageTypes ,sinTypes , guardTypes ,tagsIds };

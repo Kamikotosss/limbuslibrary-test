@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { damageTypes , guardTypes,sinTypes} from "../../constants/skillBasedTypes";
+import { damageTypes , guardTypes,sinTypes,tagsIds} from "../../constants/skillBasedTypes";
 import useThrottling from "../../hooks/useThrottling";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { filterGuardTypeAction,filterSearchAction,filterSinTypeAction,filterDamageTypeAction} from "../../store/reducers/filter-reducer";
+import { filterGuardTypeAction,filterSearchAction,filterSinTypeAction,filterDamageTypeAction, FilterInterface, SinFilterInterface, DmgTypeFilterInterface, GuardTypeFilterInterface, filterTagTypeAction} from "../../store/reducers/filter-reducer";
 import "./Filters.css";
 
 export const Filters:React.FC = () => {
@@ -21,6 +21,9 @@ export const Filters:React.FC = () => {
             case "sin":
                 filterSinTypeAction(dispatch,key);
                 return;
+            case "tags":
+                filterTagTypeAction(dispatch,key);
+                return;
             default:
                 return;
         }
@@ -30,45 +33,68 @@ export const Filters:React.FC = () => {
         filterSearchAction(dispatch, val);
        
     }
-    
+    const filters = [
+        {
+            type:"sin" as "sin",
+            imgsFolder:"sins",
+            data:sinTypes
+        },
+        {
+            type:"dmgType" as "dmgType" ,
+            imgsFolder:"dmg-type",
+            data:damageTypes
+        },
+        {
+            type:"guardType" as "guardType",
+            imgsFolder:"guard-type",
+            data:guardTypes
+        },
+    ];
+    const filters2 =[
+        {
+            type:"tags" as "tags",
+            imgsFolder:"tags",
+            data:tagsIds
+        },
+    ];
     return (
         <div className={"filters"}>
-                {
-                    sinTypes.map((type)=>{
-                        return(
-                            <button key={`${type}${Math.random()}`} 
-                                className={["filters-image-container" , (filterState["sin"][type] ) ? "filters-image-container--active": ""].join(" ")} 
-                                onClick={()=>handleFilterChange("sin",type)}>
-                                <img className={"filters-image"} src={`/images/sins/${type}.png`} alt={`${type}` } ></img>
-                                {filterState["sin"][type] && <div className="filters-frame-line"/>}
-                            </button>
+                {filters.map(filter=>{
+                    return  <section>
+                    {filter.data.map((type)=>{
+                        let isTypeActive = filterState[filter.type][type];
+                        return (
+                        <button key={`${type}${Math.random()}`} 
+                        className={["filters-image-container" , (isTypeActive) ? "filters-image-container--active": ""].join(" ")} 
+                        onClick={()=>handleFilterChange(filter.type,type)}>
+                        <img className={"filters-image"} src={`/images/${filter.imgsFolder}/${type}.png`} alt={`${type}` } ></img>
+                        {isTypeActive && <div className="filters-frame-line"/>}
+                        </button>
                         )
-                    })
+                    })}
+                    </section>
+                })
                 }
-                {
-                    damageTypes.map((type)=>{
-                        return(
-                            <button key={`${type}${Math.random()}`}  className={["filters-image-container" , (filterState["dmgType"][type] ) ? "filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("dmgType",type)}>
-                                 
-                                <img className={"filters-image"} src={`/images/dmg-type/${type}.png`} alt={`${type}`}></img>
-                                {filterState["dmgType"][type] && <div className="filters-frame-line"/>}
-                            </button>
-                        )
-                    })
-                }
-                {
-                    guardTypes.map((type)=>{
-                        return(
-                            <button key={`${type}${Math.random()}`} className={["filters-image-container" , (filterState["guardType"][type] ) ? "filters-image-container--active": ""].join(" ")} onClick={()=>handleFilterChange("guardType",type)}>
-                                <img className={"filters-image"} src={`/images/guard-type/${type}.png`} alt={`${type}`}></img>
-                                {filterState["guardType"][type] && <div className="filters-frame-line"/>}
-                            </button>
-                        )
-                    })
-                }
+
                 <form>
                     <input placeholder="Search..." onChange={(e)=>{handleInputCHange(e)}}></input>
                 </form>
+                <section>
+                    {filters2.map(filter=>{
+                        return filter.data.map((type)=>{
+                            let isTypeActive = filterState[filter.type][type];
+                            return (
+                            <button key={`${type}${Math.random()}`} 
+                            className={["filters-image-container" , (isTypeActive) ? "filters-image-container--active": ""].join(" ")} 
+                            onClick={()=>handleFilterChange(filter.type,type)}>
+                            <img className={"filters-image"} src={`/images/${filter.imgsFolder}/${type}.png`} alt={`${type}` } ></img>
+                            {isTypeActive && <div className="filters-frame-line"/>}
+                            </button>
+                            )
+                        })
+                    })
+                    }
+                </section>
         </div>
     )
 }

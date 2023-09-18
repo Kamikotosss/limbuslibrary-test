@@ -6,7 +6,7 @@ import { isIdentity } from "./isIdentity";
 
 export const isFilterMatching = (filterState:FilterInterface,entity:IdentityInterface|EGOInterface) =>{
     if(isIdentity(entity)){
-        const {rarity , imgUrl,name ,dmgType1,dmgType2,dmgType3,guardType,sin1,sin2,sin3,sinGuard} =entity;
+        const {rarity , imgUrl,name ,dmgType1,dmgType2,dmgType3,guardType,sin1,sin2,sin3,sinGuard,status} =entity;
         const searchString = filterState.search;
         const regex = new RegExp(searchString, 'i');
         if(!regex.test(name)) return false; 
@@ -26,9 +26,13 @@ export const isFilterMatching = (filterState:FilterInterface,entity:IdentityInte
             if(value === false)continue;
             if( !([sin1,sin2,sin3,sinGuard].includes(key as sinType)) ) return false;
         }
+        for(const key in filterState.tags){
+            const value = filterState.tags[key];
+            if(value === false)continue;
+            if( !status.includes(key)) return false;
+        }
     }
 
    
     return true;
 }
-

@@ -11,14 +11,20 @@ export const TbTags:React.FC = () => {
         slots.forEach((slot,index)=>{
             const {ego,identity} = slot;
             let tags:string[] = [];
-            console.log("asdasdsa")
-            console.log(identity?.status)
+
             if(!!identity) tags = identity.status.replaceAll(" " , "").split(",");
+            for(const key in ego){
+                const currentEGO = ego[key];
+                if(currentEGO !== null){
+                    tags.push(...currentEGO.status.replaceAll(" " , "").split(","))
+                }
+            }
             tags.forEach((tag)=>{
                 if(tag in tagsMap)tagsMap[tag]+= 1;
                 else tagsMap[tag] = 1;
             })
         })
+        
         for(const key in tagsMap){
             result.push(
                 {

@@ -13,6 +13,8 @@ export interface EGOInterface{
     envy:number,
     egoRes:string,
     egoTier:string,
+    sanity:number,
+    status:string
     
 }
 export enum EGOActionTypes {

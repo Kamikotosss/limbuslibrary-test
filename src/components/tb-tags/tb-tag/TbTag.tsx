@@ -12,7 +12,7 @@ export const TbTag:React.FC <TbSinInterface> = ({tag,count}) =>{
     return(
     <div ref={refItem} className="tb-tags-tag" key={`${tag}`}>
         { isHovering  && <TbInfo attribure={tag} type="tags"></TbInfo>}
-        <img src={`/images/tags/${tag}.png`} className="tb-sins-img"></img>
+        <img src={`/images/tags/${tag}.png`} className="tb-sins-img" alt={tag}></img>
         <span>x{count}</span>
     </div>
     )

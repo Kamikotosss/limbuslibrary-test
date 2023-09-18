@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { JSX } from "react/jsx-runtime";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../store/reducers/ids-reducer";
@@ -50,23 +51,73 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
                     })
                 }
                 </>
-                
             )
-           
         })
+    }
+    const tagsListIdentity = (tag:string) =>{
+        let result = [];
+        for(let i = 0 ; i < slots.length;i++){
+            let slot = slots[i];
+
+            if (!!slot.identity && slot.identity.status.includes(tag)){
+                result.push(
+                    <div key={tag}>
+                        <img className="tb-info-img" src={`/images/identities/${slot.identity.imgUrl}.png`}></img> 
+                        <span>x1</span>
+                    </div>
+                ) 
+            } 
+
+        }
+        return result;
+    }
+    const tagsListEGO = (tag:string) =>{
+        let result: JSX.Element[] = [];
+        for(let i = 0 ; i < slots.length;i++){
+            let slot = slots[i];
+            Object.keys(slot.ego).forEach((key,index)=>{
+                let current = slot.ego[key];
+                if(!!current && current.status.includes(tag)){
+                    result.push(
+                        <div key={index}>
+                            <img className="tb-info-img" src={`/images/ego/${current.imgUrl}.png`}></img> 
+                            <span>x1</span>
+                        </div>
+                    )
+                }
+            })
+        }
+        return result;
+    }
+    const sinsLayout = () =>{
+        return(
+            <>
+                <span className="tb-info-header" >Получение энергии</span>
+                <div className="tb-info-container">
+                    {energyGenList(attribure)}
+                </div>
+                <span className="tb-info-header" >Трата энергии</span>
+                <div className="tb-info-container">
+                    {energyConsumeList(attribure)}
+                </div>
+            </>
+        )
+    }
+    const tagsLayout = () =>{
+        return <>
+            <span className="tb-info-header" >Личности</span>
+            <div className="tb-info-container">
+                {tagsListIdentity(attribure)}
+            </div>
+            <span className="tb-info-header" >ЭГО</span>
+            <div className="tb-info-container">
+                    {tagsListEGO(attribure)}
+            </div>
+        </>
     }
     return (
         <div className="tb-info">
-            <span className="tb-info-header" >Получение энергии</span>
-            <div className="tb-info-container">
-                {energyGenList(attribure)}
-            </div>
-
-            <span className="tb-info-header" >Трата энергии</span>
-            <div className="tb-info-container">
-                {energyConsumeList(attribure)}
-            </div>
-
+            {type === "tags" ?  tagsLayout(): sinsLayout()}
             <div className={"tb-info-arrow"}> </div>
         </div>
     )

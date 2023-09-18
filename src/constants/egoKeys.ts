@@ -13,7 +13,8 @@ const egoKeys: { [key: string]: string } = {
     "M":"envy",
     "N":"egoRes",
     "O":"egoTier",
-  
+    "P":"sanity",
+    "Q":"status",
 }
 
 export {egoKeys}

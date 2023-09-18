@@ -21,7 +21,7 @@ export const LeftMenu:React.FC = () => {
                     {
                         links.map(({route,name}) =>{
                             return(
-                                <li><Link className={(isCurrentLocation(route) ? "left-menu-route--active":"")} to={`/${route}`}>{name}</Link></li>
+                                <li key={route}><Link className={(isCurrentLocation(route) ? "left-menu-route--active":"")} to={`/${route}`}>{name}</Link></li>
                             )
                         })
                     }
