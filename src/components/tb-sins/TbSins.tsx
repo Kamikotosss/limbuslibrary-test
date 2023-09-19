@@ -6,6 +6,7 @@ import "./TbSins.css";
 export const TbSins:React.FC = () => {
     const sins = ["wrath","lust","sloth","glut","gloom","pride","envy"];
     const {slots,energy} = useTypedSelector(state=> state.tbReducer);
+   
     return (
         <div className="tb-sins">
             <span className="tb-sins-header"> Affinities </span>

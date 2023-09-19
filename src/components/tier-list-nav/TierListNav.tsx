@@ -26,7 +26,7 @@ export const TierListNav:React.FC = () => {
                     {
                         routes.map((route)=>{
                             return(
-                                <li>
+                                <li key={`${route.path}`}>
                                     <Link className={getLocationLastParam(location.pathname)=== route.path ? "tier-list-nav--active" : ""} to={`/tierlist/${route.path}`}>
                                         {route.name}
                                     </Link>

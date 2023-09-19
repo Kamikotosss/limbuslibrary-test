@@ -19,24 +19,24 @@ export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam}) => {
     const setupEGO = () =>{
         return ego?.map((item:EGOInterface)=>{
             return (
-                (item.egoTier === rating ) && <ItemEGO ego={item} key={`ego${Math.random()}`}></ItemEGO>
+                (item.egoTier === rating ) && <ItemEGO ego={item} key={`${item.imgUrl}`}></ItemEGO>
                 );
             });
         }
 
     const setupIds = () =>{
-        return ids?.map((item:IdentityInterface)=>{
-            return ((item.idTier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>);
+        return ids?.map((item:IdentityInterface,index)=>{
+            return ((item.idTier === rating) && <ItemIdentity identity={item} key={`${index}`}></ItemIdentity>);
         });
     }
     const setupBattlePassives = () =>{
         return ids?.map((item:IdentityInterface)=>{
-            return ((item.passive1Tier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>);
+            return ((item.passive1Tier === rating ) && <ItemIdentity identity={item} key={`${item.imgUrl}`}></ItemIdentity>);
         });
     }
     const setupSupportPassives = () =>{
         return ids?.map((item:IdentityInterface)=>{
-            return ((item.passive2Tier === rating ) && <ItemIdentity identity={item} key={`ids${Math.random()}`}></ItemIdentity>);
+            return ((item.passive2Tier === rating ) && <ItemIdentity identity={item} key={`${item.imgUrl}`}></ItemIdentity>);
         });
     }
     const setupItems = () =>{

@@ -13,9 +13,9 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
         {imageUrl:`guard-type/${guardType}` , type:guardType ,count:1 , sin:sinGuard},
     ];
     const passives = [
-        {imageUrl:`sins/${sin1}` , count:3 , description: "Description" , tier:passive1Tier},
-        {imageUrl:`sins/${sin1}` , count:2 , description: "Description" , tier:passive2Tier},
-        {imageUrl:`identities/${imgUrl}` , count:0 , description: "Description" , tier:idTier},
+        {imageUrl:`sins/${sin1}` , count:3 , description: "Боевая пассивка" , tier:passive1Tier},
+        {imageUrl:`sins/${sin1}` , count:2 , description: "Саппорт пассивка" , tier:passive2Tier},
+        {imageUrl:`identities/${imgUrl}` , count:0 , description: "Личность" , tier:idTier},
     ]
     //const rarityStyled = rarity.replaceAll("O","Ø");
     return (
@@ -24,9 +24,7 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
                 {skills.map(({imageUrl,count,sin,type})=>{
                     return (
                         <div key={`skill${Math.random()}`} className="item-identity-info-sin">
-                            <div className={"item-identity-info-skill-container"}>
-                                <img className={"item-identity-info-skill-dmgType"} src={`/images/${imageUrl}.png`}></img>
-                            </div>
+                            <img  src={`/images/${imageUrl}.png`}/>
                             <div className={["item-identity-info-line", `${sin}-sin-color`].join(" ")}></div>
                         </div>
                     )
@@ -35,12 +33,11 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
            </div>
            <div className={"item-identity-info-tiers"}>
                 {
-                    passives.map(({imageUrl,count,description,tier})=>{
+                    passives.map(({imageUrl,count,description,tier},index)=>{
                             return(
-                            <div key={`passive${Math.random()}`} className="item-identity-info-tier">
+                            <div key={`${index}`} className="item-identity-info-tier">
                                 <div className="item-identity-info-tier-description">
-                                    <img src={`/images/${imageUrl}.png`} className="item-identity-info-tier-description-sin">
-                                    </img>
+                                    <img src={`/images/${imageUrl}.png`} />
                                     {count > 0 && <span>{`x${count}`}</span>}
                                 </div>
                                 <div className="item-identity-info-tier-rank-container">

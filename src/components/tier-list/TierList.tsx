@@ -48,7 +48,7 @@ export const TierList:React.FC<TierListInterface> = () => {
                         {/* <span className="tier-list-name">{tierListName(tierListParam)}</span> */}
                             {ratings.map((rating)=>{
                                 return(
-                                    <TierBar  rating={rating} tierListParam={tierListParam} key={`${Math.random()}`}></TierBar>
+                                    <TierBar  rating={rating} tierListParam={tierListParam} key={`${rating}`}></TierBar>
                                 )
                             })}
                     </div>

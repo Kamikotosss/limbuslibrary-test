@@ -4,8 +4,10 @@
     flex-direction: column;
     transition: 0.6s;
     position: absolute;
-    padding: 19.2px;
-    transform: translate(calc(-25% + 9.6px), calc(-100% - 14.4px));
+    left:0;
+    top:0;
+    padding: 20px;
+    transform: translate(calc(-50% + 87.5px), calc(-100% - 14.4px));
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
@@ -21,31 +23,25 @@
 .item-identity-info-sin {
     background-color: #646262;
     margin-right: 4px;
+    position: relative;
 }
 
 .item-identity-info-sin:last-of-type {
     margin-right: 0px;
 }
 
-.item-identity-info-skill-container {
-    width: 48px;
-    height: 44.8px;
-    padding: 4.8px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.item-identity-info-skill-dmgType {
-    width: 24px;
-    height: 24px;
-    padding: 4px;
+.item-identity-info-sin img {
+    width: 35px;
+    height: 35px;
+    padding: 8px;
+    object-fit: contain;
 }
 
 .item-identity-info-line {
     width: 100%;
     height: 3.2px;
+    position: absolute;
+    bottom: 0;
 }
 
 .item-identity-info-tiers {
@@ -61,7 +57,7 @@
     justify-content: space-between;
     margin-right: 4px;
     min-width: 100%;
-    height: 24px;
+    height: 30px;
     margin-bottom: 3.2px;
 }
 
@@ -82,10 +78,14 @@
     box-sizing: border-box;
     padding: 4.8px;
 }
-
-.item-identity-info-tier-description-sin {
-    width: 16px;
-    height: 16px;
+.item-identity-info-tier-description img{
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.item-identity-info-tier-description span {
+    padding-top: 3.2px;
+    font-size: 20px;
 }
 
 .item-identity-info-tier-rank-container {
@@ -98,14 +98,17 @@
     color: white;
     width: calc(100% - 43.2px);
 }
-
+.item-identity-info-tier-rank-container span {
+    padding-top: 3.2px;
+    font-size: 20px;
+}
 .item-identity-info-tier-rank {
     justify-content: center;
     align-items: center;
     display: flex;
     font-size: 12.8px;
-    width: 35.2px;
-    height: 16px;
+    width: 40px;
+    height: 18px;
     color: rgba(0, 0, 0, 0.5);
 }
 
@@ -142,12 +145,6 @@
     bottom: -7.2px;
 }
 
-.item-identity-info-tier-description span {
-    padding-top: 3.2px;
-    font-size: 12px;
-}
 
-.item-identity-info-tier-rank-container span {
-    padding-top: 3.2px;
-    font-size: 12px;
-}
+
+

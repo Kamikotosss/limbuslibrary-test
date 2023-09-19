@@ -1,32 +1,44 @@
 .filters{
     display: flex;
-    flex-direction: row;
-    width: 85%;
+    width: 90%;
     margin-bottom: 56px;
     flex-wrap: wrap;
-
+    position: relative;
+  }
+  .modal__content .filters{
+    width: 100%;
   }
   .filters section {
     display: flex;
     flex-direction: row;
-    margin-right: 28px;
     flex-wrap: wrap;
   }
+  .filters section:nth-of-type(1){
+    margin-right: 24px;
+  }
+  .filters section:nth-of-type(2){
+    margin-right: 24px;
+  }
   .filters section:nth-of-type(4){
-    display: flex;
-    margin-top: 4px;
-
+    display: grid;
+    margin-top: 24px;
+    gap:4px;
+    justify-content: space-between;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill,54px);
   }
   .filters section:nth-of-type(4) button{
     margin-top: 4px;
   }
   .filters form {
     display: flex;
-    padding: 12px 20px;
+    padding: 11px 20px;
     align-items: center;
     gap: 8px;
     border-radius: 4px;
     background: #25272D;
+    position: absolute;
+    right: 0;
   }
   .filters form input {
     background: #25272D;
@@ -46,12 +58,12 @@
   .filters form input::placeholder {
     color: #CECDD7;
   }
-  .filters-image{
+  .filters-filter img{
     width: 34px;
     height: 34px;
     object-fit: contain;
   }
-  .filters-image-container{
+  .filters-filter{
     width: 54px;
     height: 54px;
     display: flex;
@@ -64,9 +76,32 @@
     position: relative;
     background: #25272D;
   }
-
-    
-  .filters-image-container--active{
+  .filters-filter-tooltip{
+    display: none; /* Начальное скрытие подсказки */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1000;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeIn 0.5s ease;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0; /* Начальное состояние - невидимый */
+    }
+    100% {
+      opacity: 1; /* Конечное состояние - видимый */
+    }
+  }
+  
+  .filters-filter:hover .filters-filter-tooltip {
+    display: block; 
+  }
+  .filters-filter--active{
     background: linear-gradient(180deg, #474A56 0%, rgba(71, 74, 86, 0.00) 193.52%);
   }
   .filters-frame-line{

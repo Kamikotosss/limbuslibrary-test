@@ -5,7 +5,7 @@ import { fetchIds } from "../api/fetchIds";
 import { Footer } from "../components/footer/Footer";
 import { Header } from "../components/header/Header";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
-import { Modal } from "../components/modal/Modal";
+import { TbModal } from "../components/tb-modal/TbModal";
 import { TbListEGO } from "../components/tb-list-ego/TbListEgo";
 import { TbListIds } from "../components/tb-list-ids/TbListIds";
 import { TbList } from "../components/tb-list/TbList";
@@ -26,7 +26,7 @@ export const TeamBuilderPage:React.FC = () => {
         {/* <Header></Header> */}
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
-            <Modal active={modalTrigger !== null} children={<TbList></TbList>} closer={() => tbCloseModalAction(dispatch)}></Modal>
+            <TbModal active={modalTrigger !== null} modalTrigger={modalTrigger} closer={() => tbCloseModalAction(dispatch)}></TbModal>
             <TbSlots></TbSlots>
             <TbSins></TbSins>
             <TbTags></TbTags>

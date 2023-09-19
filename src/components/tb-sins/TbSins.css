@@ -24,10 +24,21 @@
     margin-right: 4px;
     color: white;
     position: relative;
+    transition: box-shadow 0.3s ease;
+}
+.tb-sins-sin--active{
+    box-shadow: 0 0 12px #3AA1FF; 
 }
 .tb-sins-img{
     width:30px;
     height:30px;
     object-fit: contain;
     margin-bottom: 4px;
+}
+.tb-sins-req{
+    color:red;
+    
+}
+.tb-sins-pres{
+    color:green;
 }

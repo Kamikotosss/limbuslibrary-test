@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { damageTypes , guardTypes,sinTypes,tagsIds} from "../../constants/skillBasedTypes";
 import useThrottling from "../../hooks/useThrottling";
@@ -9,7 +9,6 @@ import "./Filters.css";
 export const Filters:React.FC = () => {
     const filterState = useTypedSelector(state => state.filterReducer);
     const dispatch = useDispatch();
-    console.log(filterState.search)
     const handleFilterChange = (type: string,key:string) =>{
         switch(type){
             case "dmgType":
@@ -59,16 +58,17 @@ export const Filters:React.FC = () => {
     ];
     return (
         <div className={"filters"}>
-                {filters.map(filter=>{
-                    return  <section>
+                {filters.map((filter,index)=>{
+                    return  <section key={filter.type+index}>
                     {filter.data.map((type)=>{
                         let isTypeActive = filterState[filter.type][type];
                         return (
-                        <button key={`${type}${Math.random()}`} 
-                        className={["filters-image-container" , (isTypeActive) ? "filters-image-container--active": ""].join(" ")} 
+                        <button  key={`${type}`} 
+                        className={["filters-filter" , (isTypeActive) ? "filters-filter--active": ""].join(" ")} 
                         onClick={()=>handleFilterChange(filter.type,type)}>
-                        <img className={"filters-image"} src={`/images/${filter.imgsFolder}/${type}.png`} alt={`${type}` } ></img>
-                        {isTypeActive && <div className="filters-frame-line"/>}
+                            <div className="filters-filter-tooltip">{type}</div>
+                            <img  src={`/images/${filter.imgsFolder}/${type}.png`} alt={`${type}` } />
+                            {isTypeActive && <div className="filters-frame-line"/>}
                         </button>
                         )
                     })}
@@ -79,22 +79,24 @@ export const Filters:React.FC = () => {
                 <form>
                     <input placeholder="Search..." onChange={(e)=>{handleInputCHange(e)}}></input>
                 </form>
-                <section>
-                    {filters2.map(filter=>{
-                        return filter.data.map((type)=>{
+                
+                    {filters2.map((filter,index)=>{
+                        return <section key={filter.type+index}> {filter.data.map((type)=>{
                             let isTypeActive = filterState[filter.type][type];
                             return (
-                            <button key={`${type}${Math.random()}`} 
-                            className={["filters-image-container" , (isTypeActive) ? "filters-image-container--active": ""].join(" ")} 
+                            <button key={`${type}`} 
+                            className={["filters-filter" , (isTypeActive) ? "filters-filter--active": ""].join(" ")} 
                             onClick={()=>handleFilterChange(filter.type,type)}>
-                            <img className={"filters-image"} src={`/images/${filter.imgsFolder}/${type}.png`} alt={`${type}` } ></img>
+                            <div className="filters-filter-tooltip">{type}</div>
+                            <img  src={`/images/${filter.imgsFolder}/${type}.png`} alt={`${type}` } />
                             {isTypeActive && <div className="filters-frame-line"/>}
                             </button>
                             )
-                        })
+                        })}
+                        </section>
                     })
                     }
-                </section>
+                
         </div>
     )
 }

@@ -1,0 +1,113 @@
+.modal{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.691);
+    position: fixed;
+    top:0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    z-index: 200;
+    transition: 0.5s;
+    opacity: 0;
+    pointer-events: none;
+    perspective: 1600px;
+}
+
+.modal--active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal__content{
+    width: 60%;
+    height: 70%;
+    padding: 20px 52px 20px 52px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: #1C1E23;;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    position: relative;
+    transition: 0.5s;
+   
+}
+.modal__slot{
+    width: 20%;
+    height: 70%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: #1C1E23;;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: 0.5s;
+}
+.modal-ego-container{
+    display: flex;
+    flex-direction: row;
+}
+.modal--active .modal__content{
+    transform-style: preserve-3d; /* Сохраняем 3D-пространство */
+    transform:  rotateY(-20deg);
+}
+.modal--active .modal__slot{
+    transform-style: preserve-3d; /* Сохраняем 3D-пространство */
+    transform: perspective(1600px) rotateY(20deg);
+}
+.modal-identity img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+}
+.modal-identity{
+    position: relative;
+}
+.modal-identity::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%);
+    z-index: 2000;
+}
+.modal-ego-container{
+    margin-top: 12px;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.modal-ego{
+    width: 18%;
+    height: 100%;
+    background: rgb(141, 141, 141);
+    position: relative;
+
+}
+.modal-ego img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+}
+.modal-ego::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%);
+    z-index: 2000;
+}

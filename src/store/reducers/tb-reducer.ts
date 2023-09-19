@@ -1,3 +1,4 @@
+import { hover } from "@testing-library/user-event/dist/hover";
 import { Dispatch } from "react";
 import { sinType } from "../../constants/types";
 import { isIdentity } from "../../tools/isIdentity";
@@ -69,7 +70,8 @@ const SlotInterfaceInitial:SlotInterface = {
 export interface TbInterface{
     slots:SlotInterface[],
     energy: EnergyInterface,
-    modalTrigger:SlotInterface|null
+    modalTrigger:SlotInterface|null,
+    hover:null|SetHoverTbActionPayload
 }
 
 
@@ -79,7 +81,9 @@ export enum TbActionTypes {
     RESET_ALL = "RESET_ALL",
     RESET_SLOT = "RESET",
     TRIGGER_MODAL = "TRIGGER_MODAL",
-    CLOSE_MODAL = "CLOSE_MODAL"
+    CLOSE_MODAL = "CLOSE_MODAL",
+    SET_HOVER = "SET_HOVER",
+    RESET_HOVER = "RESET_HOVER",
 }
 export interface TriggerModalTbAction {
     type: TbActionTypes.TRIGGER_MODAL;
@@ -105,13 +109,21 @@ export interface ResetSlotTbAction {
     type: TbActionTypes.RESET_SLOT;
     payload: {slotIndx:number};
 }
-
-export type TbAction = RemoveEntityTbAction | AddEntityTbAction|ResetAllTbAction|ResetSlotTbAction|TriggerModalTbAction|CloseModalTbAction;
+type SetHoverTbActionPayload = {type:"slot",trigger:SlotInterface}|{type:"tag"|"sin",trigger:string}|{type:"slot-identity",trigger:IdentityInterface}|{type:"slot-ego",trigger:EGOInterface};
+export interface SetHoverTbAction {
+    type: TbActionTypes.SET_HOVER;
+    payload: SetHoverTbActionPayload;
+}
+export interface ResetHoverTbAction {
+    type: TbActionTypes.RESET_HOVER;
+}
+export type TbAction = RemoveEntityTbAction | AddEntityTbAction|ResetAllTbAction|ResetSlotTbAction|TriggerModalTbAction|CloseModalTbAction|SetHoverTbAction|ResetHoverTbAction;
 
 const initialState : TbInterface = {
     slots:[{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity}],
     energy: EnergyInterfaceInitial,
-    modalTrigger:null
+    modalTrigger:null,
+    hover:null
 }
 
 export const tbReducer = (state = initialState,action : TbAction):TbInterface =>{
@@ -128,6 +140,10 @@ export const tbReducer = (state = initialState,action : TbAction):TbInterface =>
             return {...resetALL()};
         case TbActionTypes.RESET_SLOT:
             return {...state,...resetSlot(state.slots,action.payload.slotIndx,state.energy)};
+        case TbActionTypes.RESET_HOVER:
+            return {...state,hover:null};
+        case TbActionTypes.SET_HOVER:
+            return {...state,hover:{...action.payload}};
         default: 
             return state;
     }
@@ -155,7 +171,8 @@ const resetALL = () =>{
                 "envy":0,
             } ,
         },
-        modalTrigger:null
+        modalTrigger:null,
+        hover:null
     }
 }
 const resetSlot = (slots:SlotInterface[] , slotIndx:number,energy:EnergyInterface) =>{
@@ -286,7 +303,12 @@ const remove = (payload:{slotIndx:number ,ego?:string},state: TbInterface) =>{
     return {energy,slots};
 }
 
-
+export const tbSetHoverAction = (dispatch: Dispatch<SetHoverTbAction>,payload:SetHoverTbActionPayload) => {
+    dispatch({ type: TbActionTypes.SET_HOVER , payload: payload})
+}
+export const tbResetHoverAction = (dispatch: Dispatch<ResetHoverTbAction>) => {
+    dispatch({ type: TbActionTypes.RESET_HOVER })
+}
 export const tbAddEntityAction = (dispatch: Dispatch<AddEntityTbAction>,entity:IdentityInterface|EGOInterface,slot:SlotInterface) => {
         dispatch({ type: TbActionTypes.ADD_ENTITY , payload: {entity,slot}})
 }

@@ -24,9 +24,9 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
             let count = countReq(slot.identity,sin);
             if (!count) return <></>
             return (
-                <div key={index}>
+                <div key={`${attribure}${slot.identity.name}`}>
                     <img className="tb-info-img" src={`/images/identities/${slot.identity.imgUrl}.png`}></img> 
-                    <span>x{count}</span>
+                    <span className="tb-info-count">x{count}</span>
                 </div>
             ) 
         })
@@ -43,9 +43,9 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
                         let count = current[sin as keyof typeof current];
                         if(!count) return <></>
                         return(
-                            <div  key={index}>
+                            <div  key={`${attribure}${current.name}`}>
                                 <img className="tb-info-img" src={`/images/ego/${current.imgUrl}.png`}></img> 
-                                <span>x{count}</span>
+                                <span className="tb-info-count">x{count}</span>
                             </div>
                         )
                     })
@@ -61,9 +61,9 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
 
             if (!!slot.identity && slot.identity.status.includes(tag)){
                 result.push(
-                    <div key={tag}>
+                    <div key={`${attribure}${slot.identity.name}`}>
                         <img className="tb-info-img" src={`/images/identities/${slot.identity.imgUrl}.png`}></img> 
-                        <span>x1</span>
+                        <span className="tb-info-count">x1</span>
                     </div>
                 ) 
             } 
@@ -79,9 +79,9 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
                 let current = slot.ego[key];
                 if(!!current && current.status.includes(tag)){
                     result.push(
-                        <div key={index}>
+                        <div key={`${attribure}${current.name}`}>
                             <img className="tb-info-img" src={`/images/ego/${current.imgUrl}.png`}></img> 
-                            <span>x1</span>
+                            <span className="tb-info-count">x1</span>
                         </div>
                     )
                 }
