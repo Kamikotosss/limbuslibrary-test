@@ -36,8 +36,8 @@
    
 }
 .modal__slot{
-    width: 20%;
-    height: 70%;
+    width: 350px;
+    height: 600px;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 12px;
@@ -65,9 +65,11 @@
     object-fit: cover;
     object-position: center;
     position: relative;
+    border-radius: 8px 8px;
 }
 .modal-identity{
     position: relative;
+    border-radius: 8px 8px;
 }
 .modal-identity::after {
     content: "";
@@ -78,6 +80,8 @@
     left: 0;
     background: linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%);
     z-index: 2000;
+    border-radius: 8px 8px;
+
 }
 .modal-ego-container{
     margin-top: 12px;
@@ -92,6 +96,7 @@
     height: 100%;
     background: rgb(141, 141, 141);
     position: relative;
+    border-radius: 8px 8px;
 
 }
 .modal-ego img {
@@ -100,6 +105,7 @@
     object-fit: cover;
     object-position: center;
     position: relative;
+    border-radius: 8px 8px;
 }
 .modal-ego::after {
     content: "";
@@ -110,4 +116,5 @@
     left: 0;
     background: linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%);
     z-index: 2000;
+    border-radius: 8px 8px;
 }

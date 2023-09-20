@@ -1,5 +1,10 @@
 import React from "react";
 import { Link,useLocation } from "react-router-dom";
+import { EGOSVG } from "../svg/EGOSVG";
+import { GLLSVG } from "../svg/GLLSVG";
+import { IdentitiesSVG } from "../svg/IdentitiesSVG";
+import { TeamBuilderSVG } from "../svg/TeamBuilderSVG";
+import { TierListSVG } from "../svg/TierListSVG";
 import "./LeftMenu.css"
 export const LeftMenu:React.FC = () => {
     const location = useLocation();
@@ -7,21 +12,21 @@ export const LeftMenu:React.FC = () => {
         return location.pathname.split("/")[1].includes(route);
     }
     const links = [
-        {route:"tierlist" ,name:"ТИР ЛИСТ"},
-        {route:"teambuilder" ,name:"ТИМ БИЛДЕР"},
-        {route:"identities" ,name:"ЛИЧНОСТИ"},
-        {route:"ego" ,name:"ЭГО"},
+        {route:"tierlist" ,name:"ТИР ЛИСТ",SVG:TierListSVG},
+        {route:"teambuilder" ,name:"ТИМ БИЛДЕР",SVG:TeamBuilderSVG},
+        {route:"identities" ,name:"ЛИЧНОСТИ",SVG:IdentitiesSVG},
+        {route:"ego" ,name:"ЭГО",SVG:EGOSVG},
     ];
     return (
         //TODO routing list
         <div className={"left-menu"}>
             <nav>
                 <ul>
-                    <li className={"left-menu-title"}><Link to="/">GREAT<br/>LIMBUS<br/>LIBRARY</Link></li>
+                    <li><Link to="/"><GLLSVG/><span>GREAT <span>LIMBUS</span> LIBRARY</span></Link></li>
                     {
-                        links.map(({route,name}) =>{
+                        links.map(({route,name,SVG}) =>{
                             return(
-                                <li key={route}><Link className={(isCurrentLocation(route) ? "left-menu-route--active":"")} to={`/${route}`}>{name}</Link></li>
+                                <li key={route}><Link className={(isCurrentLocation(route) ? "left-menu-route--active":"")} to={`/${route}`}><SVG active={isCurrentLocation(route)}/>{name}</Link></li>
                             )
                         })
                     }

@@ -8,6 +8,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { SlotInterface, tbResetHoverAction, tbSetHoverAction } from "../../../store/reducers/tb-reducer";
 import { tbRemoveEntityAction, tbResetSlotAction, tbTriggerModalAction ,tbResetAllAction} from "../../../store/reducers/tb-reducer";
+import { IdentitySVG } from "../../svg/IdentitySVG";
 
 export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index}) => {
     const dispatch = useDispatch();
@@ -17,6 +18,9 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
 
     const refSlotIdentity = useRef(null);
     const isHoveringSlotIdentity = useHover(refSlotIdentity);
+
+    const refSlotEGO = useRef(null);
+    const isHoveringSlotEGO = useHover(refSlotEGO);
 
     const refSlotZAYIN = useRef(null);
     const isHoveringSlotZAYIN = useHover(refSlotZAYIN);
@@ -34,29 +38,34 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
     const {ZAYIN,ALEPH,HE,TETH,WAW} = ego;
     const egosMap = [
         {
-        ego:ZAYIN,
-        ref:refSlotZAYIN,
-        isHovering:isHoveringSlotZAYIN
+            ego:ZAYIN,
+            ref:refSlotZAYIN,
+            isHovering:isHoveringSlotZAYIN,
+            glyph:"ז",
         },
         {
             ego:ALEPH,
             ref:refSlotALEPH,
-            isHovering:isHoveringSlotALEPH
+            isHovering:isHoveringSlotALEPH,
+            glyph:"ט",
         },
         {
             ego:HE,
             ref:refSlotHE,
-            isHovering:isHoveringSlotHE
+            isHovering:isHoveringSlotHE,
+            glyph:"ה",
         },
         {
             ego:TETH,
             ref:refSlotTETH,
-            isHovering:isHoveringSlotTETH
+            isHovering:isHoveringSlotTETH,
+            glyph:"ו",
         },
         {
             ego:WAW,
             ref:refSlotWAW,
-            isHovering:isHoveringSlotWAW
+            isHovering:isHoveringSlotWAW,
+            glyph:"ℵ",
         },
     ];
     const isHoveringEGO = () => {
@@ -85,6 +94,11 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
         }
         return false;
     }
+    const isSlotEmpty = () =>{
+        if(slot.identity)return false;
+        for(const key in slot.ego) if(slot.ego[key])return false;
+        return true;
+    }
     useEffect(()=>{
         if(isHoveringSlotIdentity && slot.identity){
             tbSetHoverAction(dispatch,{type:"slot-identity",trigger:slot.identity});
@@ -93,7 +107,7 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
             for(let i = 0 ; i < egosMap.length;i++)
                 if(egosMap[i].isHovering && egosMap[i].ego) tbSetHoverAction(dispatch,{type:"slot-ego",trigger:egosMap[i].ego as EGOInterface}); 
         } 
-        else if(isHoveringSlot && !isHoveringSlotIdentity ) tbSetHoverAction(dispatch,{type:"slot",trigger:slot}); 
+        else if(isHoveringSlot && !isHoveringSlotIdentity && !isHoveringSlotEGO) tbSetHoverAction(dispatch,{type:"slot",trigger:slot}); 
         return () => {
             tbResetHoverAction(dispatch);
         }
@@ -111,17 +125,18 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
     }
    
     return (
-    <div ref={refSlot} className={["tb-slots-slot--5", (isHoveringSlot && !isHoveringSlotIdentity && !isHoveringEGO()) ? "tb-slots-slot--5--active" : ""].join(" ")} onClick={()=> tbTriggerModalAction(dispatch,slot)}>
+    <div ref={refSlot} className={["tb-slots-slot--5", (isHoveringSlot && !isHoveringSlotIdentity && !isHoveringSlotEGO && !isHoveringEGO() && !isSlotEmpty()) ? "tb-slots-slot--5--active" : ""].join(" ")} onClick={()=> tbTriggerModalAction(dispatch,slot)}>
         <div className="tb-slots-X" onClick={(e)=>{ e.stopPropagation(); tbResetSlotAction(dispatch,index)}} >х</div>
+        <div className="tb-slots-tooltip">Click to edit</div>
         <div ref={refSlotIdentity} className={["tb-slots-container-id--5",
         tbIdentityHoverMatch() ? "tb-slots-container-id--5--active" : "",
-        (isHoveringSlotIdentity && slot.identity) ? "tb-slots-container-id--5--active" : ""].join(" ")}>
-            <div className="tb-slots-id-img--5"  style={backgroundStyle}>
-            </div>
+        (isHoveringSlotIdentity && slot.identity) ? "tb-slots-container-id--5--active" : "",
+        !slot.identity ? "tb-slots-empty" : ""].join(" ")}>
+            {!slot.identity ? <IdentitySVG/> : <div className="tb-slots-id-img--5"  style={backgroundStyle}/>}
         </div>
 
-        <div className="tb-slots-container-ego--5" >
-            {egosMap.map(({ego,isHovering,ref},index)=>{
+        <div ref={refSlotEGO}  className="tb-slots-container-ego--5" >
+            {egosMap.map(({ego,isHovering,ref,glyph},index)=>{
                 let bgStyle = {};
                 let rarity:string|undefined = undefined;
                 let egoResAffinity ="";
@@ -138,7 +153,9 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
                 }
                 return <div ref={ref}  className={["tb-slots-slot-ego--5" ,
                     tbEGOHoverMatch(ego) ? "tb-slots-slot-ego--5--active" : "",
-                    (isHovering && ego) ? "tb-slots-slot-ego--5--active" : ""].join(" ")}  style={bgStyle}>
+                    (isHovering && ego) ? "tb-slots-slot-ego--5--active" : "",
+                    !ego ? "tb-slots-empty" : ""].join(" ")}  style={bgStyle}>
+                    {!ego && <span >{glyph}</span>}
                     <div className={["tb-ego-frame",`${egoResAffinity}-sin-color`].join(" ")} ></div>
                 </div>
             })}

@@ -26,7 +26,7 @@
 .tb-slots-container-id--5{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width:  100%;
     height: 250px;
@@ -41,19 +41,25 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 4px;
+    padding-top: 4px;
 }
 .tb-slots-slot-ego--5{
     width: 37px;
     height: 37px;
-    background-color: rgb(139, 135, 135);
     border-radius: 4px;
     margin-top: 4px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     transition: box-shadow 0.3s ease;
+    position: relative;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
 }
-
+.tb-slots-slot-ego--5 span {
+    color:rgb(139, 135, 135);
+    font-size: 24px;
+}
 .tb-slots-slot-ego--5--active{
     box-shadow: 0 0 12px #3AA1FF;
 }
@@ -78,12 +84,16 @@
 .tb-ego-frame{
     width: 100%;
     height: 2px;
+    position:absolute;
+    bottom: 0;
 }
 .tb-slots-id-img--5{
     width: 100%;
     height: 100%;
-    background-color: rgb(139, 135, 135);
     border-radius: 4px;
+}
+.tb-slots-empty{
+    border: 1px dashed #717171;
 }
 .tb-slots-X{
     width: 28px;
@@ -113,3 +123,29 @@
     color:#E8E8E8;
     font-size: 24px;
 }
+
+.tb-slots-tooltip{
+    display: none; /* Начальное скрытие подсказки */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1000;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeIn 0.5s ease;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0; 
+    }
+    100% {
+      opacity: 1; 
+    }
+  }
+  
+  .tb-slots-slot--5:hover .tb-slots-tooltip {
+    display: block; 
+  }

@@ -100,7 +100,7 @@ export interface AddEntityTbAction {
 }
 export interface RemoveEntityTbAction {
     type: TbActionTypes.REMOVE_ENTITY;
-    payload: {slotIndx:number ,ego?:string};
+    payload: {slot:SlotInterface ,entity:IdentityInterface|EGOInterface};
 }
 export interface ResetAllTbAction {
     type: TbActionTypes.RESET_ALL;
@@ -135,7 +135,7 @@ export const tbReducer = (state = initialState,action : TbAction):TbInterface =>
         case TbActionTypes.ADD_ENTITY:
             return { ...state,...add(action.payload.entity, state,action.payload.slot) };
         case TbActionTypes.REMOVE_ENTITY:
-            return {...state,...remove(action.payload, state)};
+            return {...state,...remove(action.payload.entity, state,action.payload.slot)};
         case TbActionTypes.RESET_ALL:
             return {...resetALL()};
         case TbActionTypes.RESET_SLOT:
@@ -290,16 +290,14 @@ const addEGOToSlot = (slot:SlotInterface,energy:EnergyInterface,ego:EGOInterface
     slot.ego[ego.rarity as keyof typeof slot.ego] = ego;
     console.log("ego added")
 }
-const remove = (payload:{slotIndx:number ,ego?:string},state: TbInterface) =>{
+const remove = (entity:IdentityInterface|EGOInterface,state: TbInterface,slot:SlotInterface) =>{
     const {energy,slots} = state;
-    const {slotIndx,ego} = payload;
-    const slot = slots[slotIndx];
-    if (ego === undefined){
+    if (isIdentity(entity)){
         removeIdentityFromSlot(slot,energy);
-    }else{
-        const egoProperty = slot?.ego[ego as keyof typeof slot.ego];
-        removeEGOFromSlot(slot,energy,egoProperty);
+    }else {
+        removeEGOFromSlot(slot,energy,entity);
     }
+    
     return {energy,slots};
 }
 
@@ -312,8 +310,8 @@ export const tbResetHoverAction = (dispatch: Dispatch<ResetHoverTbAction>) => {
 export const tbAddEntityAction = (dispatch: Dispatch<AddEntityTbAction>,entity:IdentityInterface|EGOInterface,slot:SlotInterface) => {
         dispatch({ type: TbActionTypes.ADD_ENTITY , payload: {entity,slot}})
 }
-export const tbRemoveEntityAction = (dispatch: Dispatch<RemoveEntityTbAction>,slotIndx:number,ego?:string) => {
-    dispatch({ type: TbActionTypes.REMOVE_ENTITY , payload: {slotIndx ,ego} })
+export const tbRemoveEntityAction = (dispatch: Dispatch<RemoveEntityTbAction>,entity:IdentityInterface|EGOInterface,slot:SlotInterface) => {
+    dispatch({ type: TbActionTypes.REMOVE_ENTITY , payload: {entity,slot} })
 }
 export const tbResetAllAction = (dispatch: Dispatch<ResetAllTbAction>) => {
     dispatch({ type: TbActionTypes.RESET_ALL })
