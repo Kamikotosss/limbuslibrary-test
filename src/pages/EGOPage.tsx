@@ -3,22 +3,28 @@ import { useDispatch } from "react-redux";
 import { fetchEGO } from "../api/fetchEGO";
 import { Filters } from "../components/filters/Filters";
 import { Footer } from "../components/footer/Footer";
-import { Header } from "../components/header/Header";
-import { ItemEGO } from "../components/item-ego/ItemEGO";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
+import { ListEgo } from "../components/list-ego/ListEgo";
+import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { EGOInterface } from "../store/reducers/ego-reducer";
 
 export const EGOPage:React.FC = () => {
-    const {ego} = useTypedSelector(state => state.egoReducer);
-    const setupEGO = () =>{
-        return ego?.map((item:EGOInterface)=>{
-            return (<>
-                {<ItemEGO ego={item} key={`${Math.random()}`}></ItemEGO>}
-            </>);
-        });
-    }
+    const {loading,error} = useTypedSelector(state => state.egoReducer);
     const dispatch =useDispatch();
+
+    const layout = () =>{
+        if(error !== null) return <></>;
+        if(loading) return <LoadingAnimation/>;
+        return(
+            <>
+            <div style={{width:"90%" ,color:"white"}}>
+                <h1>Список ЭГО</h1>
+            </div>
+            <Filters/>
+            <ListEgo/>
+            </>
+        )
+    }
 
     useEffect(() => {
         fetchEGO()(dispatch);
@@ -27,13 +33,8 @@ export const EGOPage:React.FC = () => {
     return  <>
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
-            <div style={{width:"90%" ,color:"white"}}>
-                <h1>Список ЭГО</h1>
-            </div>
-        <Filters></Filters>
-            <div className={"tier-bar-items"} style={{width:"80%"}}>
-                {setupEGO()}
-            </div>
+            
+            {layout()}
         </main>
         <Footer></Footer>
     </>

@@ -125,17 +125,17 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
     }
    
     return (
-    <div ref={refSlot} className={["tb-slots-slot--5", (isHoveringSlot && !isHoveringSlotIdentity && !isHoveringSlotEGO && !isHoveringEGO() && !isSlotEmpty()) ? "tb-slots-slot--5--active" : ""].join(" ")} onClick={()=> tbTriggerModalAction(dispatch,slot)}>
+    <div ref={refSlot} className={["tb-slots-slot", (isHoveringSlot && !isHoveringSlotIdentity && !isHoveringSlotEGO && !isHoveringEGO() && !isSlotEmpty()) ? "tb-slots-slot--active" : ""].join(" ")} onClick={()=> tbTriggerModalAction(dispatch,slot)}>
         <div className="tb-slots-X" onClick={(e)=>{ e.stopPropagation(); tbResetSlotAction(dispatch,index)}} >х</div>
         <div className="tb-slots-tooltip">Click to edit</div>
-        <div ref={refSlotIdentity} className={["tb-slots-container-id--5",
-        tbIdentityHoverMatch() ? "tb-slots-container-id--5--active" : "",
-        (isHoveringSlotIdentity && slot.identity) ? "tb-slots-container-id--5--active" : "",
+        <div ref={refSlotIdentity} className={["tb-slots-container-id",
+        tbIdentityHoverMatch() ? "tb-slots-container-id--active" : "",
+        (isHoveringSlotIdentity && slot.identity) ? "tb-slots-container-id--active" : "",
         !slot.identity ? "tb-slots-empty" : ""].join(" ")}>
-            {!slot.identity ? <IdentitySVG/> : <div className="tb-slots-id-img--5"  style={backgroundStyle}/>}
+            {!slot.identity ? <IdentitySVG/> : <div className="tb-slots-id-img"  style={backgroundStyle}/>}
         </div>
 
-        <div ref={refSlotEGO}  className="tb-slots-container-ego--5" >
+        <div ref={refSlotEGO}  className="tb-slots-container-ego" >
             {egosMap.map(({ego,isHovering,ref,glyph},index)=>{
                 let bgStyle = {};
                 let rarity:string|undefined = undefined;
@@ -151,9 +151,9 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
                         backgroundRepeat: 'no-repeat', 
                     }
                 }
-                return <div ref={ref}  className={["tb-slots-slot-ego--5" ,
-                    tbEGOHoverMatch(ego) ? "tb-slots-slot-ego--5--active" : "",
-                    (isHovering && ego) ? "tb-slots-slot-ego--5--active" : "",
+                return <div ref={ref}  className={["tb-slots-slot-ego" ,
+                    tbEGOHoverMatch(ego) ? "tb-slots-slot-ego--active" : "",
+                    (isHovering && ego) ? "tb-slots-slot-ego--active" : "",
                     !ego ? "tb-slots-empty" : ""].join(" ")}  style={bgStyle}>
                     {!ego && <span >{glyph}</span>}
                     <div className={["tb-ego-frame",`${egoResAffinity}-sin-color`].join(" ")} ></div>

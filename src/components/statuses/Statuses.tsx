@@ -1,10 +1,8 @@
-import React, { useRef } from "react";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import React from "react";
+import { StatusesInterface} from "../../store/reducers/statuses-reducer";
 import "./Statuses.css";
 
-export const Statuses:React.FC= () => {
-    const {statuses,loading} = useTypedSelector(store => store.statusesReducer);
-    if(!statuses) return <></>;
+export const Statuses:React.FC<{statuses: StatusesInterface[]}> = ({statuses}) => {
     return (
         <table className="statuses">
             <thead>

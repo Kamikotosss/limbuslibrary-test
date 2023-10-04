@@ -40,7 +40,6 @@ export const TierList:React.FC<TierListInterface> = () => {
         return "";
     }
     return (
-        //TODO routing list
         <div className="tier-list-container">
             {setupTierlist().map((tierListParam)=>{
                 return (

@@ -9,11 +9,12 @@ export enum StatusesActionTypes {
     FETCH_STATUS_SUCCESS = "FETCH_STATUS_SUCCESS",
     FETCH_STATUS_ERROR = "FETCH_STATUS_ERROR",
 }
-export interface StatusesState {
+export type StatusesState = {
     statuses:null|Array<StatusesInterface>;
     loading:boolean;
     error: null|string;
 }
+
 
 export interface FetchStatusesAction {
     type: StatusesActionTypes.FETCH_STATUS;
@@ -34,7 +35,6 @@ const initialState : StatusesState = {
     loading:false,
     error: null
 }
-
 export const statusesReducer = (state = initialState,action : StatusesAction):StatusesState =>{
     switch(action.type){
         case StatusesActionTypes.FETCH_STATUS:

@@ -20,7 +20,7 @@
     flex-direction: row;
     justify-content: space-between;
     transition:0.5s;
-    animation: collapseGrid 1s ease-in-out forwards;
+    opacity: 1;
 }
 .tb-slots-container--grid{
     display: grid;
@@ -28,9 +28,10 @@
     justify-content: space-between;
     grid-row-gap: 24px;
     transition:0.5s;
-    animation: expandGrid 1s ease-in-out forwards;
+    opacity: 1;
 }
-.tb-slots-slot--5{
+
+.tb-slots-slot{
     display: flex;
     flex-direction: column;
     background: #25272D;
@@ -42,13 +43,13 @@
     transition: 0.5s;
     margin-right: 20px;
 }
-.tb-slots-slot--5:last-of-type{
+.tb-slots-slot:last-of-type{
     margin-right: 0px;
 }
-.tb-slots-slot--5--active{
+.tb-slots-slot--active{
     box-shadow: 0 0 12px #3AA1FF;
 }
-.tb-slots-container-id--5{
+.tb-slots-container-id{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,17 +59,17 @@
     box-sizing: border-box;
     transition: box-shadow 0.3s ease;
 }
-.tb-slots-container-id--5--active{
+.tb-slots-container-id--active{
     box-shadow: 0 0 12px #3AA1FF;
 }
-.tb-slots-container-ego--5{
+.tb-slots-container-ego{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding-top: 4px;
 }
-.tb-slots-slot-ego--5{
+.tb-slots-slot-ego{
     width: 37px;
     height: 37px;
     border-radius: 4px;
@@ -81,14 +82,14 @@
     align-items: center;
     justify-content: center;
 }
-.tb-slots-slot-ego--5 span {
+.tb-slots-slot-ego span {
     color:rgb(139, 135, 135);
     font-size: 24px;
 }
-.tb-slots-slot-ego--5--active{
+.tb-slots-slot-ego--active{
     box-shadow: 0 0 12px #3AA1FF;
 }
-.tb-slots-id-sin--5{
+.tb-slots-id-sin{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -96,7 +97,7 @@
     width: 100%;
     color: rgba(0, 0, 0, 0.51);
 }
-.tb-slots-id-sin--5 div {
+.tb-slots-id-sin div {
     width: 33.33%;
     font-size: 10.4px;
     height: 12px;
@@ -112,7 +113,7 @@
     position:absolute;
     bottom: 0;
 }
-.tb-slots-id-img--5{
+.tb-slots-id-img{
     width: 100%;
     height: 100%;
     border-radius: 4px;
@@ -142,26 +143,31 @@
 
 .tb-slots-reset{
     position: absolute;
+    height: 38px;
+    width: 90px;
+    border-radius: 10px;
     top:20px;
     right: 0px;
     cursor: pointer;
-    padding: 2px 0;
-    color:#717171;
-    font-size: 24px;
+    color: white;
+    background-color: #172129;
+    border: 1px solid white;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 30px;
     transition: 0.5s;
 }
 .tb-slots-reset:hover{
-    color:#E8E8E8;
+    color:black;
+    background-color: white;
+    border: 1px solid black;
 }
-.tb-slots-expand{
+.tb-slots-toggle{
     position: absolute;
     top:20px;
-    right: 100px;
+    right: 120px;
     cursor: pointer;
-    padding: 2px 0;
-    color:#717171;
-    font-size: 24px;
-    transition: 0.5s;
 }
 .tb-slots-tooltip{
     display: none; /* Начальное скрытие подсказки */
@@ -185,24 +191,36 @@
     }
   }
   
-.tb-slots-slot--5:hover .tb-slots-tooltip {
+.tb-slots-slot:hover .tb-slots-tooltip {
     display: block; 
 }
 .tb-slots-btnLeft{
     position: absolute;
     left: 0;
-    top:50%;
+    top:55%;
     z-index: 5;
     transform: translateX(calc(-100% - 20px));
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.tb-slots-btnLeft:hover svg path,
+.tb-slots-btnRight:hover svg path{
+    stroke: white;
 }
 .tb-slots-btnRight{
     position: absolute;
     right: 0;
     z-index: 5;
-    top:50%;
+    top:55%;
     transform: translateX(calc(100% + 20px));
+    opacity: 1;
+    transition: 0.5s;
 }
 .tb-slots-btnSlotCount{
     padding: 10px;
     font-size: 24px;
+}
+.hidden {
+    opacity: 0; 
 }

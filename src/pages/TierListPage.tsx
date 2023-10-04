@@ -10,10 +10,14 @@ import { getLocationLastParam } from "../tools/getLocationLastParam";
 import { fetchIds } from "../api/fetchIds";
 import { fetchEGO } from "../api/fetchEGO";
 import { Filters } from "../components/filters/Filters";
+import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 interface TierListPageInterface{
     redirect?:string
 }
 export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
+    const egoState = useTypedSelector( (store) => store.egoReducer);
+    const idsState = useTypedSelector( (store) => store.idsReducer);
     const navigate = useNavigate();
     const dispatch =useDispatch();
     const location =useLocation();
@@ -37,13 +41,23 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
                 break;
         }
        
-}, [location]);
+    }, [location]);
+
+    const layout = () =>{
+        if(egoState.error !== null || idsState.error !== null ) return <></>;
+        if(egoState.loading === true || idsState.loading === true) return <LoadingAnimation/>;
+        return (
+            <>
+            <Filters></Filters>
+            <TierList></TierList>
+            </>
+        );
+    }
     return  <>
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
             <TierListNav></TierListNav>
-            <Filters></Filters>
-            <TierList></TierList>
+            {layout()}
         </main>
         <Footer></Footer>
     </>
