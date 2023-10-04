@@ -25,6 +25,7 @@
     color: white;
     position: relative;
     transition: box-shadow 0.3s ease;
+    cursor: pointer;
 }
 .tb-sins-sin--active{
     box-shadow: 0 0 12px #3AA1FF; 

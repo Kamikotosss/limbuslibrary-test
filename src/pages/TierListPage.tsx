@@ -39,7 +39,6 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
        
 }, [location]);
     return  <>
-        <Header></Header>
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
             <TierListNav></TierListNav>

@@ -6,7 +6,6 @@ import { LeftMenu } from "../components/left-menu/LeftMenu";
 export const IndexPage:React.FC = () => {
     
     return  <>
-        <Header></Header>
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
             

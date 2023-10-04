@@ -1,6 +1,8 @@
 import React from "react";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
 import { SlotInterface } from "../../store/reducers/tb-reducer";
+import { IdentitiesSVG } from "../svg/IdentitiesSVG";
+import { IdentitySVG } from "../svg/IdentitySVG";
 import { TbList } from "../tb-list/TbList";
 import "./TbModal.css";
 interface ModalProps {
@@ -9,52 +11,63 @@ interface ModalProps {
     closer: Function;
 }
 export const TbModal: React.FC<ModalProps>  = ({active , modalTrigger,closer}) => { 
-    let backgroundStyle ={};
-    let egos:(EGOInterface|null)[] = [];
-    let imgUrl = 0 ;
-    if(modalTrigger !==null){
+    const ModalSlot:React.FC = () =>{
+        if(!modalTrigger) return <></>;
         const {ego,identity} = modalTrigger;
         const {ZAYIN,ALEPH,HE,TETH,WAW} = ego;
-        egos = [ZAYIN,ALEPH,HE,TETH,WAW];
-        if(identity !==null ){
-            imgUrl = identity.imgUrl
-            backgroundStyle = {
-                backgroundImage: `linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%), url("/images/identities/${imgUrl}.png")`,
-                backgroundPosition: 'center', 
-                backgroundSize: 'cover',     
-                backgroundRepeat: 'no-repeat', 
-            }
-        }
-    }
-    return (
-        <div className={["modal" , (active) ? "modal--active": "" ].join(" ") } onClick={()=>{ if(closer) closer() }}>
-            <div className="modal__slot" onClick={ (e)=>{ e.stopPropagation()}}>
-            <div className="modal-identity">
-                <img src={`/images/identities/${imgUrl}.png`} alt={`identities/${imgUrl}`}/>
-            </div>
+        const egosMap = [
+            {
+                ego:ZAYIN,
+                glyph:"ז",
+            },
+            {
+                ego:ALEPH,
+                glyph:"ט",
+            },
+            {
+                ego:HE,
+                glyph:"ה",
+            },
+            {
+                ego:TETH,
+                glyph:"ו",
+            },
+            {
+                ego:WAW,
+                glyph:"ℵ",
+            },
+        ];
+        return(
+            <>
+                <div className={["modal-identity" , (!identity) ? "modal-empty": "modal-shadow" ].join(" ") }>
+                { (!identity) ? <IdentitySVG/>:<img src={`/images/identities/${identity.imgUrl}.png`} alt={`identities/${identity.imgUrl}`}/>}
+                </div>
                 <div className="modal-ego-container" >
-                    {egos.map((ego,index)=>{
-                        let bgStyle = {};
-                        let rarity:string|undefined = undefined;
-                        let egoResAffinity ="";
-                        imgUrl = -1;
-                        if(ego !== null){
-                            const {egoRes} = ego;
-                            rarity = ego.rarity;
-                            egoResAffinity = egoRes;
-                            imgUrl = ego.imgUrl;
-                        }
+                    {egosMap.map(({ego,glyph},index)=>{
                         return(
-                            <div className={"modal-ego"} key={`ego${index}`} style={bgStyle}>
-                                {imgUrl!==-1 && <img src={`/images/ego/${imgUrl}.png`} alt={`identities/${imgUrl}`}/>}
-                                <div className={["modal-ego-frame",`${egoResAffinity}-sin-color`].join(" ")}/>
+                            <div className={["modal-ego" , (!ego) ? "modal-empty": "modal-shadow" ].join(" ") } key={`ego${index}`} >
+                                {ego ? <img src={`/images/ego/${ego.imgUrl}.png`} alt={`ego/${ego.imgUrl}`}/> : <span>{glyph}</span>}
+                                {ego && <div className={["modal-ego-frame",`${ego.egoRes}-sin-color`].join(" ")}/>}
                             </div>
                         )
                     })}
                 </div>
+            </>
+        )
+    }
+    const  ModalContent:React.FC = () =>{
+        if(!modalTrigger) return <></>;
+        return(
+            <TbList></TbList>
+        )
+     }
+    return (
+        <div className={["modal" , (active) ? "modal--active": "" ].join(" ") } onClick={()=>{ if(closer) closer() }}>
+            <div className="modal__slot" onClick={ (e)=>{ e.stopPropagation()}}>
+                <ModalSlot/>
             </div>
             <div className="modal__content " onClick={ (e)=>{ e.stopPropagation()}}>
-                <TbList></TbList>
+                <ModalContent/>
             </div>
         </div>
     )

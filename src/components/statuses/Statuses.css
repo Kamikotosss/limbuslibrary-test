@@ -1,0 +1,36 @@
+.statuses{
+    margin-top: 24px;
+    margin-bottom: 24px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:#AFAEB4;
+    font-size: 24px;
+}
+.statuses img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+.statuses-th-image{
+    width: 10%;
+}
+.statuses-th-name{
+    width: 20%;
+}
+.statuses-th-description{
+    width: 70%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.statuses thead tr{
+    background-color: #121315;
+}
+.statuses tbody tr:nth-child(even) {
+    background-color: #25272D;
+}
+  
+.statuses tbody tr:nth-child(odd) {
+    background-color: none; 
+}

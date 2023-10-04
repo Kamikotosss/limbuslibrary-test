@@ -76,14 +76,16 @@ export interface TbInterface{
 
 
 export enum TbActionTypes {
-    ADD_ENTITY = "ADD_ENTITY",
-    REMOVE_ENTITY = "REMOVE_ENTITY",
-    RESET_ALL = "RESET_ALL",
-    RESET_SLOT = "RESET",
-    TRIGGER_MODAL = "TRIGGER_MODAL",
-    CLOSE_MODAL = "CLOSE_MODAL",
-    SET_HOVER = "SET_HOVER",
-    RESET_HOVER = "RESET_HOVER",
+    ADD_ENTITY ="ADD_ENTITY",
+    REMOVE_ENTITY ="REMOVE_ENTITY",
+    RESET_ALL="RESET_ALL",
+    RESET_SLOT ="RESET_SLOT",
+    TRIGGER_MODAL ="TRIGGER_MODAL",
+    CLOSE_MODAL ="CLOSE_MODAL",
+    SET_HOVER ="SET_HOVER",
+    RESET_HOVER ="RESET_HOVER",
+    REMOVE_SLOT="REMOVE_SLOT",
+    ADD_SLOT="ADD_SLOT"
 }
 export interface TriggerModalTbAction {
     type: TbActionTypes.TRIGGER_MODAL;
@@ -117,10 +119,19 @@ export interface SetHoverTbAction {
 export interface ResetHoverTbAction {
     type: TbActionTypes.RESET_HOVER;
 }
-export type TbAction = RemoveEntityTbAction | AddEntityTbAction|ResetAllTbAction|ResetSlotTbAction|TriggerModalTbAction|CloseModalTbAction|SetHoverTbAction|ResetHoverTbAction;
+export interface RemoveSlotTbAction {
+    type: TbActionTypes.REMOVE_SLOT;
+}
+export interface AddSlotTbAction {
+    type: TbActionTypes.ADD_SLOT;
+}
+export type TbAction = RemoveSlotTbAction|AddSlotTbAction|RemoveEntityTbAction | AddEntityTbAction|ResetAllTbAction|ResetSlotTbAction|TriggerModalTbAction|CloseModalTbAction|SetHoverTbAction|ResetHoverTbAction;
 
 const initialState : TbInterface = {
-    slots:[{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity}],
+    slots: Array.from({ length: 5 }, () => ({
+        ego: { ...SlotInterfaceInitial.ego },
+        identity: SlotInterfaceInitial.identity,
+      })),
     energy: EnergyInterfaceInitial,
     modalTrigger:null,
     hover:null
@@ -137,20 +148,43 @@ export const tbReducer = (state = initialState,action : TbAction):TbInterface =>
         case TbActionTypes.REMOVE_ENTITY:
             return {...state,...remove(action.payload.entity, state,action.payload.slot)};
         case TbActionTypes.RESET_ALL:
-            return {...resetALL()};
+            return {...resetALL(state)};
         case TbActionTypes.RESET_SLOT:
             return {...state,...resetSlot(state.slots,action.payload.slotIndx,state.energy)};
         case TbActionTypes.RESET_HOVER:
             return {...state,hover:null};
         case TbActionTypes.SET_HOVER:
             return {...state,hover:{...action.payload}};
+        case TbActionTypes.ADD_SLOT:
+            return {...state,slots:addSlot(state.slots)};
+        case TbActionTypes.REMOVE_SLOT:
+            return {...state,...removeSlot(state)};
         default: 
             return state;
     }
 }
-const resetALL = () =>{
+const addSlot = (slots:SlotInterface[]) => {
+    slots.push({
+        ego: { ...SlotInterfaceInitial.ego },
+        identity: SlotInterfaceInitial.identity,
+      });
+    return [...slots]
+}
+const removeSlot = (state:TbInterface) => {
+    const {slots,energy} = state;
+    const removedSlot = slots.pop();
+    if(removedSlot){
+        removeAllEGOsFromSlot(removedSlot,energy);
+        removeIdentityFromSlot(removedSlot,energy);
+    }
+    return {energy: state.energy , slots:[...slots]}
+}
+const resetALL = (state:TbInterface) =>{
     return {
-        slots:[{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity},{ego:{...SlotInterfaceInitial.ego},identity:SlotInterfaceInitial.identity}],
+        slots: Array.from({ length: state.slots.length }, () => ({
+            ego: { ...SlotInterfaceInitial.ego },
+            identity: SlotInterfaceInitial.identity,
+          })),
         energy: {
             "energyListReq": {
                 "wrath":0,
@@ -211,63 +245,12 @@ const addIdentityToSlot = (slot:SlotInterface,energy:EnergyInterface,identity:Id
     console.log("identity added")
 
 }
-
-const slotValidByIdentity__identity = (slots:SlotInterface[],identity:IdentityInterface) =>{
-    for(let i = 0 ; i < slots.length;i++){
-        const slot = slots[i];
-        if(slot.identity?.sinner === identity.sinner)  return i;
+const removeAllEGOsFromSlot = (slot:SlotInterface,energy:EnergyInterface)=>{
+    for(const key in slot.ego){
+        const currEGO = slot.ego[key];
+        if(currEGO) removeEGOFromSlot(slot,energy,currEGO);
     }
-    return -1;
 }
-
-const slotValidByEgo__identity = (slots:SlotInterface[],identity:IdentityInterface) =>{
-    for(let i = 0 ; i < slots.length;i++){
-        const slot = slots[i];
-        const {ego} = slot;
-        for( const key in ego){
-            if (slot.ego[key as keyof typeof ego]?.sinner === identity.sinner) return i;
-        }
-    }
-    return -1;
-}
-
-
-//EGO
-const slotValidByIdentity__ego = (slots:SlotInterface[],ego:EGOInterface) =>{
-    for(let i = 0 ; i < slots.length;i++){
-        const slot = slots[i];
-        if(slot.identity?.sinner === ego.sinner)  return i;
-    }
-    return -1;
-}
-const slotValidBySpace = (slots:SlotInterface[]) =>{
-    for(let i = 0 ; i < slots.length;i++){
-        const slot = slots[i];
-        if(slot.identity === null){
-
-            let noEgos = true;
-            for( const key in slot.ego){
-                if (slot.ego[key as keyof typeof slot.ego] !== null) {
-                    noEgos = false;
-                    break;
-                }
-            }
-
-            if (noEgos) return i;
-        }  
-    }
-    return -1;
-}
-const slotValidByEgo__ego = (slots:SlotInterface[],ego:EGOInterface) =>{
-    for(let i = 0 ; i < slots.length;i++){
-        const slot = slots[i];
-        for( const key in slot.ego){
-            if (slot.ego[key as keyof typeof slot.ego]?.sinner === ego.sinner) return i;
-        }
-    }
-    return -1;
-}
-
 const removeEGOFromSlot = (slot:SlotInterface,energy:EnergyInterface,ego:EGOInterface|null) => {
     if(ego === null) return;
     if(slot.ego[ego.rarity as keyof typeof slot.ego] === null) return;
@@ -300,7 +283,12 @@ const remove = (entity:IdentityInterface|EGOInterface,state: TbInterface,slot:Sl
     
     return {energy,slots};
 }
-
+export const tbAddSlotAction = (dispatch: Dispatch<AddSlotTbAction>) => {
+    dispatch({ type: TbActionTypes.ADD_SLOT })
+}
+export const tbRemoveSlotAction = (dispatch: Dispatch<RemoveSlotTbAction>) => {
+    dispatch({ type: TbActionTypes.REMOVE_SLOT})
+}
 export const tbSetHoverAction = (dispatch: Dispatch<SetHoverTbAction>,payload:SetHoverTbActionPayload) => {
     dispatch({ type: TbActionTypes.SET_HOVER , payload: payload})
 }

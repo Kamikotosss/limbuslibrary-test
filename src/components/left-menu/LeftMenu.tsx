@@ -16,6 +16,7 @@ export const LeftMenu:React.FC = () => {
         {route:"teambuilder" ,name:"ТИМ БИЛДЕР",SVG:TeamBuilderSVG},
         {route:"identities" ,name:"ЛИЧНОСТИ",SVG:IdentitiesSVG},
         {route:"ego" ,name:"ЭГО",SVG:EGOSVG},
+        {route:"statuses" ,name:"СТАТУСЫ",SVG:EGOSVG},
     ];
     return (
         //TODO routing list

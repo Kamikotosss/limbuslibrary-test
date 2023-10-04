@@ -3,12 +3,16 @@ import './App.css';
 import { AppRouter } from './components/AppRouter';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
+import {  BrowserRouter as Router  } from 'react-router-dom';
 
 function App() {
+ 
   return (
     <div className="App">
       <Provider store={store}>
-        <AppRouter></AppRouter>
+        <Router>
+          <AppRouter/>
+        </Router>
       </Provider>
     </div>
   );

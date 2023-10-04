@@ -5,7 +5,7 @@ interface ItemIdentityInfoInterface{
     identity:IdentityInterface;
 }
 export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity}) => {
-    const {sin1,dmgType1,dmgType2,dmgType3,guardType,idTier,imgUrl,name,passive1Tier,passive2Tier,rarity,season,sin2,sin3,sinGuard,sinner} = identity;
+    const {sin1,dmgType1,dmgType2,dmgType3,guardType,idTier,imgUrl,name,passive1Tier,passive2Tier,rarity,season,sin2,sin3,sinGuard,sinner,countPassive1,countPassive2,sinPassive1,sinPassive2} = identity;
     const skills = [
         {imageUrl:`dmg-type/${dmgType1}` , type:dmgType1 ,count:3 ,sin:sin1},
         {imageUrl:`dmg-type/${dmgType2}` , type:dmgType2,count:2 ,sin:sin2},
@@ -13,8 +13,8 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
         {imageUrl:`guard-type/${guardType}` , type:guardType ,count:1 , sin:sinGuard},
     ];
     const passives = [
-        {imageUrl:`sins/${sin1}` , count:3 , description: "Боевая пассивка" , tier:passive1Tier},
-        {imageUrl:`sins/${sin1}` , count:2 , description: "Саппорт пассивка" , tier:passive2Tier},
+        {imageUrl:`sins/${sinPassive1}` , count:countPassive1 , description: "Боевая пассивка" , tier:passive1Tier},
+        {imageUrl:`sins/${sinPassive2}` , count:countPassive2 , description: "Саппорт пассивка" , tier:passive2Tier},
         {imageUrl:`identities/${imgUrl}` , count:0 , description: "Личность" , tier:idTier},
     ]
     //const rarityStyled = rarity.replaceAll("O","Ø");

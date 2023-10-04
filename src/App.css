@@ -1,16 +1,4 @@
 @font-face {
-  font-family: 'Tagmarker';
-  src: url('../public/fonts/tagmarker/tagmarker.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Mikodacs';
-  src: url('../public/fonts/mikodacs/Mikodacs.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Gantari';
-  src: url('../public/fonts/gantari/Gantari-Bold.woff2') format('woff2');
-}
-@font-face {
   font-family: 'AlumniBold';
   src: url('../public/fonts/alumni/AlumniSans-Bold.ttf') format('truetype');
 }
@@ -74,11 +62,7 @@
 .display-none{
   display: none !important;
 }
-/* *{
-  font-family: 'Tagmarker', sans-serif !important;
-  font-weight: bold;
-}
-*/
+
 *{
   font-family: 'AlumniBold', sans-serif !important;
   font-weight: 300;
@@ -87,6 +71,7 @@
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {

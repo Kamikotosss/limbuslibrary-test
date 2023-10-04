@@ -15,3 +15,8 @@
 .tier-list--passives{
     width: 48%;
 }
+.tier-list-name{
+    color:white;
+    font-size: 48px;
+    margin-bottom: 12px;
+}

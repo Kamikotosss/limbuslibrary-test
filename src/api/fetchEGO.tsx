@@ -5,8 +5,8 @@ import { egoKeys } from "../constants/egoKeys";
 export const fetchEGO = () => {
         return  async (dispatch: (arg0: EGOAction) => void) =>{
             let result:EGOInterface[] = [];
+            dispatch({type: EGOActionTypes.FETCH_EGO});
             try{
-                dispatch({type: EGOActionTypes.FETCH_EGO});
                 const response = await axios.get(`https://docs.google.com/spreadsheets/d/1k_TaGK7vOfYdIS5-6GxJBEjFsxjZyzb1x_0Zi1k6kao/`, {responseType: "arraybuffer",});
                 const workbook = XLSX.read(response.data, { type: 'array' });
                 const sheetName = workbook.SheetNames[0];

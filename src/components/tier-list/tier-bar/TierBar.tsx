@@ -4,6 +4,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../../store/reducers/ids-reducer";
 import { getLocationLastParam } from "../../../tools/getLocationLastParam";
+import { isFilterMatching } from "../../../tools/isFilterMatching";
 import { ItemEGO } from "../../item-ego/ItemEGO";
 import { ItemIdentity } from "../../item-identity/ItemIdentity";
 import "./TierBar.css";
@@ -15,28 +16,28 @@ interface TierBarProps {
 export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam}) => {
     const {loading,ids,error} = useTypedSelector(state => state.idsReducer);
     const {ego} = useTypedSelector(state => state.egoReducer);
-
+    const filterState = useTypedSelector(state => state.filterReducer);
     const setupEGO = () =>{
         return ego?.map((item:EGOInterface)=>{
             return (
-                (item.egoTier === rating ) && <ItemEGO ego={item} key={`${item.imgUrl}`}></ItemEGO>
+            (item.egoTier === rating && isFilterMatching(filterState,item)) && <ItemEGO ego={item} key={`${item.imgUrl}`}></ItemEGO>
                 );
             });
         }
 
     const setupIds = () =>{
         return ids?.map((item:IdentityInterface,index)=>{
-            return ((item.idTier === rating) && <ItemIdentity identity={item} key={`${index}`}></ItemIdentity>);
+            return ((item.idTier === rating && isFilterMatching(filterState,item)) && <ItemIdentity identity={item} key={`${index}`}></ItemIdentity>);
         });
     }
     const setupBattlePassives = () =>{
         return ids?.map((item:IdentityInterface)=>{
-            return ((item.passive1Tier === rating ) && <ItemIdentity identity={item} key={`${item.imgUrl}`}></ItemIdentity>);
+            return ((item.passive1Tier === rating && isFilterMatching(filterState,item) ) && <ItemIdentity identity={item} key={`${item.imgUrl}`}></ItemIdentity>);
         });
     }
     const setupSupportPassives = () =>{
         return ids?.map((item:IdentityInterface)=>{
-            return ((item.passive2Tier === rating ) && <ItemIdentity identity={item} key={`${item.imgUrl}`}></ItemIdentity>);
+            return ((item.passive2Tier === rating && isFilterMatching(filterState,item) ) && <ItemIdentity identity={item} key={`${item.imgUrl}`}></ItemIdentity>);
         });
     }
     const setupItems = () =>{

@@ -23,7 +23,6 @@ export const TeamBuilderPage:React.FC = () => {
         fetchIds()(dispatch);
     }, []);
     return  <>
-        {/* <Header></Header> */}
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
             <TbModal active={modalTrigger !== null} modalTrigger={modalTrigger} closer={() => tbCloseModalAction(dispatch)}></TbModal>

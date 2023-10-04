@@ -25,7 +25,6 @@ export const EGOPage:React.FC = () => {
     }, []);
 
     return  <>
-        <Header></Header>
         <LeftMenu></LeftMenu>
         <main className={"global-content-wrapper"}>
             <div style={{width:"90%" ,color:"white"}}>
