@@ -1,22 +1,18 @@
-export interface EGOInterface{
-    imgUrl:number,
-    sinner:string,
-    name:string,
-    rarity:string,
-    season:number,
-    wrath:number,
-    lust:number,
-    sloth:number,
-    glut:number,
-    gloom:number,
-    pride:number,
-    envy:number,
-    egoRes:string,
-    egoTier:string,
-    sanity:number,
-    status:string
-    
-}
+import { sinType } from "../../constants/types";
+
+export type EGOInterface = {
+    [key in sinType]: number;
+} & {
+    imgUrl: number;
+    sinner: string;
+    season: number;
+    name: string;
+    rarity: string;
+    egoRes: string;
+    egoTier: string;
+    sanity: number;
+    status: string;
+};
 export enum EGOActionTypes {
     FETCH_EGO = "FETCH_EGO",
     FETCH_EGO_SUCCESS = "FETCH_EGO_SUCCESS",

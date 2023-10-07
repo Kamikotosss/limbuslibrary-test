@@ -4,7 +4,7 @@ import { fetchStatuses } from "../api/fetchStatuses";
 import { Footer } from "../components/footer/Footer";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
-import { Statuses } from "../components/statuses/Statuses";
+import { StatusesTable } from "../components/statuses-table/StatusesTable";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
 export const StatusesPage:React.FC = () => {
@@ -16,7 +16,12 @@ export const StatusesPage:React.FC = () => {
     const layout = () =>{
         if(error !== null) return <></>;
         if(loading === true) return <LoadingAnimation/>;
-        if(statuses) return <Statuses statuses={statuses}/>;
+        if(statuses) return <>
+            <div style={{width:"90%" ,color:"white"}}>
+                <h1>Список статусов</h1>
+            </div>
+            <StatusesTable statuses={statuses}/>
+        </>;
     }
     return  <>
         <LeftMenu/>

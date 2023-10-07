@@ -3,6 +3,7 @@ import { Link,useLocation } from "react-router-dom";
 import { EGOSVG } from "../svg/EGOSVG";
 import { GLLSVG } from "../svg/GLLSVG";
 import { IdentitiesSVG } from "../svg/IdentitiesSVG";
+import { StatusesPageSVG } from "../svg/StatusesPageSVG";
 import { TeamBuilderSVG } from "../svg/TeamBuilderSVG";
 import { TierListSVG } from "../svg/TierListSVG";
 import "./LeftMenu.css"
@@ -16,7 +17,7 @@ export const LeftMenu:React.FC = () => {
         {route:"teambuilder" ,name:"ТИМ БИЛДЕР",SVG:TeamBuilderSVG},
         {route:"identities" ,name:"ЛИЧНОСТИ",SVG:IdentitiesSVG},
         {route:"ego" ,name:"ЭГО",SVG:EGOSVG},
-        {route:"statuses" ,name:"СТАТУСЫ",SVG:EGOSVG},
+        {route:"statuses" ,name:"СТАТУСЫ",SVG:StatusesPageSVG},
     ];
     return (
         //TODO routing list

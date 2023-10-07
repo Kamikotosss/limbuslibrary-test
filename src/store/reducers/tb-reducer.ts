@@ -128,7 +128,7 @@ export interface AddSlotTbAction {
 export type TbAction = RemoveSlotTbAction|AddSlotTbAction|RemoveEntityTbAction | AddEntityTbAction|ResetAllTbAction|ResetSlotTbAction|TriggerModalTbAction|CloseModalTbAction|SetHoverTbAction|ResetHoverTbAction;
 
 const initialState : TbInterface = {
-    slots: Array.from({ length: 5 }, () => ({
+    slots: Array.from({ length: 7 }, () => ({
         ego: { ...SlotInterfaceInitial.ego },
         identity: SlotInterfaceInitial.identity,
       })),

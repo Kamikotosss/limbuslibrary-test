@@ -1,19 +1,19 @@
 import React from "react";
 import { StatusesInterface} from "../../store/reducers/statuses-reducer";
-import "./Statuses.css";
+import "./StatusesTable.css";
 
-export const Statuses:React.FC<{statuses: StatusesInterface[]}> = ({statuses}) => {
+export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuses}) => {
     return (
-        <table className="statuses">
+        <table className="statuses-table">
             <thead>
                 <tr>
-                    <th className="statuses-th-image">
+                    <th className="statuses-table-th-image">
                         Статус
                     </th>
-                    <th className="statuses-th-name">
+                    <th className="statuses-table-th-name">
                         Название
                     </th>
-                    <th className="statuses-th-description">
+                    <th className="statuses-table-th-description">
                         Описание
                     </th>
                 </tr>
@@ -22,13 +22,13 @@ export const Statuses:React.FC<{statuses: StatusesInterface[]}> = ({statuses}) =
            {statuses.map((status)=>{
                 return (
                     <tr key={status.id}>
-                        <td className="statuses-th-image">
+                        <td className="statuses-table-th-image">
                             <img src={`/images/tags/${status.id}.png`} alt={status.id}/>
                         </td>
-                        <td className="statuses-th-name">
+                        <td className="statuses-table-th-name">
                             {status.name}
                         </td>
-                        <td className="statuses-th-description">
+                        <td className="statuses-table-th-description">
                             {status.description}
                         </td>
                     </tr>

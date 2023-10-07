@@ -1,6 +1,7 @@
 .tier-list-nav-container{
   margin-top: 20px;
   width: 90%;
+  margin-bottom: 24px;
 }
 .tier-list-nav{
     width: 100%;
@@ -13,6 +14,7 @@
     flex-direction: row;
     width: 100%;
     justify-content: flex-start;
+    margin: 0px;
   }
   
   .tier-list-nav  li {

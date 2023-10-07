@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import useHover from "../../hooks/useHover";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
+import { ItemEGOInfo } from "./item-ego-info/ItemEGOInfo";
 import "./ItemEGO.css";
 interface ItemEGOInterface{
     ego:EGOInterface;
@@ -17,7 +18,7 @@ export const ItemEGO:React.FC<ItemEGOInterface> = ({ego}) => {
             backgroundRepeat: 'no-repeat', 
         }}>
            {
-            // isHovering && <ItemegoInfo ego={ego}></ItemegoInfo>
+            isHovering && <ItemEGOInfo ego={ego}></ItemEGOInfo>
            } 
             <div className={"item-ego-rarity"} >{rarity}</div>
             <div>

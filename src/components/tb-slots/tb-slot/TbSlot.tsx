@@ -126,7 +126,7 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
    
     return (
     <div ref={refSlot} className={["tb-slots-slot", (isHoveringSlot && !isHoveringSlotIdentity && !isHoveringSlotEGO && !isHoveringEGO() && !isSlotEmpty()) ? "tb-slots-slot--active" : ""].join(" ")} onClick={()=> tbTriggerModalAction(dispatch,slot)}>
-        <div className="tb-slots-X" onClick={(e)=>{ e.stopPropagation(); tbResetSlotAction(dispatch,index)}} >х</div>
+        <div className="tb-slots-X" onClick={(e)=>{ e.stopPropagation(); tbResetSlotAction(dispatch,index)}} >&#10006;</div>
         <div className="tb-slots-tooltip">Click to edit</div>
         <div ref={refSlotIdentity} className={["tb-slots-container-id",
         tbIdentityHoverMatch() ? "tb-slots-container-id--active" : "",

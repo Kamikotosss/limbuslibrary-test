@@ -12,12 +12,14 @@ import { fetchEGO } from "../api/fetchEGO";
 import { Filters } from "../components/filters/Filters";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { fetchStatuses } from "../api/fetchStatuses";
 interface TierListPageInterface{
     redirect?:string
 }
 export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
     const egoState = useTypedSelector( (store) => store.egoReducer);
     const idsState = useTypedSelector( (store) => store.idsReducer);
+    const statusesState = useTypedSelector( (store) => store.statusesReducer);
     const navigate = useNavigate();
     const dispatch =useDispatch();
     const location =useLocation();
@@ -40,12 +42,12 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
             default:
                 break;
         }
-       
+        fetchStatuses()(dispatch);
     }, [location]);
 
     const layout = () =>{
-        if(egoState.error !== null || idsState.error !== null ) return <></>;
-        if(egoState.loading === true || idsState.loading === true) return <LoadingAnimation/>;
+        if(egoState.error !== null && idsState.error !== null && statusesState.error !== null) return <></>;
+        if(egoState.loading || idsState.loading || statusesState.loading) return <LoadingAnimation/>;
         return (
             <>
             <Filters></Filters>

@@ -14,6 +14,7 @@
     opacity: 0;
     pointer-events: none;
     perspective: 1600px;
+    user-select: none;
 }
 
 .modal--active{
@@ -51,11 +52,11 @@
     flex-direction: row;
 }
 .modal--active .modal__content{
-    transform-style: preserve-3d; /* Сохраняем 3D-пространство */
+    transform-style: preserve-3d; 
     transform:  rotateY(-20deg);
 }
 .modal--active .modal__slot{
-    transform-style: preserve-3d; /* Сохраняем 3D-пространство */
+    transform-style: preserve-3d; 
     transform: perspective(1600px) rotateY(20deg);
 }
 .modal-identity img {
@@ -91,6 +92,7 @@
     align-items: center;
     position: relative;
     border-radius: 8px 8px;
+    user-select: none;
 }
 .modal-ego img {
     width: 100%;
@@ -102,6 +104,7 @@
 }
 .modal-ego span {
     font-size: 32px;
+    font-weight: 500;
     color:#717171;
 }
 .modal-shadow::after{

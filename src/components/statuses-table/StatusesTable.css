@@ -1,4 +1,4 @@
-.statuses{
+.statuses-table{
     margin-top: 24px;
     margin-bottom: 24px;
     width: 80%;
@@ -8,29 +8,29 @@
     color:#AFAEB4;
     font-size: 24px;
 }
-.statuses img {
+.statuses-table img {
     width: 50px;
     height: 50px;
     object-fit: contain;
 }
-.statuses-th-image{
+.statuses-table-th-image{
     width: 10%;
 }
-.statuses-th-name{
+.statuses-table-th-name{
     width: 20%;
 }
-.statuses-th-description{
+.statuses-table-th-description{
     width: 70%;
     padding: 10px;
     box-sizing: border-box;
 }
-.statuses thead tr{
+.statuses-table thead tr{
     background-color: #121315;
 }
-.statuses tbody tr:nth-child(even) {
+.statuses-table tbody tr:nth-child(even) {
     background-color: #25272D;
 }
   
-.statuses tbody tr:nth-child(odd) {
+.statuses-table tbody tr:nth-child(odd) {
     background-color: none; 
 }

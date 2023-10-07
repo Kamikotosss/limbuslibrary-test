@@ -31,16 +31,17 @@
     box-sizing: border-box;
     font-size: 13.644px;
     font-style: normal;
-    font-weight: 400;
-    line-height: 15.5664px;
+    font-weight: 500;
+    border-radius: 4px;
     background: rgba(0, 0, 0, 0.40);
-    padding: 4px 6.4px 0.8px 6.4px;
+    padding: 2px 6.4px 2px;
     margin: 4.8px 0px 0px 4.8px;
-    color: var(--O-color);
+    font-size: 20px;
+    color: var(--OOO-color);
 }
 .tb-item-frame{
     width: 100%;
-    height: 4.8px;
+    height: 3px;
 }
 .tb-item-frame--OOO{
     background: var(--OOO-frame-color);

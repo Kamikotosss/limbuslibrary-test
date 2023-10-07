@@ -6,6 +6,7 @@ import { IdentityInterface } from "../../store/reducers/ids-reducer";
 import { tbRemoveEntityAction, tbResetSlotAction, tbTriggerModalAction ,tbResetAllAction, tbAddSlotAction, tbRemoveSlotAction} from "../../store/reducers/tb-reducer";
 import { ArrowLeftSVG } from "../svg/ArrowLeft";
 import { ArrowRightSVG } from "../svg/ArrowRight";
+import { XMarkSVG } from "../svg/XMark";
 import { Toggle } from "../toggle/Toggle";
 import { TbSlot } from "./tb-slot/TbSlot";
 import "./TbSlots.css";
@@ -60,14 +61,16 @@ export const TbSlots:React.FC = () => {
     } 
     return (
         <div className="tb-slots" >
-            <span className="tb-slots-btnSlotCount">Количество слотов</span>
-            <span className="tb-slots-btnSlotCount">{slots.length}</span>
-            <button className="tb-slots-btnSlotCount" onClick={handleSlotAdd}>+</button>
-            <button className="tb-slots-btnSlotCount" onClick={handleSlotRemove}>-</button>
+            <span className="tb-slots-btnSlotText">Количество слотов</span>
+            <div className="tb-slots-btnSlotCount">
+                <button onClick={handleSlotRemove}>−</button>
+                <span>{slots.length}</span>
+                <button onClick={handleSlotAdd}>+</button>
+            </div>
             <Toggle positionClass="tb-slots-toggle" click={handleLayoutChange}/>
+            <button className="tb-slots-reset" onClick={()=> tbResetAllAction(dispatch) }><XMarkSVG/> Reset</button>
             <button className={`tb-slots-btnLeft ${(animatedClass.includes("hidden") || isLayoutGrid) ? "hidden": ""}`} onClick={handleScrollLeft}><ArrowLeftSVG/></button>
             <button className={`tb-slots-btnRight ${(animatedClass.includes("hidden") || isLayoutGrid) ? "hidden": ""}`} onClick={handleScrollRight}><ArrowRightSVG/></button>
-            <button className="tb-slots-reset" onClick={()=> tbResetAllAction(dispatch) }>X Reset</button>
             <div className={["tb-slots-container", animatedClass].join(" ")} 
             ref={containerRef}>
                 {slots.map((slot,index)=>{

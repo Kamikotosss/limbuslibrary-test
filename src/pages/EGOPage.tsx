@@ -10,11 +10,13 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 
 export const EGOPage:React.FC = () => {
     const {loading,error} = useTypedSelector(state => state.egoReducer);
+    const statusesState = useTypedSelector(state => state.statusesReducer);
+
     const dispatch =useDispatch();
 
     const layout = () =>{
-        if(error !== null) return <></>;
-        if(loading) return <LoadingAnimation/>;
+        if(error !== null && statusesState.error !==null) return <></>;
+        if(loading || statusesState.loading) return <LoadingAnimation/>;
         return(
             <>
             <div style={{width:"90%" ,color:"white"}}>
