@@ -39,13 +39,13 @@ export const TbModal: React.FC<ModalProps>  = ({active , modalTrigger,closer}) =
         ];
         return(
             <>
-                <div className={["modal-identity" , (!identity) ? "modal-empty": "modal-shadow" ].join(" ") }>
+                <div className={["modal-identity" , (!identity) ? "modal-empty": "shadow" ].join(" ") }>
                 { (!identity) ? <IdentitySVG/>:<img src={`/images/identities/${identity.imgUrl}.png`} alt={`identities/${identity.imgUrl}`}/>}
                 </div>
                 <div className="modal-ego-container" >
                     {egosMap.map(({ego,glyph},index)=>{
                         return(
-                            <div className={["modal-ego" , (!ego) ? "modal-empty": "modal-shadow" ].join(" ") } key={`ego${index}`} >
+                            <div className={["modal-ego" , (!ego) ? "modal-empty": "shadow" ].join(" ") } key={`ego${index}`} >
                                 {ego ? <img src={`/images/ego/${ego.imgUrl}.png`} alt={`ego/${ego.imgUrl}`}/> : <span>{glyph}</span>}
                                 {ego && <div className={["modal-ego-frame",`${ego.egoRes}-sin-color`].join(" ")}/>}
                             </div>

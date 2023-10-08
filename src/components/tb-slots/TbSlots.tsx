@@ -42,11 +42,9 @@ export const TbSlots:React.FC = () => {
             clearTimeout(timeoutId);
         }
         setAnimatedClass(`${animatedClass} hidden`);
-        console.log("off" + isLayoutGrid)
         const newTimeoutId = setTimeout(() => {
             if(isLayoutGrid) setAnimatedClass("tb-slots-container--flex"); 
             else setAnimatedClass("tb-slots-container--grid"); 
-            console.log("timer " + isLayoutGrid)
         }, 500);
 
         setTimeoutId(newTimeoutId);

@@ -12,7 +12,7 @@ export const ListIds:React.FC = () => {
         <div className={"list-ids"} >
                 {ids?.map((item:IdentityInterface)=>{
                 if (isFilterMatching(filterState,item))
-                return (<ItemIdentity identity={item} key={item.imgUrl}></ItemIdentity>);
+                return (<ItemIdentity identity={item} key={item.imgUrl}/>);
                 })}
         </div>
     )

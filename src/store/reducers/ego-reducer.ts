@@ -12,6 +12,7 @@ export type EGOInterface = {
     egoTier: string;
     sanity: number;
     status: string;
+    dmgType: string;
 };
 export enum EGOActionTypes {
     FETCH_EGO = "FETCH_EGO",

@@ -71,8 +71,15 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
     const isHoveringEGO = () => {
         return isHoveringSlotWAW || isHoveringSlotTETH || isHoveringSlotHE || isHoveringSlotALEPH || isHoveringSlotZAYIN;
     }
-    let backgroundStyle ={};
-
+    const isAnyEGO = () => {
+        return ZAYIN||ALEPH||HE||TETH||WAW;
+    }
+    const getSinnerByEGO = () => {
+        for(const key in ego){
+            let current = ego[key];
+            if(current) return current.sinner;
+        }
+    }
     const tbEGOHoverMatch = (ego:EGOInterface|null) =>{
         if(!tbHoverState) return false;
         if(!ego)return false;
@@ -114,49 +121,39 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
         
     },[isHoveringSlotIdentity,isHoveringSlot,isHoveringSlotWAW ,isHoveringSlotTETH ,isHoveringSlotHE ,isHoveringSlotALEPH ,isHoveringSlotZAYIN]) 
 
-    if(identity !==null){
-        const {imgUrl} = identity;
-        backgroundStyle = {
-            backgroundImage: `linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%), url("/images/identities/${imgUrl}.png")`,
-            backgroundPosition: 'center', 
-            backgroundSize: 'cover',     
-            backgroundRepeat: 'no-repeat', 
-        }
-    }
-   
     return (
     <div ref={refSlot} className={["tb-slots-slot", (isHoveringSlot && !isHoveringSlotIdentity && !isHoveringSlotEGO && !isHoveringEGO() && !isSlotEmpty()) ? "tb-slots-slot--active" : ""].join(" ")} onClick={()=> tbTriggerModalAction(dispatch,slot)}>
         <div className="tb-slots-X" onClick={(e)=>{ e.stopPropagation(); tbResetSlotAction(dispatch,index)}} >&#10006;</div>
         <div className="tb-slots-tooltip">Click to edit</div>
+
         <div ref={refSlotIdentity} className={["tb-slots-container-id",
         tbIdentityHoverMatch() ? "tb-slots-container-id--active" : "",
         (isHoveringSlotIdentity && slot.identity) ? "tb-slots-container-id--active" : "",
         !slot.identity ? "tb-slots-empty" : ""].join(" ")}>
-            {!slot.identity ? <IdentitySVG/> : <div className="tb-slots-id-img"  style={backgroundStyle}/>}
+
+            <div className={[(!identity) ? "": "shadow" ].join(" ") }>
+                { (!identity) ? <IdentitySVG/>:<img src={`/images/identities/${identity.imgUrl}.png`} alt={`identities/${identity.imgUrl}`}/>}
+            </div>
+
         </div>
 
         <div ref={refSlotEGO}  className="tb-slots-container-ego" >
             {egosMap.map(({ego,isHovering,ref,glyph},index)=>{
-                let bgStyle = {};
-                let rarity:string|undefined = undefined;
-                let egoResAffinity ="";
-                if(ego !== null){
-                    const {imgUrl,egoRes} = ego;
-                    rarity = ego.rarity;
-                    egoResAffinity = egoRes;
-                    bgStyle = {
-                        backgroundImage: `linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%), url("/images/ego/${imgUrl}.png")`,
-                        backgroundPosition: 'center', 
-                        backgroundSize: 'cover',     
-                        backgroundRepeat: 'no-repeat', 
-                    }
-                }
-                return <div ref={ref}  className={["tb-slots-slot-ego" ,
+                return <div ref={ref} key={index} className={["tb-slots-slot-ego" ,
                     tbEGOHoverMatch(ego) ? "tb-slots-slot-ego--active" : "",
                     (isHovering && ego) ? "tb-slots-slot-ego--active" : "",
-                    !ego ? "tb-slots-empty" : ""].join(" ")}  style={bgStyle}>
-                    {!ego && <span >{glyph}</span>}
-                    <div className={["tb-ego-frame",`${egoResAffinity}-sin-color`].join(" ")} ></div>
+                    !ego ? "tb-slots-empty" : ""].join(" ")}>
+                        
+                    {(!ego) 
+                        ? <span >{glyph}</span>
+                        : <>
+                            <div className={"shadow"}>
+                                <img src={`/images/ego/${ego.imgUrl}.png`} alt={`ego/${ego.imgUrl}`}/>
+                            </div>
+                            <div className={["tb-ego-frame",`${ego.egoRes}-sin-color`].join(" ")}/>
+                        </>
+                    }
+                    
                 </div>
             })}
         </div>

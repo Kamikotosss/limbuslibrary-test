@@ -6,9 +6,20 @@ interface ItemEGOInfoInterface{
     ego:EGOInterface;
 }
 export const ItemEGOInfo:React.FC<ItemEGOInfoInterface> = ({ego}) => {
-    const {imgUrl,egoTier,sanity} = ego;
+    const {imgUrl,egoTier,sanity,dmgType,egoRes} = ego;
     return (
         <div  className={"item-ego-info-container"} >
+             <div className={"item-ego-info-skills"}>
+                <div  className="item-ego-info-sin">
+                    <img  src={`/images/sanity.png`}/>
+                    {sanity}
+                </div>
+                <div  className="item-ego-info-sin">
+                    <img  src={`/images/dmg-type/${dmgType}.png`}/>
+                    <div className={["item-ego-info-line", `${egoRes}-sin-color`].join(" ")}/>
+                </div>
+           </div>
+
             <div className={"item-ego-info-skills"}>
                 {sinTypes.map((sin)=>{
                     if(!ego[sin]) return <></>
@@ -20,12 +31,9 @@ export const ItemEGOInfo:React.FC<ItemEGOInfoInterface> = ({ego}) => {
                         </div>
                     )
                 })}
-                
            </div>
-           <div className={"item-ego-info-tier-rank-container"}>
-            {sanity}
-           <span className={["item-identity-info-tier-rank", `item-identity-info-tier-rank--${egoTier}`].join(" ")} >{egoTier}</span>
-            </div>
+          
+           <span className={["item-ego-info-tier-rank", `item-ego-info-tier-rank--${egoTier}`].join(" ")} >{egoTier}</span>
             <div className={"item-ego-info-arrow"}/>
         </div>
     )

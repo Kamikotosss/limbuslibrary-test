@@ -2,9 +2,9 @@ import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { damageTypes , guardTypes,sinnerTypes,sinTypes,tagsIds} from "../../constants/skillBasedTypes";
-import { sinnerType } from "../../constants/types";
+import { dmgType, sinnerType, sinType } from "../../constants/types";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { filterGuardTypeAction,filterSearchAction,filterSinTypeAction,filterDamageTypeAction, FilterInterface, SinFilterInterface, DmgTypeFilterInterface, GuardTypeFilterInterface, filterTagTypeAction, filterSinnerTypeAction} from "../../store/reducers/filter-reducer";
+import { filterSearchAction, filterChangeTypeAction} from "../../store/reducers/filter-reducer";
 import { FilterButton } from "./filter-button/FilterButton";
 import "./Filters.css";
 
@@ -15,25 +15,7 @@ export const Filters:React.FC = () => {
     const dispatch = useDispatch();
     const [isAllFiltersShown,setIsAllFiltersShown] = useState(false);
     const handleFilterChange = (type: string,key:string) =>{
-        switch(type){
-            case "dmgType":
-                filterDamageTypeAction(dispatch,key);
-                return;
-            case "guardType":
-                filterGuardTypeAction(dispatch,key);
-                return;
-            case "sin":
-                filterSinTypeAction(dispatch,key);
-                return;
-            case "tags":
-                filterTagTypeAction(dispatch,key);
-                return;
-            case "sinner":
-                filterSinnerTypeAction(dispatch,key as sinnerType);
-                return;
-            default:
-                return;
-        }
+        filterChangeTypeAction(dispatch,key);
     }
     const handleInputCHange = (e:React.ChangeEvent<HTMLInputElement>) =>{
         const val = e.target.value || "";
@@ -42,25 +24,25 @@ export const Filters:React.FC = () => {
     }
     const filters = [
         {
-            type:"sin" as "sin",
+            type:"sin" ,
             imgsFolder:"sins",
             imgExtension:".png",
             data:sinTypes
         },
         {
-            type:"dmgType" as "dmgType" ,
+            type:"dmgType" ,
             imgsFolder:"dmg-type",
             imgExtension:".png",
             data:damageTypes
         },
         {
-            type:"guardType" as "guardType",
+            type:"guardType" ,
             imgsFolder:"guard-type",
             imgExtension:".png",
             data:guardTypes
         },
         {
-            type:"sinner" as "guardType",
+            type:"sinner" ,
             imgsFolder:"sinners-icons",
             imgExtension:".webp",
             data:sinnerTypes
@@ -77,15 +59,16 @@ export const Filters:React.FC = () => {
     return (
         <div className={"filters"}>
                 {filters.map((filter,index)=>{
-                    return  <section key={filter.type+index}>
-                    {filter.data.map((type)=>{
-                        let isTypeActive = filterState[filter.type][type];
+                    const type = filter.type;  
+                    return  <section key={type+index}>
+                    {filter.data.map((subtype)=>{
+                        let isTypeActive = filterState.types[type];
                         return <FilterButton 
-                                handleFilterChange={()=>handleFilterChange(filter.type,type)} 
-                                imgSrc={`/images/${filter.imgsFolder}/${type}${filter.imgExtension}`}
-                                isTypeActive={isTypeActive}
-                                type={type}
-                                key={type} /> 
+                                handleFilterChange={()=>handleFilterChange(filter.type,subtype)} 
+                                imgSrc={`/images/${filter.imgsFolder}/${subtype}${filter.imgExtension}`}
+                                isTypeActive={isTypeActive[subtype as keyof typeof isTypeActive]}
+                                type={subtype}
+                                key={subtype} /> 
                     })}
                     </section>
                 })
@@ -98,7 +81,7 @@ export const Filters:React.FC = () => {
                 
                 {filters2.map((filter,index)=>{
                         return <section className={`${isAllFiltersShown ? "section-expanded": ""}`} key={filter.type+index}> {filter.data.map((type)=>{
-                            let isTypeActive = filterState[filter.type][type];
+                            let isTypeActive = filterState.types[filter.type][type];
                             return <FilterButton 
                             handleFilterChange={()=>handleFilterChange(filter.type,type)} 
                             imgSrc={`/images/${filter.imgsFolder}/${type}${filter.imgExtension}`}

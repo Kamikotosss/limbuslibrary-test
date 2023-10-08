@@ -12,10 +12,9 @@ export const ListEgo:React.FC = () => {
         <div className={"list-ego"} >
             {
                 ego?.map((item:EGOInterface)=>{
-                    return (<>
-                        {<ItemEGO ego={item} key={item.imgUrl}></ItemEGO>}
-                    </>);
-                })
+                    if (isFilterMatching(filterState,item))
+                    return (<ItemEGO ego={item} key={item.imgUrl}/>);
+                    })
             }
         </div>
     )

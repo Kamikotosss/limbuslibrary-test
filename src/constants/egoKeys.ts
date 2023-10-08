@@ -15,6 +15,7 @@ const egoKeys: { [key: string]: string } = {
     "O":"egoTier",
     "P":"sanity",
     "Q":"status",
+    "R":"dmgType",
 }
 
 export {egoKeys}

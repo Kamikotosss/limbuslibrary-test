@@ -16,12 +16,10 @@ export const ItemIdentity:React.FC<ItemIdentityInterface> = ({identity}) =>{
     const refItem = useRef(null);
     const isHovering = useHover(refItem);
     return (
-        <div ref={refItem} className={"item-identity-container"} style={{
-            backgroundImage: `linear-gradient(143deg, rgba(0, 0, 0, 0.40) 17.06%, rgba(0, 0, 0, 0.00) 52.01%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 10.42%, rgba(0, 0, 0, 0.60) 84.37%), url("/images/identities/${identity.imgUrl}.png")`,
-            backgroundPosition: 'center', 
-            backgroundSize: 'cover',     
-            backgroundRepeat: 'no-repeat', 
-        }}>
+        <div ref={refItem} className={"item-identity-container"}>
+            <div className={"shadow"}>
+                <img src={`/images/identities/${imgUrl}.png`} alt={`${imgUrl}`}/>
+            </div>
         {
             isHovering && <ItemIdentityInfo  identity={identity}></ItemIdentityInfo>
         } 

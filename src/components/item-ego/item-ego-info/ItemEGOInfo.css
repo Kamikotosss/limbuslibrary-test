@@ -18,6 +18,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 6px;
 }
 
 .item-ego-info-sin {
@@ -32,6 +33,8 @@
     color: white;
     font-weight: 600;
     font-size: 20px;
+    height: 40px;
+    width: 60px;
 }
 
 .item-ego-info-sin:last-of-type {
@@ -42,6 +45,7 @@
     width: 35px;
     height: 35px;
     object-fit: contain;
+    margin-right: 4px;
 }
 
 .item-ego-info-line {
@@ -70,8 +74,8 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    font-size: 12.8px;
-    width: 40px;
+    font-size: 22px;
+    width:100%;
     height: 18px;
     color: rgba(0, 0, 0, 0.5);
 }
