@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { StatusesInterface} from "../../store/reducers/statuses-reducer";
-import { ArrowUpSVG } from "../svg/ArrowUp";
 import "./StatusesTable.css";
 
 interface TableRowProps extends StatusesInterface{
@@ -13,7 +12,7 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
     const statusesExtended:TableRowProps[] = statuses;
     const [animatedClass , setAnimatedClass ] = useState("");
     const [timeoutId, setTimeoutId] = useState<null|NodeJS.Timeout>(null);
-    const [isArrowVisible,setIsArrowVisible] = useState(false);
+    const buttonsSections = [{unit:"sinner",header:"Статусы которые встречаются у грешников"} , {unit:"anomaly",header:"Статусы которые встречаются у аномалий"}];
     const handleScrollHighlight = (id:string,index:number) => {
         if (timeoutId) clearTimeout(timeoutId);
 
@@ -34,31 +33,26 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
           }
         }
       };
-      useEffect(()=>{
-        const handleScroll = () => {
-            if (window.scrollY >= 100)setIsArrowVisible(true);
-            else setIsArrowVisible(false);
-          };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-
-      },[])
+     
       
     return <>
-        <section className={"statuses-buttons"} >
-            {statuses.map((status,index)=>{
-                return <button
-                onClick={()=>{handleScroll(status.id,index)}}>
-                    {/* <div className="filters-filter-tooltip">{type}</div> */}
-                    <img  src={`/images/tags/${status.id}.png`} alt={`${status.id}` } />
-                </button>
-            })}
-            {isArrowVisible && <ArrowUpSVG className={"statuses-arrow-up"} click={()=>{window.scrollTo({top: 0,behavior: 'smooth'});}}/>}
-        </section>
+        {buttonsSections.map((section)=>{
+            return<section className={"statuses-section"} key={section.unit}>
+                <h2>{section.header}</h2>
+                <article className={"statuses-buttons"} >
+                    {statuses.map((status,index)=>{
+                        if(section.unit === status.unit)
+                        return <button
+                        key={status.name}
+                        onClick={()=>{handleScroll(status.id,index)}}>
+                            {/* <div className="filters-filter-tooltip">{status.id}</div> */}
+                            <img  src={`/images/tags/${status.id}.png`} alt={`${status.id}` } />
+                        </button>
+                    })}
+                </article>
+            </section>
+        })}
+       
         <table className="statuses-table">
             <thead>
                 <tr>

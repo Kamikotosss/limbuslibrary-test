@@ -4,6 +4,7 @@
     margin-bottom: 48px;
     flex-wrap: wrap;
     position: relative;
+    gap: 24px;
   }
   .modal__content .filters{
     width: 100%;
@@ -12,24 +13,18 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    position: relative;
+    row-gap:4px;
   }
-  .filters section:nth-of-type(1){
-    margin-right: 24px;
-  }
-  .filters section:nth-of-type(2){
-    margin-right: 24px;
-  }
-  .filters section:nth-of-type(4){
-    margin-top: 24px;
-  }
+
   .filters section:last-of-type{
+    
+  }
+  .filters .section-expanded{
     display: grid;
-    margin-top: 24px;
     gap:4px;
     width: 100%;
     grid-template-columns: repeat(auto-fill,54px);
-  }
-  .filters .section-expanded{
     justify-content: space-between;
   }
   .filters form {
@@ -41,6 +36,7 @@
     background: #25272D;
     position: absolute;
     right: 0;
+    top: -74px;
   }
   .filters form input {
     background: #25272D;
@@ -122,4 +118,19 @@
     background: #3AA1FF;
     position: absolute;
     bottom:0; 
+  }
+  .filters-clear-section{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: -22px;
+  }
+  .filters-clear-section svg path {
+    fill: grey;
+    opacity: 0.4;
+    transition: 0.4s;
+  }
+  .filters-clear-section:hover svg path {
+    opacity: 0.8;
   }

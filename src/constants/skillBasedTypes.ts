@@ -1,5 +1,6 @@
-import { dmgType, guardType, sinnerType, sinType } from "./types";
-
+import { dmgType, guardType, rarityEGOType, rarityIdentityType, sinnerType, sinType } from "./types";
+const rarityIdentityTypes:rarityIdentityType[] = ["O","OO","OOO"];
+const rarityEGOTypes:rarityEGOType[] = ["ZAYIN","TETH","HE","WAW","ALEPH"];
 const damageTypes:dmgType[] = ["blunt","slash","pierce"];
 const sinTypes:sinType[]= ["wrath","lust","sloth","glut","gloom","pride","envy"];
 const guardTypes:guardType[] = ["evade","counter","guard"];
@@ -15,4 +16,4 @@ const tagsIds = [
 ]
 
 
-export {damageTypes ,sinTypes , guardTypes ,tagsIds ,sinnerTypes};
+export {damageTypes ,sinTypes , guardTypes ,tagsIds ,sinnerTypes,rarityIdentityTypes,rarityEGOTypes};

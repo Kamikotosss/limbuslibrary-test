@@ -15,7 +15,6 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
     const passives = [
         {imageUrl:`sins/${sinPassive1}` , count:countPassive1 , description: "Боевая пассивка" , tier:passive1Tier},
         {imageUrl:`sins/${sinPassive2}` , count:countPassive2 , description: "Саппорт пассивка" , tier:passive2Tier},
-        {imageUrl:`identities/${imgUrl}` , count:0 , description: "Личность" , tier:idTier},
     ]
     //const rarityStyled = rarity.replaceAll("O","Ø");
     return (
@@ -49,9 +48,8 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
                     })
                 }
             </div>
-            <div className={"item-identity-info-arrow"}>
-
-            </div>
+            <span className={["item-identity-info-tier-rankID", `item-identity-info-tier-rank--${idTier}`].join(" ")} >{idTier}</span>
+            <div className={"item-identity-info-arrow"}/>
         </div>
     )
 }

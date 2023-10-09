@@ -47,7 +47,7 @@
 .item-identity-info-tiers {
     display: flex;
     flex-direction: column;
-    margin-top: 14.4px;
+    margin-top: 6px;
     min-width: 100%;
 }
 
@@ -100,7 +100,7 @@
     width: calc(100% - 43.2px);
 }
 .item-identity-info-tier-rank-container span {
-    padding-top: 3.2px;
+    padding-top: 1px;
     font-size: 20px;
     font-weight: 600;
 }
@@ -113,7 +113,17 @@
     height: 18px;
     color: rgba(0, 0, 0, 0.5);
 }
-
+.item-identity-info-tier-rankID{
+    justify-content: center;
+    align-items: center;
+    display: flex;  
+    width: 100%;
+    font-size: 22px;
+    margin-top: 6px;
+    height: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    opacity: 0.9;
+}
 .item-identity-info-tier-rank--SSS {
     background-color: rgb(236, 24, 48);
 }

@@ -1,7 +1,9 @@
 export interface StatusesInterface{
+    ref: StatusesInterface | undefined;
     id:string,
     name:string,
     description:string,
+    unit:string
 }
 
 export enum StatusesActionTypes {

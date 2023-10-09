@@ -1,8 +1,6 @@
 import React, { useRef } from "react";
 import { JSX } from "react/jsx-runtime";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { EGOInterface } from "../../store/reducers/ego-reducer";
-import { IdentityInterface } from "../../store/reducers/ids-reducer";
 import "./TbInfo.css";
 
 type TbInfoInterface = {  
@@ -10,7 +8,7 @@ type TbInfoInterface = {
     type: "tags"|"sins",
 };
 export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
-    const {slots,energy,modalTrigger} = useTypedSelector(store => store.tbReducer);
+    const {slots} = useTypedSelector(store => store.tbReducer);
     const countReq = (entity:any,sin:string) =>{
         let count = 0;
         if(entity.sin1 === sin) count+=3;    

@@ -6,7 +6,7 @@ import { isIdentity } from "./isIdentity";
 
 export const isFilterMatching = (filterState:FilterInterface,entity:IdentityInterface|EGOInterface) =>{
     const {search,types} = filterState;
-    const {status,sinner,name} = entity;
+    const {status,sinner,name,rarity} = entity;
 
     const regex = new RegExp(search, 'i');
     if(!regex.test(name)) return false; 
@@ -20,9 +20,14 @@ export const isFilterMatching = (filterState:FilterInterface,entity:IdentityInte
     const isSinnerFilterAny = Object.values(types.sinner).some((value) => value);
     if (isSinnerFilterAny && !types.sinner[sinner as keyof SinnerFilterInterface]) return false;
 
+    let isAnyRarityIdentity = Object.values(types.rarityIdentity).some((value) => value);
+    let isAnyRarityEGO = Object.values(types.rarityEGO).some((value) => value);
+
     if(isIdentity(entity)){
         const {dmgType1,dmgType2,dmgType3,guardType,sin1,sin2,sin3,sinGuard} =entity;
-      
+
+        if((isAnyRarityEGO||isAnyRarityIdentity) && !types.rarityIdentity[rarity as keyof typeof types.rarityIdentity]) return false;
+
         for(const key in types.sin){
             const value = types.sin[key as keyof SinFilterInterface];
             if(value === false)continue;
@@ -35,14 +40,13 @@ export const isFilterMatching = (filterState:FilterInterface,entity:IdentityInte
             if( !([dmgType1,dmgType2,dmgType3].includes(key as dmgType)) ) return false;
         }
 
-        for(const key in types.guardType){
-            const value = types.guardType[key as keyof GuardTypeFilterInterface];
-            if(value === false)continue;
-            if( guardType !== key ) return false;
-        }
+        const isGuardTypeAny = Object.values(types.guardType).some((value) => value);
+        if (isGuardTypeAny && !types.guardType[guardType as keyof GuardTypeFilterInterface]) return false;
 
     }else{
         const {dmgType} = entity;
+
+        if((isAnyRarityEGO||isAnyRarityIdentity) && !types.rarityEGO[rarity as keyof typeof types.rarityEGO]) return false;
 
         let activeSins = Object.entries(types.sin).map((value) => {
             const [sinType , isActive] = value;

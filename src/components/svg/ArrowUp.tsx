@@ -1,13 +1,6 @@
-interface ArrowUpSVGProps {
-    className: string;
-    click: () => void;
-  }
-  
-  export const ArrowUpSVG: React.FC<ArrowUpSVGProps> = ({ className, click }) => {
+  export const ArrowUpSVG: React.FC = () => {
     return (
       <svg
-        className={className}
-        onClick={click}
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
