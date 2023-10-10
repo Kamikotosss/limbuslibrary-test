@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, {useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { damageTypes , guardTypes,rarityIdentityTypes,sinnerTypes,sinTypes,tagsIds} from "../../constants/skillBasedTypes";
 import { dmgType, rarityEGOType, sinnerType, sinType } from "../../constants/types";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { filterSearchAction, filterChangeTypeAction, filterClearSectionAction} from "../../store/reducers/filter-reducer";
+import { filterChangeTypeAction, filterClearSectionAction} from "../../store/reducers/filter-reducer";
+import { Search } from "../search/Search";
 import { EraserSVG } from "../svg/EraserSvg";
 import { FilterButton } from "./filter-button/FilterButton";
 import "./Filters.css";
@@ -43,11 +44,7 @@ export const Filters:React.FC = () => {
     const handleClearSection = (section:string) => {
         filterClearSectionAction(dispatch,section);
     }
-    const handleInputCHange = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        const val = e.target.value || "";
-        filterSearchAction(dispatch, val);
-       
-    }
+    
     const filters = [
         {
             type:"sin" ,
@@ -143,10 +140,7 @@ export const Filters:React.FC = () => {
                 })
                 }
 
-                {!location.includes("/teambuilder") && <form>
-                    <input placeholder="Search..." onChange={(e)=>{handleInputCHange(e)}}></input>
-                </form>
-                }
+                {!location.includes("/teambuilder") && <Search/>}
                 
                 {filters2.map((filter,index)=>{
                     let countActive = 0;

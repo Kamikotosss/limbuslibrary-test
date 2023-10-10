@@ -17,9 +17,6 @@
     row-gap:4px;
   }
 
-  .filters section:last-of-type{
-    
-  }
   .filters .section-expanded{
     display: grid;
     gap:4px;
@@ -27,35 +24,7 @@
     grid-template-columns: repeat(auto-fill,54px);
     justify-content: space-between;
   }
-  .filters form {
-    display: flex;
-    padding: 11px 20px;
-    align-items: center;
-    gap: 8px;
-    border-radius: 4px;
-    background: #25272D;
-    position: absolute;
-    right: 0;
-    top: -74px;
-  }
-  .filters form input {
-    background: #25272D;
-    border:0;
-    color: #CECDD7;
-    font-size: 16px;
-    font-style: normal;
-    width:219px;
-    height: 30px;
-    font-weight: 500;
-    line-height: 20px; /* 125% */
-    letter-spacing: 0.5px;
-  }
-  .filters form input:focus {
-    outline: none;
-  }
-  .filters form input::placeholder {
-    color: #CECDD7;
-  }
+  
   .filters-filter img{
     
     width: 34px;
