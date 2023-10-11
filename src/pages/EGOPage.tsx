@@ -17,7 +17,7 @@ export const EGOPage:React.FC = () => {
     const dispatch =useDispatch();
 
     const layout = () =>{
-        if(error !== null && statusesState.error !==null) return <ErrorInfo errors={[statusesState.error , error]}/>;
+        if(error !== null || statusesState.error !== null ) return <ErrorInfo errors={[statusesState.error , error]}/>;
         if(loading || statusesState.loading) return <LoadingAnimation/>;
         return(
             <>
@@ -38,7 +38,6 @@ export const EGOPage:React.FC = () => {
         <LeftMenu/>
         <DisclaimerBanner/>
         <main className={"global-content-wrapper"}>
-            
             {layout()}
         </main>
     </>

@@ -48,7 +48,7 @@ const initialState : EGOState = {
 export const egoReducer = (state = initialState,action : EGOAction):EGOState =>{
     switch(action.type){
         case EGOActionTypes.FETCH_EGO:
-            return {loading: true , error: null ,ego:null }
+            return {loading: true , error: null , ego:null }
         case EGOActionTypes.FETCH_EGO_SUCCESS:
             return {loading: false , error: null ,ego: action.payload}
         case EGOActionTypes.FETCH_EGO_ERROR:

@@ -1,6 +1,6 @@
 import { StatusesAction , StatusesInterface , StatusesActionTypes} from "../store/reducers/statuses-reducer";
 import * as XLSX from "xlsx";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { statusesKeys } from "../constants/statusesKeys";
 export const fetchStatuses = () => {
         return async (dispatch: (arg0: StatusesAction) => void) =>{
@@ -28,7 +28,7 @@ export const fetchStatuses = () => {
                 }
                 dispatch({type:StatusesActionTypes.FETCH_STATUS_SUCCESS,payload:result})
             } catch(e){
-                dispatch({type:StatusesActionTypes.FETCH_STATUS_ERROR,payload:e as string})
+                dispatch({type:StatusesActionTypes.FETCH_STATUS_ERROR,payload:(e as AxiosError).message})
             }
         
         }

@@ -1,6 +1,6 @@
 import * as XLSX from "xlsx";
-import axios from "axios";
-import { EGOInterface, FetchEGOAction ,EGOActionTypes, FetchEGOActionSuccess, FetchEGOActionError, EGOAction} from "../store/reducers/ego-reducer";
+import axios, { Axios, AxiosError } from "axios";
+import { EGOInterface,EGOActionTypes,EGOAction} from "../store/reducers/ego-reducer";
 import { egoKeys } from "../constants/egoKeys";
 export const fetchEGO = () => {
         return  async (dispatch: (arg0: EGOAction) => void) =>{
@@ -26,8 +26,8 @@ export const fetchEGO = () => {
                     result.push(obj as EGOInterface) ;
                 }
                 dispatch({type: EGOActionTypes.FETCH_EGO_SUCCESS, payload:result});
-            } catch(e){
-                dispatch({type: EGOActionTypes.FETCH_EGO_ERROR , payload: e as string});
+            } catch(e: unknown){
+                dispatch({type: EGOActionTypes.FETCH_EGO_ERROR , payload: (e as AxiosError).message });
             }
         
         

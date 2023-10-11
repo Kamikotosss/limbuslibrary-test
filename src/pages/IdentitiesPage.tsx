@@ -20,7 +20,7 @@ export const IdentitiesPage:React.FC = () => {
         fetchStatuses()(dispatch);
     }, []);
     const layout = () =>{
-        if(error !== null && statusesState.error !== null) return <ErrorInfo errors={[statusesState.error , error]}/>;
+        if(error !== null || statusesState.error !== null) return <ErrorInfo errors={[statusesState.error , error]}/>;
         if(loading || statusesState.loading) return <LoadingAnimation/>;
         return(
             <>

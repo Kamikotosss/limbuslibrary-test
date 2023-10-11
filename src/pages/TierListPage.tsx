@@ -48,8 +48,8 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
     }, [location]);
 
     const layout = () =>{
-        if(egoState.error !== null && idsState.error !== null && statusesState.error !== null)
-        return <ErrorInfo errors={[idsState.error,idsState.error,statusesState.error]}/>;
+        if(egoState.error !== null || idsState.error !== null || statusesState.error !== null)
+        return <ErrorInfo errors={[egoState.error,idsState.error,statusesState.error]}/>;
         if(egoState.loading || idsState.loading || statusesState.loading) return <LoadingAnimation/>;
         return (
             <>

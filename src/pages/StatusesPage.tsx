@@ -18,7 +18,7 @@ export const StatusesPage:React.FC = () => {
     }, []);
     const layout = () =>{
         if(error !== null) return <ErrorInfo errors={[error]}/>;
-        if(loading === true) return <LoadingAnimation/>;
+        if(loading) return <LoadingAnimation/>;
         if(statuses) return <>
             <div style={{width:"90%" ,color:"white"}}>
                 <h1>Список статусов</h1>

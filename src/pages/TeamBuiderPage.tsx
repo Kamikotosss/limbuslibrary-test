@@ -30,7 +30,7 @@ export const TeamBuilderPage:React.FC = () => {
         }
     }, []);
     const layout = () => {
-        if(idsState.error !== null && egoState.error !== null && statusesState.error !== null) 
+        if(idsState.error !== null || egoState.error !== null || statusesState.error !== null) 
         return <ErrorInfo errors={[idsState.error,egoState.error,statusesState.error]}/>;
         if(idsState.loading || egoState.loading || statusesState.loading) return <LoadingAnimation/>;
         return(

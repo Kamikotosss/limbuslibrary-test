@@ -1,6 +1,6 @@
 import { FetchIdsAction, FetchIdsActionError, FetchIdsActionSuccess, IdentityInterface, IdsAction, IdsActionTypes } from "../store/reducers/ids-reducer";
 import * as XLSX from "xlsx";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { idsKeys } from "../constants/idsKeys";
 export const fetchIds = () => {
         return async (dispatch: (arg0: IdsAction) => void) =>{
@@ -26,8 +26,8 @@ export const fetchIds = () => {
                     result.push(obj as IdentityInterface) ;
                 }
                 dispatch({type:IdsActionTypes.FETCH_IDS_SUCCESS,payload:result})
-            } catch(e){
-                dispatch({type:IdsActionTypes.FETCH_IDS_ERROR,payload:e as string})
+            } catch(e: unknown){
+                dispatch({type:IdsActionTypes.FETCH_IDS_ERROR,payload:(e as AxiosError).message})
             }
         
         }
