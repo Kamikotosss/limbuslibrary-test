@@ -13,6 +13,8 @@ import { Filters } from "../components/filters/Filters";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { fetchStatuses } from "../api/fetchStatuses";
+import { ErrorInfo } from "../components/error-info/ErrorInfo";
+import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
 interface TierListPageInterface{
     redirect?:string
 }
@@ -46,7 +48,8 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
     }, [location]);
 
     const layout = () =>{
-        if(egoState.error !== null && idsState.error !== null && statusesState.error !== null) return <></>;
+        if(egoState.error !== null && idsState.error !== null && statusesState.error !== null)
+        return <ErrorInfo errors={[idsState.error,idsState.error,statusesState.error]}/>;
         if(egoState.loading || idsState.loading || statusesState.loading) return <LoadingAnimation/>;
         return (
             <>
@@ -56,11 +59,11 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
         );
     }
     return  <>
-        <LeftMenu></LeftMenu>
+        <LeftMenu/>
+        <DisclaimerBanner/>
         <main className={"global-content-wrapper"}>
             <TierListNav></TierListNav>
             {layout()}
         </main>
-        <Footer></Footer>
     </>
 }

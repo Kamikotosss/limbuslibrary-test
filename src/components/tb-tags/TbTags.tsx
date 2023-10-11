@@ -3,8 +3,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { TbTag } from "./tb-tag/TbTag";
 import "./TbTags.css";
 export const TbTags:React.FC = () => {
-    const sins = ["wrath","lust","sloth","glut","gloom","pride","envy"];
-    const {energy,slots} = useTypedSelector(state=> state.tbReducer);
+    const {slots} = useTypedSelector(state=> state.tbReducer);
     const getListOfTags = () =>{
         let result:{count:number,tag:string}[] =[];
         let tagsMap:{[key:string]:number} = {};
@@ -33,6 +32,9 @@ export const TbTags:React.FC = () => {
                 }
             )
         }
+
+        result.sort((a, b) => b.count - a.count);
+
         return result;
     }
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 
-export const IndexPage:React.FC = () => {
+export const AboutGamePage:React.FC = () => {
     
     return  <>
         <LeftMenu/>

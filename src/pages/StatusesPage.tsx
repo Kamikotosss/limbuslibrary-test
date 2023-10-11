@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchStatuses } from "../api/fetchStatuses";
+import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
+import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { Footer } from "../components/footer/Footer";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
@@ -15,7 +17,7 @@ export const StatusesPage:React.FC = () => {
         fetchStatuses()(dispatch);
     }, []);
     const layout = () =>{
-        if(error !== null) return <></>;
+        if(error !== null) return <ErrorInfo errors={[error]}/>;
         if(loading === true) return <LoadingAnimation/>;
         if(statuses) return <>
             <div style={{width:"90%" ,color:"white"}}>
@@ -27,11 +29,11 @@ export const StatusesPage:React.FC = () => {
     }
     return  <>
         <LeftMenu/>
+        <DisclaimerBanner/>
         <main className={"global-content-wrapper"}>
             {
             layout()
             }
         </main>
-        <Footer/>
     </>
 }

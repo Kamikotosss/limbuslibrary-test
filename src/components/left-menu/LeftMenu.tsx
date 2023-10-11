@@ -1,8 +1,10 @@
 import React from "react";
 import { Link,useLocation } from "react-router-dom";
+import { ContactSVG } from "../svg/ContactSVG";
 import { EGOSVG } from "../svg/EGOSVG";
 import { GLLSVG } from "../svg/GLLSVG";
 import { IdentitiesSVG } from "../svg/IdentitiesSVG";
+import { InfoSvg } from "../svg/InfoSVG";
 import { StatusesPageSVG } from "../svg/StatusesPageSVG";
 import { TeamBuilderSVG } from "../svg/TeamBuilderSVG";
 import { TierListSVG } from "../svg/TierListSVG";
@@ -18,6 +20,8 @@ export const LeftMenu:React.FC = () => {
         {route:"identities" ,name:"ЛИЧНОСТИ",SVG:IdentitiesSVG},
         {route:"ego" ,name:"ЭГО",SVG:EGOSVG},
         {route:"statuses" ,name:"СТАТУСЫ",SVG:StatusesPageSVG},
+        {route:"aboutgame" ,name:"ОБ ИГРЕ",SVG:InfoSvg},
+        {route:"contact" ,name:"КОНТАКТ",SVG:ContactSVG},
     ];
     return (
         //TODO routing list

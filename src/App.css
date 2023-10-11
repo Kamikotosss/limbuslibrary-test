@@ -84,6 +84,8 @@
   padding-left: 275px;
   box-sizing: border-box;
   align-items: center;
+  padding-bottom: 120px;
+  box-sizing: border-box;
 }
 .shadow::after{
   content: "";

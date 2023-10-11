@@ -22,7 +22,6 @@ export type SinnerRarityFilterInterface = {
 export type EGORarityFilterInterface = {
     [key in rarityEGOType]: boolean;
 };
-type FilterInterfaceValues = SinFilterInterface|DmgTypeFilterInterface|GuardTypeFilterInterface|TagsFilterInterface|SinnerFilterInterface|SinnerRarityFilterInterface|EGORarityFilterInterface;
 export type FilterInterface = {
     types:{
         [key : string]:{[key:string]:boolean};
@@ -40,16 +39,17 @@ export type FilterInterface = {
 export enum FilterActionTypes {
     CHANGE_TYPE_FILTER = "CHANGE_TYPE_FILTER",
     SEARCH_FILTER = "SEARCH_FILTER",
-    CLEAR_SECTION_FILTER = "CLEAR_SECTION_FILTER"
+    CLEAR_SECTION_FILTER = "CLEAR_SECTION_FILTER",
+    RESET_ALL_FILTER = "RESET_ALL_FILTER"
 }
-
-type ChangeTypeFilterPayload = string;
 
 export interface ChangeTypeFilterAction {
     type: FilterActionTypes.CHANGE_TYPE_FILTER;
-    payload: ChangeTypeFilterPayload;
+    payload: string;
 }
-
+export interface ResetAllFilterAction {
+    type: FilterActionTypes.RESET_ALL_FILTER;
+}
 export interface SearchFilterAction {
     type: FilterActionTypes.SEARCH_FILTER;
     payload: string;
@@ -58,7 +58,7 @@ export interface ClearSectionFilterAction {
     type: FilterActionTypes.CLEAR_SECTION_FILTER;
     payload: string;
 }
-export type FilterAction = ChangeTypeFilterAction|SearchFilterAction|ClearSectionFilterAction;
+export type FilterAction = ChangeTypeFilterAction|SearchFilterAction|ClearSectionFilterAction|ResetAllFilterAction;
 
 const initStateParam = <T extends string|number|symbol>(keys: T[]): { [key in T]: boolean } => { 
     let obj: { [key in T]: boolean } = {} as { [key in T]: boolean };
@@ -67,23 +67,25 @@ const initStateParam = <T extends string|number|symbol>(keys: T[]): { [key in T]
     })
     return obj;
 }
-
+const initialTypes = {
+    dmgType:initStateParam(damageTypes),
+    guardType:initStateParam(guardTypes),
+    sin:initStateParam(sinTypes),
+    tags:initStateParam(tagsIds),
+    sinner:initStateParam(sinnerTypes),
+    rarityIdentity:initStateParam(rarityIdentityTypes),
+    rarityEGO:initStateParam(rarityEGOTypes),
+}
 const initialState : FilterInterface = {
-    types:{
-        dmgType:initStateParam(damageTypes),
-        guardType:initStateParam(guardTypes),
-        sin:initStateParam(sinTypes),
-        tags:initStateParam(tagsIds),
-        sinner:initStateParam(sinnerTypes),
-        rarityIdentity:initStateParam(rarityIdentityTypes),
-        rarityEGO:initStateParam(rarityEGOTypes),
-    },
+    types:initialTypes,
     search:""
 }
 
 
 export const filterReducer = (state = initialState,action : FilterAction):FilterInterface =>{
     switch(action.type){
+        case FilterActionTypes.RESET_ALL_FILTER:
+            return { ...resetAll(state) };
         case FilterActionTypes.CHANGE_TYPE_FILTER:
             return { ...applyFilter(action.payload, state) };
         case FilterActionTypes.CLEAR_SECTION_FILTER:
@@ -95,7 +97,7 @@ export const filterReducer = (state = initialState,action : FilterAction):Filter
     }
 }
 
-const applyFilter = (payload: ChangeTypeFilterPayload, state: FilterInterface) => {
+const applyFilter = (payload: string, state: FilterInterface) => {
     const { types } = state;
     const {tags} = types;
     let keyExists = false;
@@ -108,12 +110,16 @@ const applyFilter = (payload: ChangeTypeFilterPayload, state: FilterInterface) =
             return state;
         }
     }
-
     if(!keyExists) tags[payload] = true;
-
     return state;
-  };
-const clearSection = (payload: ChangeTypeFilterPayload, state: FilterInterface) => {
+};
+const resetAll = (state: FilterInterface) =>{
+    const {types} = state;
+    state.search = "";
+    for(const key in types) clearSection(key,state);
+    return state;
+}
+const clearSection = (payload: string, state: FilterInterface) => {
     const { types } = state;
     if(payload in types){
         const type = types[payload]
@@ -121,7 +127,10 @@ const clearSection = (payload: ChangeTypeFilterPayload, state: FilterInterface) 
     }
     return state;
 }
-export const filterChangeTypeAction = (dispatch: Dispatch<ChangeTypeFilterAction>,payload:ChangeTypeFilterPayload) => {
+export const filterResetAllAction = (dispatch: Dispatch<ResetAllFilterAction>) => {
+    dispatch({ type: FilterActionTypes.RESET_ALL_FILTER })
+}
+export const filterChangeTypeAction = (dispatch: Dispatch<ChangeTypeFilterAction>,payload:string) => {
     dispatch({ type: FilterActionTypes.CHANGE_TYPE_FILTER , payload})
 }
 export const filterClearSectionAction = (dispatch: Dispatch<ClearSectionFilterAction>,payload:string) => {

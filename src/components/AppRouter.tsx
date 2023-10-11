@@ -6,6 +6,10 @@ import { EGOPage } from "../pages/EGOPage";
 import { IdentitiesPage } from "../pages/IdentitiesPage";
 import { TeamBuilderPage } from "../pages/TeamBuiderPage";
 import { StatusesPage } from "../pages/StatusesPage";
+import { useDispatch } from "react-redux";
+import { filterResetAllAction } from "../store/reducers/filter-reducer";
+import { AboutGamePage } from "../pages/AboutGamePage";
+import { ContactPage } from "../pages/ContactPage";
 
 export const AppRouter:React.FC = () => {
     
@@ -40,14 +44,23 @@ export const AppRouter:React.FC = () => {
             path:"/statuses",
             element:<StatusesPage />,
         },
+        {
+            path:"/aboutgame",
+            element:<AboutGamePage />,
+        },
+        {
+            path:"/contact",
+            element:<ContactPage />,
+        },
     ]
+    const dispatch = useDispatch();
     const location = useLocation();
      useEffect(()=>{
         window.scrollTo(0, 0);
+        filterResetAllAction(dispatch);
     },[location])
     
     return (
-        //TODO routing list
         <Routes>
         {routes.reduce((acc:ReactElement[],route)=>{
             if(route.params){

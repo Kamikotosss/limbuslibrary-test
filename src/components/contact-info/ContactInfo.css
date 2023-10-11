@@ -1,0 +1,22 @@
+.contact-info{
+    color:white;
+    width: 90%;
+
+}
+.contact-info button{
+    height: 50px;
+    width: 50px;
+    opacity: 0.8;
+    transition: 0.4s;
+    position: relative;
+    margin-right: 30px;
+}
+.contact-info button:hover{
+    opacity: 1;
+    transform: scale(1.2);
+}
+.contact-info button svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }

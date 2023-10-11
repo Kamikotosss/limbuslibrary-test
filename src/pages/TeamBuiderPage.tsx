@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { fetchEGO } from "../api/fetchEGO";
 import { fetchIds } from "../api/fetchIds";
 import { fetchStatuses } from "../api/fetchStatuses";
+import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
+import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { Footer } from "../components/footer/Footer";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
@@ -11,7 +13,7 @@ import { TbSins } from "../components/tb-sins/TbSins";
 import { TbSlots } from "../components/tb-slots/TbSlots";
 import { TbTags } from "../components/tb-tags/TbTags";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { tbCloseModalAction } from "../store/reducers/tb-reducer";
+import { tbCloseModalAction, tbResetAllAction } from "../store/reducers/tb-reducer";
 
 export const TeamBuilderPage:React.FC = () => {
     const {modalTrigger} = useTypedSelector(store => store.tbReducer);
@@ -23,9 +25,13 @@ export const TeamBuilderPage:React.FC = () => {
         fetchEGO()(dispatch);
         fetchIds()(dispatch);
         fetchStatuses()(dispatch);
+        return ()=>{
+            tbResetAllAction(dispatch);
+        }
     }, []);
     const layout = () => {
-        if(idsState.error !== null && egoState.error !== null && statusesState.error !== null) return <></>;
+        if(idsState.error !== null && egoState.error !== null && statusesState.error !== null) 
+        return <ErrorInfo errors={[idsState.error,egoState.error,statusesState.error]}/>;
         if(idsState.loading || egoState.loading || statusesState.loading) return <LoadingAnimation/>;
         return(
             <>
@@ -40,10 +46,10 @@ export const TeamBuilderPage:React.FC = () => {
         )
     }
     return  <>
-        <LeftMenu></LeftMenu>
+        <LeftMenu/>
+        <DisclaimerBanner/>
         <main className={"global-content-wrapper"}>
             {layout()}
         </main>
-        <Footer></Footer>
     </>
 }

@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchEGO } from "../api/fetchEGO";
+import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
+import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { Filters } from "../components/filters/Filters";
 import { Footer } from "../components/footer/Footer";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
@@ -15,7 +17,7 @@ export const EGOPage:React.FC = () => {
     const dispatch =useDispatch();
 
     const layout = () =>{
-        if(error !== null && statusesState.error !==null) return <></>;
+        if(error !== null && statusesState.error !==null) return <ErrorInfo errors={[statusesState.error , error]}/>;
         if(loading || statusesState.loading) return <LoadingAnimation/>;
         return(
             <>
@@ -33,11 +35,11 @@ export const EGOPage:React.FC = () => {
     }, []);
 
     return  <>
-        <LeftMenu></LeftMenu>
+        <LeftMenu/>
+        <DisclaimerBanner/>
         <main className={"global-content-wrapper"}>
             
             {layout()}
         </main>
-        <Footer></Footer>
     </>
 }
