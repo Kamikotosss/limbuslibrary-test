@@ -23,6 +23,8 @@ const idsKeys: { [key: string]: string } = {
 "W":"pierce",
 "X":"blunt",
 "Y":"status",
+"Z":"releaseDate",
+
 };
 
 export {idsKeys}

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import { StatusesInterface} from "../../store/reducers/statuses-reducer";
 import "./StatusesTable.css";
 
 interface TableRowProps extends StatusesInterface{
-    reference?: HTMLTableRowElement | null;
+    reference?: HTMLElement | null;
     id:string;
     name:string;
     description:string;
@@ -34,10 +35,21 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
         }
       };
      
+    //   const TabelRow:React.FC<{status:TableRowProps}> = ({status}) => {
+    //     const rowReference = useRef(null);
+    //     const {isVisible} =useIntersectionObserver(rowReference ,0.1);
+    //      return <tr key={status.id} className={`${status.id === animatedClass && "statuses-table-tr--active"} ${status.id === animatedClass && "statuses-table-tr--active"}`} ref={(rowReference) => (status.reference = rowReference as HTMLTableRowElement | null)}>
+    //      <td className={`statuses-table-th-image`}>
+    //          <img src={`/images/tags/${status.id}.png`} alt={status.id} />
+    //      </td>
+    //      <td className="statuses-table-th-name">{status.name}</td>
+    //      <td className="statuses-table-th-description">{status.description}</td>
+    //  </tr>
+    //   }
       
     return <>
         {buttonsSections.map((section)=>{
-            return<section className={"statuses-section"} key={section.unit}>
+            return<section className={"statuses-section"} >
                 <h2>{section.header}</h2>
                 <article className={"statuses-buttons"} >
                     {statuses.map((status,index)=>{
@@ -69,15 +81,13 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
             </thead>
             <tbody>
             {statusesExtended.map((status) => {
-            return (
-                <tr key={status.id} className={`${status.id === animatedClass && "statuses-table-tr--active"}`} ref={(ref) => (status.reference = ref as HTMLTableRowElement | null)}>
-                    <td className={`statuses-table-th-image`}>
-                        <img src={`/images/tags/${status.id}.png`} alt={status.id} />
-                    </td>
-                    <td className="statuses-table-th-name">{status.name}</td>
-                    <td className="statuses-table-th-description">{status.description}</td>
-                </tr>
-            );
+                return <tr key={status.id} className={`${status.id === animatedClass && "statuses-table-tr--active"} ${status.id === animatedClass && "statuses-table-tr--active"}`} ref={(rowReference) => (status.reference = rowReference as HTMLTableRowElement | null)}>
+                <td className={`statuses-table-th-image`}>
+                    <img src={`/images/tags/${status.id}.png`} alt={status.id} />
+                </td>
+                <td className="statuses-table-th-name">{status.name}</td>
+                <td className="statuses-table-th-description">{status.description}</td>
+            </tr>
             })}
            </tbody>
         </table>

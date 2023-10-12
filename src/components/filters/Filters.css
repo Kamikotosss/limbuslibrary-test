@@ -45,8 +45,9 @@
     cursor: pointer;
     position: relative;
     background: #25272D;
-    transition: 0.2s;
+    transition: 0.3s;
   }
+  
   .filters-filter-tooltip{
     display: none; 
     position: absolute;

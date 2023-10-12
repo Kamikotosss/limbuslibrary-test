@@ -9,7 +9,19 @@
     cursor: pointer;
     border-radius: 4px 4px 0px 0px;
     position: relative;
+    animation: slideAnimationItem 1s ease;
+    z-index: 5;
 }
+@keyframes slideAnimationItem {
+    0% {
+      transform: translateX(-20px);
+        opacity:0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity:0.8;
+    }
+  }
 .item-ego-container .shadow img {
     width: 100%;
     height: 100%;

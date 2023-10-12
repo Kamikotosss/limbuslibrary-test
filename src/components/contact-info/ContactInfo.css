@@ -3,6 +3,9 @@
     width: 90%;
 
 }
+.contact-info h2{
+    font-size: 32px;
+}
 .contact-info button{
     height: 50px;
     width: 50px;

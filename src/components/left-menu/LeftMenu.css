@@ -4,6 +4,7 @@
     min-height: 100vh;
     background-color: #131319;
     position: fixed;
+    z-index: 98;
 }
   
   .left-menu ul {

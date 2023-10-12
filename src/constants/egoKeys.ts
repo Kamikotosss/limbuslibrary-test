@@ -16,6 +16,7 @@ const egoKeys: { [key: string]: string } = {
     "P":"sanity",
     "Q":"status",
     "R":"dmgType",
+    "S":"releaseDate",
 }
 
 export {egoKeys}

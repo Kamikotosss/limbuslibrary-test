@@ -10,7 +10,7 @@ export const TierList:React.FC<TierListInterface> = () => {
     const ratings = ["SSS","SS","S","A","B","C"];
     const location = useLocation();
     const locationParam = getLocationLastParam(location.pathname);
-
+    console.log("tier bar render")
     const tierListClass = () =>{
         switch (locationParam){
             case "identities":

@@ -26,6 +26,8 @@ export interface IdentityInterface{
     pierce:string,
     blunt:string,
     status:string,
+    releaseDate:string
+
 }
 
 export enum IdsActionTypes {

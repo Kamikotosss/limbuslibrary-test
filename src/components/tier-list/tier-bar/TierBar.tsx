@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../../store/reducers/ids-reducer";
@@ -14,7 +15,7 @@ interface TierBarProps {
     children?:any;
 }
 export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam}) => {
-    const {loading,ids,error} = useTypedSelector(state => state.idsReducer);
+    const {ids} = useTypedSelector(state => state.idsReducer);
     const {ego} = useTypedSelector(state => state.egoReducer);
     const filterState = useTypedSelector(state => state.filterReducer);
     const setupEGO = () =>{
@@ -54,8 +55,11 @@ export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam}) => {
                 return;
         }
     }
+    const containerRef = useRef(null);
+    const {isVisible} = useIntersectionObserver(containerRef,0.1);
+
     return (
-        <div className={["tier-bar-container" , `tier-bar-container--${rating}`].join(" ")}>
+        <div ref={containerRef} className={["tier-bar-container" , `tier-bar-container--${rating}`, isVisible && "tier-bar-container--animated"].join(" ")}>
             <div className={["tier-bar-line" , `tier-bar-line--${rating}`].join(" ")}></div>
             <span className={"tier-bar-rating"}>{`${rating.toUpperCase()} tier`}</span>
             <span className={["tier-bar-description" , `tier-bar-description--${rating}`].join(" ")}> description description description description description </span>

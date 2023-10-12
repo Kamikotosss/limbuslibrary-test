@@ -14,14 +14,15 @@ export const LeftMenu:React.FC = () => {
     const isCurrentLocation = (route:string)=>{
         return location.pathname.split("/")[1].includes(route);
     }
+    
     const links = [
-        {route:"tierlist" ,name:"ТИР ЛИСТ",SVG:TierListSVG},
+        {route:"tierlist/identities" ,name:"ТИР ЛИСТ",SVG:TierListSVG},
         {route:"teambuilder" ,name:"ТИМ БИЛДЕР",SVG:TeamBuilderSVG},
         {route:"identities" ,name:"ЛИЧНОСТИ",SVG:IdentitiesSVG},
         {route:"ego" ,name:"ЭГО",SVG:EGOSVG},
         {route:"statuses" ,name:"СТАТУСЫ",SVG:StatusesPageSVG},
         {route:"aboutgame" ,name:"ОБ ИГРЕ",SVG:InfoSvg},
-        {route:"contact" ,name:"КОНТАКТ",SVG:ContactSVG},
+        {route:"contact" ,name:"НАШИ КОНТАКТЫ",SVG:ContactSVG},
     ];
     return (
         //TODO routing list

@@ -8,7 +8,22 @@
     box-sizing: border-box;
     position: relative;
     padding: 0px 15px 0 72px;
+    opacity: 0;
 }
+.tier-bar-container--animated{
+    animation: slideAnimation 1s ease;
+    opacity:1;
+}
+@keyframes slideAnimation {
+    0% {
+      transform: translateX(-200px);
+        opacity:0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity:1;
+    }
+  }
 .tier-bar-container--SSS{
     background: linear-gradient(90deg, #FF3A3A -98.8%, #202228 14.97%);
 }
