@@ -5,6 +5,9 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.main-info h2{
+    font-size: 42px;
+}
 .main-info-header-main{
     min-height: 40vh;
     margin-top: 36px;
@@ -15,7 +18,7 @@
     box-sizing: border-box;
 }
 .main-info-header-main h1{
-   font-size: 9vh;
+   font-size: 90px;
    margin: 0;
    animation: AppearAnimationH1 1s ease;
 }
@@ -79,20 +82,7 @@
         opacity: 0.9;
       }
   }
-.main-info .main-info-event-sector{
-    animation: bounceAnimation 1.2s ease ;
-    width: 100%;
-    height: fit-content;
-    font-size: 24px;
-    display: flex;
-    flex-direction: column;
-}
-.main-info .main-info-event-sector span {
-    font-weight: 500;
-}
-.main-info .main-info-event-sector img {
-    margin-bottom: 12px;
-}
+
 
 .main-info p {
     font-size: 24px;
@@ -104,13 +94,3 @@
     width: 25%;
 }
 
-@keyframes bounceAnimation {
-    0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0;
-      }
-      100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-      }
-  }

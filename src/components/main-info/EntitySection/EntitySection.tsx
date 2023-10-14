@@ -67,7 +67,7 @@ export const EntitySection:React.FC = () => {
     }
     
     return <section className="entity-section"> 
-        {/* <h2> Недавно вышедшие Личности и ЭГО </h2> */}
+        <h2> Недавно вышедшие Личности и ЭГО </h2>
         { ids && ego && findNLatestDates(ids,ego,5).map((section,index)=>{
                 return <EntitySectionBar key={index} section={section}/>
             })

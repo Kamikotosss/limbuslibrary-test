@@ -5,10 +5,14 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    position: relative;
+    margin-top: 60px;
 }
-.entity-section::after {
-  content: "";
-  flex: 366px;
+.entity-section h2{
+  position: absolute;
+  left: 0;
+  top: -40px;
+  margin: 0;
 }
 .entity-section .release-date{
   display: flex;

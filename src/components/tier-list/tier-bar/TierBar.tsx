@@ -12,9 +12,10 @@ import "./TierBar.css";
 interface TierBarProps {
     rating:string;
     tierListParam:string;
+    description:string;
     children?:any;
 }
-export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam}) => {
+export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam,description}) => {
     const {ids} = useTypedSelector(state => state.idsReducer);
     const {ego} = useTypedSelector(state => state.egoReducer);
     const filterState = useTypedSelector(state => state.filterReducer);
@@ -62,7 +63,7 @@ export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam}) => {
         <div ref={containerRef} className={["tier-bar-container" , `tier-bar-container--${rating}`, isVisible && "tier-bar-container--animated"].join(" ")}>
             <div className={["tier-bar-line" , `tier-bar-line--${rating}`].join(" ")}></div>
             <span className={"tier-bar-rating"}>{`${rating.toUpperCase()} tier`}</span>
-            <span className={["tier-bar-description" , `tier-bar-description--${rating}`].join(" ")}> description description description description description </span>
+            <span className={["tier-bar-description" , `tier-bar-description--${rating}`].join(" ")}> {description} </span>
             <div className={"tier-bar-items"}>
                 {setupItems()} 
             </div>

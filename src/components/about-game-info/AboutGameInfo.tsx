@@ -1,10 +1,4 @@
-import { Link } from "react-router-dom"
-import { AppleStoreSVG } from "../svg/AppleStoreSVG"
-import { GlobalSVG } from "../svg/GlobalSVG"
-import { GooglePlaySVG } from "../svg/GooglePlaySVG"
-import { RedditSVG } from "../svg/RedditSVG"
-import { SteamSVG } from "../svg/SteamSVG"
-import { TwitterSVG } from "../svg/TwitterSVG"
+import { OfficialLinks } from "../official-links/OfficialLinks"
 import "./AboutGameInfo.css"
 export const AboutGameInfo:React.FC = () =>{
     return <section className="about-game-info">
@@ -17,16 +11,7 @@ export const AboutGameInfo:React.FC = () =>{
     В игре есть элементы гача, что позволяет тратить реальные деньги на приобретение Lunacy (внутриигровой валюты)
     или билетов, которые используются для приобретения новых Сущностей Грешников или E.G.O, кроме базовых, предоставленных игроку в начале.
     </p>
-    <img src="./images/limbus.png"/>
     <h2>Ссылки на официальные источники</h2>
-    <article>
-        <Link to={"https://limbuscompany.com/"} target="_blank" ><GlobalSVG/></Link>
-        <Link to={"https://play.google.com/store/apps/details?id=com.ProjectMoon.LimbusCompany&pli=1"} target="_blank" ><GooglePlaySVG/></Link>
-        <Link to={"https://store.steampowered.com/app/1973530/Limbus_Company/"} target="_blank" ><SteamSVG/></Link>
-        <Link to={"https://apps.apple.com/us/app/limbus-company/id6444112366"} target="_blank" ><AppleStoreSVG/></Link>
-        <Link to={"https://twitter.com/LimbusCompany_B"} target="_blank" ><TwitterSVG/></Link>
-        <Link to={"https://www.reddit.com/r/limbuscompany/"} target="_blank" ><RedditSVG/></Link>
-        
-    </article>
+    <OfficialLinks/>
     </section>
 }

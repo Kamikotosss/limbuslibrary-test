@@ -7,10 +7,16 @@ interface TierListInterface {
    
 }
 export const TierList:React.FC<TierListInterface> = () => {
-    const ratings = ["SSS","SS","S","A","B","C"];
+    const ratings = [
+        { rating: "SSS", description: "Эти Личности/ЭГО не имеют равных и способны одолевать любой игровой контент в одиночку." },
+        { rating: "SS", description: "Очень мощные Личности/ЭГО, которым немного не хватает для того, чтобы войти в категорию SSS." },
+        { rating: "S", description: "Сильные Личности/ЭГО, которые успешно справляются с разнообразным контентом, но могут быть заменены еще более мощными представителями из S или SS тира." },
+        { rating: "A", description: "Обычные Личности/ЭГО, обладающие какими-то сильными сторонами, но также имеющие недостатки." },
+        { rating: "B", description: "Сравнительно слабые Личности/ЭГО, которых стоит выбирать только в случае крайней необходимости." },
+        { rating: "C", description: "Неэффективные Личности/ЭГО, лучше всего избегать их выбора, так как они не способны успешно выполнять игровые задачи." }
+      ];
     const location = useLocation();
     const locationParam = getLocationLastParam(location.pathname);
-    console.log("tier bar render")
     const tierListClass = () =>{
         switch (locationParam){
             case "identities":
@@ -45,9 +51,9 @@ export const TierList:React.FC<TierListInterface> = () => {
                 return (
                     <div key={`${Math.random()}`} className={["tier-list" , tierListClass()].join(" ")}>
                         <span className="tier-list-name">{tierListName(tierListParam)}</span>
-                            {ratings.map((rating)=>{
+                            {ratings.map(({rating,description})=>{
                                 return(
-                                    <TierBar  rating={rating} tierListParam={tierListParam} key={`${rating}`}></TierBar>
+                                    <TierBar  rating={rating} tierListParam={tierListParam} description={description} key={`${rating}`}></TierBar>
                                 )
                             })}
                     </div>

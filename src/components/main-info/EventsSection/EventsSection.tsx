@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./EventsSection.css"
 export const EventsSection: React.FC = () => {
     const [date,setDate] = useState<null|Date>(null);
 
@@ -10,17 +10,19 @@ export const EventsSection: React.FC = () => {
     const handleTimeDifference = (startDate:Date ,endDate:Date) =>{
         const currentDate = new Date();
         let difference = startDate.getTime() - currentDate.getTime();
-        let info = "Ивент начнется через ";
+        let info = "Ивент начнется через: ";
         if(difference <= 0){
             difference = endDate.getTime() - currentDate.getTime();
-            info = "Ивент закончится через ";
+            info = "Ивент закончится через: ";
         }
         const millisecondsInOneDay = 86_400_000;
         const deltaDays = difference/millisecondsInOneDay;
         const deltaHours = deltaDays%1*24;
         const deltaMinutes = deltaHours%1*60;
         const deltaSeconds = deltaMinutes%1*60;
-        return `${info} ${Math.trunc(deltaDays)} д. ${Math.trunc(deltaHours)} ч. ${Math.trunc(deltaMinutes)} м. ${Math.trunc(deltaSeconds)} c.`; 
+        return <span>
+            {info} <br></br> {`${Math.trunc(deltaDays)} д. ${Math.trunc(deltaHours)} ч. ${Math.trunc(deltaMinutes)} м. ${Math.trunc(deltaSeconds)} c.`} 
+        </span>
     }
 
     useEffect(()=>{
@@ -53,8 +55,8 @@ export const EventsSection: React.FC = () => {
     return <section className="events-section">
         <h2> Активные события </h2>
         {events.map((event, index) => {
-            return <article className="main-info-event-sector" key={index}>
-                <span>{handleTimeDifference(event.startDate, event.endDate)}</span>
+            return <article className="event-sector" key={index}>
+                {handleTimeDifference(event.startDate, event.endDate)}
                 <img key={index} src={event.imgSrc} alt={event.name} />
             </article>
         })}

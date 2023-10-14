@@ -1,10 +1,13 @@
 
+.navigation-section h2{
+    margin-bottom: 14px;
+}
 .navigation-section li{
     display: flex;
     align-items: center;
     justify-items: center;
     z-index: 2;
-
+font-weight: 600;
 }
 .navigation-section svg{
    

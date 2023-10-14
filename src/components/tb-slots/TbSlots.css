@@ -42,8 +42,17 @@
     cursor: pointer;
     transition: 0.5s;
     margin-right: 20px;
+    animation: AppearAnimationSlot 0.5s ease;
 }
-
+@keyframes AppearAnimationSlot {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .tb-slots-slot:last-of-type{
     margin-right: 0px;
 }

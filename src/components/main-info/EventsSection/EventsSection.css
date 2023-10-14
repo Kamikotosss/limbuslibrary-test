@@ -1,0 +1,29 @@
+.event-sector{
+  animation: bounceAnimation 1.2s ease ;
+  width: 100%;
+  height: fit-content;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.events-section h2 {
+  margin-bottom: 16px;
+}
+.event-sector span {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.event-sector img {
+  margin-bottom: 16px;
+}
+
+@keyframes bounceAnimation {
+  0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+}

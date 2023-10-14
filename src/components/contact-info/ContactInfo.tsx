@@ -8,7 +8,7 @@ export const ContactInfo:React.FC = () =>{
 
     <article>
         <h2> Автор оригинала </h2>
-        <button>
+        <button className="discord">
             <DiscordIconSVG/>
         </button>
         <button>
@@ -18,7 +18,7 @@ export const ContactInfo:React.FC = () =>{
 
     <article>
         <h2> Создатель сайта </h2>
-        <button>
+        <button className="discord">
             <DiscordIconSVG/>
         </button>
         <button>

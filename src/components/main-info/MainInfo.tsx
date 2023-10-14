@@ -3,6 +3,7 @@ import { EntitySection } from "./EntitySection/EntitySection";
 import { EventsSection } from "./EventsSection/EventsSection";
 import "./MainInfo.css";
 import { NavigationSection } from "./NavigationSection/NavigationSection";
+import { OfficialLinksSection } from "./OfficialLinksSection/OfficialLinksSection";
 import { ToDoSection } from "./ToDoSection/ToDoSection";
 export const MainInfo:React.FC = () => {
 
@@ -20,6 +21,7 @@ export const MainInfo:React.FC = () => {
                 <EntitySection/>
                 <NavigationSection/>
                 <ToDoSection/>
+                <OfficialLinksSection/>
             </section>
                
             <section className="main-info-right">
