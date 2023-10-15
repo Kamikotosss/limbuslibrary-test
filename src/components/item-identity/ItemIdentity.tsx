@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { homePage } from "../../constants/homePage";
 import useHover from "../../hooks/useHover";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { DmgTypeFilterInterface, GuardTypeFilterInterface, SinFilterInterface } from "../../store/reducers/filter-reducer";
@@ -18,7 +19,7 @@ export const ItemIdentity:React.FC<ItemIdentityInterface> = ({identity}) =>{
     return (
         <div ref={refItem} className={"item-identity-container"}>
             <div className={"shadow"}>
-                <img src={`/images/identities/${imgUrl}.png`} alt={`${imgUrl}`}/>
+                <img src={`./images/identities/${imgUrl}.png`} alt={`${imgUrl}`}/>
             </div>
         {
             isHovering && <ItemIdentityInfo  identity={identity}></ItemIdentityInfo>

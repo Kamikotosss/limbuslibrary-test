@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { getLocationLastParam } from "../../tools/getLocationLastParam";
 import "./TierListNav.css";
 
 export const TierListNav:React.FC = () => {
     const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const type = params.get('type');
     const routes = [
         {
             path:"identities",
@@ -27,10 +28,10 @@ export const TierListNav:React.FC = () => {
                         routes.map((route)=>{
                             return(
                                 <li key={`${route.path}`}>
-                                    <Link className={getLocationLastParam(location.pathname)=== route.path ? "tier-list-nav--active" : ""} to={`/tierlist/${route.path}`}>
+                                    <Link className={type === route.path ? "tier-list-nav--active" : ""} to={`/limbuslibrary/tierlist?type=${route.path}`}>
                                         {route.name}
                                     </Link>
-                                    {getLocationLastParam(location.pathname)=== route.path && <div className="tier-list-nav-line"/>}
+                                    {type === route.path && <div className="tier-list-nav-line"/>}
                                 </li>
                             )
                         })

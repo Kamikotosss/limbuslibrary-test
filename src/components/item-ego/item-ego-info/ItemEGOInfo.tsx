@@ -11,11 +11,11 @@ export const ItemEGOInfo:React.FC<ItemEGOInfoInterface> = ({ego}) => {
         <div  className={"item-ego-info-container"} >
              <div className={"item-ego-info-skills"}>
                 <div  className="item-ego-info-sin">
-                    <img  src={`/images/sanity.png`}/>
+                    <img  src={`./images/sanity.png`}/>
                     {sanity}
                 </div>
                 <div  className="item-ego-info-sin">
-                    <img  src={`/images/dmg-type/${dmgType}.png`}/>
+                    <img  src={`./images/dmg-type/${dmgType}.png`}/>
                     <div className={["item-ego-info-line", `${egoRes}-sin-color`].join(" ")}/>
                 </div>
            </div>
@@ -25,7 +25,7 @@ export const ItemEGOInfo:React.FC<ItemEGOInfoInterface> = ({ego}) => {
                     if(!ego[sin]) return <></>
                     return (
                         <div key={`${sin}`} className="item-ego-info-sin">
-                            <img  src={`/images/sins/${sin}.png`}/>
+                            <img  src={`./images/sins/${sin}.png`}/>
                             {"x"+ego[sin]}
                             <div className={["item-ego-info-line", `${sin}-sin-color`].join(" ")}/>
                         </div>

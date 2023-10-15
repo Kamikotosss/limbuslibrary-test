@@ -6,6 +6,7 @@ import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { Footer } from "../components/footer/Footer";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
+import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
 import { ScrollUpButton } from "../components/scroll-up-button/ScrollUpButton";
 import { StatusesTable } from "../components/statuses-table/StatusesTable";
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -26,14 +27,14 @@ export const StatusesPage:React.FC = () => {
             <StatusesTable statuses={statuses}/>
             <ScrollUpButton/>
         </>;
+        return <></>
     }
     return  <>
         <LeftMenu/>
         <DisclaimerBanner/>
-        <main className={"global-content-wrapper"}>
-            {
-            layout()
-            }
-        </main>
+        <MainLayoutContainer>
+                {layout()}
+        </MainLayoutContainer>
+        
     </>
 }

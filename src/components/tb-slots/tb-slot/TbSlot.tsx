@@ -132,7 +132,7 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
         !slot.identity ? "tb-slots-empty" : ""].join(" ")}>
 
             <div className={[(!identity) ? "": "shadow" ].join(" ") }>
-                { (!identity) ? <IdentitySVG/>:<img src={`/images/identities/${identity.imgUrl}.png`} alt={`identities/${identity.imgUrl}`}/>}
+                { (!identity) ? <IdentitySVG/>:<img src={`./images/identities/${identity.imgUrl}.png`} alt={`identities/${identity.imgUrl}`}/>}
             </div>
 
         </div>
@@ -148,7 +148,7 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
                         ? <span >{glyph}</span>
                         : <>
                             <div className={"shadow"}>
-                                <img src={`/images/ego/${ego.imgUrl}.png`} alt={`ego/${ego.imgUrl}`}/>
+                                <img src={`./images/ego/${ego.imgUrl}.png`} alt={`ego/${ego.imgUrl}`}/>
                             </div>
                             <div className={["tb-ego-frame",`${ego.egoRes}-sin-color`].join(" ")}/>
                         </>

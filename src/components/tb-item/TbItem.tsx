@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { homePage } from "../../constants/homePage";
 import useHover from "../../hooks/useHover";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
@@ -91,7 +92,7 @@ export const TbItem:React.FC<TbItemInterface> = ({entity}) => {
     return (
         <div onClick={()=>handleItemClick()} className={"tb-item-container"}>
             <div className={"shadow"}>
-                <img src={`/images/${imgUrl}.png`} alt={`${imgUrl}`}/>
+                <img src={`${homePage}/images/${imgUrl}.png`} alt={`${imgUrl}`}/>
             </div>
             {svgType()}
             <div className={"tb-item-rarity"} >{rarity}</div>

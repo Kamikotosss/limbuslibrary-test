@@ -7,6 +7,7 @@ import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
 import { MainInfo } from "../components/main-info/MainInfo";
+import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
 export const IndexPage:React.FC = () => {
@@ -26,8 +27,8 @@ export const IndexPage:React.FC = () => {
     return  <>
         <LeftMenu/>
         <DisclaimerBanner/>
-        <main className={"global-content-wrapper"}>
+        <MainLayoutContainer>
             {layout()}
-        </main>
+        </MainLayoutContainer>
     </>
 }

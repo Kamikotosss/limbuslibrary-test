@@ -9,6 +9,7 @@ import { Footer } from "../components/footer/Footer";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { ListIds } from "../components/list-ids/ListIds";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
+import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
 export const IdentitiesPage:React.FC = () => {
@@ -35,8 +36,8 @@ export const IdentitiesPage:React.FC = () => {
     return  <>
         <LeftMenu/>
         <DisclaimerBanner/>
-        <main className={"global-content-wrapper"}>
+        <MainLayoutContainer>
             {layout()}
-        </main>
+        </MainLayoutContainer>
     </>
 }

@@ -25,7 +25,7 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
             if (!count) continue;
             result.push(
                 <div key={`${attribure}${slot.identity.name}`}>
-                    <img className="tb-info-img" src={`/images/identities/${slot.identity.imgUrl}.png`}></img> 
+                    <img className="tb-info-img" src={`./images/identities/${slot.identity.imgUrl}.png`}></img> 
                     <span className="tb-info-count">x{count}</span>
                 </div>
             ) 
@@ -44,7 +44,7 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
                 if(!count) continue;
                 result.push(
                     <div  key={`${attribure}${current.name}`}>
-                        <img className="tb-info-img" src={`/images/ego/${current.imgUrl}.png`}></img> 
+                        <img className="tb-info-img" src={`./images/ego/${current.imgUrl}.png`}></img> 
                         <span className="tb-info-count">x{count}</span>
                     </div>
                 )
@@ -60,7 +60,7 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
             if (!!slot.identity && slot.identity.status.includes(tag)){
                 result.push(
                     <div key={`${attribure}${slot.identity.name}`}>
-                        <img className="tb-info-img" src={`/images/identities/${slot.identity.imgUrl}.png`}></img> 
+                        <img className="tb-info-img" src={`./images/identities/${slot.identity.imgUrl}.png`}></img> 
                         <span className="tb-info-count">x1</span>
                     </div>
                 ) 
@@ -78,7 +78,7 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
                 if(!!current && current.status.includes(tag)){
                     result.push(
                         <div key={`${attribure}${current.name}`}>
-                            <img className="tb-info-img" src={`/images/ego/${current.imgUrl}.png`}></img> 
+                            <img className="tb-info-img" src={`./images/ego/${current.imgUrl}.png`}></img> 
                             <span className="tb-info-count">x1</span>
                         </div>
                     )

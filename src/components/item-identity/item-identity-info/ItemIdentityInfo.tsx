@@ -23,7 +23,7 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
                 {skills.map(({imageUrl,count,sin,type})=>{
                     return (
                         <div key={`skill${Math.random()}`} className="item-identity-info-sin">
-                            <img  src={`/images/${imageUrl}.png`}/>
+                            <img  src={`./images/${imageUrl}.png`}/>
                             <div className={["item-identity-info-line", `${sin}-sin-color`].join(" ")}></div>
                         </div>
                     )
@@ -36,7 +36,7 @@ export const ItemIdentityInfo:React.FC<ItemIdentityInfoInterface> = ({identity})
                             return(
                             <div key={`${index}`} className="item-identity-info-tier">
                                 <div className="item-identity-info-tier-description">
-                                    <img src={`/images/${imageUrl}.png`} />
+                                    <img src={`./images/${imageUrl}.png`} />
                                     {count > 0 && <span>{`x${count}`}</span>}
                                 </div>
                                 <div className="item-identity-info-tier-rank-container">

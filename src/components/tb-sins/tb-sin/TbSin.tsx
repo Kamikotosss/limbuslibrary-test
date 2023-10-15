@@ -72,7 +72,7 @@ export const TbSin:React.FC <TbSinInterface> = ({sin,energy}) =>{
     return(
     <div ref={refItem} className={["tb-sins-sin" , slotHoverInfo.visible ? "tb-sins-sin--active" : ""].join(" ")} key={sin}>
         { (reqCount !== 0 || count !== 0 )  && <TbInfo attribure={sin}  type="sins"></TbInfo>}
-        <img src={`/images/sins/${sin}.png`} className="tb-sins-img"></img>
+        <img src={`./images/sins/${sin}.png`} className="tb-sins-img"></img>
         <span>{count}{ (!!slotHoverInfo.pres) && <span className={"tb-sins-pres"} >{`(${slotHoverInfo.pres})`}</span>}/{reqCount}{ (!!slotHoverInfo.req) && <span className={"tb-sins-req"}>{`(${slotHoverInfo.req})`}</span>}</span>
     </div>
     )

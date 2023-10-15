@@ -6,8 +6,8 @@
     color: white;
     font-size: 4vh;
     position: fixed;
-    background-color: #121315;
-    border: 1vh dashed grey;
+    background-color: #ffffff;
+    /* border: 1vh dashed grey; */
     z-index: 105;
     bottom: 0;
     left: 0;
@@ -16,6 +16,7 @@
 }
 .disclaimer-banner p {
     margin: 0;
+    color: #121315;
 }
 .disclaimer-banner span {
     color: #3AA1FF;
@@ -23,11 +24,11 @@
 .disclaimer-banner button {
     border-radius: 6px;
     padding: 10px 30px;
-    background-color: grey;
+    background-color:  #3AA1FF;
     box-sizing: border-box;
     transition: 0.5s;
 }
 .disclaimer-banner button:hover {
-    background-color: rgb(186, 186, 186);
+    background-color: #0471d6;
    
 }

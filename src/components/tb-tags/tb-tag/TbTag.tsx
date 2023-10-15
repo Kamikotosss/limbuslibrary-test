@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { homePage } from "../../../constants/homePage";
 import useHover from "../../../hooks/useHover";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EnergyInterface, SlotInterface, tbResetHoverAction, tbSetHoverAction } from "../../../store/reducers/tb-reducer";
@@ -37,7 +38,7 @@ export const TbTag:React.FC <TbSinInterface> = ({tag,count}) =>{
     return(
     <div ref={refItem} className={["tb-tags-tag" ,slotHoverMatch() ? "tb-tags-tag--active" : ""].join(" ")} key={tag}>
         { isHovering  && <TbInfo attribure={tag} type="tags"></TbInfo>}
-        <img src={`/images/tags/${tag}.png`} className="tb-sins-img" alt={tag}></img>
+        <img src={`./images/tags/${tag}.png`} className="tb-sins-img" alt={tag}></img>
         <span>x{count}</span>
     </div>
     )

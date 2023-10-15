@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { homePage } from "../../constants/homePage";
 import useHover from "../../hooks/useHover";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
 import { ItemEGOInfo } from "./item-ego-info/ItemEGOInfo";
@@ -13,7 +14,7 @@ export const ItemEGO:React.FC<ItemEGOInterface> = ({ego}) => {
     return (
         <div  ref={refItem} className={"item-ego-container"} >
             <div className={"shadow"}>
-                <img src={`/images/ego/${imgUrl}.png`} alt={`${imgUrl}`}/>
+                <img src={`./images/ego/${imgUrl}.png`} alt={`${imgUrl}`}/>
             </div>
            {
             isHovering && <ItemEGOInfo ego={ego}></ItemEGOInfo>

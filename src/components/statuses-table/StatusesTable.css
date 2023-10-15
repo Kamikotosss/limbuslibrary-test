@@ -7,6 +7,8 @@
     text-align: center;
     color:#AFAEB4;
     font-size: 24px;
+    font-weight: 400;
+
 }
 .statuses-table img {
     width: 50px;
@@ -37,6 +39,13 @@
 }
 .statuses-table thead tr{
     background-color: #121315;
+}
+.statuses-table thead th{
+    font-size: 32px;
+}
+.statuses-table tbody td{
+    font-weight: 500;
+    font-size: 28px;
 }
 .statuses-table tbody tr:nth-child(even) {
     background-color: #25272D;
@@ -73,7 +82,6 @@
     transition: 0.4s;
 }
 .statuses-buttons button:hover{
-    transform: scale(1.02);
     box-shadow:  0px 8px 17px 2px rgba(0,0,0,0.14) ,0px 3px 14px 2px rgba(0,0,0,0.12) ,0px 5px 5px -3px rgba(0,0,0,0.2);
   }
 

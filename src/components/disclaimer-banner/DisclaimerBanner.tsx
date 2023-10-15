@@ -17,6 +17,6 @@ export const DisclaimerBanner:React.FC = () => {
         <br/>
         Этот сайт не является официальным ресурсом <span>Project Moon</span>, и все материалы остаются собственностью их оригинальных владельцев.
         </p>
-        <button onClick={() => handleAgreement()}>OK</button>
+        <button onClick={() => handleAgreement()}>ПОНИМАЮ</button>
     </section>
 }

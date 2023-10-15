@@ -19,37 +19,35 @@ export const AppRouter:React.FC = () => {
             element:<IndexPage />,
         },
         {
-            path:"/",
+            path:"/limbuslibrary",
             element:<IndexPage />,
         },
         {
-            path:"/tierlist",
+            path:"/limbuslibrary/tierlist",
             element:<TierListPage />,
-            redirectElement:<TierListPage redirect={"/tierlist/identities"}/>,
-            params: ["/identities" , "/ego" ,"/passives"]
         },
         {
-            path:"/ego",
+            path:"/limbuslibrary/ego",
             element:<EGOPage />,
         },
         {
-            path:"/identities",
+            path:"/limbuslibrary/identities",
             element:<IdentitiesPage />,
         },
         {
-            path:"/teambuilder",
+            path:"/limbuslibrary/teambuilder",
             element:<TeamBuilderPage />,
         },
         {
-            path:"/statuses",
+            path:"/limbuslibrary/statuses",
             element:<StatusesPage />,
         },
         {
-            path:"/aboutgame",
+            path:"/limbuslibrary/aboutgame",
             element:<AboutGamePage />,
         },
         {
-            path:"/contact",
+            path:"/limbuslibrary/contact",
             element:<ContactPage />,
         },
     ]
@@ -62,16 +60,11 @@ export const AppRouter:React.FC = () => {
     
     return (
         <Routes>
-        {routes.reduce((acc:ReactElement[],route)=>{
-            if(route.params){
-                for(let i = 0 ; i < route.params.length;i++) 
-                    acc.push(<Route path={`${route.path}${route.params[i]}`} element={route.element} key={`${route.path}${Math.random()}`}/>);
-                acc.push(<Route path={`${route.path}`} element={route.redirectElement} key={`${route.path}${Math.random()}`}/>);
-            }else{
-                acc.push(<Route path={`${route.path}`} element={route.element} key={`${route.path}${Math.random()}`}/>)
-            }
-            return acc;
-        },[])}
+        {
+        routes.map((route,index)=>{
+            return <Route path={`${route.path}`} element={route.element} key={index}/>;
+        })
+        }
         </Routes>
     )
 }

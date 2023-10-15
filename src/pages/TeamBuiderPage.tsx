@@ -8,6 +8,7 @@ import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { Footer } from "../components/footer/Footer";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
+import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
 import { TbModal } from "../components/tb-modal/TbModal";
 import { TbSins } from "../components/tb-sins/TbSins";
 import { TbSlots } from "../components/tb-slots/TbSlots";
@@ -48,8 +49,8 @@ export const TeamBuilderPage:React.FC = () => {
     return  <>
         <LeftMenu/>
         <DisclaimerBanner/>
-        <main className={"global-content-wrapper"}>
-            {layout()}
-        </main>
+        <MainLayoutContainer>
+                {layout()}
+        </MainLayoutContainer>
     </>
 }

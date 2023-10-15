@@ -5,26 +5,35 @@
     background-color: #131319;
     position: fixed;
     z-index: 98;
+    transition: 0.5s;
 }
-  
-  .left-menu ul {
+.burger-menu--wrapper{
+  position: absolute;
+  right: 0px;
+  top: 36px;
+}
+.left-menu ul {
     list-style: none; 
     padding: 30px 20px;
     margin: 0; 
     box-sizing: border-box;
-  }
-  
-  .left-menu  li {
-    margin-bottom: 10px; 
-  }
-  .left-menu  li:first-of-type {
-    margin-bottom: 50px; 
-  }
-  .left-menu li:first-of-type a{
+    overflow: hidden;
+}
+.left-menu  li {
+    width: 235px;
+    height: 55px;
+}
+.left-menu li:first-of-type{
+  margin-bottom: 34px;
+}
+.left-menu li:first-of-type a{
     padding: 0;
     color: white;
-  }
-  .left-menu  a {
+    width: 235px;
+    height: 70px;
+}
+
+.left-menu  a {
     color: #AFAEB4; 
     text-decoration: none; 
     display: flex;
@@ -35,18 +44,178 @@
     font-size: 24px;  
     transition: 0.5s;
     border-radius: 4px;
-  }
-  .left-menu li:first-of-type a{
+}
+.left-menu li:first-of-type a{
     font-size: 30px; 
-  }
+}
   .left-menu a span span{
     color:#3AA1FF;
   }
   .left-menu a:hover {
     color: #fff; 
   }
-  
+  .left-menu svg{
+    transition: 0.5s;
+    opacity: 0.5;
+    width: 26px;
+    height: 26px;
+  }
+  .left-menu li:nth-of-type(1) svg{
+    opacity: 1;
+    width: unset;
+    height: unset;
+  }
+  .left-menu a:hover svg{
+    opacity: 1;
+  }
 .left-menu-route--active{
     background: linear-gradient(97deg, #3AA1FF -174.48%, #211E29 32.15%);
     color: #fff !important; 
+}
+.left-menu-route--active svg{
+  opacity: 1;
+}
+.burger-menu {
+  position: relative;
+  color: white;
+  font-size: 40px;
+  right: 0;
+  z-index: 2;
+  width: 40px;
+  height: 20px;
+  line-height: 0;
+  transition: 1s;
+  left: unset;
+}
+.burger-menu div{
+  height: 4px;
+  background-color: #fff;
+  transition: 0.5s;
+}
+.burger-menu::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  transition: 0.5s;
+  right:0;
+}
+
+.burger-menu::before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  width: 60%;
+  height: 4px;
+  color: white;
+  background-color: #fff;
+  transition: 0.5s;
+  right:0;
+}
+.burger-menu .line2{
+  position: absolute;
+  top:0;
+  opacity: 1;
+  transition: 0.5s;
+  width: 100%;
+  right:0;
+}
+.burger-menu .line3{
+  position: absolute;
+  bottom:0;
+  opacity: 1;
+  transition: 0.5s;
+  width: 60%;
+  right: 0;
+}
+.burger-menu .line1{
+  transition: 0.5s;
+  width: 80%;
+  right:0;
+  top: 8px;
+  position: absolute;
+}
+.burger-menu:hover .line1{
+  opacity: 0;
+}
+
+.burger-menu:hover .line2{
+  transform-origin: right;
+  transform: translate(-14px,-3px)  rotate(-30deg); width: 60%;
+}
+.burger-menu:hover .line3{
+  transform-origin: right;
+  transform: translate(-14px,3px)  rotate(30deg); width: 60%;
+}
+.burger-menu:hover::after{
+  transform-origin: right;
+  transform: translate(0px,-3px)  rotate(-30deg); width: 60%;
+}
+.burger-menu:hover::before{
+  transform-origin: right;
+  transform: translate(0px,3px)  rotate(30deg); width: 60% ;
+}
+.left-menu--minimized .line3{
+  right: unset;
+}
+.left-menu--minimized .line2{
+  right: unset;
+}
+.left-menu--minimized .line1{
+  right: unset;
+  left: 0;
+}
+.left-menu--minimized .burger-menu::before{
+  right: unset;
+  left:0;
+}
+.left-menu--minimized .burger-menu::after{
+  right: unset;
+  left:0;
+}
+.left-menu--minimized .burger-menu:hover .line2{
+  transform-origin: initial;
+  transform: translate(22px,2.5px)  rotate(30deg); width: 60%;
+}
+.left-menu--minimized .burger-menu:hover .line3{
+  transform-origin: initial;
+  transform: translate(22px,-2.5px)  rotate(-30deg); width: 60%;
+}
+.left-menu--minimized .burger-menu:hover::after{
+  transform-origin: initial;
+  transform: translate(8px,2.5px)  rotate(30deg); width: 60%;
+}
+.left-menu--minimized .burger-menu:hover::before{
+  transform-origin: initial;
+  transform: translate(8px,-2.5px)  rotate(-30deg); width: 60% ;
+}
+.left-menu--minimized  .burger-menu--wrapper {
+  right: 20px;
+  top: 36px;
+}
+.left-menu--minimized  li:first-of-type {
+  margin-bottom: 10px; 
+  margin-top: 36px;
+}
+.left-menu--minimized  span {
+  font-size: 43px; 
+}
+.left-menu--minimized{
+  width: 80px;
+}
+.left-menu--minimized svg{
+  width: 40px;
+  height: 40px;
+}
+.left-menu--minimized a{
+  padding: 0;
+  background: none;
+
+}
+
+@keyframes appearAnimation {
+  0% { opacity: 0;}
+100% { opacity: 1;}
 }

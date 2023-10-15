@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Footer } from "../components/footer/Footer";
-import { Header } from "../components/header/Header";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { TierList } from "../components/tier-list/TierList";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { TierListNav } from "../components/tier-list-nav/TierListNav";
-import { getLocationLastParam } from "../tools/getLocationLastParam";
 import { fetchIds } from "../api/fetchIds";
 import { fetchEGO } from "../api/fetchEGO";
 import { Filters } from "../components/filters/Filters";
@@ -15,23 +12,19 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { fetchStatuses } from "../api/fetchStatuses";
 import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
-interface TierListPageInterface{
-    redirect?:string
-}
-export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
+import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
+
+export const TierListPage:React.FC = () => {
     const egoState = useTypedSelector( (store) => store.egoReducer);
     const idsState = useTypedSelector( (store) => store.idsReducer);
     const statusesState = useTypedSelector( (store) => store.statusesReducer);
-    const navigate = useNavigate();
     const dispatch =useDispatch();
-    const location =useLocation();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const params = new URLSearchParams(location.search);
+    const type = params.get('type');
     useEffect(() => {
-        if(!!redirect){
-            console.log("redirected")
-            navigate(redirect);
-        } 
-        const tierlistParam = getLocationLastParam(location.pathname);
-        switch (tierlistParam){
+        switch (type){
             case "identities":
                 fetchIds()(dispatch);
                 break;
@@ -42,7 +35,8 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
                 fetchIds()(dispatch);
                 break;
             default:
-                break;
+                navigate("/limbuslibrary/");
+                return;
         }
         fetchStatuses()(dispatch);
     }, [location]);
@@ -61,9 +55,11 @@ export const TierListPage:React.FC<TierListPageInterface> = ({redirect}) => {
     return  <>
         <LeftMenu/>
         <DisclaimerBanner/>
-        <main className={"global-content-wrapper"}>
-            <TierListNav></TierListNav>
+        <MainLayoutContainer>
+            <>
+            <TierListNav/>
             {layout()}
-        </main>
+            </>
+        </MainLayoutContainer>
     </>
 }

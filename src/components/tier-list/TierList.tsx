@@ -16,9 +16,10 @@ export const TierList:React.FC<TierListInterface> = () => {
         { rating: "C", description: "Неэффективные Личности/ЭГО, лучше всего избегать их выбора, так как они не способны успешно выполнять игровые задачи." }
       ];
     const location = useLocation();
-    const locationParam = getLocationLastParam(location.pathname);
+    const params = new URLSearchParams(location.search);
+    const type = params.get('type')||"";
     const tierListClass = () =>{
-        switch (locationParam){
+        switch (type){
             case "identities":
                 return "tier-list--ego-ids";
             case "ego":
@@ -29,10 +30,10 @@ export const TierList:React.FC<TierListInterface> = () => {
         return "";
     }
     const setupTierlist = () => {
-        if (locationParam === "passives") return ["battlePassives" , "supportPassives"];
-        return [locationParam];
+        if (type === "passives") return ["battlePassives" , "supportPassives"];
+        return [type];
     }
-    const tierListName = (tierListParam:string) =>{
+    const tierListName = (tierListParam:string|null) =>{
         switch (tierListParam){
             case "identities":
                 return "Identities tier list";

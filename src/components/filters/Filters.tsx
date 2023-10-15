@@ -1,6 +1,7 @@
 import React, {useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { homePage } from "../../constants/homePage";
 import { damageTypes , guardTypes,rarityIdentityTypes,sinnerTypes,sinTypes,tagsIds} from "../../constants/skillBasedTypes";
 import { dmgType, rarityEGOType, sinnerType, sinType } from "../../constants/types";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -119,7 +120,7 @@ export const Filters:React.FC = () => {
                             if(isTypeActive) countActive++;
                             return <FilterButton 
                             handleFilterChange={()=>handleFilterChange(filter.type,subtype)} 
-                            imgSrc={`/images/${filter.imgsFolder}/${subtype}${filter.imgExtension}`}
+                            imgSrc={`${homePage}/images/${filter.imgsFolder}/${subtype}${filter.imgExtension}`}
                             isTypeActive={isTypeActive}
                             type={subtype}
                             key={subtype} />
@@ -150,7 +151,7 @@ export const Filters:React.FC = () => {
                             if(isTypeActive)countActive++;
                             return <FilterButton 
                             handleFilterChange={()=>handleFilterChange(filter.type,type)} 
-                            imgSrc={`/images/${filter.imgsFolder}/${type}${filter.imgExtension}`}
+                            imgSrc={`${homePage}/images/${filter.imgsFolder}/${type}${filter.imgExtension}`}
                             isTypeActive={isTypeActive}
                             type={type}
                             key={type} /> 
