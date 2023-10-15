@@ -28,7 +28,7 @@ export const TierListNav:React.FC = () => {
                         routes.map((route)=>{
                             return(
                                 <li key={`${route.path}`}>
-                                    <Link className={type === route.path ? "tier-list-nav--active" : ""} to={`/limbuslibrary/tierlist?type=${route.path}`}>
+                                    <Link className={type === route.path ? "tier-list-nav--active" : ""} to={`/tierlist?type=${route.path}`}>
                                         {route.name}
                                     </Link>
                                     {type === route.path && <div className="tier-list-nav-line"/>}

@@ -19,35 +19,35 @@ export const AppRouter:React.FC = () => {
             element:<IndexPage />,
         },
         {
-            path:"/limbuslibrary",
+            path:"/",
             element:<IndexPage />,
         },
         {
-            path:"/limbuslibrary/tierlist",
+            path:"/tierlist",
             element:<TierListPage />,
         },
         {
-            path:"/limbuslibrary/ego",
+            path:"/ego",
             element:<EGOPage />,
         },
         {
-            path:"/limbuslibrary/identities",
+            path:"/identities",
             element:<IdentitiesPage />,
         },
         {
-            path:"/limbuslibrary/teambuilder",
+            path:"/teambuilder",
             element:<TeamBuilderPage />,
         },
         {
-            path:"/limbuslibrary/statuses",
+            path:"/statuses",
             element:<StatusesPage />,
         },
         {
-            path:"/limbuslibrary/aboutgame",
+            path:"/aboutgame",
             element:<AboutGamePage />,
         },
         {
-            path:"/limbuslibrary/contact",
+            path:"/contact",
             element:<ContactPage />,
         },
     ]

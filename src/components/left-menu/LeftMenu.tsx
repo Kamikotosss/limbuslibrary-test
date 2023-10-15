@@ -17,17 +17,17 @@ export const LeftMenu:React.FC = () => {
     const leftMenuState = useTypedSelector(store => store.leftMenuReducer);
     const dispatch = useDispatch();
     const isCurrentLocation = (route:string)=>{
-        return location.pathname.split("/")[2].includes(route);
+        return location.pathname.split("/")[1].includes(route);
     }
     
     const links = [
-        {to:"/limbuslibrary/tierlist?type=identities",route:"tierlist" ,name:"ТИР ЛИСТ",SVG:TierListSVG},
-        {to:"/limbuslibrary/teambuilder",route:"teambuilder" ,name:"ТИМ БИЛДЕР",SVG:TeamBuilderSVG},
-        {to:"/limbuslibrary/identities",route:"identities" ,name:"ЛИЧНОСТИ",SVG:IdentitiesSVG},
-        {to:"/limbuslibrary/ego",route:"ego" ,name:"ЭГО",SVG:EGOSVG},
-        {to:"/limbuslibrary/statuses",route:"statuses" ,name:"СТАТУСЫ",SVG:StatusesPageSVG},
-        {to:"/limbuslibrary/aboutgame",route:"aboutgame" ,name:"ОБ ИГРЕ",SVG:InfoSvg},
-        {to:"/limbuslibrary/contact",route:"contact" ,name:"НАШИ КОНТАКТЫ",SVG:ContactSVG},
+        {to:"/tierlist?type=identities",route:"tierlist" ,name:"ТИР ЛИСТ",SVG:TierListSVG},
+        {to:"/teambuilder",route:"teambuilder" ,name:"ТИМ БИЛДЕР",SVG:TeamBuilderSVG},
+        {to:"/identities",route:"identities" ,name:"ЛИЧНОСТИ",SVG:IdentitiesSVG},
+        {to:"/ego",route:"ego" ,name:"ЭГО",SVG:EGOSVG},
+        {to:"/statuses",route:"statuses" ,name:"СТАТУСЫ",SVG:StatusesPageSVG},
+        {to:"/aboutgame",route:"aboutgame" ,name:"ОБ ИГРЕ",SVG:InfoSvg},
+        {to:"/contact",route:"contact" ,name:"НАШИ КОНТАКТЫ",SVG:ContactSVG},
     ];
     return (
         //TODO routing list
