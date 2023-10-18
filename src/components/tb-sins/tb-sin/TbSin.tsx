@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { mobileLayoutFrom } from "../../../constants/mobileLayoutFrom";
 import { sinType } from "../../../constants/types";
 import useHover from "../../../hooks/useHover";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../../store/reducers/ids-reducer";
+import { setMobileModalTrigger } from "../../../store/reducers/mobile-modal-reducer";
 import { EnergyInterface, tbResetHoverAction, tbSetHoverAction } from "../../../store/reducers/tb-reducer";
 import { TbInfo } from "../../tb-info/TbInfo";
 interface TbSinInterface {
@@ -67,11 +69,16 @@ export const TbSin:React.FC <TbSinInterface> = ({sin,energy}) =>{
         return ()=> {
             tbResetHoverAction(dispatch);
         } 
-    },[isHovering])     
-
+    },[isHovering]) 
+    const HoverComponent = <TbInfo attribure={sin}  type="sins"></TbInfo>
+    const handleClick = () => {
+        if(window.innerWidth > mobileLayoutFrom) return;
+        if(reqCount !== 0 || count !== 0 ) setMobileModalTrigger(dispatch,HoverComponent);
+        
+    }
     return(
-    <div ref={refItem} className={["tb-sins-sin" , slotHoverInfo.visible ? "tb-sins-sin--active" : ""].join(" ")} key={sin}>
-        { (reqCount !== 0 || count !== 0 )  && <TbInfo attribure={sin}  type="sins"></TbInfo>}
+    <div ref={refItem} onClick={()=>handleClick()} className={["tb-sins-sin" , slotHoverInfo.visible ? "tb-sins-sin--active" : ""].join(" ")} key={sin}>
+        { (reqCount !== 0 || count !== 0 ) && window.innerWidth > mobileLayoutFrom && HoverComponent}
         <img src={`./images/sins/${sin}.png`} className="tb-sins-img"></img>
         <span>{count}{ (!!slotHoverInfo.pres) && <span className={"tb-sins-pres"} >{`(${slotHoverInfo.pres})`}</span>}/{reqCount}{ (!!slotHoverInfo.req) && <span className={"tb-sins-req"}>{`(${slotHoverInfo.req})`}</span>}</span>
     </div>

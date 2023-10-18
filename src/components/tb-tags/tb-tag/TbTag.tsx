@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { homePage } from "../../../constants/homePage";
+import { mobileLayoutFrom } from "../../../constants/mobileLayoutFrom";
 import useHover from "../../../hooks/useHover";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { setMobileModalTrigger } from "../../../store/reducers/mobile-modal-reducer";
 import { EnergyInterface, SlotInterface, tbResetHoverAction, tbSetHoverAction } from "../../../store/reducers/tb-reducer";
 import { TbInfo } from "../../tb-info/TbInfo";
 interface TbSinInterface {
@@ -35,9 +37,15 @@ export const TbTag:React.FC <TbSinInterface> = ({tag,count}) =>{
             tbResetHoverAction(dispatch);
         } 
     },[isHovering]) 
+    const HoverComponent = <TbInfo attribure={tag} type="tags"></TbInfo>;
+    const handleClick = () => {
+        if(window.innerWidth > mobileLayoutFrom) return;
+        if(count !== 0 ) setMobileModalTrigger(dispatch,HoverComponent);
+        
+    }
     return(
-    <div ref={refItem} className={["tb-tags-tag" ,slotHoverMatch() ? "tb-tags-tag--active" : ""].join(" ")} key={tag}>
-        { isHovering  && <TbInfo attribure={tag} type="tags"></TbInfo>}
+    <div ref={refItem} onClick={()=>handleClick()} className={["tb-tags-tag" ,slotHoverMatch() ? "tb-tags-tag--active" : ""].join(" ")} key={tag}>
+        { isHovering && window.innerWidth > mobileLayoutFrom && HoverComponent}
         <img src={`./images/tags/${tag}.png`} className="tb-sins-img" alt={tag}></img>
         <span>x{count}</span>
     </div>

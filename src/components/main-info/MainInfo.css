@@ -2,9 +2,11 @@
     color:white;
     width: 90%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
 }
+
 .main-info h2{
     font-size: 42px;
 }
@@ -14,8 +16,8 @@
     position:relative;
     z-index: 2;
     padding:40px;
-    padding-right: 40%;
     box-sizing: border-box;
+    width: 100%;
 }
 .main-info-header-main h1{
    font-size: 90px;
@@ -47,7 +49,6 @@
     margin: 0;
     font-weight: 500;
    animation: AppearAnimationP 1s ease;
-
  }
  @keyframes AppearAnimationP {
     0% {
@@ -94,3 +95,48 @@
     width: 25%;
 }
 
+@media (max-width: 1295px) {
+    .main-info section {
+        width: 100%;
+    }
+    .main-info-left {
+        order: 1;
+    }
+}
+@media (max-width: 730px) {
+    .main-info-header-main h1{
+        font-size: 70px;
+     }
+     .main-info-header-main p{
+        font-size: 22px;
+     }
+}
+@media (max-width: 730px) {
+    .main-info-header-main h1{
+        font-size: 70px;
+     }
+     .main-info-header-main p{
+        font-size: 22px;
+     }
+     .main-info-header-main{
+        padding:30px;
+    }
+}
+@media (max-width: 485px) {
+    .main-info-header-main h1{
+        font-size: 70px;
+     }
+     .main-info-header-main p{
+        font-size: 20px;
+     }
+     .main-info-header-main{
+        padding:20px;
+    }
+}
+@media (max-width: 400px) {
+    
+     .main-info-header-main p{
+        font-size: 18px;
+     }
+     
+}

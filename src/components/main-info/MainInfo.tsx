@@ -10,23 +10,26 @@ export const MainInfo:React.FC = () => {
 
     return (
         <section className="main-info" >
-            <section className="main-info-left">
-                <header className="main-info-header-main">
+            <header className="main-info-header-main">
                     <h1> Great <span>Limbus</span> Library </h1>
                     <p>
-                    Great Limbus Library- это фан-сайт и база данных, разработанные сообществом, 
-                    посвященные игре Limbus Company.
+                    Great Limbus Library- это фан-сайт и база данных, 
                     </p>
-                </header>
+                    <p>
+                    разработанные сообществом, 
+                    посвященные игре Limbus Company.
+                    </p>    
+            </header>
+            <section className="main-info-left">
                 <EntitySection/>
                 <NavigationSection/>
                 <ToDoSection/>
                 <OfficialLinksSection/>
             </section>
-               
             <section className="main-info-right">
                     <EventsSection/>
             </section>
+            
                
         </section>
     )

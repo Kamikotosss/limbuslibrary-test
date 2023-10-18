@@ -1,8 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 import "./EventsSection.css"
 export const EventsSection: React.FC = () => {
+    const events = [ 
+        {
+            startDate:new Date('October 29, 2023 03:59:59 GMT-06:00'),
+            endDate:new Date('November 29, 2023 03:59:59 GMT-06:00'),
+            name:"",
+            imgSrc:"./images/event.jpg"
+        },
+        {
+            startDate:new Date('October 04, 2023 03:59:59 GMT-06:00'),
+            endDate:new Date('December 29, 2023 03:59:59 GMT-06:00'),
+            name:"",
+            imgSrc:"./images/banner.jpg"
+        },
+        {
+            startDate:new Date('October 29, 2023 03:59:59 GMT-06:00'),
+            endDate:new Date('January 29, 2024 03:59:59 GMT-06:00'),
+            name:"",
+            imgSrc:"./images/bp.webp"
+        },
+    ]
+    const EventSector:React.FC<{event:{startDate:Date ,endDate:Date,name:string,imgSrc:string}}> = ({event}) =>{
     const [date,setDate] = useState<null|Date>(null);
-
+    const containerRef = useRef(null);
+    const {isVisible} = useIntersectionObserver(containerRef,0.1);
     const displayDateAndTimezone = () =>{
         const currentDate = new Date();
         setDate(currentDate)
@@ -30,35 +53,17 @@ export const EventsSection: React.FC = () => {
         return () => {
             clearInterval(timeInterval);
         }
-    },[])
-    
-    const events = [ 
-        {
-            startDate:new Date('October 29, 2023 03:59:59 GMT-06:00'),
-            endDate:new Date('November 29, 2023 03:59:59 GMT-06:00'),
-            name:"",
-            imgSrc:"./images/event.jpg"
-        },
-        {
-            startDate:new Date('October 04, 2023 03:59:59 GMT-06:00'),
-            endDate:new Date('December 29, 2023 03:59:59 GMT-06:00'),
-            name:"",
-            imgSrc:"./images/banner.jpg"
-        },
-        {
-            startDate:new Date('October 29, 2023 03:59:59 GMT-06:00'),
-            endDate:new Date('January 29, 2024 03:59:59 GMT-06:00'),
-            name:"",
-            imgSrc:"./images/bp.webp"
-        },
-    ]
+    },[]);
+
+    return <article ref={containerRef} className={`event-sector ${isVisible && "event-sector--animated"}`}>
+        {handleTimeDifference(event.startDate, event.endDate)}
+        <img src={event.imgSrc} alt={event.name} />
+    </article>
+    }
     return <section className="events-section">
         <h2> Активные события </h2>
         {events.map((event, index) => {
-            return <article className="event-sector" key={index}>
-                {handleTimeDifference(event.startDate, event.endDate)}
-                <img key={index} src={event.imgSrc} alt={event.name} />
-            </article>
+            return <EventSector  key={index} event={event}/>
         })}
     </section>
 }

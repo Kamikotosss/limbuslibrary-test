@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchStatuses } from "../api/fetchStatuses";
-import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
 import { ErrorInfo } from "../components/error-info/ErrorInfo";
-import { Footer } from "../components/footer/Footer";
-import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
-import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
 import { ScrollUpButton } from "../components/scroll-up-button/ScrollUpButton";
 import { StatusesTable } from "../components/statuses-table/StatusesTable";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { CommonPageLayout } from "./CommonPageLayout";
 
 export const StatusesPage:React.FC = () => {
     const {statuses,error,loading} = useTypedSelector(store => store.statusesReducer) ;
@@ -25,16 +22,11 @@ export const StatusesPage:React.FC = () => {
                 <h1>Список статусов</h1>
             </div>
             <StatusesTable statuses={statuses}/>
-            <ScrollUpButton/>
+            
         </>;
         return <></>
     }
-    return  <>
-        <LeftMenu/>
-        <DisclaimerBanner/>
-        <MainLayoutContainer>
-                {layout()}
-        </MainLayoutContainer>
-        
-    </>
+    return  <CommonPageLayout>
+    {layout()}
+</CommonPageLayout> 
 }

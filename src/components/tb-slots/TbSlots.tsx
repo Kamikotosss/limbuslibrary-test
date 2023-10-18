@@ -66,7 +66,7 @@ export const TbSlots:React.FC = () => {
                 <button onClick={handleSlotAdd}>+</button>
             </div>
             <Toggle positionClass="tb-slots-toggle" click={handleLayoutChange}/>
-            <button className="tb-slots-reset" onClick={()=> tbResetAllAction(dispatch) }><XMarkSVG/> Reset</button>
+            <button className="tb-slots-reset" onClick={()=> tbResetAllAction(dispatch) }><XMarkSVG/> Сбросить</button>
             <button className={`tb-slots-btnLeft ${(animatedClass.includes("hidden") || isLayoutGrid) ? "hidden": ""}`} onClick={handleScrollLeft}><ArrowLeftSVG/></button>
             <button className={`tb-slots-btnRight ${(animatedClass.includes("hidden") || isLayoutGrid) ? "hidden": ""}`} onClick={handleScrollRight}><ArrowRightSVG/></button>
             <div className={["tb-slots-container", animatedClass].join(" ")} 

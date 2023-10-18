@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { TierList } from "../components/tier-list/TierList";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -11,8 +10,7 @@ import { LoadingAnimation } from "../components/loading-animation/LoadingAnimati
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { fetchStatuses } from "../api/fetchStatuses";
 import { ErrorInfo } from "../components/error-info/ErrorInfo";
-import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
-import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
+import { CommonPageLayout } from "./CommonPageLayout";
 
 export const TierListPage:React.FC = () => {
     const egoState = useTypedSelector( (store) => store.egoReducer);
@@ -47,19 +45,16 @@ export const TierListPage:React.FC = () => {
         if(egoState.loading || idsState.loading || statusesState.loading) return <LoadingAnimation/>;
         return (
             <>
-            <Filters></Filters>
-            <TierList></TierList>
+            <div style={{width:"90%" ,color:"white"}}>
+                <h1>Тир Лист</h1>
+            </div>
+            <TierListNav/>
+            <Filters/>
+            <TierList/>
             </>
         );
     }
-    return  <>
-        <LeftMenu/>
-        <DisclaimerBanner/>
-        <MainLayoutContainer>
-            <>
-            <TierListNav/>
-            {layout()}
-            </>
-        </MainLayoutContainer>
-    </>
+    return <CommonPageLayout>
+    {layout()}
+</CommonPageLayout> 
 }

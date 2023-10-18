@@ -6,6 +6,7 @@
     transition: 0.5s;
     opacity: 0;
     cursor: default;
+    z-index: 110;
 }
 .scroll-up-button:hover{
     scale: 2.2;

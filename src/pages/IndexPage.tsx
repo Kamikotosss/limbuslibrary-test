@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchEGO } from "../api/fetchEGO";
 import { fetchIds } from "../api/fetchIds";
-import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
 import { ErrorInfo } from "../components/error-info/ErrorInfo";
-import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
 import { MainInfo } from "../components/main-info/MainInfo";
-import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { CommonPageLayout } from "./CommonPageLayout";
 
 export const IndexPage:React.FC = () => {
     const idsState = useTypedSelector(state => state.idsReducer);
@@ -24,11 +22,7 @@ export const IndexPage:React.FC = () => {
         return(<MainInfo/>
         )
     }
-    return  <>
-        <LeftMenu/>
-        <DisclaimerBanner/>
-        <MainLayoutContainer>
-            {layout()}
-        </MainLayoutContainer>
-    </>
+    return  <CommonPageLayout>
+    {layout()}
+</CommonPageLayout> 
 }

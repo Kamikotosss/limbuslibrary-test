@@ -2,13 +2,15 @@ import { dmgType, sinType } from "../constants/types";
 import { EGOInterface } from "../store/reducers/ego-reducer";
 import { DmgTypeFilterInterface, FilterInterface, GuardTypeFilterInterface, SinFilterInterface, SinnerFilterInterface } from "../store/reducers/filter-reducer";
 import { IdentityInterface } from "../store/reducers/ids-reducer";
+import { TSearchState } from "../store/reducers/search-reducer";
 import { isIdentity } from "./isIdentity";
 
-export const isFilterMatching = (filterState:FilterInterface,entity:IdentityInterface|EGOInterface) =>{
-    const {search,types} = filterState;
+export const isFilterMatching = (filterState:FilterInterface,searchState:TSearchState, entity:IdentityInterface|EGOInterface) =>{
+    const {types} = filterState;
+    const searchValue = searchState.value;
     const {status,sinner,name,rarity} = entity;
 
-    const regex = new RegExp(search, 'i');
+    const regex = new RegExp(searchValue, 'i');
     if(!regex.test(name)) return false; 
 
     for(const key in types.tags){

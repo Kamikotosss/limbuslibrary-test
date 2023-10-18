@@ -1,21 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { fetchIds } from "../api/fetchIds";
 import { fetchStatuses } from "../api/fetchStatuses";
-import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
 import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { Filters } from "../components/filters/Filters";
-import { Footer } from "../components/footer/Footer";
-import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { ListIds } from "../components/list-ids/ListIds";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
-import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { CommonPageLayout } from "./CommonPageLayout";
 
 export const IdentitiesPage:React.FC = () => {
     const {loading,error} = useTypedSelector(state => state.idsReducer);
     const statusesState = useTypedSelector(state => state.statusesReducer);
     const dispatch =useDispatch();
+    const ref = useRef(null);
     useEffect(() => {
         fetchIds()(dispatch);
         fetchStatuses()(dispatch);
@@ -28,16 +26,12 @@ export const IdentitiesPage:React.FC = () => {
             <div style={{width:"90%" ,color:"white"}}>
                 <h1>Список личностей</h1>
             </div>
-            <Filters/>
-            <ListIds/>
+            <Filters />
+            <ListIds />
             </>
         )
     }
-    return  <>
-        <LeftMenu/>
-        <DisclaimerBanner/>
-        <MainLayoutContainer>
-            {layout()}
-        </MainLayoutContainer>
-    </>
+    return  <CommonPageLayout>
+    {layout()}
+</CommonPageLayout> 
 }

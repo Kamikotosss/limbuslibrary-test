@@ -58,7 +58,7 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
                         key={status.name}
                         onClick={()=>{handleScroll(status.id,index)}}>
                             {/* <div className="filters-filter-tooltip">{status.id}</div> */}
-                            <img  src={`./images/tags/${status.id}.png`} alt={`${status.id}` } />
+                            <img  src={`./images/tags/${status.id}.png`} alt={``} />
                         </button>
                     })}
                 </article>
@@ -83,7 +83,7 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
             {statusesExtended.map((status) => {
                 return <tr key={status.id} className={`${status.id === animatedClass && "statuses-table-tr--active"} ${status.id === animatedClass && "statuses-table-tr--active"}`} ref={(rowReference) => (status.reference = rowReference as HTMLTableRowElement | null)}>
                 <td className={`statuses-table-th-image`}>
-                    <img src={`./images/tags/${status.id}.png`} alt={status.id} />
+                    <img src={`./images/tags/${status.id}.png`} alt={""} />
                 </td>
                 <td className="statuses-table-th-name">{status.name}</td>
                 <td className="statuses-table-th-description">{status.description}</td>

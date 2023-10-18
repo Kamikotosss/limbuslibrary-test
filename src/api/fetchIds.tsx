@@ -7,7 +7,7 @@ export const fetchIds = () => {
             let result:IdentityInterface[] = [];
             dispatch({type:IdsActionTypes.FETCH_IDS})
             try{
-                const response = await axios.get(`https://docs.google.com/spreadsheets/d/18-JZl9LlsJLT9sLH-ob1DEez4jYDcxJZYWCVQGmhL1o/`, {responseType: "arraybuffer",});
+                const response = await axios.get(`https://docs.google.com/spreadsheets/d/1F0vtWXGN_yFXYVbMhxokbhnn_i0E0_E8PRIrquwDIUk/`, {responseType: "arraybuffer",});
                 const workbook = XLSX.read(response.data, { type: 'array' });
                 const sheetName = workbook.SheetNames[0];
                 const sheet = workbook.Sheets[sheetName];

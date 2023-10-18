@@ -1,16 +1,9 @@
 import React from "react";
 import { AboutGameInfo } from "../components/about-game-info/AboutGameInfo";
-import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
-import { LeftMenu } from "../components/left-menu/LeftMenu";
-import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
+import { CommonPageLayout } from "./CommonPageLayout";
 
 export const AboutGamePage:React.FC = () => {
-    
-    return  <>
-        <LeftMenu/>
-        <DisclaimerBanner/>
-        <MainLayoutContainer>
+    return <CommonPageLayout>
             <AboutGameInfo/>
-        </MainLayoutContainer>
-    </>
+    </CommonPageLayout> 
 }

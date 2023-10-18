@@ -2,14 +2,14 @@
     background: #535353;
     width: 232px;
     padding: 15px;
-    z-index: 99;
+    z-index: 113;
     position: absolute;
     top: 0;
     left: 0;
     flex-direction: column;
     border-radius: 4px;
     display: none;
-    z-index: 103;
+    z-index: 113;
 }
 .tb-sins-sin:hover .tb-info{
     display: flex;
@@ -60,4 +60,16 @@
     bottom: -7.2px;
     left: calc(50% - 7.2px);
     z-index: 98;
+}
+@media(max-width:1000px){
+    .tb-info-arrow{
+        display: none;
+    }
+    .tb-info{
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top: 50%;
+        display: flex;
+        color:white;
+    }
 }

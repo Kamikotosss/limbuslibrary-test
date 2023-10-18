@@ -36,8 +36,8 @@
     transition: 0.5s;
 }
 .modal__slot{
-    width: 350px;
-    height: 600px;
+    width: 330px;
+    height: 70%;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 12px;
@@ -109,4 +109,25 @@
 }
 .modal-empty{
     border: 1px dashed #717171;
+}
+.clear-filters{
+    position: static;
+    order: -1;
+  }
+@media(max-width:1400px){
+    .modal__slot{
+        width: 300px;
+    }
+}
+@media(max-width:1000px){
+    .modal__slot{
+        display: none;
+    }
+    .modal--active .modal__content{
+        transform:  rotateY(0deg);
+    }
+    .modal__content{
+        padding: 20px;
+        width: 85%;
+    }
 }

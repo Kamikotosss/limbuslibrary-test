@@ -17,42 +17,13 @@ interface TbItemInterface{
 }
 export const TbItem:React.FC<TbItemInterface> = ({entity}) => {
     const isIdentity = isIdentityFunction(entity);
-    const refItem = useRef(null);
     const imgUrl = isIdentity ? `identities/${entity.imgUrl}` : `ego/${entity.imgUrl}`;
     const rarity = isIdentity ? entity.rarity.replaceAll("O","Ø") : entity.rarity;
     const frameColorClass = isIdentity ? `tb-item-frame--${entity.rarity}` : `${entity.egoRes}-sin-color`;
-    const isHovering = useHover(refItem);
-    const {slots,energy,modalTrigger} = useTypedSelector(store => store.tbReducer);
-    const filterState = useTypedSelector(store => store.filterReducer);
+    const {modalTrigger} = useTypedSelector(store => store.tbReducer);
+    
     const dispatch = useDispatch();
-    const isSameSinner = () => {
-        let sinner = entity.sinner;
-
-        for (const key in modalTrigger?.ego) {
-            const currEGO = modalTrigger?.ego[key as keyof typeof  modalTrigger.ego];
-            if (currEGO) return sinner === currEGO.sinner ;
-        }  
-
-        if (modalTrigger?.identity) return sinner === modalTrigger?.identity.sinner 
-
-        return true; 
-    }
-    const isAvailibleSinner = () => {
-        let sinner = entity.sinner;
-        for(let i =0;i < slots.length;i++){
-            let currentSlot = slots[i];
-            if(currentSlot === modalTrigger) continue;
-            for (const key in currentSlot?.ego) {
-                const currEGO = currentSlot?.ego[key];
-                if (currEGO){
-                    if (currEGO.sinner === sinner) return false;
-                    break;
-                } 
-            }  
-            if (currentSlot?.identity?.sinner === sinner) return false;
-        }
-        return true; 
-    }
+   
     const svgType = () => {
         if(isIdentity){
             const currIdentity = modalTrigger?.identity;
@@ -70,9 +41,7 @@ export const TbItem:React.FC<TbItemInterface> = ({entity}) => {
         }
         return <></>
     }
-    if (modalTrigger !== null && !isSameSinner() ) return <></>;
-    if (!isFilterMatching(filterState,entity)) return <></>;
-    if (!isAvailibleSinner()) return <></>;
+   
     const handleItemClick = () => {
         if(!modalTrigger) return;
         

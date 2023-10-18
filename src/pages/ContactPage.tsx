@@ -1,16 +1,9 @@
 import React from "react";
 import { ContactInfo } from "../components/contact-info/ContactInfo";
-import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
-import { LeftMenu } from "../components/left-menu/LeftMenu";
-import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
+import { CommonPageLayout } from "./CommonPageLayout";
 
 export const ContactPage:React.FC = () => {
-    
-    return  <>
-        <LeftMenu/>
-        <DisclaimerBanner/>
-        <MainLayoutContainer>
+    return <CommonPageLayout>
             <ContactInfo/>
-        </MainLayoutContainer>
-    </>
+    </CommonPageLayout>
 }

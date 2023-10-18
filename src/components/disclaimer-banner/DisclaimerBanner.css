@@ -4,15 +4,16 @@
     display: flex;
     box-sizing: border-box;
     color: white;
-    font-size: 4vh;
     position: fixed;
     background-color: #ffffff;
-    /* border: 1vh dashed grey; */
-    z-index: 105;
+    z-index: 112;
+    font-size: 13px;
     bottom: 0;
     left: 0;
     align-items: center;
     justify-content: space-evenly;
+    padding: 20px;
+    gap:20px;
 }
 .disclaimer-banner p {
     margin: 0;
@@ -30,5 +31,49 @@
 }
 .disclaimer-banner button:hover {
     background-color: #0471d6;
-   
+}
+@media (min-width: 380px) {
+    .disclaimer-banner {
+        font-size: 15px;
+    }
+}
+@media (min-width: 510px) {
+    .disclaimer-banner {
+        font-size: 17px;
+    }
+}
+@media (min-width: 700px) {
+    .disclaimer-banner {
+        font-size: 19px;
+    }
+}
+@media (min-width: 900px) {
+    .disclaimer-banner {
+        font-size: 21px;
+    }
+}
+@media (min-width: 1100px) {
+    .disclaimer-banner {
+        font-size: 23px;
+    }
+}
+@media (min-width: 1300px) {
+    .disclaimer-banner {
+        font-size: 25px;
+    }
+}
+@media (min-width: 1500px) {
+    .disclaimer-banner {
+        font-size: 27px;
+    }
+}
+@media (min-width: 1700px) {
+    .disclaimer-banner {
+        font-size: 29px;
+    }
+}
+@media (min-width: 1900px) {
+    .disclaimer-banner {
+        font-size: 31px;
+    }
 }

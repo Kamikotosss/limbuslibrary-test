@@ -6,12 +6,12 @@ const initialState = false;
 export const leftMenuReducer = (state = initialState,action : AnyAction):boolean =>{
     switch(action.type){
         case "LEFT_MENU_CHANGE_LAYOUT":
-            return !state;
+            return action.payload;
         default: 
             return state
     }
 }
 
-export const leftMenuChangeLayoutAction = (dispatch: Dispatch<AnyAction>) => {
-    dispatch({ type: "LEFT_MENU_CHANGE_LAYOUT" })
+export const leftMenuChangeLayoutAction = (dispatch: Dispatch<AnyAction> , payload:boolean) => {
+    dispatch({ type: "LEFT_MENU_CHANGE_LAYOUT" , payload})
 }

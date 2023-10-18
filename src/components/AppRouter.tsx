@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { filterResetAllAction } from "../store/reducers/filter-reducer";
 import { AboutGamePage } from "../pages/AboutGamePage";
 import { ContactPage } from "../pages/ContactPage";
+import { searchChangeValueAction } from "../store/reducers/search-reducer";
 
 export const AppRouter:React.FC = () => {
     
@@ -56,6 +57,7 @@ export const AppRouter:React.FC = () => {
      useEffect(()=>{
         window.scrollTo(0, 0);
         filterResetAllAction(dispatch);
+        searchChangeValueAction(dispatch,"");
     },[location])
     
     return (

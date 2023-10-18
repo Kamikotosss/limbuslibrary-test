@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getLocationLastParam } from "../../tools/getLocationLastParam";
+import { searchChangeTargetRefAction } from "../../store/reducers/search-reducer";
 import { TierBar } from "./tier-bar/TierBar";
 import "./TierList.css"
 interface TierListInterface {
@@ -18,6 +19,11 @@ export const TierList:React.FC<TierListInterface> = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const type = params.get('type')||"";
+    const containerRef = useRef(null);
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        searchChangeTargetRefAction(dispatch,containerRef)
+    },[])
     const tierListClass = () =>{
         switch (type){
             case "identities":
@@ -36,18 +42,18 @@ export const TierList:React.FC<TierListInterface> = () => {
     const tierListName = (tierListParam:string|null) =>{
         switch (tierListParam){
             case "identities":
-                return "Identities tier list";
+                return "Личности";
             case "ego":
-                return "EGO tier list";
+                return "ЭГО";
             case "battlePassives":
-                return "Battle passives tier list";      
+                return "Боевые пассивки";      
             case "supportPassives":
-                return "Support passives tier list";        
+                return "Саппорт пассивки";        
         }
         return "";
     }
     return (
-        <div className="tier-list-container">
+        <div ref={containerRef} className="tier-list-container">
             {setupTierlist().map((tierListParam)=>{
                 return (
                     <div key={`${Math.random()}`} className={["tier-list" , tierListClass()].join(" ")}>

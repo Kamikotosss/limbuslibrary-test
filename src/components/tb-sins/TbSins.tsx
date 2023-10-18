@@ -9,7 +9,7 @@ export const TbSins:React.FC = () => {
    
     return (
         <div className="tb-sins">
-            <span className="tb-sins-header"> Affinities </span>
+            <span className="tb-sins-header"> Энергия </span>
             <div className="tb-sins-container">
                 {sins.map((sin,index)=>{
                     return(

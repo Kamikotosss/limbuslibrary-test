@@ -1,21 +1,27 @@
 .tb-list-container {
-    margin-top: 32px;
+    margin-top: 25.6px;
     width: 100%;
-}
-
-.tb-list-header {
-    font-size: 38.4px;
     color: white;
+    height: fit-content;
+}
+.tb-list-container p {
+    font-size: 20px;
+    font-weight: 400;
+}
+.tb-list-header {
+    font-size: 30.72px;
+    color: white;
+    font-weight: 600;
 }
 
 .tb-list-content {
     display: grid;
-    row-gap: 20px;
-    column-gap: 4px;
-    grid-template-columns: repeat(auto-fill, 120px);
+    row-gap: 16px;
+    column-gap: 3.2px;
+    grid-template-columns: repeat(auto-fill, 96px);
     width: 100%;
     text-align: center;
-    padding: 16px 0px 16px 0px;
+    padding: 12.8px 0px 12.8px 0px;
     box-sizing: border-box;
     justify-content: space-between;
 }

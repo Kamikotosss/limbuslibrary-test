@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchEGO } from "../api/fetchEGO";
-import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
 import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { Filters } from "../components/filters/Filters";
-import { Footer } from "../components/footer/Footer";
-import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { ListEgo } from "../components/list-ego/ListEgo";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
-import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { CommonPageLayout } from "./CommonPageLayout";
 
 export const EGOPage:React.FC = () => {
     const {loading,error} = useTypedSelector(state => state.egoReducer);
@@ -35,11 +32,7 @@ export const EGOPage:React.FC = () => {
         fetchEGO()(dispatch);
     }, []);
 
-    return  <>
-        <LeftMenu/>
-        <DisclaimerBanner/>
-        <MainLayoutContainer>
+    return <CommonPageLayout>
             {layout()}
-        </MainLayoutContainer>
-    </>
+    </CommonPageLayout> 
 }

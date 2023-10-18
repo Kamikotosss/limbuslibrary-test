@@ -3,9 +3,7 @@ import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver"
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../../store/reducers/ids-reducer";
-import { isEGO } from "../../../tools/isEGO";
-import { ItemEGO } from "../../item-ego/ItemEGO";
-import { ItemIdentity } from "../../item-identity/ItemIdentity";
+import { ItemEntity } from "../../item-entity/ItemEntity";
 import "./EntitySection.css"
 interface EntitySectionBarProps {
     section:{
@@ -48,7 +46,7 @@ export const EntitySection:React.FC = () => {
     }
     const EntitySectionBar:React.FC<EntitySectionBarProps> = ({section}) => {
         const containerRef = useRef(null);
-        const {isVisible} = useIntersectionObserver(containerRef,0.1)
+        const {isVisible} = useIntersectionObserver(containerRef,0.1);
         return <article ref={containerRef} className={`entity-section-bar ${isVisible && "entity-section-bar--animated"}`}>
         <div className="release-date"> 
             <span className="date"> {section.date.replaceAll("/",".")} </span>
@@ -57,8 +55,7 @@ export const EntitySection:React.FC = () => {
         <div className="entities-list"> 
             {   
             section.data.map((entity)=>{
-                if (isEGO(entity)) return <ItemEGO key={entity.name} ego={entity} /> ;
-                else return <ItemIdentity key={entity.name} identity={entity} /> ;
+                return <ItemEntity key={entity.name} entity={entity} /> ;
             })
             }
         </div>

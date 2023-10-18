@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link,useLocation } from "react-router-dom";
+import { mobileLayoutFrom } from "../../constants/mobileLayoutFrom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { leftMenuChangeLayoutAction } from "../../store/reducers/left-menu-reducer";
 import { ContactSVG } from "../svg/ContactSVG";
@@ -14,7 +15,7 @@ import { TierListSVG } from "../svg/TierListSVG";
 import "./LeftMenu.css"
 export const LeftMenu:React.FC = () => {
     const location = useLocation();
-    const leftMenuState = useTypedSelector(store => store.leftMenuReducer);
+    const isMenuExpanded = useTypedSelector(store => store.leftMenuReducer);
     const dispatch = useDispatch();
     const isCurrentLocation = (route:string)=>{
         return location.pathname.split("/")[1].includes(route);
@@ -29,19 +30,36 @@ export const LeftMenu:React.FC = () => {
         {to:"/aboutgame",route:"aboutgame" ,name:"ОБ ИГРЕ",SVG:InfoSvg},
         {to:"/contact",route:"contact" ,name:"НАШИ КОНТАКТЫ",SVG:ContactSVG},
     ];
+    
+    const [hasRendered, setHasRendered] = useState(false);
+
+    useEffect(() => {
+        setHasRendered(true); 
+    }, []); 
+
     return (
-        //TODO routing list
-        <div className={`left-menu ${leftMenuState ? "left-menu--minimized" : "left-menu--maximized"} `}>
+        <div className={`left-menu ${hasRendered ? '' : 'first-render'} ${isMenuExpanded ? "left-menu--minimized" : "left-menu--maximized"} `}>
             <nav>
                 <ul>
                 <div className="burger-menu--wrapper">
-                    <button onClick={()=>leftMenuChangeLayoutAction(dispatch)} className="burger-menu"><div className="line1"/><div className="line2"/><div className="line3"/></button>
+                    <button onClick={()=>leftMenuChangeLayoutAction(dispatch,!isMenuExpanded)} className="burger-menu"><div className="line1"/><div className="line2"/><div className="line3"/></button>
                 </div>
-                <li><Link to="/limbuslibrary/">{ !leftMenuState ? <><GLLSVG/> <span>GREAT <span>LIMBUS</span> LIBRARY</span></> : <span>G<span>L</span>L</span>}</Link></li>
+                <li><Link to="/">{ !isMenuExpanded ? <><GLLSVG/> <span>GREAT <span>LIMBUS</span> LIBRARY</span></> : <span>G<span>L</span>L</span>}</Link></li>
                     {
                         links.map(({route,name,to,SVG}) =>{
-                            return(
-                                <li key={route}><Link className={(isCurrentLocation(route) ? "left-menu-route--active":"")} to={to}><SVG active={isCurrentLocation(route)}/>{!leftMenuState && name}</Link></li>
+                            const isCurrentRouteLocation = isCurrentLocation(route);
+                             return(
+                                <li key={route}>
+                                    <Link 
+                                    onClick={(e) => {
+                                        if (isCurrentRouteLocation) e.preventDefault(); 
+                                    }} 
+                                    className={(isCurrentRouteLocation ? "left-menu-route--active":"")} 
+                                    to={to}>
+                                        <SVG active={isCurrentRouteLocation}/>
+                                        {!isMenuExpanded && name}
+                                    </Link>
+                                </li>
                             )
                         })
                     }

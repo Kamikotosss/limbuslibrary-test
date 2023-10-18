@@ -1,0 +1,127 @@
+.item-ego-info-container {
+    background-color: #4D4B4B;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 16px;
+    transform: translate(calc(-50% + 70px), calc(-100% - 11.52px));
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 101;
+    transition: 0.5;
+}
+
+.item-ego-info-skills {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 4.8px;
+}
+
+.item-ego-info-sin {
+    background-color: #646262;
+    margin-right: 3.2px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    height: 32px;
+    width: 48px;
+    line-height: 0;
+}
+
+.item-ego-info-sin:last-of-type {
+    margin-right: 0;
+}
+
+.item-ego-info-sin img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    margin-right: 3.2px;
+}
+
+.item-ego-info-line {
+    width: 100%;
+    height: 1.6px;
+    position: absolute;
+    bottom: 0;
+}
+
+.item-ego-info-tier-rank-container {
+    padding: 2.56px;
+    padding-left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #646262;
+    color: white;
+    width: calc(100% - 34.56px);
+}
+
+.item-ego-info-tier-rank-container span {
+    padding-top: 2.56px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.item-ego-info-tier-rank {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 17.6px;
+    width: 100%;
+    height: 14.4px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.item-ego-info-tier-rank--SSS {
+    background-color: rgb(236, 24, 48);
+}
+
+.item-ego-info-tier-rank--SS {
+    background-color: rgba(255, 97, 74);
+}
+
+.item-ego-info-tier-rank--S {
+    background-color: rgba(255, 188, 58);
+}
+
+.item-ego-info-tier-rank--A {
+    background-color: rgb(143, 255, 58);
+}
+
+.item-ego-info-tier-rank--B {
+    background-color: rgb(58, 255, 166);
+}
+
+.item-ego-info-tier-rank--C {
+    background-color: rgb(58, 255, 248);
+}
+
+.item-ego-info-arrow {
+    width: 11.52px;
+    height: 11.52px;
+    transform: rotate(-45deg);
+    background: #4D4B4B;
+    position: absolute;
+    bottom: -5.76px;
+}
+@media(max-width:1000px){
+    .item-entity-info-container{
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top: 50%;
+    }
+    .item-ego-info-arrow {
+        display: none;
+    }
+}

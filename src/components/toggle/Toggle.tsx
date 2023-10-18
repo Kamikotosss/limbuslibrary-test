@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { GridSVG } from "../svg/GridSVG";
+import { LineSVG } from "../svg/LineSVG";
 import "./Toggle.css";
 
 export const Toggle: React.FC<{click:Function,positionClass:string}> = ({click,positionClass}) => { 
@@ -15,7 +17,7 @@ export const Toggle: React.FC<{click:Function,positionClass:string}> = ({click,p
             <input type="checkbox" checked={isChecked} onChange={handleChange} />
             <div className="toggle-slider">
                 <span className={`status-text ${isChecked ? 'on' : 'off'} `}>
-                    {!isChecked ? 'Line' : 'Grid'}
+                    {!isChecked ? <LineSVG/> : <GridSVG/>}
                 </span>
             </div>
         </label>

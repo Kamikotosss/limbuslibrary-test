@@ -6,6 +6,8 @@
 .tb-sins-container{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap:4px;
 }
 .tb-sins-header{
     font-size: 24px;
@@ -21,7 +23,6 @@
     border-radius: 4px;
     width: 65px;
     height: 65px;
-    margin-right: 4px;
     color: white;
     position: relative;
     transition: box-shadow 0.3s ease;

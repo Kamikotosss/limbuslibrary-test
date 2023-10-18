@@ -1,105 +1,137 @@
 .filters{
-    display: flex;
-    width: 90%;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-    position: relative;
-    gap: 24px;
-  }
-  .modal__content .filters{
-    width: 100%;
-  }
-  .filters section {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    position: relative;
-    row-gap:4px;
-  }
+  display: flex;
+  width: 90%;
+  margin-bottom: 38.4px;
+  flex-wrap: wrap;
+  position: relative;
+  gap: 19.2px;
+}
+.clear-filters{
+  display:flex;
+  align-items: center;
+  color:rgba(255, 255, 255, 0.8);
+  background-color: #25272D;
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: 400;
+  gap:8px;
+  position: absolute;
+  right: 240px;
+  top: -70px;
+  transition: 0.4s;
+}
+.clear-filters svg{
+  width: 23.6px ;
+  height: 23.6px ;
+}
+.clear-filters path{
+  fill:rgba(255, 255, 255, 0.801);
+  transition: 0.4s;
+}
+.clear-filters:hover path{
+  fill:white;
+}
+.clear-filters:hover{
+  color:white;
+}
+.modal__content .filters{
+  width: 100%;
+}
+.filters section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  row-gap: 3.2px;
+}
 
-  .filters .section-expanded{
-    display: grid;
-    gap:4px;
-    width: 100%;
-    grid-template-columns: repeat(auto-fill,54px);
-    justify-content: space-between;
+.filters .section-expanded{
+  display: grid;
+  gap: 3.2px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, 43.2px);
+  justify-content: space-between;
+}
+
+.filters-filter img{
+  width: 27.2px;
+  height: 27.2px;
+  object-fit: contain;
+}
+.filters-filter{
+  width: 43.2px;
+  height: 43.2px;
+  color:white;
+  font-size: 19.2px;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3.2px;
+  border-radius: 3.2px;
+  cursor: pointer;
+  position: relative;
+  background: #25272D;
+  transition: 0.3s;
+}
+
+.filters-filter-tooltip{
+  display: none; 
+  position: absolute;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  font-size: 14.4px;
+  padding: 4px;
+  border-radius: 4px;
+  z-index: 1000;
+  top: -1.6px;
+  transform: translate(0,-100%);
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
-  .filters-filter img{
-    
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
+  100% {
+    opacity: 1;
   }
-  .filters-filter{
-    width: 54px;
-    height: 54px;
-    color:white;
-    font-size: 24px;
-    display: flex;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-    margin-right: 4px;
-    border-radius: 4px;
-    cursor: pointer;
-    position: relative;
-    background: #25272D;
-    transition: 0.3s;
+}
+.filters-filter:hover{
+  box-shadow: 0px 6.4px 13.6px 1.6px rgba(0,0,0,0.14), 0px 2.4px 11.2px 1.6px rgba(0,0,0,0.12), 0px 4px 4px -2.4px rgba(0,0,0,0.2);
+}
+
+.filters-filter:hover .filters-filter-tooltip {
+  display: block; 
+}
+.filters-filter--active{
+  background: linear-gradient(180deg, #474A56 0%, rgba(71, 74, 86, 0.00) 193.52%);
+}
+.filters-frame-line{
+  width: 100%;
+  height: 1.6px;
+  background: #3AA1FF;
+  position: absolute;
+  bottom: 0; 
+}
+.filters-clear-section{
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 0;
+  top: -17.6px;
+}
+.filters-clear-section svg path {
+  fill: grey;
+  opacity: 0.32;
+  transition: 0.32s;
+}
+.filters-clear-section:hover svg path {
+  opacity: 0.64;
+}
+@media (max-width: 810px) {
+  .clear-filters{
+    position: static;
+    order: -1;
   }
-  
-  .filters-filter-tooltip{
-    display: none; 
-    position: absolute;
-    text-align: center;
-    background-color: #333;
-    color: #fff;
-    font-size: 18px;
-    padding: 5px;
-    border-radius: 5px;
-    z-index: 1000;
-    top: -2px;
-    left: 50%;
-    transform: translate(-50%,-100%);
-    animation: fadeIn 0.5s ease;
-  }
-  @keyframes fadeIn {
-    0% {
-      opacity: 0; /* Начальное состояние - невидимый */
-    }
-    100% {
-      opacity: 1; /* Конечное состояние - видимый */
-    }
-  }
-  .filters-filter:hover{
-    box-shadow:  0px 8px 17px 2px rgba(0,0,0,0.14) ,0px 3px 14px 2px rgba(0,0,0,0.12) ,0px 5px 5px -3px rgba(0,0,0,0.2);
-  }
- 
-  .filters-filter:hover .filters-filter-tooltip {
-    display: block; 
-  }
-  .filters-filter--active{
-    background: linear-gradient(180deg, #474A56 0%, rgba(71, 74, 86, 0.00) 193.52%);
-  }
-  .filters-frame-line{
-    width: 100%;
-    height: 2px;
-    background: #3AA1FF;
-    position: absolute;
-    bottom:0; 
-  }
-  .filters-clear-section{
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    right: 0;
-    top: -22px;
-  }
-  .filters-clear-section svg path {
-    fill: grey;
-    opacity: 0.4;
-    transition: 0.4s;
-  }
-  .filters-clear-section:hover svg path {
-    opacity: 0.8;
-  }
+}

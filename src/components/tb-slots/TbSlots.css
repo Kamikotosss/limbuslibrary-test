@@ -5,12 +5,12 @@
 }
 .tb-slots-container{
     width: 100%;
-    margin-top: 100px;
-    margin-bottom: 24px;
-    padding: 20px 2px;
+    margin-top: 80px;
+    margin-bottom: 19.2px;
+    padding: 16px 1.6px;
     position: relative;
     transition:0.5s;
-    padding-top: 30px;
+    padding-top: 24px;
     user-select: none;
     overflow: hidden;
 }
@@ -24,9 +24,9 @@
 }
 .tb-slots-container--grid{
     display: grid;
-    grid-template-columns: repeat(auto-fill,260px);
+    grid-template-columns: repeat(auto-fill,208px);
     justify-content: space-between;
-    grid-row-gap: 32px;
+    grid-row-gap: 25.6px;
     transition:0.5s;
     opacity: 1;
 }
@@ -35,19 +35,19 @@
     display: flex;
     flex-direction: column;
     background: #25272D;
-    padding: 20px;
-    width: 220px;
+    padding: 16px;
+    width: 176px;
     position: relative;
-    border-radius: 8px;
+    border-radius: 6.4px;
     cursor: pointer;
     transition: 0.5s;
-    margin-right: 20px;
+    margin-right: 16px;
     animation: AppearAnimationSlot 0.5s ease;
 }
 @keyframes AppearAnimationSlot {
     0% {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateX(-16px);
     }
     100% {
         opacity: 1;
@@ -57,7 +57,7 @@
     margin-right: 0px;
 }
 .tb-slots-slot--active{
-    box-shadow: 0 0 12px #3AA1FF;
+    box-shadow: 0 0 9.6px #3AA1FF;
 }
 .tb-slots-container-id{
     position: relative;
@@ -65,10 +65,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 220px;
-    height: 250px;
+    width: 176px;
+    height: 200px;
     box-sizing: border-box;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.24s ease;
 }
 .tb-slots-container-id div {
     width: 100%;
@@ -79,7 +79,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    border-radius: 8px 8px;
+    border-radius: 6.4px 6.4px;
 }
 .tb-slots-container-id img {
     width: 100%;
@@ -87,26 +87,26 @@
     object-fit: cover;
     object-position: center;
     position: relative;
-    border-radius: 8px 8px;
+    border-radius: 6.4px 6.4px;
 }
 .tb-slots-container-id--active{
-    box-shadow: 0 0 12px #3AA1FF;
+    box-shadow: 0 0 9.6px #3AA1FF;
 }
 .tb-slots-container-ego{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-top: 4px;
+    padding-top: 3.2px;
 }
 .tb-slots-slot-ego{
-    width: 37px;
-    height: 37px;
-    border-radius: 4px;
-    margin-top: 4px;
+    width: 29.6px;
+    height: 29.6px;
+    border-radius: 3.2px;
+    margin-top: 3.2px;
     display: flex;
     flex-direction: column;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.24s ease;
     position: relative;
     box-sizing: border-box;
     align-items: center;
@@ -124,7 +124,7 @@
     position: relative;
 }
 .tb-slots-slot-ego .shadow::after{
-    border-radius: 4px;
+    border-radius: 3.2px;
 }
 .tb-slots-slot-ego img {
     width: 100%;
@@ -132,15 +132,15 @@
     object-fit: cover;
     object-position: center;
     position: relative;
-    border-radius: 4px;
+    border-radius: 3.2px;
 }
 .tb-slots-slot-ego span {
-    color:rgb(139, 135, 135);
-    font-size: 24px;
+    color:rgb(111.2, 108, 108);
+    font-size: 19.2px;
     font-weight:500;
 }
 .tb-slots-slot-ego--active{
-    box-shadow: 0 0 12px #3AA1FF;
+    box-shadow: 0 0 9.6px #3AA1FF;
 }
 .tb-slots-id-sin{
     display: flex;
@@ -148,21 +148,21 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    color: rgba(0, 0, 0, 0.51);
+    color: rgba(0, 0, 0, 0.408);
 }
 .tb-slots-id-sin div {
-    width: 33.33%;
-    font-size: 10.4px;
-    height: 12px;
+    width: 26.624px;
+    font-size: 8.32px;
+    height: 9.6px;
     display: flex;
-    padding-top: 3px;
+    padding-top: 2.4px;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
 }
 .tb-ego-frame{
     width: 100%;
-    height: 2px;
+    height: 1.6px;
     position:absolute;
     bottom: 0;
     z-index: 102;
@@ -170,26 +170,26 @@
 .tb-slots-id-img{
     width: 100%;
     height: 100%;
-    border-radius: 4px;
+    border-radius: 3.2px;
 }
 .tb-slots-empty{
-    border: 1px dashed #717171;
+    border: 0.8px dashed #717171;
 }
 .tb-slots-X{
-    width: 28px;
-    height: 28px;
+    width: 22.4px;
+    height: 22.4px;
     position: absolute;
-    top: -28px;
+    top: -22.4px;
     right: 0;
     color:#717171;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    font-size: 16px;
+    font-size: 12.8px;
     box-sizing: border-box;
-    padding: 4px 0px 0px 2px;
+    padding: 3.2px 0px 0px 1.6px;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.4s;
 }
 .tb-slots-X:hover{
     color:white;
@@ -197,113 +197,115 @@
 
 .tb-slots-reset{
     position: absolute;
-    height: 40px;
+    height: 32px;
     box-sizing: border-box;
-    width: 90px;
-    border-radius: 6px;
-    top:20px;
+    border-radius: 4.8px;
+    top:16px;
     right: 0px;
     cursor: pointer;
     color: white;
-    border: 1px solid white;
+    border: 0.8px solid white;
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-    font-size: 24px;
-    transition: 0.5s;
-    font-weight: 600;
+    font-size: 19.2px;
+    transition: 0.4s;
+    font-weight: 480;
+    padding-right: 5px;
+    box-sizing: border-box;
 }
 .tb-slots-reset:hover{
-    color:#1C1E23;
+    color:#131319;
     background-color: white;
-    border: 1px solid black;
+    border: 0.8px solid #1C1E23;
 }
 .tb-slots-reset svg path{
-    transition: 0.5s;
+    transition: 0.4s;
 }
 .tb-slots-reset:hover svg path{
-    stroke:#1C1E23;
+    stroke:#131319;
 }
 .tb-slots-toggle{
     position: absolute;
-    top:20px;
-    right: 120px;
+    top:16px;
+    right: 96px;
     cursor: pointer;
 }
-.tb-slots-tooltip{
-    display: none; /* Начальное скрытие подсказки */
+
+.tb-slots-tooltip {
+    display: none;
     position: absolute;
     background-color: #333;
     color: #fff;
-    padding: 5px;
-    border-radius: 5px;
+    padding: 4px;
+    border-radius: 4px;
     z-index: 1000;
-    top: -32px;
+    top: -25.6px;
     left: 50%;
     transform: translateX(-50%);
     animation: fadeIn 0.5s ease;
-  }
-  @keyframes fadeIn {
-    0% {
-      opacity: 0; 
-    }
-    100% {
-      opacity: 1; 
-    }
-  }
-  
-.tb-slots-slot:hover .tb-slots-tooltip {
-    display: block; 
-}
-.tb-slots-btnLeft{
-    position: absolute;
-    left: 0;
-    top:55%;
-    z-index: 5;
-    transform: translateX(calc(-100% - 20px));
-    opacity: 1;
-    transition: 0.5s;
 }
 
-.tb-slots-btnLeft:hover svg path,
-.tb-slots-btnRight:hover svg path{
-    stroke: white;
+.tb-slots-btnLeft {
+    position: absolute;
+    left: 0;
+    top: 52%;
+    z-index: 5;
+    transform: translateX(calc(-100% - 16px));
+    opacity: 1;
+    transition: 0.4s;
 }
-.tb-slots-btnRight{
+
+.tb-slots-btnRight {
     position: absolute;
     right: 0;
     z-index: 5;
-    top:55%;
-    transform: translateX(calc(100% + 20px));
+    top: 52%;
+    transform: translateX(calc(100% + 16px));
     opacity: 1;
-    transition: 0.5s;
+    transition: 0.4s;
 }
-.tb-slots-btnSlotText{
-    padding: 10px 0 ;
-    font-size: 30px;
-    position:absolute;
+
+.tb-slots-btnSlotText {
+    padding: 8px 0;
+    font-size: 24px;
+    position: absolute;
     left: 0;
-    top:14px;
+    top: 11.2px;
 }
-.tb-slots-btnSlotCount{
+
+.tb-slots-btnSlotCount {
     border: 1px solid white;
-    border-radius: 6px;
+    border-radius: 4.8px;
     width: fit-content;
     height: fit-content;
-    position:absolute;
-    left: 210px;
-    top:20px;
-    height: 40px;
+    position: absolute;
+    left: 168px;
+    top: 16px;
+    height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
-.tb-slots-btnSlotCount button ,.tb-slots-btnSlotCount span{
-    padding: 0 10px;
-    font-size: 24px;
+
+.tb-slots-btnSlotCount button,
+.tb-slots-btnSlotCount span {
+    padding: 0 8px;
+    font-size: 19.2px;
 }
 
 .hidden {
-    opacity: 0; 
+    opacity: 0;
+}
+@media(max-width:1000px){
+    .tb-slots-btnLeft , .tb-slots-btnRight{
+        display: none;
+    }
+}
+@media(max-width:475px){
+    .tb-slots-toggle{
+        display: none;
+    }
 }

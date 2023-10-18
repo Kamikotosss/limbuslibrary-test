@@ -9,14 +9,8 @@ export const TbList:React.FC = () => {
     return (
         <div  className={"tb-list-container"} >
             <Filters></Filters>
-            <span className={"tb-list-header"} >Identities List</span>
-            <div  className={"tb-list-content"} >
-                <TbListIds></TbListIds>
-            </div>
-            <span className={"tb-list-header"} >EGO List</span>
-            <div  className={"tb-list-content"} >
-                <TbListEGO></TbListEGO>
-            </div>
+            <TbListIds></TbListIds>
+            <TbListEGO></TbListEGO>
         </div>
     )
 }

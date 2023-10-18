@@ -37,15 +37,17 @@ export const TbTags:React.FC = () => {
 
         return result;
     }
+    const listOfTags = getListOfTags();
     return (
         <div className="tb-tags">
-            <span className="tb-tags-header"> Tags </span>
+            <span className="tb-tags-header"> Статусы </span>
             <div className="tb-tags-container">
-                {getListOfTags().map(({count,tag})=>{
+                {listOfTags.map(({count,tag})=>{
                     return(
                         <TbTag key={tag} tag={tag} count={count}></TbTag>
                     )
                 })}
+                {!listOfTags.length && <p>Список статусов пуст , добавьте Личность или ЭГО в любой слот</p>}
             </div>
         </div>
     )

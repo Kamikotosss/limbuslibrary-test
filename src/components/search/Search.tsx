@@ -1,17 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { filterSearchAction } from "../../store/reducers/filter-reducer";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { searchChangeValueAction } from "../../store/reducers/search-reducer";
+import { SearchSVG } from "../svg/SearchSVG";
 import { XMarkSVG } from "../svg/XMark";
 import "./Search.css";
 
 export const Search:React.FC = () =>{
     const dispatch = useDispatch();
+    const {targetRef} = useTypedSelector(store=>store.searchReducer);
     const inputRef = useRef<HTMLInputElement>(null);
     const [timeoutId,setTimeoutId] = useState<null|NodeJS.Timeout>(null);
     const handleInputCHange = (e:React.ChangeEvent<HTMLInputElement>) =>{
         const val = e.target.value || "";
-        handleSearchDelay(()=>filterSearchAction(dispatch, val));
+        handleSearchDelay(()=>searchChangeValueAction(dispatch, val));
     }
+    const handleSubmit = (event:React.FormEvent<HTMLFormElement>,targetRef:React.RefObject<HTMLElement|null>|null) => {
+        event.preventDefault();
+        if (targetRef?.current) {
+            targetRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
     const handleSearchDelay = (searchAction:() => void) => {
         if (timeoutId){clearTimeout(timeoutId);}
 
@@ -30,14 +39,15 @@ export const Search:React.FC = () =>{
     }, [timeoutId]);
    
 
-    return <form className="search" onSubmit={(e) => {e.preventDefault(); }} >
-        <input ref={inputRef} placeholder="Search..." onChange={(e)=>{handleInputCHange(e)}}/>
-        {inputRef?.current?.value && <button type="button" onClick={ (e) => {
+    return <form className="search" onSubmit={ (e) => {handleSubmit(e,targetRef) }} >
+        <input ref={inputRef} placeholder="Поиск по имени..." onChange={(e)=>{handleInputCHange(e)}}/>
+        {inputRef?.current?.value && <button className="btn-clear" type="button" onClick={ () => {
             if (inputRef.current) {
                 inputRef.current.value = '';
-                filterSearchAction(dispatch, "");
+                searchChangeValueAction(dispatch, "");
             }
         }}><XMarkSVG/></button>}
+        <button className="btn-search" type="submit"><SearchSVG/></button>
         <div className={`search-loader ${!timeoutId && "search-loader--hidden"}`}>
             <div className="search-gray-line"></div>
             <div className="search-white-line"></div>

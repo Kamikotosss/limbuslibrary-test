@@ -34,11 +34,9 @@ export type FilterInterface = {
         rarityIdentity:SinnerRarityFilterInterface;
         rarityEGO:EGORarityFilterInterface;
     }
-    search:string;
 }
 export enum FilterActionTypes {
     CHANGE_TYPE_FILTER = "CHANGE_TYPE_FILTER",
-    SEARCH_FILTER = "SEARCH_FILTER",
     CLEAR_SECTION_FILTER = "CLEAR_SECTION_FILTER",
     RESET_ALL_FILTER = "RESET_ALL_FILTER"
 }
@@ -50,15 +48,11 @@ export interface ChangeTypeFilterAction {
 export interface ResetAllFilterAction {
     type: FilterActionTypes.RESET_ALL_FILTER;
 }
-export interface SearchFilterAction {
-    type: FilterActionTypes.SEARCH_FILTER;
-    payload: string;
-}
 export interface ClearSectionFilterAction {
     type: FilterActionTypes.CLEAR_SECTION_FILTER;
     payload: string;
 }
-export type FilterAction = ChangeTypeFilterAction|SearchFilterAction|ClearSectionFilterAction|ResetAllFilterAction;
+export type FilterAction = ChangeTypeFilterAction|ClearSectionFilterAction|ResetAllFilterAction;
 
 const initStateParam = <T extends string|number|symbol>(keys: T[]): { [key in T]: boolean } => { 
     let obj: { [key in T]: boolean } = {} as { [key in T]: boolean };
@@ -77,8 +71,7 @@ const initialTypes = {
     rarityEGO:initStateParam(rarityEGOTypes),
 }
 const initialState : FilterInterface = {
-    types:initialTypes,
-    search:""
+    types:initialTypes
 }
 
 
@@ -90,8 +83,6 @@ export const filterReducer = (state = initialState,action : FilterAction):Filter
             return { ...applyFilter(action.payload, state) };
         case FilterActionTypes.CLEAR_SECTION_FILTER:
             return { ...clearSection(action.payload, state) };
-        case FilterActionTypes.SEARCH_FILTER:
-            return { ...state, search: action.payload };
         default: 
             return state
     }
@@ -115,7 +106,6 @@ const applyFilter = (payload: string, state: FilterInterface) => {
 };
 const resetAll = (state: FilterInterface) =>{
     const {types} = state;
-    state.search = "";
     for(const key in types) clearSection(key,state);
     return state;
 }
@@ -135,7 +125,4 @@ export const filterChangeTypeAction = (dispatch: Dispatch<ChangeTypeFilterAction
 }
 export const filterClearSectionAction = (dispatch: Dispatch<ClearSectionFilterAction>,payload:string) => {
     dispatch({ type: FilterActionTypes.CLEAR_SECTION_FILTER , payload})
-}
-export const filterSearchAction = (dispatch: Dispatch<SearchFilterAction>,search:string) => {
-    dispatch({ type: FilterActionTypes.SEARCH_FILTER , payload: search})
 }
