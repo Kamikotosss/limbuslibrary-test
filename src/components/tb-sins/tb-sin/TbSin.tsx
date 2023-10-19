@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { mobileLayoutFrom } from "../../../constants/mobileLayoutFrom";
-import { sinType } from "../../../constants/types";
 import useHover from "../../../hooks/useHover";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";

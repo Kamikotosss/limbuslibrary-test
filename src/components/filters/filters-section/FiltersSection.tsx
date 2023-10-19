@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { rarityEGOType } from "../../../constants/types";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";

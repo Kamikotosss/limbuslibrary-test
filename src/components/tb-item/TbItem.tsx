@@ -1,12 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { homePage } from "../../constants/homePage";
-import useHover from "../../hooks/useHover";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../store/reducers/ids-reducer";
 import { tbAddEntityAction, tbRemoveEntityAction } from "../../store/reducers/tb-reducer";
-import { isFilterMatching } from "../../tools/isFilterMatching";
 import { isIdentity as isIdentityFunction} from "../../tools/isIdentity";
 import { AddSVG } from "../svg/AddSVG";
 import { ChangeSVG } from "../svg/ChangeSVG";

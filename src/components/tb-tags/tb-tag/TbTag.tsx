@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, {useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { homePage } from "../../../constants/homePage";
 import { mobileLayoutFrom } from "../../../constants/mobileLayoutFrom";
 import useHover from "../../../hooks/useHover";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { setMobileModalTrigger } from "../../../store/reducers/mobile-modal-reducer";
-import { EnergyInterface, SlotInterface, tbResetHoverAction, tbSetHoverAction } from "../../../store/reducers/tb-reducer";
+import {tbResetHoverAction, tbSetHoverAction } from "../../../store/reducers/tb-reducer";
 import { TbInfo } from "../../tb-info/TbInfo";
 interface TbSinInterface {
     tag:string,

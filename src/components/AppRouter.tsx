@@ -1,5 +1,5 @@
 import {Routes , Route,BrowserRouter as Router, useLocation} from "react-router-dom";
-import React, { ReactElement, useEffect } from "react";
+import React, {useEffect } from "react";
 import { IndexPage } from "../pages/IndexPage";
 import { TierListPage } from "../pages/TierListPage";
 import { EGOPage } from "../pages/EGOPage";

@@ -1,13 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef} from "react";
 import { useDispatch } from "react-redux";
-import { convertCompilerOptionsFromJson } from "typescript";
 import { sinType } from "../../../constants/types";
-import useControlledHover from "../../../hooks/useControlledHover";
 import useHover from "../../../hooks/useHover";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { SlotInterface, tbResetHoverAction, tbSetHoverAction } from "../../../store/reducers/tb-reducer";
-import { tbRemoveEntityAction, tbResetSlotAction, tbTriggerModalAction ,tbResetAllAction} from "../../../store/reducers/tb-reducer";
+import {tbResetSlotAction, tbTriggerModalAction } from "../../../store/reducers/tb-reducer";
 import { IdentitySVG } from "../../svg/IdentitySVG";
 
 export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index}) => {
@@ -71,15 +69,15 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
     const isHoveringEGO = () => {
         return isHoveringSlotWAW || isHoveringSlotTETH || isHoveringSlotHE || isHoveringSlotALEPH || isHoveringSlotZAYIN;
     }
-    const isAnyEGO = () => {
-        return ZAYIN||ALEPH||HE||TETH||WAW;
-    }
-    const getSinnerByEGO = () => {
-        for(const key in ego){
-            let current = ego[key];
-            if(current) return current.sinner;
-        }
-    }
+    // const isAnyEGO = () => {
+    //     return ZAYIN||ALEPH||HE||TETH||WAW;
+    // }
+    // const getSinnerByEGO = () => {
+    //     for(const key in ego){
+    //         let current = ego[key];
+    //         if(current) return current.sinner;
+    //     }
+    // }
     const tbEGOHoverMatch = (ego:EGOInterface|null) =>{
         if(!tbHoverState) return false;
         if(!ego)return false;

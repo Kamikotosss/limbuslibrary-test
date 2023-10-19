@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, {useRef} from "react";
 import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../../store/reducers/ids-reducer";
-import { getLocationLastParam } from "../../../tools/getLocationLastParam";
 import { isFilterMatching } from "../../../tools/isFilterMatching";
 import { ItemEntity } from "../../item-entity/ItemEntity";
 import "./TierBar.css";

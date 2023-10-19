@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { JSX } from "react/jsx-runtime";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import "./TbInfo.css";

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { fetchStatuses } from "../api/fetchStatuses";
 import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { LoadingAnimation } from "../components/loading-animation/LoadingAnimation";
-import { ScrollUpButton } from "../components/scroll-up-button/ScrollUpButton";
 import { StatusesTable } from "../components/statuses-table/StatusesTable";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { CommonPageLayout } from "./CommonPageLayout";

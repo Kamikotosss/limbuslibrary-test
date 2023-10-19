@@ -1,7 +1,5 @@
 import React from "react";
-import { EGOInterface } from "../../store/reducers/ego-reducer";
 import { SlotInterface } from "../../store/reducers/tb-reducer";
-import { IdentitiesSVG } from "../svg/IdentitiesSVG";
 import { IdentitySVG } from "../svg/IdentitySVG";
 import { TbList } from "../tb-list/TbList";
 import "./TbModal.css";

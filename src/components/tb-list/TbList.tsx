@@ -1,5 +1,4 @@
 import React from "react";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { Filters } from "../filters/Filters";
 import { TbListEGO } from "../tb-list-ego/TbListEgo";
 import { TbListIds } from "../tb-list-ids/TbListIds";

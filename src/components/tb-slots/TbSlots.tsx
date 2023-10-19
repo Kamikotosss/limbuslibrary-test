@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { sinType } from "../../constants/types";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { IdentityInterface } from "../../store/reducers/ids-reducer";
-import { tbRemoveEntityAction, tbResetSlotAction, tbTriggerModalAction ,tbResetAllAction, tbAddSlotAction, tbRemoveSlotAction} from "../../store/reducers/tb-reducer";
+import { tbResetAllAction, tbAddSlotAction, tbRemoveSlotAction} from "../../store/reducers/tb-reducer";
 import { ArrowLeftSVG } from "../svg/ArrowLeft";
 import { ArrowRightSVG } from "../svg/ArrowRight";
 import { XMarkSVG } from "../svg/XMark";

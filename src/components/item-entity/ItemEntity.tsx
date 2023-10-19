@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import { useDispatch } from "react-redux";
 import { mobileLayoutFrom } from "../../constants/mobileLayoutFrom";
 import useHover from "../../hooks/useHover";

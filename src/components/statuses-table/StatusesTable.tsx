@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
+import React, {useState } from "react";
 import { StatusesInterface} from "../../store/reducers/statuses-reducer";
 import "./StatusesTable.css";
 

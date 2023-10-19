@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { TbSin } from "./tb-sin/TbSin";
 import "./TbSins.css";
 
 export const TbSins:React.FC = () => {
     const sins = ["wrath","lust","sloth","glut","gloom","pride","envy"];
-    const {slots,energy} = useTypedSelector(state=> state.tbReducer);
+    const {energy} = useTypedSelector(state=> state.tbReducer);
    
     return (
         <section className="tb-sins">

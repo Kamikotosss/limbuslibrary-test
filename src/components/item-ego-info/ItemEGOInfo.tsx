@@ -6,16 +6,16 @@ interface ItemEGOInfoInterface{
     entity:EGOInterface;
 }
 export const ItemEGOInfo:React.FC<ItemEGOInfoInterface> = ({entity}) => {
-    const {imgUrl,egoTier,sanity,dmgType,egoRes} = entity;
+    const {egoTier,sanity,dmgType,egoRes} = entity;
     return (
         <div  className={`item-entity-info-container`} >
              <div className={"item-ego-info-skills"}>
-                <div  className="item-ego-info-sin">
-                    <img  src={`./images/sanity.png`}/>
+                <div className="item-ego-info-sin">
+                    <img src={`./images/sanity.png`} alt="sanity"/>
                     {sanity}
                 </div>
                 <div  className="item-ego-info-sin">
-                    <img  src={`./images/dmg-type/${dmgType}.png`}/>
+                    <img  src={`./images/dmg-type/${dmgType}.png`} alt={dmgType}/>
                     <div className={["item-ego-info-line", `${egoRes}-sin-color`].join(" ")}/>
                 </div>
            </div>
@@ -25,7 +25,7 @@ export const ItemEGOInfo:React.FC<ItemEGOInfoInterface> = ({entity}) => {
                     if(!entity[sin]) return <></>
                     return (
                         <div key={`${sin}`} className="item-ego-info-sin">
-                            <img  src={`./images/sins/${sin}.png`}/>
+                            <img src={`./images/sins/${sin}.png`} alt={sin}/>
                             {"x"+entity[sin]}
                             <div className={["item-ego-info-line", `${sin}-sin-color`].join(" ")}/>
                         </div>

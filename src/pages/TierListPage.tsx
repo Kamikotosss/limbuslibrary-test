@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { TierList } from "../components/tier-list/TierList";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";

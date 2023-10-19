@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useRef} from "react";
 import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
