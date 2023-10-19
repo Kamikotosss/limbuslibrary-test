@@ -7,7 +7,7 @@ export const fetchEGO = () => {
             let result:EGOInterface[] = [];
             dispatch({type: EGOActionTypes.FETCH_EGO});
             try{
-                const response = await axios.get(`https://docs.google.com/spreadsheets/d/1k_TaGK7vOfYdIS5-6GxJBEjFsxjZyzb1x_0Zi1k6kao/`, {responseType: "arraybuffer",});
+                const response = await axios.get(`https://docs.google.com/spreadsheets/d/1vcBHY4zZLLI8k0kFR2TIYa3dkagx8renINEyusAqeco/`, {responseType: "arraybuffer",});
                 const workbook = XLSX.read(response.data, { type: 'array' });
                 const sheetName = workbook.SheetNames[0];
                 const sheet = workbook.Sheets[sheetName];

@@ -14,7 +14,7 @@
     font-weight: 400;
 }
 .list-ego-content {
-    width:90%;
+    width:100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, 138.4px);
     row-gap: 16px;
@@ -29,5 +29,10 @@
 @media (max-width: 810px) {
     .list-ego-content{
         grid-template-columns: repeat(auto-fill, 106.568px);
+    }
+}
+@media (max-width: 378px) {
+    .list-ego-content{
+        justify-content: space-evenly;
     }
 }

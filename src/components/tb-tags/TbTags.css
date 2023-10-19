@@ -18,6 +18,7 @@
 .tb-tags-header{
     font-size: 24px;
     color: white;
+    margin: 0;
 }
 .tb-tags-tag{
     display: flex;

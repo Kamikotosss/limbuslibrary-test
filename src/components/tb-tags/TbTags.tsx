@@ -39,8 +39,8 @@ export const TbTags:React.FC = () => {
     }
     const listOfTags = getListOfTags();
     return (
-        <div className="tb-tags">
-            <span className="tb-tags-header"> Статусы </span>
+        <section className="tb-tags">
+            <h2 className="tb-tags-header"> Статусы </h2>
             <div className="tb-tags-container">
                 {listOfTags.map(({count,tag})=>{
                     return(
@@ -49,6 +49,6 @@ export const TbTags:React.FC = () => {
                 })}
                 {!listOfTags.length && <p>Список статусов пуст , добавьте Личность или ЭГО в любой слот</p>}
             </div>
-        </div>
+        </section>
     )
 }

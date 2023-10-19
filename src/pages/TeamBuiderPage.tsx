@@ -33,9 +33,7 @@ export const TeamBuilderPage:React.FC = () => {
         if(idsState.loading || egoState.loading || statusesState.loading) return <LoadingAnimation/>;
         return(
             <>
-                <div style={{width:"90%" ,color:"white"}}>
-                    <h1>Тим билдер</h1>
-                </div>
+                <h1 style={{width:"90%" ,color:"white"}}>Тим билдер</h1>
                 <TbModal active={modalTrigger !== null} modalTrigger={modalTrigger} closer={() => tbCloseModalAction(dispatch)}/>
                 <TbSlots/>
                 <TbSins/>

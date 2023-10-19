@@ -48,8 +48,8 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
     //   }
       
     return <>
-        {buttonsSections.map((section)=>{
-            return<section className={"statuses-section"} >
+        {buttonsSections.map((section,index)=>{
+            return<section key={index} className={"statuses-section"} >
                 <h2>{section.header}</h2>
                 <article className={"statuses-buttons"} >
                     {statuses.map((status,index)=>{

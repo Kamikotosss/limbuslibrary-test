@@ -23,6 +23,7 @@
     color: white;
     font-size: 38.4px;
     margin-bottom: 12.8px;
+    margin-top: 0;
 }
 @media (max-width: 1000px) {
     .tier-list-container {

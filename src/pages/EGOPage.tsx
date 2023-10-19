@@ -19,9 +19,7 @@ export const EGOPage:React.FC = () => {
         if(loading || statusesState.loading) return <LoadingAnimation/>;
         return(
             <>
-            <div style={{width:"90%" ,color:"white"}}>
-                <h1>Список ЭГО</h1>
-            </div>
+            <h1 style={{width:"90%" ,color:"white"}}>Список ЭГО</h1>
             <Filters/>
             <ListEgo/>
             </>

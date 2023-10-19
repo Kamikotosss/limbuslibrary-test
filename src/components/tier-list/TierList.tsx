@@ -53,20 +53,20 @@ export const TierList:React.FC<TierListInterface> = () => {
         return "";
     }
     return (
-        <div ref={containerRef} className="tier-list-container">
-            {setupTierlist().map((tierListParam)=>{
+        <section ref={containerRef} className="tier-list-container">
+            {setupTierlist().map((tierListParam ,index)=>{
                 return (
-                    <div key={`${Math.random()}`} className={["tier-list" , tierListClass()].join(" ")}>
-                        <span className="tier-list-name">{tierListName(tierListParam)}</span>
+                    <section key={index} className={["tier-list" , tierListClass()].join(" ")}>
+                        <h2 className="tier-list-name">{tierListName(tierListParam)}</h2>
                             {ratings.map(({rating,description})=>{
                                 return(
                                     <TierBar  rating={rating} tierListParam={tierListParam} description={description} key={`${rating}`}></TierBar>
                                 )
                             })}
-                    </div>
+                    </section>
                 )
             })}
-        </div>
+        </section>
         
     )
 }

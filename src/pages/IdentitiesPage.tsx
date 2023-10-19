@@ -23,9 +23,7 @@ export const IdentitiesPage:React.FC = () => {
         if(loading || statusesState.loading) return <LoadingAnimation/>;
         return(
             <>
-            <div style={{width:"90%" ,color:"white"}}>
-                <h1>Список личностей</h1>
-            </div>
+            <h1 style={{width:"90%" ,color:"white"}}>Список личностей</h1>
             <Filters />
             <ListIds />
             </>

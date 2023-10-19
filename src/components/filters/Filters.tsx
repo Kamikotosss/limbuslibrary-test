@@ -13,12 +13,12 @@ export const Filters:React.FC = () => {
     const location =useLocation().pathname;
     const dispatch = useDispatch();
     return (
-        <div className={"filters"}>
+        <section className={"filters"}>
                 <FiltersList/>
                 <button onClick={()=>filterResetAllAction(dispatch)} className="clear-filters"><ClearFilterSVG/> Очистить фильтры</button>
                 {!location.includes("/teambuilder") && <Search/>}
                 <FiltersSection2/>
                 
-        </div>
+        </section>
     )
 }

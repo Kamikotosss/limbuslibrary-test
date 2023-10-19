@@ -61,13 +61,13 @@ export const TierBar:React.FC<TierBarProps> = ({rating,tierListParam,description
     const {isVisible} = useIntersectionObserver(containerRef,0.1);
 
     return (
-        <div ref={containerRef} className={["tier-bar-container" , `tier-bar-container--${rating}`, isVisible && "tier-bar-container--animated"].join(" ")}>
+        <article ref={containerRef} className={["tier-bar-container" , `tier-bar-container--${rating}`, isVisible && "tier-bar-container--animated"].join(" ")}>
             <div className={["tier-bar-line" , `tier-bar-line--${rating}`].join(" ")}></div>
-            <span className={"tier-bar-rating"}>{`${rating.toUpperCase()} тир`}</span>
-            <span className={["tier-bar-description" , `tier-bar-description--${rating}`].join(" ")}> {description} </span>
+            <h3 className={"tier-bar-rating"}>{`${rating.toUpperCase()} тир`}</h3>
+            <p className={["tier-bar-description" , `tier-bar-description--${rating}`].join(" ")}> {description} </p>
             <div className={"tier-bar-items"}>
                 {setupItems()} 
             </div>
-        </div>
+        </article>
     )
 }

@@ -45,9 +45,7 @@ export const TierListPage:React.FC = () => {
         if(egoState.loading || idsState.loading || statusesState.loading) return <LoadingAnimation/>;
         return (
             <>
-            <div style={{width:"90%" ,color:"white"}}>
-                <h1>Тир Лист</h1>
-            </div>
+            <h1 style={{width:"90%" ,color:"white"}}>Тир Лист</h1>
             <TierListNav/>
             <Filters/>
             <TierList/>

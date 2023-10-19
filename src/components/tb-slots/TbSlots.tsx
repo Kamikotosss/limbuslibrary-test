@@ -58,7 +58,7 @@ export const TbSlots:React.FC = () => {
         if(slots.length > 5) tbRemoveSlotAction(dispatch);
     } 
     return (
-        <div className="tb-slots" >
+        <section className="tb-slots" >
             <span className="tb-slots-btnSlotText">Количество слотов</span>
             <div className="tb-slots-btnSlotCount">
                 <button onClick={handleSlotRemove}>−</button>
@@ -77,6 +77,6 @@ export const TbSlots:React.FC = () => {
                     )
                 })}
             </div>
-        </div>
+        </section>
     )
 }

@@ -220,8 +220,10 @@ const resetSlot = (slots:SlotInterface[] , slotIndx:number,energy:EnergyInterfac
 const add = (entity:IdentityInterface|EGOInterface,state: TbInterface,slot:SlotInterface) =>{
     const {energy,slots} = state;
     if (isIdentity(entity)){
+        removeIdentityFromSlot(slot,energy);
         addIdentityToSlot(slot,energy,entity);
     }else {
+        removeEGOFromSlot(slot,energy,entity);
         addEGOToSlot(slot, energy , entity);
     }
     return {energy,slots};

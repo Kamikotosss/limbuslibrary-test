@@ -8,8 +8,8 @@ export const TbSins:React.FC = () => {
     const {slots,energy} = useTypedSelector(state=> state.tbReducer);
    
     return (
-        <div className="tb-sins">
-            <span className="tb-sins-header"> Энергия </span>
+        <section className="tb-sins">
+            <h2 className="tb-sins-header"> Энергия </h2>
             <div className="tb-sins-container">
                 {sins.map((sin,index)=>{
                     return(
@@ -17,6 +17,6 @@ export const TbSins:React.FC = () => {
                     )
                 })}
             </div>
-        </div>
+        </section>
     )
 }
