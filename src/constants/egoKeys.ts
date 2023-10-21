@@ -1,22 +1,15 @@
-const egoKeys: { [key: string]: string } = {
-    "B":"imgUrl",
-    "C":"sinner",
-    "D":"name",
-    "E":"rarity",
-    "F":"season",
-    "G":"wrath",
-    "H":"lust",
-    "I":"sloth",
-    "J":"glut",
-    "K":"gloom",
-    "L":"pride",
-    "M":"envy",
-    "N":"egoRes",
-    "O":"egoTier",
-    "P":"sanity",
-    "Q":"status",
-    "R":"dmgType",
-    "S":"releaseDate",
-}
+import { validationToDamageTypes, validationToDate, validationToNumber, validationToRarityEGOTypes, validationToSinner, validationToSinTypes, validationToStatus, validationToString, validationToTier } from "./validations";
+
+const egoKeys = [
+    { key: 'imgUrl' ,validation:validationToString},  { key: 'sinner' ,validation:validationToSinner},
+    { key: 'name' ,validation:validationToString},    { key: 'rarity',validation:validationToRarityEGOTypes},
+    { key: 'season' ,validation:validationToNumber},  { key: 'wrath' ,validation:validationToNumber},
+    { key: 'lust' ,validation:validationToNumber},    { key: 'sloth' ,validation:validationToNumber},
+    { key: 'glut' ,validation:validationToNumber},    { key: 'gloom' ,validation:validationToNumber},
+    { key: 'pride' ,validation:validationToNumber},   { key: 'envy' ,validation:validationToNumber},
+    { key: 'egoRes' ,validation:validationToSinTypes},  { key: 'egoTier',validation:validationToTier },
+    { key: 'sanity',validation:validationToNumber },  { key: 'status',validation:validationToStatus },
+    { key: 'dmgType',validation:validationToDamageTypes }, { key: 'releaseDate' ,validation:validationToDate}
+];
 
 export {egoKeys}

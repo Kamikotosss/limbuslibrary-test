@@ -6,27 +6,30 @@ import { FiltersSection } from "../filters-section/FiltersSection";
 
 export const FiltersList:React.FC = () => {
     const location = useLocation().pathname;
+    const params = new URLSearchParams(useLocation().search);
+    const paramsType = params.get("type");
     const egosMap:Array<{rarity:rarityEGOType;glyph:string}> = [
         {
             rarity:"ZAYIN",
             glyph:"ז",
         },
         {
-            rarity:"ALEPH",
-            glyph:"ט",
+            rarity:"TETH",
+            glyph:"ו",
         },
         {
             rarity:"HE",
             glyph:"ה",
         },
         {
-            rarity:"TETH",
-            glyph:"ו",
-        },
-        {
             rarity:"WAW",
             glyph:"ℵ",
         },
+        {
+            rarity:"ALEPH",
+            glyph:"ט",
+        },
+        
     ];
     const filters = [
         {
@@ -49,7 +52,7 @@ export const FiltersList:React.FC = () => {
             imgsFolder:"guard-type",
             imgExtension:".png",
             data:guardTypes,
-            visible:location.includes("/passives")||location.includes("/identities")||location.includes("/teambuilder")
+            visible:paramsType === "identities"||paramsType === "passives"||location.includes("/teambuilder")||location.includes("/identities")
 
         },
         {
@@ -57,7 +60,7 @@ export const FiltersList:React.FC = () => {
             imgsFolder:"id-rarity",
             imgExtension:".png",
             data:rarityIdentityTypes,
-            visible:location.includes("/passives")||location.includes("/identities")||location.includes("/teambuilder")
+            visible:paramsType === "passives"||paramsType === "identities"||location.includes("/teambuilder")||location.includes("/identities")
 
         },
         {
@@ -65,7 +68,7 @@ export const FiltersList:React.FC = () => {
             imgsFolder:null,
             imgExtension:"",
             data:egosMap,
-            visible:location.includes("/ego")||location.includes("/teambuilder")
+            visible:paramsType === "ego"||location.includes("/teambuilder")||location.includes("/ego")
 
         },
         {

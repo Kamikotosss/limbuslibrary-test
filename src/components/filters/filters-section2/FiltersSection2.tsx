@@ -10,7 +10,7 @@ export const FiltersSection2:React.FC = () => {
     const statusesState = useTypedSelector(state => state.statusesReducer);
     const filterState = useTypedSelector(state => state.filterReducer);
     const [isAllFiltersShown,setIsAllFiltersShown] = useState(false);
-    const [filterData, setFilterData] = useState(tagsIds);
+    const [filterData, setFilterData] = useState<Array<undefined|string>>(tagsIds);
     const dispatch = useDispatch();
     const handleFilterChange = (key:string) =>filterChangeTypeAction(dispatch,key);
     const handleClearSection = (section:string) =>  filterClearSectionAction(dispatch,section);
@@ -18,18 +18,22 @@ export const FiltersSection2:React.FC = () => {
 
     useEffect(() => {
         if (isAllFiltersShown && statusesState.statuses){
-            setFilterData( statusesState.statuses.map((s) => s.id) );
+            const newStatuses = statusesState.statuses.map((s) =>{
+                if(s.unit === "sinner") return s.id;
+            })
+            setFilterData(newStatuses);
         } 
         else setFilterData(tagsIds);
       }, [isAllFiltersShown]);
 
    
     const type = "tags";
-    return <section className="filters-section">
+    return <section className={`filters-section ${isAllFiltersShown && "section-expanded"}`}>
     {filterData.map((subtype)=>{
         let currentType = filterState.types[type];
         let isTypeActive = currentType[subtype as keyof typeof currentType];
         if(isTypeActive) countActive++;
+        if (!subtype) return null;
         return <FilterButton 
         handleFilterChange={()=>handleFilterChange(subtype)} 
         imgSrc={`./images/${"tags"}/${subtype}${".png"}`}
@@ -37,7 +41,7 @@ export const FiltersSection2:React.FC = () => {
         type={subtype}
         key={subtype} />
     })}
-       {countActive >= 2 && <button className="filters-clear-section" onClick={()=>handleClearSection(type)}><EraserSVG/></button>}
+       {countActive >= 1 && <button className="filters-clear-section" onClick={()=>handleClearSection(type)}><EraserSVG/></button>}
        <button 
         className={"filters-filter"} 
         onClick={()=>{setIsAllFiltersShown(!isAllFiltersShown)}}>

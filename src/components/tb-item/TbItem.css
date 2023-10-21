@@ -90,3 +90,8 @@
     text-align: left;
     padding: 0px 9.6px 0px 9.6px;
 }
+@media(max-width:1000px){
+    .tb-item-container svg {
+        display: block;
+    }
+}

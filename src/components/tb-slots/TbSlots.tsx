@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import useHover from "../../hooks/useHover";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { tbResetAllAction, tbAddSlotAction, tbRemoveSlotAction} from "../../store/reducers/tb-reducer";
 import { ArrowLeftSVG } from "../svg/ArrowLeft";
@@ -15,6 +16,7 @@ export const TbSlots:React.FC = () => {
     const [isLayoutGrid , setIsLayoutGrid] = useState(false);
     const [animatedClass , setAnimatedClass] = useState("tb-slots-container--flex");
     const [timeoutId, setTimeoutId] = useState<null|NodeJS.Timeout>(null);
+    const isHovering = useHover(containerRef);
     const handleScrollLeft = () => {
         if (containerRef && containerRef.current) {
             const currentScroll = containerRef.current.scrollLeft;
@@ -55,8 +57,20 @@ export const TbSlots:React.FC = () => {
     const handleSlotRemove = () =>{
         if(slots.length > 5) tbRemoveSlotAction(dispatch);
     } 
+    const handleMouseWheel = (e:React.WheelEvent) => {
+      const container = containerRef.current;
+      if (container) {
+        container.scrollLeft += e.deltaY;
+      }
+    };
+   useEffect(()=>{
+    if(isHovering) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'visible';
+   },[isHovering])
     return (
-        <section className="tb-slots" >
+        <section className="tb-slots"
+        onScroll={(e)=>e.preventDefault()} 
+        onWheel={(e)=>e.preventDefault()}>
             <span className="tb-slots-btnSlotText">Количество слотов</span>
             <div className="tb-slots-btnSlotCount">
                 <button onClick={handleSlotRemove}>−</button>
@@ -68,12 +82,14 @@ export const TbSlots:React.FC = () => {
             <button className={`tb-slots-btnLeft ${(animatedClass.includes("hidden") || isLayoutGrid) ? "hidden": ""}`} onClick={handleScrollLeft}><ArrowLeftSVG/></button>
             <button className={`tb-slots-btnRight ${(animatedClass.includes("hidden") || isLayoutGrid) ? "hidden": ""}`} onClick={handleScrollRight}><ArrowRightSVG/></button>
             <div className={["tb-slots-container", animatedClass].join(" ")} 
-            ref={containerRef}>
-                {slots.map((slot,index)=>{
-                    return(
-                        <TbSlot slot={slot} index={index} key={"id"+index}></TbSlot>
-                    )
-                })}
+                 ref={containerRef}
+                 onWheel={(e)=>handleMouseWheel(e)}
+                >
+                    {slots.map((slot,index)=>{
+                        return(
+                            <TbSlot slot={slot} index={index} key={"id"+index}></TbSlot>
+                        )
+                    })}
             </div>
         </section>
     )

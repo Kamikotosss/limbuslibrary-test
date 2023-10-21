@@ -2,14 +2,12 @@
     background: #535353;
     width: 232px;
     padding: 15px;
-    z-index: 113;
     position: absolute;
     top: 0;
     left: 0;
     flex-direction: column;
     border-radius: 4px;
     display: none;
-    z-index: 113;
 }
 .tb-sins-sin:hover .tb-info{
     display: flex;

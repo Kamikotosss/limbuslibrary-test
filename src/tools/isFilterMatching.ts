@@ -16,7 +16,7 @@ export const isFilterMatching = (filterState:FilterInterface,searchState:TSearch
     for(const key in types.tags){
         const value = types.tags[key];
         if(value === false)continue;
-        if( !status.includes(key)) return false;
+        if( status && !status.includes(key)) return false;
     }
 
     const isSinnerFilterAny = Object.values(types.sinner).some((value) => value);

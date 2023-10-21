@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchEGO } from "../api/fetchEGO";
+import { fetchStatuses } from "../api/fetchStatuses";
 import { ErrorInfo } from "../components/error-info/ErrorInfo";
 import { Filters } from "../components/filters/Filters";
 import { ListEgo } from "../components/list-ego/ListEgo";
@@ -28,6 +29,7 @@ export const EGOPage:React.FC = () => {
 
     useEffect(() => {
         fetchEGO()(dispatch);
+        fetchStatuses()(dispatch);
     }, []);
 
     return <CommonPageLayout>

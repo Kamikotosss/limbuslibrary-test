@@ -1,8 +1,9 @@
-const statusesKeys: { [key: string]: string } = {
-    "C":"id",
-    "D":"name",
-    "E":"description",
-    "F":"unit",
-}
+import { validationToString} from "./validations";
+
+const statusesKeys = [
+    { key: 'id' ,validation:validationToString},
+    { key: 'name' ,validation:validationToString},    { key: 'description',validation:validationToString},
+    { key: 'unit' ,validation:validationToString},
+];
 
 export {statusesKeys}

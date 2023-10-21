@@ -25,8 +25,8 @@ export interface IdentityInterface{
     slash:string,
     pierce:string,
     blunt:string,
-    status:string,
-    releaseDate:string
+    status:string|null,
+    releaseDate:number
 
 }
 

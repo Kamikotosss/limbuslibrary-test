@@ -7,7 +7,7 @@ import { ItemEntity } from "../../item-entity/ItemEntity";
 import "./EntitySection.css"
 interface EntitySectionBarProps {
     section:{
-        date: string;
+        date: number;
         data: Array<IdentityInterface | EGOInterface>;
     }
 }
@@ -28,20 +28,16 @@ export const EntitySection:React.FC = () => {
         return date;
       }
       
-      const formateDate = (date:string|number) =>{
-        const newDate = (typeof date === "string" )  ? new Date(date) : excelToDate(date);
+      const formateDate = (date:number) =>{
+        const newDate = excelToDate(date);
         return `${newDate.getDate()}.${newDate.getMonth()+1}.${newDate.getFullYear()}`
       }
     const findNLatestDates = (ids:IdentityInterface[], egos:EGOInterface[] , N:number) =>{
-        const allData: Array<IdentityInterface | EGOInterface> = Array.from(ids);
-        allData.concat(egos);
+        const allData: Array<IdentityInterface | EGOInterface> = [...ids,...egos];
         allData.sort((a, b) =>{
-            const dateA = (typeof a.releaseDate === "string" )  ? dateToExcel(new Date(a.releaseDate)) : a.releaseDate;
-            const dateB = (typeof b.releaseDate === "string" )  ? dateToExcel(new Date(b.releaseDate)) : b.releaseDate;
-            return dateB - dateA;
+            return b.releaseDate - a.releaseDate;
         } );
-
-        const result:Array<{date:string,data:Array<IdentityInterface|EGOInterface>}> = [] ;
+        const result:Array<{date:number,data:Array<IdentityInterface|EGOInterface>}> = [] ;
         for (let i = 0; i < allData.length; i++) {
             const currentData = allData[i];
             const date = currentData.releaseDate;
@@ -78,7 +74,7 @@ export const EntitySection:React.FC = () => {
         <div className="entities-list"> 
             {   
             section.data.map((entity)=>{
-                return <ItemEntity key={entity.name} entity={entity} /> ;
+                return <ItemEntity key={entity.imgUrl} entity={entity} /> ;
             })
             }
         </div>
@@ -88,7 +84,7 @@ export const EntitySection:React.FC = () => {
     
     return <section className="entity-section"> 
         <h2> Недавно вышедшие Личности и ЭГО </h2>
-        { ids && ego && findNLatestDates(ids,ego,5).map((section,index)=>{
+        { ids && ego && findNLatestDates(ids,ego,10).map((section,index)=>{
                 return <EntitySectionBar key={index} section={section}/>
             })
         }

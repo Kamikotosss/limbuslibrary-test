@@ -1,30 +1,18 @@
-const idsKeys: { [key: string]: string } = {
-"B":"imgUrl",
-"C": "sinner",
-"D": "name",
-"E":"rarity",
-"F": "season",
-"G":"sin1",
-"H":"sin2",
-"I":"sin3",
-"J":"sinGuard",
-"K":"dmgType1",
-"L":"dmgType2",
-"M":"dmgType3",
-"N":"guardType",
-"O":"idTier",
-"P":"passive1Tier",
-"Q":"passive2Tier",
-"R":"sinPassive1",
-"S":"countPassive1",
-"T":"sinPassive2",
-"U":"countPassive2",
-"V":"slash",
-"W":"pierce",
-"X":"blunt",
-"Y":"status",
-"Z":"releaseDate",
+import { validationToDamageTypes, validationToDate, validationToGuardTypes, validationToNumber, validationToRarityIdentityTypes, validationToSinner, validationToSinTypes, validationToStatus, validationToString, validationToTier } from "./validations";
 
-};
-
+const idsKeys = [
+    { key: 'imgUrl' ,validation:validationToString},  { key: 'sinner' ,validation:validationToSinner},
+    { key: 'name' ,validation:validationToString},    { key: 'rarity',validation:validationToRarityIdentityTypes},
+    { key: 'season' ,validation:validationToNumber},  { key: 'sin1' ,validation:validationToSinTypes},
+    { key: 'sin2' ,validation:validationToSinTypes},    { key: 'sin3' ,validation:validationToSinTypes},
+    { key: 'sinGuard' ,validation:validationToSinTypes},    { key: 'dmgType1' ,validation:validationToDamageTypes},
+    { key: 'dmgType2' ,validation:validationToDamageTypes},   { key: 'dmgType3' ,validation:validationToDamageTypes},
+    { key: 'guardType' ,validation:validationToGuardTypes},  { key: 'idTier',validation:validationToTier },
+    { key: 'passive1Tier',validation:validationToTier },  { key: 'passive2Tier',validation:validationToTier },
+    { key: 'sinPassive1',validation:validationToSinTypes }, { key: 'countPassive1' ,validation:validationToNumber},
+    { key: 'sinPassive2',validation:validationToSinTypes }, { key: 'countPassive2' ,validation:validationToNumber},
+    { key: 'slash',validation:validationToString }, { key: 'pierce' ,validation:validationToString},
+    { key: 'blunt',validation:validationToString }, { key: 'status' ,validation:validationToStatus},
+    { key: 'releaseDate',validation:validationToDate },
+];
 export {idsKeys}

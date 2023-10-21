@@ -57,7 +57,7 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
         for(let i = 0 ; i < slots.length;i++){
             let slot = slots[i];
 
-            if (!!slot.identity && slot.identity.status.includes(tag)){
+            if (slot?.identity?.status?.includes(tag)){
                 result.push(
                     <div key={`${attribure}${slot.identity.name}`}>
                         <img className="tb-info-img" src={`./images/identities/${slot.identity.imgUrl}.png`}></img> 
@@ -75,7 +75,7 @@ export const TbInfo:React.FC<TbInfoInterface> = ({attribure,type}) => {
             let slot = slots[i];
             Object.keys(slot.ego).forEach((key,index)=>{
                 let current = slot.ego[key];
-                if(!!current && current.status.includes(tag)){
+                if(current?.status?.includes(tag)){
                     result.push(
                         <div key={`${attribure}${current.name}`}>
                             <img className="tb-info-img" src={`./images/ego/${current.imgUrl}.png`}></img> 

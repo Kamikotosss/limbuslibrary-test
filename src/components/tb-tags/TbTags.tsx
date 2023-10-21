@@ -11,10 +11,10 @@ export const TbTags:React.FC = () => {
             const {ego,identity} = slot;
             let tags:string[] = [];
 
-            if(!!identity) tags = identity.status.replaceAll(" " , "").split(",");
+            if(identity?.status) tags = identity.status.replaceAll(" " , "").split(",");
             for(const key in ego){
                 const currentEGO = ego[key];
-                if(currentEGO !== null){
+                if(currentEGO?.status){
                     tags.push(...currentEGO.status.replaceAll(" " , "").split(","))
                 }
             }

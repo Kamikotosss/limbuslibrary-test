@@ -19,20 +19,20 @@ export const TbModal: React.FC<ModalProps>  = ({active , modalTrigger,closer}) =
                 glyph:"ז",
             },
             {
-                ego:ALEPH,
-                glyph:"ט",
+                ego:TETH,
+                glyph:"ו",
             },
             {
                 ego:HE,
                 glyph:"ה",
             },
             {
-                ego:TETH,
-                glyph:"ו",
-            },
-            {
                 ego:WAW,
                 glyph:"ℵ",
+            },
+            {
+                ego:ALEPH,
+                glyph:"ט",
             },
         ];
         return(

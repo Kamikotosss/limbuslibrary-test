@@ -82,7 +82,7 @@ margin-bottom: 27.2px;
 }
 
 .left-menu-route--active{
-  background: linear-gradient(97deg, #3AA1FF -139.58%, #211E29 25.72%);
+  background: linear-gradient(97deg, #3AA1FF -139.58%, #211E29 25.72%) ;
   color: #fff !important; 
 }
 
@@ -249,12 +249,9 @@ margin-bottom: 27.2px;
 .left-menu--minimized a{
   padding: 0;
   background: none;
+  font-size: 0;
 }
 
-@keyframes appearAnimation {
-  0% { opacity: 0;}
-  100% { opacity: 1;}
-}
 
 @media (max-width: 1000px) {
   .burger-menu{
@@ -266,6 +263,8 @@ margin-bottom: 27.2px;
     min-height: unset;
     transition: 0s;
     transform: translateX(-100%);
+    left: 0px;
+
   }
   .left-menu--minimized{
     transition: 0.4s;
@@ -277,8 +276,14 @@ margin-bottom: 27.2px;
     transform: translateX(0);
     transition: 0.4s;
   }
+  .left-menu--minimized a{
+    padding: 10.4px 11.2px;
+  }
+  .left-menu-route--active{
+    background: linear-gradient(97deg, #3AA1FF -139.58%, #211E29 25.72%) !important; 
+  }
   .left-menu--minimized li{
-    opacity: 0;
+    /* opacity: 0; */
   }
   .left-menu ul{
     padding-left: 30px;
@@ -300,4 +305,5 @@ margin-bottom: 27.2px;
   .left-menu li:first-of-type{
     display: none;
   }
+ 
 }

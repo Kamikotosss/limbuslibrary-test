@@ -1,43 +1,113 @@
 import React, { useCallback, useEffect, useState } from "react";
-type TTouch = { isStarted:boolean , startX:number , currentX:number};
+import { mobileLayoutFrom } from "../constants/mobileLayoutFrom";
+type TTouch = { 
+    isStarted:boolean , 
+    isThresholdMetHide:boolean,
+    isThresholdMetExpand:boolean,
+    isSwipe:boolean,
+    startX:number , 
+    currentX:number, 
+    currentOffsetX:number,
+    startY:number , 
+    currentY:number, 
+    currentOffsetY:number,
+    startTime:number
+};
 export const useTouchSwipe = (threshold:number) =>{
-    const [touch, setTouch] = useState<TTouch>({ isStarted: false, startX: 0, currentX: 0 });
+    const swipeThresholdTime = 500;
+    const [touch, setTouch] = useState<TTouch>(
+        { 
+            isStarted: false, 
+            isThresholdMetHide: false, 
+            isThresholdMetExpand: false, 
+            isSwipe: false, 
+            startX: 0, 
+            currentX: 0 ,
+            currentOffsetX:0,
+            startTime: Date.now(),
+            startY:0 , 
+            currentY:0, 
+            currentOffsetY:0,
+
+        }
+    );
 
     const onTouchStart = useCallback((e: TouchEvent) => {
         if (touch.isStarted) return;
+        const currentTouchX = e.touches[0].clientX;
+        const currentTouchY = e.touches[0].clientY;
+        // console.log("starrt")
+        
         setTouch(prevTouch => ({
             ...prevTouch,
             isStarted: true,
-            startX: e.touches[0].clientX
+            startX: currentTouchX,
+            currentX: currentTouchX,
+            startY:currentTouchY , 
+            currentY:currentTouchY, 
+            isSwipe: false,
+            startTime: Date.now(),
         }));
     }, [touch]);
     
     const onTouchMove = useCallback((e: TouchEvent) => {
         if (!touch.isStarted) return;
+        const currentTouchX = e.touches[0].clientX;
+        const currentTouchY = e.touches[0].clientY;
+        // console.log("move")
+        const elapsedTime = Date.now() - touch.startTime;
+        if (Math.abs(currentTouchX - touch.currentX) < 1.5)return;
+        if (Math.abs(touch.currentOffsetX ) > threshold) return onTouchEnd();
+        if (Math.abs(touch.currentOffsetY ) > 10) return onTouchEnd();
         setTouch(prevTouch => ({
             ...prevTouch,
-            currentX: e.touches[0].clientX
+            currentX: currentTouchX,
+            currentOffsetX: currentTouchX - prevTouch.startX,
+            currentY: currentTouchY,
+            currentOffsetY: currentTouchY - prevTouch.startY,
+            isSwipe: elapsedTime < swipeThresholdTime,
         }));
     }, [touch]);
     
     const onTouchEnd = useCallback(() => {
         if (!touch.isStarted) return;
-        if (touch.currentX - touch.startX > 50) {
-            setTouch({ isStarted: false, startX: 0, currentX: 0 });
-        }
+        // console.log("end")
+        console.log(touch)
+        setTouch(prevTouch =>(
+            { 
+                ...prevTouch,
+                isStarted: false, 
+                currentOffsetX:0,
+                currentOffsetY:0,
+                isThresholdMetExpand:(threshold < touch.currentOffsetX) ,
+                isThresholdMetHide:(-threshold > touch.currentOffsetX) 
+
+            }
+        )
+        );
+      
     }, [touch]);
-    
     useEffect(() => {
-        window.addEventListener("touchstart", onTouchStart);
-        window.addEventListener("touchmove", onTouchMove);
-        window.addEventListener("touchend", onTouchEnd);
-    
-        return () => {
-            window.removeEventListener("touchstart", onTouchStart);
-            window.removeEventListener("touchmove", onTouchMove);
-            window.removeEventListener("touchend", onTouchEnd);
+        if(window.innerWidth <= mobileLayoutFrom){
+            window.addEventListener("touchstart", onTouchStart);
+            window.addEventListener("touchmove", onTouchMove);
+            window.addEventListener("touchend", onTouchEnd);
+        
+            return () => {
+                window.removeEventListener("touchstart", onTouchStart);
+                window.removeEventListener("touchmove", onTouchMove);
+                window.removeEventListener("touchend", onTouchEnd);
+            }
         }
+       
     }, [onTouchStart, onTouchMove, onTouchEnd]);
 
-    return [ touch.currentX-touch.startX , touch.isStarted]
+    return {
+        offsetX: touch.currentOffsetX , 
+        isStarted: touch.isStarted ,
+        isThresholdMetHide:touch.isThresholdMetHide , 
+        isThresholdMetExpand:touch.isThresholdMetExpand,
+        isSwipe:touch.isSwipe
+
+    }
 }

@@ -12,7 +12,7 @@
 }
 
 .tier-bar-container--animated {
-    animation: slideAnimation 0.8s ease;
+    animation: slideAnimation 1s ease;
     opacity: 1;
 }
 
@@ -139,5 +139,46 @@
 @media (max-width: 810px) {
     .tier-bar-items {
         grid-template-columns: repeat(auto-fill, 106.568px);
+    }
+}
+@media (max-width: 455px) {
+    .tier-bar-container {
+        padding-left: 30px;
+        padding-right: 5px;
+    }
+    .tier-bar-line{
+        margin-left: -30px;
+    }
+    .tier-bar-items{
+        column-gap: 5px;
+        row-gap: 10px;
+    }
+}
+@media (max-width: 405px) {
+    .tier-bar-container {
+        padding-left: 15px;
+        padding-right: 5px;
+    }
+    .tier-bar-line{
+        margin-left: -15px;
+    }
+    .tier-bar-items{
+        column-gap: 5px;
+        row-gap: 10px;
+    }
+}
+@media (max-width: 390px) {
+    .tier-bar-container {
+        padding-left: 30px;
+        padding-right: 5px;
+    }
+    .tier-bar-line{
+        margin-left: -30px;
+    }
+    .tier-bar-items{
+        margin-left: -10px;
+        column-gap: 8px;
+        row-gap: 10px;
+        justify-content: space-evenly;
     }
 }

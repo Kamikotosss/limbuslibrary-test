@@ -11,9 +11,9 @@ export type EGOInterface = {
     egoRes: string;
     egoTier: string;
     sanity: number;
-    status: string;
+    status: string|null;
     dmgType: string;
-    releaseDate:string;
+    releaseDate:number;
 };
 export enum EGOActionTypes {
     FETCH_EGO = "FETCH_EGO",

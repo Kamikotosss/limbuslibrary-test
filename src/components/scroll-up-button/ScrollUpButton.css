@@ -2,7 +2,7 @@
     scale: 2.0;
     position: fixed;
     right: 40px;
-    top: 90vh;
+    bottom: 5vh;
     transition: 0.5s;
     opacity: 0;
     cursor: default;
@@ -14,4 +14,8 @@
 .scroll-up-button--visible{
     opacity: 1;
     cursor: pointer;
+}
+.scroll-up-button svg{
+    width: 4vw;
+    height: 4vh;
 }

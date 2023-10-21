@@ -110,10 +110,10 @@
 .modal-empty{
     border: 1px dashed #717171;
 }
-.clear-filters{
+.modal .clear-filters{
     position: static;
     order: -1;
-  }
+}
 @media(max-width:1400px){
     .modal__slot{
         width: 300px;
@@ -130,4 +130,5 @@
         padding: 20px;
         width: 85%;
     }
+    
 }

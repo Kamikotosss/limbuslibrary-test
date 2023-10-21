@@ -13,32 +13,7 @@
     transition: 0.4s;
     position: relative;
     margin-right: 50px;
-    animation:spin-grow-shrink 1s ease forwards;
-    opacity: 0;
-}
-.contact-info .discord{
-    animation: wiggle 1s ease-in-out infinite , spin-grow-shrink 1s ease;
-}
-@keyframes spin-grow-shrink {
-    0% {
-      transform: rotate(0deg) scale(1) translateX(-100px);
-      opacity: 0;
-    }
-    50% {
-      transform: rotate(180deg) scale(2);
-    }
-    100% {
-      transform: rotate(360deg) scale(1);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes wiggle {
-    0% { transform: rotate(0deg);  opacity: 1;}
-   80% { transform: rotate(0deg);  opacity: 1;}
-   85% { transform: rotate(5deg);  opacity: 1;}
-   95% { transform: rotate(-5deg);  opacity: 1;}
-  100% { transform: rotate(0deg);  opacity: 1;}
+    opacity: 1;
 }
 .contact-info button:hover{
     opacity: 1;

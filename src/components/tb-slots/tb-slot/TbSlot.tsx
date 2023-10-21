@@ -42,10 +42,10 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
             glyph:"ז",
         },
         {
-            ego:ALEPH,
-            ref:refSlotALEPH,
-            isHovering:isHoveringSlotALEPH,
-            glyph:"ט",
+            ego:TETH,
+            ref:refSlotTETH,
+            isHovering:isHoveringSlotTETH,
+            glyph:"ו",
         },
         {
             ego:HE,
@@ -54,16 +54,16 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
             glyph:"ה",
         },
         {
-            ego:TETH,
-            ref:refSlotTETH,
-            isHovering:isHoveringSlotTETH,
-            glyph:"ו",
-        },
-        {
             ego:WAW,
             ref:refSlotWAW,
             isHovering:isHoveringSlotWAW,
             glyph:"ℵ",
+        },
+        {
+            ego:ALEPH,
+            ref:refSlotALEPH,
+            isHovering:isHoveringSlotALEPH,
+            glyph:"ט",
         },
     ];
     const isHoveringEGO = () => {
@@ -82,9 +82,10 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
         if(!tbHoverState) return false;
         if(!ego)return false;
         if(tbHoverState.type === "sin"){
-            if (ego[tbHoverState.trigger as keyof typeof ego] > 0) return true;
+            let a = ego[tbHoverState.trigger as keyof typeof ego];
+            if ( a && a > 0) return true;
         }else if (tbHoverState.type === "tag") {
-            if (ego.status.includes(tbHoverState.trigger)) return true;
+            if (ego.status?.includes(tbHoverState.trigger)) return true;
         }
         return false;
     }
@@ -95,7 +96,7 @@ export const TbSlot:React.FC<{slot:SlotInterface,index:number}> = ({slot,index})
             const {sin1 ,sin2 ,sin3} =slot.identity;
             if ([sin1 ,sin2 ,sin3].includes(tbHoverState.trigger as sinType)) return true;
         }else if (tbHoverState.type === "tag") {
-            if (slot.identity.status.includes(tbHoverState.trigger)) return true;
+            if (slot.identity.status?.includes(tbHoverState.trigger)) return true;
         }
         return false;
     }

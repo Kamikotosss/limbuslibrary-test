@@ -44,3 +44,8 @@
     object-fit:contain;
     margin-right: 4px;
 }
+@media(max-width:1000px){
+    .tb-tags-container{
+        z-index: 90;
+    }
+}

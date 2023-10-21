@@ -56,7 +56,7 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
                         return <button
                         key={status.name}
                         onClick={()=>{handleScroll(status.id,index)}}>
-                            {/* <div className="filters-filter-tooltip">{status.id}</div> */}
+                            <div className="status-tooltip">{status.id}</div>
                             <img  src={`./images/tags/${status.id}.png`} alt={``} />
                         </button>
                     })}

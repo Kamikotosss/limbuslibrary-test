@@ -1,6 +1,6 @@
 .entity-section{
     width: 100%;
-    row-gap: 12px;
+    row-gap: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

@@ -22,7 +22,7 @@ export const ItemEGOInfo:React.FC<ItemEGOInfoInterface> = ({entity}) => {
 
             <div className={"item-ego-info-skills"}>
                 {sinTypes.map((sin)=>{
-                    if(!entity[sin]) return <></>
+                    if(!entity[sin]) return null
                     return (
                         <div key={`${sin}`} className="item-ego-info-sin">
                             <img src={`./images/sins/${sin}.png`} alt={sin}/>

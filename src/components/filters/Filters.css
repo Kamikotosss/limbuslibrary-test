@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   position: relative;
   gap: 19.2px;
+  user-select: none;
 }
 .clear-filters{
   display:flex;
@@ -42,15 +43,15 @@
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
-  row-gap: 3.2px;
+  gap:3.2px;
 }
 
 .filters .section-expanded{
-  display: grid;
+  display: grid !important;
   gap: 3.2px;
   width: 100%;
-  grid-template-columns: repeat(auto-fill, 43.2px);
-  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, 43.2px) !important;
+  justify-content: space-between !important;
 }
 
 .filters-filter img{
@@ -67,7 +68,6 @@
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
-  margin-right: 3.2px;
   border-radius: 3.2px;
   cursor: pointer;
   position: relative;

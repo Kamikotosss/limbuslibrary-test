@@ -23,10 +23,10 @@ export const ListIds:React.FC = () => {
         return (<ItemEntity entity={item} key={item.imgUrl}/>);
     })
     return (
-        <section className={"list-ids"}>
+        <section ref={containerRef} className={"list-ids"}>
         <h2>{`Найдено Личностей (${count})`}</h2>
         {
-            count ? <div ref={containerRef} className={"list-ids-content"} >
+            count ? <div className={"list-ids-content"} >
                 {idsList}
             </div>
             : <p>

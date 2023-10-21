@@ -19,12 +19,12 @@ export const TbTag:React.FC <TbSinInterface> = ({tag,count}) =>{
         if(!tbHoverState)return false;
         if(tbHoverState.type === "slot"){
             const {ego,identity} = tbHoverState.trigger;
-            if(identity?.status.includes(tag)) return true;
-            for(const key in ego) if(ego[key]?.status.includes(tag)) return true;
+            if(identity?.status?.includes(tag)) return true;
+            for(const key in ego) if(ego[key]?.status?.includes(tag)) return true;
         }else if (tbHoverState.type === "slot-identity"){
-            return tbHoverState.trigger.status.includes(tag);
+            return tbHoverState.trigger.status?.includes(tag);
         }else if (tbHoverState.type === "slot-ego"){
-            return tbHoverState.trigger.status.includes(tag);
+            return tbHoverState.trigger.status?.includes(tag);
         }
         return false;
     }

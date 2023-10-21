@@ -25,6 +25,11 @@
     margin-bottom: 12.8px;
     margin-top: 0;
 }
+.tier-list-text-empty{
+    color:white;
+    font-size: 24px;
+    font-weight: 500;
+}
 @media (max-width: 1000px) {
     .tier-list-container {
        flex-wrap: wrap;

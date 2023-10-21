@@ -18,9 +18,9 @@ export const FiltersSection:React.FC<{filter:TFilter}> = ({filter}) => {
     let countActive = 0;
     const handleFilterChange = (key:string) =>filterChangeTypeAction(dispatch,key);
     const handleClearSection = (section:string) =>  filterClearSectionAction(dispatch,section);
-    const {type} =filter;
+    const {type, data} =filter;
     return <section className="filters-section">
-    {filter.data.map((subtype)=>{
+    {data.map((subtype)=>{
         let currentType = filterState.types[type];
         if(typeof subtype !== "object"){
             let isTypeActive = currentType[subtype as keyof typeof currentType];
@@ -43,6 +43,6 @@ export const FiltersSection:React.FC<{filter:TFilter}> = ({filter}) => {
             key={subtype.rarity} />
         }
     })}
-       {countActive >= 2 && <button className="filters-clear-section" onClick={()=>handleClearSection(filter.type)}><EraserSVG/></button>}
+       {countActive >= 1 && <button className="filters-clear-section" onClick={()=>handleClearSection(filter.type)}><EraserSVG/></button>}
     </section>
 }

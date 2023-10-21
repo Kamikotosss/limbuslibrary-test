@@ -33,7 +33,7 @@ export const TierListPage:React.FC = () => {
                 fetchIds()(dispatch);
                 break;
             default:
-                navigate("/limbuslibrary/");
+                navigate("/");
                 return;
         }
         fetchStatuses()(dispatch);

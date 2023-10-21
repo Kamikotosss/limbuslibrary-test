@@ -9,7 +9,7 @@ import { isIdentity } from "../../tools/isIdentity";
 import { ItemEGOInfo } from "../item-ego-info/ItemEGOInfo";
 import { ItemIdentityInfo } from "../item-identity-info/ItemIdentityInfo";
 import "./ItemEntity.css";
-interface IItemEntity{
+export interface IItemEntity{
     entity:IdentityInterface|EGOInterface;
 }
 export const ItemEntity:React.FC<IItemEntity> = ({entity}) =>{

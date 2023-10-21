@@ -1,32 +1,31 @@
 import { StatusesAction , StatusesInterface , StatusesActionTypes} from "../store/reducers/statuses-reducer";
-import * as XLSX from "xlsx";
 import axios, { AxiosError } from "axios";
 import { statusesKeys } from "../constants/statusesKeys";
+import { getValidatedData } from "../constants/validations";
+import { statusesApiKey } from "../constants/apiKeys";
 export const fetchStatuses = () => {
+    const API_KEY =statusesApiKey; 
+    const SPREADSHEET_ID = '1nQehU8M42srGGaaeMDOM4jREBpPOclcvN0dJrZHh_ao';
+    const RANGE1 = 'Sinner'; 
+    const RANGE2 = 'Anomaly'; 
+
+    const apiUrl1 = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE1}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY}`;
+    const apiUrl2 = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE2}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY}`;
+
         return async (dispatch: (arg0: StatusesAction) => void) =>{
-            let result:StatusesInterface[] = [];
             dispatch({type:StatusesActionTypes.FETCH_STATUS})
+            const promise1 = axios.get(apiUrl1);
+            const promise2 = axios.get(apiUrl2);
             try{
-                const response = await axios.get(`https://docs.google.com/spreadsheets/d/1nQehU8M42srGGaaeMDOM4jREBpPOclcvN0dJrZHh_ao/`, {responseType: "arraybuffer",});
-                const workbook = XLSX.read(response.data, { type: 'array' });
-                for (const sheetName in workbook.Sheets){
-                    const sheet = workbook.Sheets[sheetName];
-                    for(let numberIndx = 4 ; ; numberIndx++){
-                        if( !(`B${numberIndx}` in sheet)) break;
-                        const obj:any = {};
-                        for(let letterIndx = 1 ; letterIndx < 26 ; letterIndx++){
-                            const letter = String.fromCharCode(65 + letterIndx);// 65 - A 90 - Z
-                            const keySheet = `${letter}${numberIndx}`;
-                            if( keySheet in sheet){
-                                obj[statusesKeys[letter]] = sheet[keySheet].v ;
-                            }else{
-                                break;
-                            }
-                        }
-                        result.push(obj as StatusesInterface) ;
-                    }
-                }
-                dispatch({type:StatusesActionTypes.FETCH_STATUS_SUCCESS,payload:result})
+                Promise.all([promise1, promise2])
+                .then((responses) => {
+                    const [response1, response2] = responses;
+                    const result = getValidatedData([response1.data.values,response2.data.values] , statusesKeys);
+                    dispatch({type:StatusesActionTypes.FETCH_STATUS_SUCCESS,payload:result as StatusesInterface[]})
+                })
+                .catch((error) => {
+                    dispatch({type:StatusesActionTypes.FETCH_STATUS_ERROR,payload:(error as AxiosError).message})
+                });
             } catch(e){
                 dispatch({type:StatusesActionTypes.FETCH_STATUS_ERROR,payload:(e as AxiosError).message})
             }

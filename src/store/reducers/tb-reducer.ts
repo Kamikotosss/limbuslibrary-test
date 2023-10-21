@@ -235,7 +235,6 @@ const removeIdentityFromSlot = (slot:SlotInterface,energy:EnergyInterface) => {
     energy["energyListPresent"][sin2] -= 2;
     energy["energyListPresent"][sin3] -= 1;
     slot.identity = null;
-    console.log("identity removed")
 }
 const addIdentityToSlot = (slot:SlotInterface,energy:EnergyInterface,identity:IdentityInterface) => {
     if(identity === null) return;
@@ -244,7 +243,6 @@ const addIdentityToSlot = (slot:SlotInterface,energy:EnergyInterface,identity:Id
     energy["energyListPresent"][sin2] += 2;
     energy["energyListPresent"][sin3] += 1;
     slot.identity = identity;
-    console.log("identity added")
 
 }
 const removeAllEGOsFromSlot = (slot:SlotInterface,energy:EnergyInterface)=>{
@@ -262,7 +260,6 @@ const removeEGOFromSlot = (slot:SlotInterface,energy:EnergyInterface,ego:EGOInte
         energyListReq[key as keyof typeof energyListReq] -= value as number;
     }
     slot.ego[ego.rarity as keyof typeof slot.ego] = null;
-    console.log("ego removed")
 }
 const addEGOToSlot = (slot:SlotInterface,energy:EnergyInterface,ego:EGOInterface|null) => {
     removeEGOFromSlot(slot,energy,ego);
@@ -273,7 +270,6 @@ const addEGOToSlot = (slot:SlotInterface,energy:EnergyInterface,ego:EGOInterface
         energyListReq[key as keyof typeof energyListReq] += value as number;
     }
     slot.ego[ego.rarity as keyof typeof slot.ego] = ego;
-    console.log("ego added")
 }
 const remove = (entity:IdentityInterface|EGOInterface,state: TbInterface,slot:SlotInterface) =>{
     const {energy,slots} = state;

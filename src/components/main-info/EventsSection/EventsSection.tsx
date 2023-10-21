@@ -4,22 +4,28 @@ import "./EventsSection.css"
 export const EventsSection: React.FC = () => {
     const events = [ 
         {
-            startDate:new Date('October 29, 2023 03:59:59 GMT-06:00'),
-            endDate:new Date('November 29, 2023 03:59:59 GMT-06:00'),
+            startDate:new Date('October 26, 2023 12:00:00 GMT-06:00'),
+            endDate:new Date('November 09, 2023 9:59:59 GMT-06:00'),
             name:"",
-            imgSrc:"./images/event.jpg"
+            imgSrc:"./images/eventH.png"
         },
         {
-            startDate:new Date('October 04, 2023 03:59:59 GMT-06:00'),
-            endDate:new Date('December 29, 2023 03:59:59 GMT-06:00'),
+            startDate:new Date('November 16, 2023 12:00:00 GMT-06:00'),
+            endDate:new Date('March 29, 2024 03:59:59 GMT-06:00'),
             name:"",
-            imgSrc:"./images/banner.jpg"
+            imgSrc:"./images/bps3.png"
         },
         {
-            startDate:new Date('October 29, 2023 03:59:59 GMT-06:00'),
-            endDate:new Date('January 29, 2024 03:59:59 GMT-06:00'),
+            startDate:new Date('October 10, 2023 12:00:00 GMT-06:00'),
+            endDate:new Date('November 15, 2023 12:00:00 GMT-06:00'),
             name:"",
-            imgSrc:"./images/bp.webp"
+            imgSrc:"./images/bps2.png"
+        },
+        {
+            startDate:new Date('October 01, 2023 12:00:00 GMT-06:00'),
+            endDate:new Date('October 25, 2023 03:59:59 GMT-06:00'),
+            name:"",
+            imgSrc:"./images/banner3.png"
         },
     ]
     const EventSector:React.FC<{event:{startDate:Date ,endDate:Date,name:string,imgSrc:string}}> = ({event}) =>{

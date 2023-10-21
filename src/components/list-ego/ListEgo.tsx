@@ -23,10 +23,10 @@ export const ListEgo:React.FC = () => {
         return (<ItemEntity entity={item} key={item.imgUrl}/>);
     })
     return (
-        <section className={"list-ego"}>
-        <h2>{`Найдено ЭГО (${count})`}</h2>
+        <section ref={containerRef} className={"list-ego"}>
+        <h2 >{`Найдено ЭГО (${count})`}</h2>
         {
-            count ? <div ref={containerRef} className={"list-ego-content"} >
+            count ? <div className={"list-ego-content"} >
                 {egoList}
             </div>
             : <p>
