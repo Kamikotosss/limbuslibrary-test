@@ -1,4 +1,5 @@
 import React, {useState } from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { StatusesInterface} from "../../store/reducers/statuses-reducer";
 import "./StatusesTable.css";
 
@@ -8,8 +9,9 @@ interface TableRowProps extends StatusesInterface{
     name:string;
     description:string;
 }
-export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuses}) => {
-    const statusesExtended:TableRowProps[] = statuses;
+export const StatusesTable:React.FC = () => {
+    const {statuses} = useTypedSelector(store=>store.statusesReducer);
+    const statusesExtended:TableRowProps[] = statuses || [];
     const [animatedClass , setAnimatedClass ] = useState("");
     const [timeoutId, setTimeoutId] = useState<null|NodeJS.Timeout>(null);
     const buttonsSections = [{unit:"sinner",header:"Статусы которые встречаются у грешников"} , {unit:"anomaly",header:"Статусы которые встречаются у аномалий"}];
@@ -33,25 +35,13 @@ export const StatusesTable:React.FC<{statuses: StatusesInterface[]}> = ({statuse
           }
         }
       };
-     
-    //   const TabelRow:React.FC<{status:TableRowProps}> = ({status}) => {
-    //     const rowReference = useRef(null);
-    //     const {isVisible} =useIntersectionObserver(rowReference ,0.1);
-    //      return <tr key={status.id} className={`${status.id === animatedClass && "statuses-table-tr--active"} ${status.id === animatedClass && "statuses-table-tr--active"}`} ref={(rowReference) => (status.reference = rowReference as HTMLTableRowElement | null)}>
-    //      <td className={`statuses-table-th-image`}>
-    //          <img src={`/images/tags/${status.id}.png`} alt={status.id} />
-    //      </td>
-    //      <td className="statuses-table-th-name">{status.name}</td>
-    //      <td className="statuses-table-th-description">{status.description}</td>
-    //  </tr>
-    //   }
       
     return <>
         {buttonsSections.map((section,index)=>{
             return<section key={index} className={"statuses-section"} >
                 <h2>{section.header}</h2>
                 <article className={"statuses-buttons"} >
-                    {statuses.map((status,index)=>{
+                    {statuses?.map((status,index)=>{
                         if(section.unit === status.unit)
                         return <button
                         key={status.name}
