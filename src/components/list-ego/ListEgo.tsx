@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useQueryClient } from "react-query";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
@@ -8,7 +9,7 @@ import { ItemEntity } from "../item-entity/ItemEntity";
 import "./ListEgo.css";
 
 export const ListEgo:React.FC = () => {
-    const {ego} = useTypedSelector(state => state.egoReducer);
+    const ego = useQueryClient().getQueryData("ego") as EGOInterface[]|null;
     const filterState = useTypedSelector(state => state.filterReducer);
     const searchState = useTypedSelector(state => state.searchReducer);
     const containerRef = useRef(null);

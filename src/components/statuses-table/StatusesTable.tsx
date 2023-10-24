@@ -1,5 +1,5 @@
 import React, {useState } from "react";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useQueryClient } from "react-query";
 import { StatusesInterface} from "../../store/reducers/statuses-reducer";
 import "./StatusesTable.css";
 
@@ -10,7 +10,7 @@ interface TableRowProps extends StatusesInterface{
     description:string;
 }
 export const StatusesTable:React.FC = () => {
-    const {statuses} = useTypedSelector(store=>store.statusesReducer);
+    const statuses = useQueryClient().getQueryData("statuses") as StatusesInterface[]|null;
     const statusesExtended:TableRowProps[] = statuses || [];
     const [animatedClass , setAnimatedClass ] = useState("");
     const [timeoutId, setTimeoutId] = useState<null|NodeJS.Timeout>(null);

@@ -1,18 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchEGO } from "../api/fetchEGO";
-import { fetchIds } from "../api/fetchIds";
+import React from "react";
 import { MainInfo } from "../components/main-info/MainInfo";
 import { CommonPageLayout } from "./CommonPageLayout";
+import { LoadingPageWrapper } from "./LoadingPageWrapper";
 
 export const IndexPage:React.FC = () => {
-    const dispatch =useDispatch();
-    useEffect(() => {
-        fetchIds()(dispatch);
-        fetchEGO()(dispatch);
-    }, []);
-  
     return  <CommonPageLayout>
-    <MainInfo/>
+        <LoadingPageWrapper queryKeys={["ego","identities"]}>
+            <MainInfo/>
+        </LoadingPageWrapper>
 </CommonPageLayout> 
 }

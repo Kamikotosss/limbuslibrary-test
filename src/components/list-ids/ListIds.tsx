@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useQueryClient } from "react-query";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { IdentityInterface } from "../../store/reducers/ids-reducer";
@@ -10,7 +11,7 @@ import "./ListIds.css";
 export const ListIds:React.FC = () => {
     const containerRef = useRef(null);
     const dispatch = useDispatch();
-    const {ids} = useTypedSelector(state => state.idsReducer);
+    const ids = useQueryClient().getQueryData("identities") as IdentityInterface[]|null;
     const filterState = useTypedSelector(state => state.filterReducer);
     const searchState = useTypedSelector(state => state.searchReducer);
     let count = 0;

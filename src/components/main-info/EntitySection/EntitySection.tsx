@@ -1,6 +1,6 @@
 import React, {useRef} from "react";
+import { useQueryClient } from "react-query";
 import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { EGOInterface } from "../../../store/reducers/ego-reducer";
 import { IdentityInterface } from "../../../store/reducers/ids-reducer";
 import { ItemEntity } from "../../item-entity/ItemEntity";
@@ -12,8 +12,8 @@ interface EntitySectionBarProps {
     }
 }
 export const EntitySection:React.FC = () => {
-    const {ego} = useTypedSelector(state => state.egoReducer);
-    const {ids} = useTypedSelector(state => state.idsReducer);
+    const ids = useQueryClient().getQueryData("identities") as IdentityInterface[]|null;
+    const ego = useQueryClient().getQueryData("ego") as EGOInterface[]|null;
     
     function dateToExcel(jsDate:Date) {
         const excelStartDate = new Date(1899, 11, 30);

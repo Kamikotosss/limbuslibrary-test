@@ -1,22 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchEGO } from "../api/fetchEGO";
-import { fetchStatuses } from "../api/fetchStatuses";
+import React from "react";
 import { Filters } from "../components/filters/Filters";
 import { ListEgo } from "../components/list-ego/ListEgo";
 import { CommonPageLayout } from "./CommonPageLayout";
+import { LoadingPageWrapper } from "./LoadingPageWrapper";
 
 export const EGOPage:React.FC = () => {
-    const dispatch =useDispatch();
-
-    useEffect(() => {
-        fetchEGO()(dispatch);
-        fetchStatuses()(dispatch);
-    }, []);
-
     return <CommonPageLayout>
-        <h1 style={{width:"90%" ,color:"white"}}>Список ЭГО</h1>
-        <Filters/>
-        <ListEgo/>
+        <LoadingPageWrapper queryKeys={["ego"]}>
+            <h1 style={{width:"90%" ,color:"white"}}>Список ЭГО</h1>
+            <Filters/>
+            <ListEgo/>
+        </LoadingPageWrapper>
     </CommonPageLayout> 
 }

@@ -1,10 +1,11 @@
 import React from "react";
+import { useQueryClient } from "react-query";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
 import { isFilterMatching } from "../../tools/isFilterMatching";
 import { TbItem } from "../tb-item/TbItem";
 export const TbListEGO:React.FC = () => {
-    const egos = useTypedSelector(state => state.egoReducer).ego;
+    const egos = useQueryClient().getQueryData("ego") as EGOInterface[]|null;
     const {slots,modalTrigger} = useTypedSelector(store => store.tbReducer);
     const filterState = useTypedSelector(store => store.filterReducer);
     const searchState = useTypedSelector(store => store.searchReducer);

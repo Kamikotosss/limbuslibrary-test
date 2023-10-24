@@ -1,6 +1,10 @@
-
-export const handleErrorsAndLoadings = (states:Array<{error:string|null , loading:boolean}>) => {
-    const error = states.some((state) => state.error!==null);
-    const loading = states.some((state) => state.loading);
+type TStatus = {
+    isLoading:boolean,
+    isError:boolean,
+    isFetching:boolean
+}
+export const handleErrorsAndLoadings = (states:Array<TStatus>) => {
+    const loading = states.some((state) => state.isLoading );
+    const error = states.some((state) => state.isError );
     return {error,loading}
 }

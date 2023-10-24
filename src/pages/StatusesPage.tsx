@@ -1,17 +1,13 @@
-import React, { useEffect} from "react";
-import { useDispatch } from "react-redux";
-import { fetchStatuses } from "../api/fetchStatuses";
+import React from "react";
 import { StatusesTable } from "../components/statuses-table/StatusesTable";
 import { CommonPageLayout } from "./CommonPageLayout";
+import { LoadingPageWrapper } from "./LoadingPageWrapper";
 
 export const StatusesPage:React.FC = () => {
-    const dispatch =useDispatch();
-    useEffect(() => {
-        fetchStatuses()(dispatch);
-    }, []);
-   
-    return  <CommonPageLayout>
+    return <CommonPageLayout>
+        <LoadingPageWrapper queryKeys={["statuses"]}>
             <h1 style={{width:"90%" ,color:"white"}}>Список статусов</h1>
             <StatusesTable/>
-</CommonPageLayout> 
+        </LoadingPageWrapper>
+    </CommonPageLayout> 
 }

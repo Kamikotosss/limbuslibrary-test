@@ -1,11 +1,12 @@
 import React from "react";
+import { useQueryClient } from "react-query";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { IdentityInterface } from "../../store/reducers/ids-reducer";
 import { isFilterMatching } from "../../tools/isFilterMatching";
 import { TbItem } from "../tb-item/TbItem";
 
 export const TbListIds: React.FC = () => {
-    const ids = useTypedSelector(state => state.idsReducer).ids;
+    const ids = useQueryClient().getQueryData("identities") as IdentityInterface[]|null;
     const {slots,modalTrigger} = useTypedSelector(store => store.tbReducer);
     const filterState = useTypedSelector(store => store.filterReducer);
     const searchState = useTypedSelector(store => store.searchReducer);

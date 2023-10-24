@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useQueryClient } from "react-query";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -16,8 +17,8 @@ type TRatings = {
     }
 }
 export const TierList:React.FC = () => {
-    const {ids} = useTypedSelector(state => state.idsReducer);
-    const {ego} = useTypedSelector(state => state.egoReducer);
+    const ids = useQueryClient().getQueryData("identities") as IdentityInterface[]|null;
+    const ego = useQueryClient().getQueryData("ego") as EGOInterface[]|null;
     const filterState = useTypedSelector(state => state.filterReducer);
     const searchState = useTypedSelector(state => state.searchReducer);
     const location = useLocation();
