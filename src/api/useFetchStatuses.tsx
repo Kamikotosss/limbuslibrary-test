@@ -1,37 +1,36 @@
-import axios from "axios";
-import { statusesApiKey } from "../constants/apiKeys";
-import { getValidatedData } from "../constants/validations";
+import {  statusesApiKey1, statusesApiKey2 } from "../constants/apiKeys";
 import { useQuery } from "react-query";
 import { statusesKeys } from "../constants/statusesKeys";
+import { fetchAndValidateData } from "../tools/fetchAndValidateData";
 
-const API_KEY = statusesApiKey; 
 const SPREADSHEET_ID = '1nQehU8M42srGGaaeMDOM4jREBpPOclcvN0dJrZHh_ao';
 const RANGE1 = 'Sinner'; 
 const RANGE2 = 'Anomaly'; 
 
-const apiUrl1 = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE1}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY}`;
-const apiUrl2 = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE2}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY}`;
+const API_KEY1 = statusesApiKey1; 
+const API_KEY2 = statusesApiKey2; 
 
+const apiUrl1_1 = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE1}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY1}`;
+const apiUrl1_2 = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE2}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY2}`;
+
+const apiUrl2_1 = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE1}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY1}`;
+const apiUrl2_2 = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE2}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY2}`;
+
+const useFetchStatusesAction = () =>{
+    const result = fetchAndValidateData(
+    [
+        [apiUrl1_1,apiUrl1_2],
+        [apiUrl2_1,apiUrl2_2]
+    ],
+    statusesKeys);
+    return result; 
+} 
 
 export const useFetchStatuses = () => {
-    const {error,isError,isFetching,isLoading,data,isStale} = useQuery("statuses", async () => {
-        const promise1 = axios.get(apiUrl1);
-        const promise2 = axios.get(apiUrl2);
-        try {
-            return Promise.all([promise1, promise2]).then((responses) => {
-                const [response1, response2] = responses;
-                console.log("Fetching statuses")
-
-                return getValidatedData([response1.data.values,response2.data.values] , statusesKeys);
-            })
-        } catch (error) {
-            throw new Error("Failed to fetch Statuses data.");
-        }
-    },
+    return useQuery("statuses", useFetchStatusesAction,
     {
       staleTime: Infinity, 
-      retry:5,
+      retry:8,
       retryDelay:attempt => Math.min(attempt > 1 ? 2 ** attempt * 1000 : 1000, 30 * 1000),
     });
-    return { error, isError, isFetching, isLoading, data,isStale };
 }

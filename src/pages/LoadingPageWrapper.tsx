@@ -10,9 +10,9 @@ interface ILoadingPageWrapper {
 }
 export const LoadingPageWrapper:React.FC<ILoadingPageWrapper> = ({children,queryKeys}) => {
     const fetchStates = useFetchByKeys(queryKeys);
-    const {error,loading} = handleErrorsAndLoadings(fetchStates);
+    const {error,loading,failureCount} = handleErrorsAndLoadings(fetchStates);
     const mainLayout = () =>{
-        if(loading) return <LoadingAnimation/>;
+        if(loading) return <LoadingAnimation failureCount={failureCount}/>;
         if(error) return <ErrorInfo error="Ошибка сервера, повторите попытку чуть позже"/>;
         return children;
     }

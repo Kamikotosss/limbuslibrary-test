@@ -16,7 +16,7 @@ function App() {
           <AppRouter/>
         </Router>
       </Provider>
-      <ReactQueryDevtools initialIsOpen={true}/>
+      {/* <ReactQueryDevtools initialIsOpen={true}/> */}
     </QueryClientProvider>
   );
 }

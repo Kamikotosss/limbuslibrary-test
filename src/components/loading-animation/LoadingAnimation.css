@@ -12,11 +12,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 64px;
     font-weight: bold;
     color: white;
+    flex-direction: column;
   }
-  
+  .loading{
+    display: flex;
+    font-size: 64px;
+  }
+  .delay-info{
+    font-weight: 400;
+    font-size: 24px;
+  }
   .dot {
     animation: bounce 1s infinite;
   }

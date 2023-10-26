@@ -1,11 +1,5 @@
 import React, {useEffect} from "react";
 import { useDispatch } from "react-redux";
-import { fetchEGO } from "../api/fetchEGO";
-import { fetchIds } from "../api/fetchIds";
-import { fetchStatuses } from "../api/fetchStatuses";
-import { useFetchEgo } from "../api/useFetchEgo";
-import { useFetchIds } from "../api/useFetchIds";
-import { useFetchStatuses } from "../api/useFetchStatuses";
 import { TbModal } from "../components/tb-modal/TbModal";
 import { TbSins } from "../components/tb-sins/TbSins";
 import { TbSlots } from "../components/tb-slots/TbSlots";
