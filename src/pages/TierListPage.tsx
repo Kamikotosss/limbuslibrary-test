@@ -8,9 +8,9 @@ import { LoadingPageWrapper } from "./LoadingPageWrapper";
 
 
 const getQuaryByParam = (param:string) => {
-    if(param === "identities") return ["identities"];
-    if(param === "passives") return ["identities"];
-    return ["ego"];
+    if(param === "identities") return ["identities","statuses"];
+    if(param === "passives") return ["identities","statuses"];
+    return ["ego","statuses"];
 }
 export const TierListPage:React.FC = () => {
     const location = useLocation();

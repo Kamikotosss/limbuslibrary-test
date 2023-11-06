@@ -27,4 +27,6 @@
     flex-direction: row;
     position: relative;
     transition: 0.5s;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState } from "react";
+import React, {useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link,useLocation } from "react-router-dom";
 import { mobileLayoutFrom } from "../../constants/mobileLayoutFrom";
@@ -35,13 +35,13 @@ export const LeftMenu:React.FC = () => {
     
     const [hasRendered, setHasRendered] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setHasRendered(true); 
     }, []);
 
     const ref = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        const {isStarted,offsetX,isThresholdMetExpand,isThresholdMetHide,isSwipe} =touch;
+        const {isThresholdMetExpand,isThresholdMetHide,isSwipe} = touch;
         if (ref.current && isSwipe) {
             if(isThresholdMetExpand){
                 ref.current.style.transform = `translateX(0)`;
@@ -51,13 +51,6 @@ export const LeftMenu:React.FC = () => {
                 ref.current.style.transform = `translateX(-100%)`;
                 leftMenuChangeLayoutAction(dispatch,true);
             }
-            // else if(isStarted){
-            //     console.log("is started offset !")
-            //     ref.current.style.transform = `translateX(calc(-100% + ${offsetX*5}px))`;
-            // }
-            // else {
-            //     ref.current.style.transform = `translateX(-100%)`;
-            // }
         } 
     }, [touch]);
     return (

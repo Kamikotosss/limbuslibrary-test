@@ -4,10 +4,20 @@
   margin-bottom: 38.4px;
   flex-wrap: wrap;
   position: relative;
-  gap: 19.2px;
+  column-gap: 19.2px;
+  row-gap: 35px;
   user-select: none;
+  margin-top: 60px;
 }
-.clear-filters{
+.filters-main-header{
+  position: absolute;
+  top: -72px;
+  left: 0;
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+}
+.btn-filters{
   display:flex;
   align-items: center;
   color:rgba(255, 255, 255, 0.8);
@@ -18,18 +28,26 @@
   gap:8px;
   position: absolute;
   right: 240px;
-  top: -70px;
+  top: -75px;
   transition: 0.4s;
 }
-.clear-filters svg{
+.show-filters{
+  display:none;
+}
+.btn-filters svg{
   width: 23.6px ;
   height: 23.6px ;
 }
-.clear-filters path{
+.btn-filters path{
   fill:rgba(255, 255, 255, 0.801);
   transition: 0.4s;
 }
-.clear-filters:hover path{
+.show-filters path{
+  fill: rgba(255, 255, 255, 0.801);
+  stroke-width: 1.2px;
+  stroke:none;
+}
+.btn-filters:hover path{
   fill:white;
 }
 .clear-filters:hover{
@@ -117,21 +135,61 @@
 .filters-clear-section{
   width: 16px;
   height: 16px;
-  position: absolute;
-  right: 0;
-  top: -17.6px;
+ 
 }
 .filters-clear-section svg path {
-  fill: grey;
-  opacity: 0.32;
+  fill: rgb(233, 230, 230);
+  opacity: 0.7;
   transition: 0.32s;
 }
 .filters-clear-section:hover svg path {
-  opacity: 0.64;
+  opacity: 0.95;
+}
+.filters-modal-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 80vw;
+  max-height: 60vh;
+  background-color: #1C1E23;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 40px 20px 30px;
+  overflow: auto;
+  column-gap:16px;
+  row-gap:30px;
+
+}
+.filters-section header {
+  font-size: 16px;
+  position: absolute;
+  left: 0;
+  top: -28px;
+  color:white;
+  font-weight: 500;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
 }
 @media (max-width: 810px) {
   .clear-filters{
     position: static;
     order: -1;
+  }
+  .show-filters{
+    display: flex;
+    position: static;
+    order: -1;
+  }
+  .filters section {
+    display: none;
+  }
+  .filters-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    gap:3.2px;
   }
 }

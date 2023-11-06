@@ -11,6 +11,7 @@ type TFilter = {
     imgExtension:string,
     data:string[]|Array<{rarity:rarityEGOType;glyph:string}>,
     visible:boolean,
+    header:string
 }
 export const FiltersSection:React.FC<{filter:TFilter}> = ({filter}) => {
     const filterState = useTypedSelector(state => state.filterReducer);
@@ -18,8 +19,9 @@ export const FiltersSection:React.FC<{filter:TFilter}> = ({filter}) => {
     let countActive = 0;
     const handleFilterChange = (key:string) =>filterChangeTypeAction(dispatch,key);
     const handleClearSection = (section:string) =>  filterClearSectionAction(dispatch,section);
-    const {type, data} =filter;
+    const {type, data,header} =filter;
     return <section className="filters-section">
+    
     {data.map((subtype)=>{
         let currentType = filterState.types[type];
         if(typeof subtype !== "object"){
@@ -43,6 +45,9 @@ export const FiltersSection:React.FC<{filter:TFilter}> = ({filter}) => {
             key={subtype.rarity} />
         }
     })}
-       {countActive >= 1 && <button className="filters-clear-section" onClick={()=>handleClearSection(filter.type)}><EraserSVG/></button>}
+    <header>
+        {header}
+        {countActive >= 1 && <button className="filters-clear-section" onClick={()=>handleClearSection(filter.type)}><EraserSVG/></button>}
+    </header>
     </section>
 }

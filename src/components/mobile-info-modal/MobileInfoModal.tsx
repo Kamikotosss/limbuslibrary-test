@@ -9,7 +9,7 @@ export const MobileInfoModal: React.FC  = () => {
    const {trigger} = useTypedSelector(store => store.mobileModalReducer);
     return (
         <div className={["mobile-info-modal" , (trigger) ? "mobile-info-modal--active": "" ].join(" ") } onClick={()=>{ setMobileModalTrigger(dispatch,null) }}>
-            <div className="mobile-info-modal__content ">
+            <div className="mobile-info-modal__content " onClick={ (e)=>{ e.stopPropagation()}}>
                 {trigger}
             </div>
         </div>

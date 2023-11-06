@@ -36,8 +36,6 @@ export const useTouchSwipe = (threshold:number) =>{
         if (touch.isStarted) return;
         const currentTouchX = e.touches[0].clientX;
         const currentTouchY = e.touches[0].clientY;
-        // console.log("starrt")
-        
         setTouch(prevTouch => ({
             ...prevTouch,
             isStarted: true,
@@ -54,7 +52,6 @@ export const useTouchSwipe = (threshold:number) =>{
         if (!touch.isStarted) return;
         const currentTouchX = e.touches[0].clientX;
         const currentTouchY = e.touches[0].clientY;
-        // console.log("move")
         const elapsedTime = Date.now() - touch.startTime;
         if (Math.abs(currentTouchX - touch.currentX) < 1.5)return;
         if (Math.abs(touch.currentOffsetX ) > threshold) return onTouchEnd();
@@ -71,8 +68,6 @@ export const useTouchSwipe = (threshold:number) =>{
     
     const onTouchEnd = useCallback(() => {
         if (!touch.isStarted) return;
-        // console.log("end")
-        console.log(touch)
         setTouch(prevTouch =>(
             { 
                 ...prevTouch,

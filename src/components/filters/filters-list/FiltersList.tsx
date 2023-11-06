@@ -37,14 +37,16 @@ export const FiltersList:React.FC = () => {
             imgsFolder:"sins",
             imgExtension:".png",
             data:sinTypes,
-            visible:true
+            visible:true,
+            header:"Грех"
         },
         {
             type:"dmgType" ,
             imgsFolder:"dmg-type",
             imgExtension:".png",
             data:damageTypes,
-            visible:true
+            visible:true,
+            header:"Тип урона"
 
         },
         {
@@ -52,6 +54,7 @@ export const FiltersList:React.FC = () => {
             imgsFolder:"guard-type",
             imgExtension:".png",
             data:guardTypes,
+            header:"Тип защиты",
             visible:paramsType === "identities"||paramsType === "passives"||location.includes("/teambuilder")||location.includes("/identities")
 
         },
@@ -60,6 +63,7 @@ export const FiltersList:React.FC = () => {
             imgsFolder:"id-rarity",
             imgExtension:".png",
             data:rarityIdentityTypes,
+            header:"Редкость",
             visible:paramsType === "passives"||paramsType === "identities"||location.includes("/teambuilder")||location.includes("/identities")
 
         },
@@ -68,6 +72,7 @@ export const FiltersList:React.FC = () => {
             imgsFolder:null,
             imgExtension:"",
             data:egosMap,
+            header:"Уровень угрозы",
             visible:paramsType === "ego"||location.includes("/teambuilder")||location.includes("/ego")
 
         },
@@ -76,6 +81,7 @@ export const FiltersList:React.FC = () => {
             imgsFolder:"sinners-icons",
             imgExtension:".webp",
             data:sinnerTypes,
+            header:"Грешник",
             visible:true
 
         },

@@ -19,7 +19,7 @@ export const TeamBuilderPage:React.FC = () => {
     }, []);
    
     return  <CommonPageLayout>
-        <LoadingPageWrapper queryKeys={["ego","identities"]}>
+        <LoadingPageWrapper queryKeys={["ego","identities","statuses"]}>
                 <h1 style={{width:"90%" ,color:"white"}}>Тим билдер</h1>
                 <TbModal active={modalTrigger !== null} modalTrigger={modalTrigger} closer={() => tbCloseModalAction(dispatch)}/>
                 <TbSlots/>

@@ -29,32 +29,7 @@ export const TierList:React.FC = () => {
     useEffect(()=>{
         searchChangeTargetRefAction(dispatch,containerRef)
     },[])
-    const ratings:TRatings = {
-        "SSS":{
-            data:[],
-            description: "Эти Личности/ЭГО не имеют равных и способны одолевать любой игровой контент в одиночку."
-        },
-        "SS":{
-            data:[],
-            description: "Очень мощные Личности/ЭГО, которым немного не хватает для того, чтобы войти в категорию SSS."
-        },
-        "S":{
-            data:[],
-            description: "Сильные Личности/ЭГО, которые успешно справляются с разнообразным контентом, но могут быть заменены еще более мощными представителями из S или SS тира."
-        },
-        "A":{
-            data:[],
-            description: "Обычные Личности/ЭГО, обладающие какими-то сильными сторонами, но также имеющие недостатки."
-        },
-        "B":{
-            data:[],
-            description: "Сравнительно слабые Личности/ЭГО, которых стоит выбирать только в случае крайней необходимости."
-        },
-        "C":{
-            data:[],
-            description: "Неэффективные Личности/ЭГО, лучше всего избегать их выбора, так как они не способны успешно выполнять игровые задачи."
-        },
-    };
+
     const tierListClass = () =>{
         switch (type){
             case "identities":
@@ -66,10 +41,7 @@ export const TierList:React.FC = () => {
         }
         return "";
     }
-    const setupTierlist = () => {
-        if (type === "passives") return ["battlePassives" , "supportPassives"];
-        return [type];
-    }
+
     const tierListName = (tierListParam:string|null) =>{
         switch (tierListParam){
             case "identities":
@@ -87,44 +59,92 @@ export const TierList:React.FC = () => {
         return Object.values(data).reduce((acc,item)=>{ acc+= item.data.length ; return acc} , 0);
     }
 
-    const setupEGO = () =>{
+    const setupEGO = (ratings:TRatings) =>{
         ego?.forEach((item:EGOInterface,index) =>{
             if(isFilterMatching(filterState,searchState,item)){
                 ratings[item.egoTier].data.push(<ItemEntity  key={index} entity={item}/>) 
             }
         })
+        return ratings;
     }
-    const setupIds = () =>{
+    const setupIds = (ratings:TRatings) =>{
         ids?.forEach((item:IdentityInterface,index) =>{
             if(isFilterMatching(filterState,searchState,item)){
                 ratings[item.idTier].data.push(<ItemEntity  key={index} entity={item}/>) 
             }
         })
+        return ratings;
     }
-    const setupPassives = () =>{
+    const setupBattlePassives = (ratings:TRatings) =>{
         ids?.forEach((item:IdentityInterface,index) =>{
             if(isFilterMatching(filterState,searchState,item)){
                 ratings[item.passive1Tier].data.push(<ItemEntity  key={index} entity={item}/>) 
             }
         })
+        return ratings;
     }
-   
-    const setupItems = (tierListParam:string) =>{
-        switch (tierListParam){
-            case "identities":
-                return setupIds()
-            case "ego":
-                return setupEGO()
-            case "passives":
-                return setupPassives();
-            default:
-                return;
-        }
+    const setupSupportPassives = (ratings:TRatings) =>{
+        ids?.forEach((item:IdentityInterface,index) =>{
+            if(isFilterMatching(filterState,searchState,item)){
+                ratings[item.passive2Tier].data.push(<ItemEntity  key={index} entity={item}/>) 
+            }
+        })
+        return ratings;
     }
-    setupItems(type);
+    const setupItems = (params:string) =>{
+        const ratings:TRatings = {
+            "SSS":{
+                data:[],
+                description: "Эти Личности/ЭГО не имеют равных и способны одолевать любой игровой контент в одиночку."
+            },
+            "SS":{
+                data:[],
+                description: "Очень мощные Личности/ЭГО, которым немного не хватает для того, чтобы войти в категорию SSS."
+            },
+            "S":{
+                data:[],
+                description: "Сильные Личности/ЭГО, которые успешно справляются с разнообразным контентом, но могут быть заменены еще более мощными представителями из S или SS тира."
+            },
+            "A":{
+                data:[],
+                description: "Обычные Личности/ЭГО, обладающие какими-то сильными сторонами, но также имеющие недостатки."
+            },
+            "B":{
+                data:[],
+                description: "Сравнительно слабые Личности/ЭГО, которых стоит выбирать только в случае крайней необходимости."
+            },
+            "C":{
+                data:[],
+                description: "Неэффективные Личности/ЭГО, лучше всего избегать их выбора, так как они не способны успешно выполнять игровые задачи."
+            },
+        };
+        if(params === "battlePassives") return setupBattlePassives(ratings);
+        else if(params === "supportPassives") return setupSupportPassives(ratings);
+        else if(params === "ego") return setupEGO(ratings);
+        return setupIds(ratings);
+    }
+    const setupTierlist = () => {
+        if (type === "passives"){
+            return [{
+                tierListParam: "battlePassives",
+                ratings:setupItems("battlePassives")
+            } , {
+                tierListParam: "supportPassives",
+                ratings:setupItems("supportPassives")
+            }];
+        } 
+        else if (type === "identities") return [{
+            tierListParam: "identities",
+            ratings: setupItems(type),
+        }];
+        return [{
+            tierListParam: "ego",
+            ratings: setupItems(type),
+        }];
+    }
     return (
         <section ref={containerRef} className="tier-list-container">
-            {setupTierlist().map((tierListParam ,index)=>{
+            {setupTierlist().map(({tierListParam,ratings} ,index)=>{
                 return (
                     <section key={index} className={["tier-list" , tierListClass()].join(" ")}>
                         <h2 className="tier-list-name">{tierListName(tierListParam) + ` (${getAllDataCount(ratings)})`}</h2>
