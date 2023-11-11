@@ -1,5 +1,37 @@
 import { sinnerTypes ,guardTypes ,damageTypes,rarityEGOTypes,rarityIdentityTypes,sinTypes, tierTypes} from "./skillBasedTypes";
 import { dmgType, guardType, rarityEGOType, rarityIdentityType, sinnerType, sinType } from "./types";
+export const validationToNumbersArray = (a:unknown) => {
+    let validatedVal:number[] = [];
+    let isValid = true;
+    if(typeof a === "string"){
+        const arr = a.split(",");
+        for(let i = 0; i < arr.length;i++){
+            const current = +arr[i];
+            if(isNaN(current)){
+                isValid = false 
+                break;
+            }
+            validatedVal.push(current); 
+        }
+    } 
+    return {validatedVal,isValid};
+}
+export const validationToStringsArray = (a:unknown) => {
+    let validatedVal:string[] = [];
+    let isValid = true;
+    if(typeof a === "string"){
+        const arr = a.split(",");
+        for(let i = 0; i < arr.length;i++){
+            const current = arr[i];
+            if(typeof current !== "string"){
+                isValid = false 
+                break;
+            }
+        }
+        validatedVal = arr;
+    } 
+    return {validatedVal,isValid};
+}
 export const validationToTier = (a:unknown) => {
     return {validatedVal:a ,isValid:tierTypes.includes(a as string)};
 }

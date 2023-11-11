@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import { useDispatch } from "react-redux";
+import { Outlet } from "react-router-dom";
 import { TbModal } from "../components/tb-modal/TbModal";
 import { TbSins } from "../components/tb-sins/TbSins";
 import { TbSlots } from "../components/tb-slots/TbSlots";
@@ -18,7 +19,7 @@ export const TeamBuilderPage:React.FC = () => {
         }
     }, []);
    
-    return  <CommonPageLayout>
+    return  <CommonPageLayout title="Тимбилдер">
         <LoadingPageWrapper queryKeys={["ego","identities","statuses"]}>
                 <h1 style={{width:"90%" ,color:"white"}}>Тим билдер</h1>
                 <TbModal active={modalTrigger !== null} modalTrigger={modalTrigger} closer={() => tbCloseModalAction(dispatch)}/>

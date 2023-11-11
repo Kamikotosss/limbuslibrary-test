@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { DisclaimerBanner } from "../components/disclaimer-banner/DisclaimerBanner";
 import { LeftMenu } from "../components/left-menu/LeftMenu";
 import { MainLayoutContainer } from "../components/main-layout-container/MainLayoutContainer";
@@ -7,8 +7,10 @@ import { ScrollUpButton } from "../components/scroll-up-button/ScrollUpButton";
 import { TopMenu } from "../components/top-menu/TopMenu";
 
 
-export const CommonPageLayout:React.FC<{children:ReactNode|ReactNode[]}> = ({children}) => {
-   
+export const CommonPageLayout:React.FC<{children:ReactNode|ReactNode[],title:string}> = ({children,title}) => {
+    useEffect(() => {
+        document.title = title;
+    }, []);
     return  <>
         <TopMenu/>
         <LeftMenu/>

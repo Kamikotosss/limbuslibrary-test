@@ -1,0 +1,7 @@
+.entityFullInfo-skills{
+    width: calc(100% - 300px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 10px;
+}

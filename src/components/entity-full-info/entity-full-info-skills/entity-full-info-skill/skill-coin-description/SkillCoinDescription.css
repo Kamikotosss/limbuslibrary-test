@@ -1,0 +1,31 @@
+
+.skill-coin-description{
+  color:white;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+.skill-coin-description .coin{
+  margin-right: 5px;
+}
+.skill-coin-description .condition{
+  color: green;
+  margin-right: 5px;
+}
+.skill-coin-description img{
+  width: 25px;
+  height: 25px;
+  object-position: center;
+  object-fit: contain;
+  margin-bottom: -5px;
+}
+.status-name{
+  text-decoration: underline;
+  color:rgb(168, 0, 0);
+}
+.status-name--sinking{
+  color:rgb(0, 102, 255);
+}
+.status-name--fragile{
+  color:rgb(149, 0, 255);
+}

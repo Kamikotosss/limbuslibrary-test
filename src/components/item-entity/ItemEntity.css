@@ -156,3 +156,23 @@
         font-size: 12.32px;
     }
 }
+@media (max-width: 380px) {
+    .item-entity-container {
+        width: 88.60776px;
+        height: 106.60208px; 
+    }
+    
+    .item-entity-name {
+        font-size: 10.2324px; 
+        padding: 0px 6.12456px 0px 6.12456px; 
+        margin-bottom: 4.8464px; 
+    }
+    
+    .item-entity-rarity {
+        padding: 1.02844px 3.351168px 1.02844px; 
+        margin: 2.514672px 0px 0px 2.514672px; 
+        font-size: 10.2324px; 
+    }
+    
+    
+}

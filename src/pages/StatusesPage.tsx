@@ -4,7 +4,7 @@ import { CommonPageLayout } from "./CommonPageLayout";
 import { LoadingPageWrapper } from "./LoadingPageWrapper";
 
 export const StatusesPage:React.FC = () => {
-    return <CommonPageLayout>
+    return <CommonPageLayout title="Список статусов">
         <LoadingPageWrapper queryKeys={["statuses"]}>
             <h1 style={{width:"90%" ,color:"white"}}>Список статусов</h1>
             <StatusesTable/>

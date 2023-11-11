@@ -5,7 +5,7 @@ import { CommonPageLayout } from "./CommonPageLayout";
 import { LoadingPageWrapper } from "./LoadingPageWrapper";
 
 export const IdentitiesPage:React.FC = () => {
-    return <CommonPageLayout>
+    return <CommonPageLayout title="Список Личностей">
             <LoadingPageWrapper queryKeys={["identities","statuses"]}>
                 <h1 style={{width:"90%" ,color:"white"}}>Список личностей</h1>
                 <Filters />

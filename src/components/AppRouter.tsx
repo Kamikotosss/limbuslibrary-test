@@ -1,5 +1,5 @@
 import {Routes , Route,BrowserRouter as Router, useLocation} from "react-router-dom";
-import React, {useEffect } from "react";
+import React, {useEffect} from "react";
 import { IndexPage } from "../pages/IndexPage";
 import { TierListPage } from "../pages/TierListPage";
 import { EGOPage } from "../pages/EGOPage";
@@ -11,6 +11,8 @@ import { filterResetAllAction } from "../store/reducers/filter-reducer";
 import { AboutGamePage } from "../pages/AboutGamePage";
 import { ContactPage } from "../pages/ContactPage";
 import { searchChangeValueAction } from "../store/reducers/search-reducer";
+import { IdentityPage } from "../pages/IdentityPage";
+import { ExactPageWrapper } from "../pages/ExactPageWrapper";
 
 export const AppRouter:React.FC = () => {
     
@@ -18,38 +20,52 @@ export const AppRouter:React.FC = () => {
         {
             path:"*",
             element:<IndexPage />,
+            isExact:true,
         },
         {
             path:"/",
             element:<IndexPage />,
+            isExact:true,
         },
         {
             path:"/tierlist",
             element:<TierListPage />,
+            isExact:true,
         },
         {
             path:"/ego",
             element:<EGOPage />,
+            isExact:true,
         },
         {
             path:"/identities",
             element:<IdentitiesPage />,
+            isExact:true,
+        },
+        {
+            path:"/identity/:identityId",
+            element:<IdentityPage />,
+            isExact:false,
         },
         {
             path:"/teambuilder",
             element:<TeamBuilderPage />,
+            isExact:true,
         },
         {
             path:"/statuses",
             element:<StatusesPage />,
+            isExact:true,
         },
         {
             path:"/aboutgame",
             element:<AboutGamePage />,
+            isExact:true,
         },
         {
             path:"/contact",
             element:<ContactPage />,
+            isExact:true,
         },
     ]
     const dispatch = useDispatch();
@@ -59,12 +75,17 @@ export const AppRouter:React.FC = () => {
         filterResetAllAction(dispatch);
         searchChangeValueAction(dispatch,"");
     },[location])
-    
+
     return (
         <Routes>
         {
         routes.map((route,index)=>{
-            return <Route path={`${route.path}`} element={route.element} key={index}/>;
+            const {path,isExact} = route;
+            let {element} = route;
+            if(isExact) element = <ExactPageWrapper path={path}>
+                {element}
+            </ExactPageWrapper>
+            return <Route key={index} path={path}  element={element} />
         })
         }
         </Routes>

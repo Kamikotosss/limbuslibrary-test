@@ -1,0 +1,61 @@
+.entityFullInfo-stats ul{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    color:white;
+    column-gap: 15px;
+    justify-content: center;
+    padding: 0;
+}
+.entityFullInfo-stats ul li{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.entityFullInfo-stats ul img{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.entityFullInfo-entity{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width:  320px;
+}
+.entityFullInfo-img{
+    width:  100%;
+    height: 400px;
+    position: relative;
+    display: flex;
+}
+.entityFullInfo-tier{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    color: rgba(0, 0, 0, 0.803);
+    font-size: 28px;
+    border-radius: 6px;
+    margin-top: 4px;
+}   
+.entityFullInfo-tier-SSS{
+    background-color: var(--SSS-color);
+}
+.entityFullInfo-tier-SS{
+    background-color: var(--SS-color);
+}
+.entityFullInfo-tier-S{
+    background-color: var(--S-color);
+}
+.entityFullInfo-tier-A{
+    background-color: var(--A-color);
+}
+.entityFullInfo-tier-B{
+    background-color: var(--B-color);
+}
+.entityFullInfo-tier-C{
+    background-color: var(--C-color);
+}

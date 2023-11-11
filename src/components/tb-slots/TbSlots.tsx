@@ -64,7 +64,7 @@ export const TbSlots:React.FC = () => {
       }
     };
    useEffect(()=>{
-    if(isHovering) document.body.style.overflow = 'hidden';
+    if(isHovering && !isLayoutGrid) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'visible';
    },[isHovering])
     return (

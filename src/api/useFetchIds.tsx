@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { idsKeys } from "../constants/idsKeys";
 import { fetchAndValidateData } from "../tools/fetchAndValidateData";
 
-const SPREADSHEET_ID = '18-JZl9LlsJLT9sLH-ob1DEez4jYDcxJZYWCVQGmhL1o';
+const SPREADSHEET_ID = '1-W1bfi_0TA5EGTkizyg-NzPtCn7mWDDQo3g0G8mle7U';
 const RANGE = 'Ids'; 
 const API_KEY1 = identitiesApiKey1;
 const API_KEY2 = identitiesApiKey2;

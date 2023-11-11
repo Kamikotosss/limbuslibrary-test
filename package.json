@@ -1,5 +1,5 @@
 {
-  "homepage": "http://Kamikotosss.github.io",
+  "homepage": "https://Kamikotosss.github.io/limbuslibrary-test/",
   "name": "limbus-library",
   "version": "0.1.0",
   "private": true,
@@ -30,8 +30,8 @@
     "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "react-scripts build && cp build/index.html build/404.html",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "jest": "^27.5.1"
   }
 }

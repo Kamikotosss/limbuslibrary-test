@@ -1,5 +1,6 @@
 import React, { useRef} from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { mobileLayoutFrom } from "../../constants/mobileLayoutFrom";
 import useHover from "../../hooks/useHover";
 import { EGOInterface } from "../../store/reducers/ego-reducer";
@@ -17,7 +18,7 @@ export const ItemEntity:React.FC<IItemEntity> = ({entity}) =>{
     const rarityStyled = (isIdentity(entity)) ? rarity.replaceAll("O","Ø") : rarity;
     const frameRarityClass = (isIdentity(entity)) ? `item-entity-frame--${rarity}` : `${entity.egoRes}-sin-color`;
     const imgFolder = (isIdentity(entity)) ? "identities" : "ego";
-    const refItem = useRef<HTMLDivElement>(null);
+    const refItem = useRef<HTMLAnchorElement>(null);
     const dispatch = useDispatch();
     const isHovering = useHover(refItem);
    
@@ -27,7 +28,7 @@ export const ItemEntity:React.FC<IItemEntity> = ({entity}) =>{
         setMobileModalTrigger(dispatch,HoverComponent);
     }
     return (
-        <div ref={refItem} className={"item-entity-container"} onClick={()=>handleClick()}>
+        <Link to={`/identity/${imgUrl}`} ref={refItem} className={"item-entity-container"} onClick={()=>handleClick()}>
             <div className={"shadow"}>
                 <img src={`./images/${imgFolder}/${imgUrl}.png`} alt={`${imgUrl}`}/>
             </div>
@@ -39,6 +40,6 @@ export const ItemEntity:React.FC<IItemEntity> = ({entity}) =>{
                 <div className={"item-entity-name"} >{name}</div>
                 <div className={["item-entity-frame",`${frameRarityClass}`].join(" ")} ></div>
             </div>
-        </div>  
+        </Link>  
     )
 }

@@ -5,7 +5,7 @@ import { CommonPageLayout } from "./CommonPageLayout";
 import { LoadingPageWrapper } from "./LoadingPageWrapper";
 
 export const EGOPage:React.FC = () => {
-    return <CommonPageLayout>
+    return <CommonPageLayout title="Список ЭГО">
         <LoadingPageWrapper queryKeys={["ego","statuses"]}>
             <h1 style={{width:"90%" ,color:"white"}}>Список ЭГО</h1>
             <Filters/>

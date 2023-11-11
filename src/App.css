@@ -50,6 +50,12 @@
   --gloom-frame-color: #16849b;
   --pride-frame-color: #185188;
   --envy-frame-color: #5c0288;
+  --SSS-color: rgb(236, 24, 48);
+  --SS-color: rgba(255, 97, 74);
+  --S-color: rgba(255, 188, 58);
+  --A-color: rgb(143, 255, 58);
+  --B-color: rgb(58, 255, 166);
+  --C-color: rgb(58, 255, 248);
   --grey-0:#2C2C2C;
   --grey-1:#494747;
   --grey-2:#4D4B4B;

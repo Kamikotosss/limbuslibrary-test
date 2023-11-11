@@ -1,0 +1,104 @@
+.entityFullInfo-skill{
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    background-color: #25272D;
+    border-radius: 8px;
+    padding: 10px;
+    gap:10px;
+}
+.entityFullInfo-skill-l{
+    padding-top:30px;
+    padding-left:50px;
+    position: relative;
+    height: 180px;
+}
+.entityFullInfo-skill-l img {
+    width: 160px;
+    height: 160px;
+}
+.entityFullInfo-skill-r{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.skill-sin-frame{
+    height: 8px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.skill-coinGrowth{
+    font-size: 30px;
+    color:white;
+    position: absolute;
+    top:-5px;
+    transform: translateX(-50%) ;
+    left:50%;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.skill-coinGrowth:hover .entityFullInfo-tooltip{
+    opacity: 1;
+    transform: translate(-50%,-100%) ;
+}
+.skill-baseCoin{
+    font-size: 150px;
+    color:white;
+    position: absolute;
+    left:0;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.skill-baseCoin:hover .entityFullInfo-tooltip{
+    opacity: 1;
+    transform: translate(-50%,-100%) ;
+}
+
+.entityFullInfo-coins{
+    display: flex;
+    flex-direction: row;
+}   
+.entityFullInfo-coins img{
+    width: 30px;
+    height: 30px;
+}
+.skill-name{
+    color:white;
+    width: fit-content;
+    border-radius: 2px;
+    padding: 2px;
+    padding: 5px 10px;
+}
+.entityFullInfo-skill-index{
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+.skill-atk{
+    color:white;
+    display: flex;
+    align-items: center;
+    gap:2px;
+}
+.skill-atk img{
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.skill-weight{
+    color:rgb(241, 211, 77);
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+.skill-weight div{
+    width: 14px;
+    height: 14px;
+    background-color: rgb(241, 211, 77);
+}

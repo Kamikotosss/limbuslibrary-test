@@ -20,7 +20,7 @@ export const TierListPage:React.FC = () => {
     if(type === "redirect")  navigate("/");
     const queryKeys = getQuaryByParam(type);
   
-    return <CommonPageLayout>
+    return <CommonPageLayout title="Тир лист">
             <LoadingPageWrapper queryKeys={queryKeys}>
                 <h1 style={{width:"90%" ,color:"white"}}>Тир Лист</h1>
                 <TierListNav/>

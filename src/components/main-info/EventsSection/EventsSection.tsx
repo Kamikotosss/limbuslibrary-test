@@ -2,24 +2,36 @@ import { useEffect, useRef, useState } from "react";
 import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 import "./EventsSection.css"
 export const EventsSection: React.FC = () => {
-    const events = [ 
+    const events = [
+        {
+            startDate:new Date('2023-11-09, 12:00:00 GMT+09:00'),
+            endDate:new Date('2023-11-23, 9:59:00 GMT+09:00'),
+            name:"",
+            imgSrc:"./images/bannerY.png"
+        },
+        {
+            startDate:new Date('2023-11-02, 12:00:00 GMT+09:00'),
+            endDate:new Date('2023-11-16, 5:59:00 GMT+09:00'),
+            name:"",
+            imgSrc:"./images/bannerM.png"
+        },
         {
             startDate:new Date('October 26, 2023 12:00:00 GMT+09:00'),
-            endDate:new Date('November 09, 2023 9:59:59 GMT+09:00'),
+            endDate:new Date('2023-11-08, 16:59:59 GMT+09:00'),
             name:"",
             imgSrc:"./images/eventH.png"
         },
+        {
+            startDate:new Date('October 10, 2023 12:00:00 GMT+09:00'),
+            endDate:new Date('2023-11-16, 5:59:00 GMT+09:00'),
+            name:"",
+            imgSrc:"./images/bps2.png"
+        }, 
         {
             startDate:new Date('November 16, 2023 12:00:00 GMT+09:00'),
             endDate:new Date('March 29, 2024 03:59:59 GMT+09:00'),
             name:"",
             imgSrc:"./images/bps3.png"
-        },
-        {
-            startDate:new Date('October 10, 2023 12:00:00 GMT+09:00'),
-            endDate:new Date('November 15, 2023 12:00:00 GMT+09:00'),
-            name:"",
-            imgSrc:"./images/bps2.png"
         },
        
     ]
