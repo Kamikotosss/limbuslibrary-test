@@ -1,0 +1,18 @@
+{
+  "short_name": "GLL",
+  "name": "Great Limbus Library",
+  "lang": "ru",
+  "categories": ["Games", "Entertainment"],
+  "description": "Great Limbus Library - это фан-сайт и база данных, разработанные сообществом, посвященные игре Limbus Company. Гайды, Личности, ЭГО, Новости, Ивенты, Тирлисты и Тимбилдер",
+  "icons": [
+    {
+      "src": "GLL.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
