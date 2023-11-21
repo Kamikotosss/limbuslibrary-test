@@ -1,0 +1,95 @@
+{
+    "MainInfo": {
+        "headerTitle":"Great Limbus Library is a fan site and database",
+        "headerDescription":"developed by the community, dedicated to Limbus Company."
+    },
+    "EntitySection": {
+        "new" : "Recently Released Identities and EGOs"
+    },
+    "NavigationSection":{
+        "header":"Quick site navigation",
+        "teambuilder":"Team building",
+        "identities":"Identities list with filters",
+        "ego":"EGOs list with filters",
+        "statuses":"Information about buffs, debuffs and other statuses",
+        "tierlist":"Tier lists of Identities, EGOs and Passives"
+    },
+    "EventsSection":{
+        "header":"Active events",
+        "eventStarts":"Event starts in: ",
+        "eventEnds":"Event ends in: ",
+        "eventEnded": "Event recently ended",
+        "d":"d",
+        "m":"m",
+        "s":"s",
+        "h":"h"
+    },
+    "OfficialLinksSection":{
+        "header":"Official Links"
+    },
+    "ToDoSection":{
+        "1":"Adding guides",
+        "2":"Improving team builder functionality",
+        "3":"General improvements to the site's interface and content",
+        "header":"Site Improvement Plans",
+        "contactUs":"If you have ideas or suggestions, please contact us"
+    },
+    "LeftMenu":{
+        "tierlist":"TIER LIST",
+        "teambuilder":"TEAM BUILDER",
+        "identities":"IDENTITIES",
+        "ego":"EGO",
+        "statuses":"STATUSES",
+        "aboutgame":"ABOUT THE GAME",
+        "contact":"OUR CONTACTS"
+    },
+    "TierListPage":{
+        "title":"Tier List",
+        "header":"Tier List",
+        "description":"Only the tier of Identities/EGO matters. Within tiers, the position of Identities/EGO is NOT a ranking of strength."
+    },
+    "TierListNav":{
+        "ego":"EGO",
+        "identities":"Identities",
+        "passives":"Passives"
+    },
+    "TierList":{
+        "name":{
+            "identities":"Identities",
+            "ego":"EGO",
+            "battlePassives":"Battle passives",
+            "supportPassives":"Support passives"
+        },
+        "description":{
+            "SSS":"These Identities/EGOs are capable of effortlessly overcoming any in-game content.",
+            "SS":"Very powerful Identities/EGOs that just fall short of entering the SSS category.",
+            "S":"Strong Identities/EGOs that handle diverse content successfully but can be replaced by even more powerful representatives from the SS tier.",
+            "A":"Average Identities/EGOs with some strengths but also with weaknesses.",
+            "B":"Comparatively weak Identities/EGOs that should be chosen only in cases of extreme necessity.",
+            "C":"Ineffective Identities/EGOs; it's best to avoid choosing them as they are incapable of successfully accomplishing in-game tasks."
+        }
+        
+    },
+    "Filters":{
+        "header":"Filters",
+        "clearFilters":"Clear filters",
+        "showFilters":"Show filters",
+        "empty":"The list is empty, but you can fix it by clearing some of the filters"
+    },
+    "TierBar":{
+        "tier":"tier"
+    },
+    "FiltersList":{
+        "header":{
+            "dmgType":"Damage type",
+            "guardType":"Guard type",
+            "rarity":"Rarity",
+            "dangerLvl":"Danger level",
+            "sin":"Sin",
+            "sinner":"Sinner",
+            "statusType":"Status type"
+        }
+    }
+    
+
+}
