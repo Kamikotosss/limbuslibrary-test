@@ -252,7 +252,35 @@
     },
     "LanguageDisclaimer.tooltip": "Cette traduction a été créée automatiquement à l'aide de la technologie de traduction automatique. Nous déployons des efforts pour assurer la précision et la qualité de la traduction, cependant, nous ne pouvons pas garantir l'absence totale d'erreurs. Nous ne sommes pas responsables de tout malentendu, omission ou inexactitude dans le texte traduit. Si vous avez des commentaires ou si vous avez repéré une erreur, veuillez nous en informer afin que nous puissions apporter les corrections appropriées. Nous vous remercions de votre compréhension.",
     "SkillCoinDescription.clickToSeeDescription":"Cliquez pour voir la description",
-    "SEOHelmet.keywords": "GLL, GreatLimbusLibrary, Limbus, Wiki, Base de données, Grande Bibliothèque Limbus, Société Limbus, Gacha, Tier List, Faust, Don Quichotte, Yi Sang, Ryoshu, Mersault, Hong Lu, HeathCliff, Ishmael, Rodion, Sinclair, Outis, Gregor,Limbus Company, Personnages, Guides, Événements, Nouvelles, Fan site, EGO, Personnalités, Péchés, Ultime, Passives, Statuts, Constructeur d'équipe, Comparaison, Équipe, Escouade, Événements"
-
+    "SEOHelmet.keywords": "GLL, GreatLimbusLibrary, Limbus, Wiki, Base de données, Grande Bibliothèque Limbus, Société Limbus, Gacha, Tier List, Faust, Don Quichotte, Yi Sang, Ryoshu, Mersault, Hong Lu, HeathCliff, Ishmael, Rodion, Sinclair, Outis, Gregor,Limbus Company, Personnages, Guides, Événements, Nouvelles, Fan site, EGO, Personnalités, Péchés, Ultime, Passives, Statuts, Constructeur d'équipe, Comparaison, Équipe, Escouade, Événements",
+    "SEOHelmet.description": "Great Limbus Library est un site de fans et une base de données communautaire dédiés au jeu Limbus Company. Guides, Identités, EGOs, Actualités, Événements, Listes de Niveaux, et Constructeur d'Équipe.",
+    "SkillCoinDescription": {
+        "[onhit]": "[Au toucher] ",
+        "[clashwin]": "[Victoire de choc] ",
+        "[combatstart]": "[Début du combat] ",
+        "[clashlose]": "[Défaite de choc] ",
+        "[onuse]": "[À l'utilisation] ",
+        "[onkill]": "[À la mort] ",
+        "[onevade]": "[À l'évitation] ",
+        "[headshit]": "[Touché à la tête] ",
+        "[hitafterclashwin]": "[Touché après une victoire de choc] ",
+        "[afterattack]": "[Après l'attaque] ",
+        "[beforeattack]": "[Avant l'attaque] ",
+        "[reuse-headshit]": "[Réutilisation - Touché à la tête] ",
+        "[tailshit]": "[Touché à la queue] ",
+        "[oncrit]": "[En cas de critique] ",
+        "[indiscriminate]": "[Indiscriminé] ",
+        "[headsattackend]": "[Fin de l'attaque à la tête] ",
+        "[tailsattackend]": "[Fin de l'attaque à la queue] ",
+        "[failedkill]": "[Échec de la mise à mort] ",
+        "[critattackend]": "[Fin de l'attaque critique] ",
+        "fc": " Puissance finale",
+        "bc": " Puissance de base",
+        "cg": " Puissance de la pièce",
+        "cp": " Puissance de choc",
+        "weight": " Poids de l'attaque"
+    }
+    
+    
 
 }

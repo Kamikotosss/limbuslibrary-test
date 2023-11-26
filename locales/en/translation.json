@@ -252,8 +252,33 @@
         "supportPassive":"Support passive"
     },
     "SkillCoinDescription.clickToSeeDescription":"Click to see description",
-    "SEOHelmet.keywords": "GLL, GreatLimbusLibrary, Limbus, Wiki, Database, Great Limbus Library, Limbus Company, Gacha, Tier List, Faust, Don Quixote, Yi Sang, Ryoshu, Mersault, Hong Lu, HeathCliff, Ishmael, Rodion, Sinclair, Outis, Gregor"
-
-    
+    "SEOHelmet.keywords": "GLL, GreatLimbusLibrary, Limbus, Wiki, Database, Great Limbus Library, Limbus Company, Gacha, Tier List, Faust, Don Quixote, Yi Sang, Ryoshu, Mersault, Hong Lu, HeathCliff, Ishmael, Rodion, Sinclair, Outis, Gregor",
+    "SEOHelmet.description": "Great Limbus Library is a fan site and community-driven database dedicated to the Limbus Company game. Guides, Identities, EGOs, News, Events, Tier Lists, and Team Builder.",
+    "SkillCoinDescription" : {
+        "[onhit]" : "[On Hit] ",
+        "[clashwin]" : "[Clash Win] ",
+        "[combatstart]" : "[Combat Start] ",
+        "[clashlose]" : "[Clash Lose] ",
+        "[onuse]" : "[On Use] ",
+        "[onkill]" : "[On Kill] ",
+        "[onevade]" : "[On Evade] ",
+        "[headshit]" : "[Heads Hit] ",
+        "[hitafterclashwin]" : "[Hit After Clash Win] ",
+        "[afterattack]" : "[After Attack] ",
+        "[beforeattack]" : "[Before Attack] ",
+        "[reuse-headshit]" : "[Reuse - Heads Hit] ",
+        "[tailshit]" : "[Tails Hit] ",
+        "[oncrit]" : "[On Crit] ",
+        "[indiscriminate]" : "[Indiscriminate] ",
+        "[headsattackend]" : "[Heads Attack End] ",
+        "[tailsattackend]" : "[Tails Attack End] ",
+        "[failedkill]" : "[Failed Kill] ",
+        "[critattackend]" : "[Crit Attack End] ",
+        "fc" : " Final Power",
+        "bc" : " Base Power",
+        "cg" : " Coin Power",
+        "cp" : " Clash Power",
+        "weigth": " Attack Weight"
+    }  
 
 }

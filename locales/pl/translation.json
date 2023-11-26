@@ -253,7 +253,34 @@
     },
     "LanguageDisclaimer.tooltip": "Ten tłumaczenie zostało utworzone automatycznie przy użyciu technologii maszynowego tłumaczenia. Włożyliśmy starania, aby zapewnić dokładność i jakość tłumaczenia, jednak nie możemy zagwarantować całkowitego braku błędów. Nie ponosimy odpowiedzialności za jakiekolwiek nieporozumienia, pominięcia lub nieprawidłowości w przetłumaczonym tekście. Jeśli masz uwagi lub zauważyłeś(aś) błąd, prosimy o poinformowanie nas o tym, abyśmy mogli dokonać odpowiednich korekt. Dziękujemy za zrozumienie.",
     "SkillCoinDescription.clickToSeeDescription":"Kliknij, aby zobaczyć opis",
-    "SEOHelmet.keywords": "GLL, GreatLimbusLibrary, Limbus, Wiki, Baza danych, Wielka Biblioteka Limbus, Firma Limbus, Gacha, Tier List, Faust, Don Kichot, Yi Sang, Ryoshu, Mersault, Hong Lu, HeathCliff, Ishmael, Rodion, Sinclair, Outis, Gregor, Тирлист, Гача, Limbus Company, Postacie, Poradniki, Wydarzenia, Wiadomości, Fanowska strona, EGO, Osobowości, Grzeszki, Ultimate, Umiejętności pasywne, Statusy, Kalkulator drużyny, Porównanie, Drużyna, Oddział, Wydarzenia"
-
+    "SEOHelmet.keywords": "GLL, GreatLimbusLibrary, Limbus, Wiki, Baza danych, Wielka Biblioteka Limbus, Firma Limbus, Gacha, Tier List, Faust, Don Kichot, Yi Sang, Ryoshu, Mersault, Hong Lu, HeathCliff, Ishmael, Rodion, Sinclair, Outis, Gregor, Тирлист, Гача, Limbus Company, Postacie, Poradniki, Wydarzenia, Wiadomości, Fanowska strona, EGO, Osobowości, Grzeszki, Ultimate, Umiejętności pasywne, Statusy, Kalkulator drużyny, Porównanie, Drużyna, Oddział, Wydarzenia",
+    "SEOHelmet.description": "Great Limbus Library to fanowski portal i baza danych tworzona przez społeczność, poświęcona grze Limbus Company. Przewodniki, Tożsamości, EGOs, Wiadomości, Wydarzenia, Listy poziomów i Kreator drużyny.",
+    "SkillCoinDescription": {
+        "[onhit]": "[Podczas Uderzenia] ",
+        "[clashwin]": "[Zwycięstwo w Konflikcie] ",
+        "[combatstart]": "[Rozpoczęcie Walki] ",
+        "[clashlose]": "[Przegrana w Konflikcie] ",
+        "[onuse]": "[Przy Użyciu] ",
+        "[onkill]": "[Podczas Zabicia] ",
+        "[onevade]": "[Podczas Uniknięcia] ",
+        "[headshit]": "[Trafienie w Głowę] ",
+        "[hitafterclashwin]": "[Trafienie po Zwycięstwie w Konflikcie] ",
+        "[afterattack]": "[Po Ataku] ",
+        "[beforeattack]": "[Przed Atakiem] ",
+        "[reuse-headshit]": "[Ponowne Użycie - Trafienie w Głowę] ",
+        "[tailshit]": "[Trafienie w Ogon] ",
+        "[oncrit]": "[Podczas Krytyka] ",
+        "[indiscriminate]": "[Bezrozróżnieniowe] ",
+        "[headsattackend]": "[Koniec Ataku w Głowę] ",
+        "[tailsattackend]": "[Koniec Ataku w Ogon] ",
+        "[failedkill]": "[Nieudane Zabicie] ",
+        "[critattackend]": "[Koniec Ataku Krytycznego] ",
+        "fc": " Ostateczna Siła",
+        "bc": " Bazowa Siła",
+        "cg": " Moc Monety",
+        "cp": " Moc Konfliktu",
+        "weigth": " Waga Ataku"
+    }
+    
 
 }
