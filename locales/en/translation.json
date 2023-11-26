@@ -89,7 +89,171 @@
             "sinner":"Sinner",
             "statusType":"Status type"
         }
-    }
+    },
+    "Search":{
+        "placeholder":"Filter by name..."
+    },
+    "TeamBuilderPage":{
+        "title":"Team Builder",
+        "header":"Team Builder"
+    },
+    "TbSins.header": "Energy",
+    "TbTags": {
+        "header": "Statuses",
+        "empty": "The list of statuses is empty, add Identity or EGO to any slot"
+    },
+    "TbSlots": {
+        "reset": "Reset",
+        "slotsCount": "Number of slots"
+    },
+    "TbListIds": {
+        "header": "List of Identities",
+        "empty": "No available Identities. Try disabling some filters."
+    },
+    "TbListEGO": {
+        "header": "List of EGO",
+        "empty": "No available EGO. Try disabling some filters."
+    },
+    "TbInfo": {
+        "energyConsumption": "Energy Consumption",
+        "energyGain": "Energy Gain",
+        "ids": "Identities",
+        "ego": "EGO"
+    },
+    "EGOsPage": {
+        "title": "List of EGO",
+        "header": "List of EGO"
+    },
+    "IdentitiesPage": {
+        "title": "List of Identities",
+        "header": "List of Identities"
+    },
+    "ListEgo": {
+        "empty": "No available EGO. Try disabling some filters.",
+        "header": "Found EGOs"
+    },
+    "ListIds": {
+        "empty": "No available Identities. Try disabling some filters.",
+        "header": "Found Identities"
+    },
+    "StatusesPage": {
+        "title": "List of Statuses",
+        "header": "List of Statuses"
+    },
+    "StatusesTable": {
+        "header": {
+            "sinner": "Statuses related to sinners",
+            "anomaly": "Statuses related to anomalies"
+        },
+        "status": "Status",
+        "name": "Name",
+        "description": "Description"
+    },
+    "AboutGamePage.title": "About the Game",
+    "AboutGameInfo": {
+        "officialLinks": "Official Links",
+        "header": "About the Game",
+        "text": {
+            "1": "is an indie horror role-playing video game for Microsoft Windows and mobile devices using iOS or Android, developed and published by South Korean studio",
+            "2": " It was released worldwide on February 26, 2023. The game is set in the same dystopian, hyper-capitalist world known only as 'The City', where all of Project Moon's other works take place, including Lobotomy Corporation, Library of Ruina, and a webcomic titled Leviathan, but takes place some time after the events of all those stories."
+        }
+    },
+    "ContactPage.title": "Contact",
+    "ContactInfo": {
+        "header": "Our Contacts:",
+        "copied": "Nickname copied",
+        "originalAuthor": "Original Document Author",
+        "creator": "Website Creator",
+        "workers.header": "Contributors to the Website:",
+        "workers1": {
+            "header": "Library Heads:",
+            "1": "Ritsu",
+            "2": "GodMod",
+            "3": "Kamikotosss"
+        },
+        "workers2": {
+            "header": "Book Hunters (Editors):",
+            "1": "ManulGod",
+            "2": "hgjrtu",
+            "3": "Sir Alonne",
+            "4": "turbae_carissimus",
+            "5": "morj.",
+            "6": "Licht & Ruchi as Workers for one Day"
+        },
+        "workers3": {
+            "header": "Special Thanks:",
+            "1": "CHACHENWAGEN TV"
+        }
+    },
+    "DisclaimerBanner.1": " - is a fan site and database developed by the community dedicated to the game ",
+    "DisclaimerBanner.2": "This site is not an official resource of ",
+    "DisclaimerBanner.3": ", and all materials remain the property of their original owners.",
+    "DisclaimerBanner.confirm": "GOT IT",
+    "LoadingAnimation":{
+        "text":"Loading",
+        "delay":"We are experiencing high server load; the wait will take a little longer."
+    },
+    "ErrorInfo":{
+        "header":"Error",
+        "toMain":"Return to main page"
+    },
+    "ItemIdentityInfo":{
+        "battlePassive":"Battle passive",
+        "supportPassive":"Support passive"
+    },
+    "EntityFullInfoEGO":{
+        "statuses":"Satuses",
+        "res":"Resistances",
+        "cost":"Cost"
+    },
+    "EntityFullInfoSkillEGO": {
+        "baseValue": "Base Value",
+        "corrosion": "CORROSION",
+        "coinGain": "Base Coin Gain",
+        "guardType": "Guard Type",
+        "damageType": "Damage Type",
+        "sin": "Sin",
+        "sanity": "Sanity Cost",
+        "maxCoin": "Maximum Coin Value (Base)",
+        "coinCondition": "Maximum Coin Value considering Skill and Combat Passive conditions",
+        "weightBase": "Number of slots hit by the skill (Base)",
+        "weight": "Number of slots hit by the skill considering buffs"
+    },
+    "EntityFullInfoSkill": {
+        "skill": "Skill",
+        "defSkill": "Defensive Skill",
+        "count": "Count in rotation of 6 skills",
+        "baseValue": "Base Value",
+        "coinGain": "Base Coin Gain",
+        "guardType": "Guard Type",
+        "damageType": "Damage Type",
+        "sin": "Sin",
+        "maxCoin": "Maximum Coin Value (Base)",
+        "coinCondition": "Maximum Coin Value considering Skill and Combat Passive conditions",
+        "defenceLevel": "Defence Level",
+        "offenceLevel": "Offence Level",
+        "minPotencial": "Minimum Potential Damage of the skill (calculations by Sir Alonne)",
+        "maxPotencial": "Maximum Potential Damage of the skill (calculations by Sir Alonne)",
+        "weightBase": "Number of slots hit by the skill (Base)",
+        "weight": "Number of slots hit by the skill considering buffs"
+    },
+    "EntityFullInfoIdentity": {
+        "statuses": "Statuses",
+        "stagger": "Stagger Threshold",
+        "stats": "Stats",
+        "res": "Resistances"
+    },
+    "EntityFullInfoPassive":{
+        "res":" Res.",
+        "owned":" Owned"
+    },
+    "EntityFullInfoSkills":{
+        "battlePassive":"Battle passive",
+        "supportPassive":"Support passive"
+    },
+    "SkillCoinDescription.clickToSeeDescription":"Click to see description",
+    "SEOHelmet.keywords": "GLL, GreatLimbusLibrary, Limbus, Wiki, Database, Great Limbus Library, Limbus Company, Gacha, Tier List, Faust, Don Quixote, Yi Sang, Ryoshu, Mersault, Hong Lu, HeathCliff, Ishmael, Rodion, Sinclair, Outis, Gregor"
+
     
 
 }

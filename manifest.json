@@ -6,9 +6,10 @@
   "description": "Great Limbus Library - это фан-сайт и база данных, разработанные сообществом, посвященные игре Limbus Company. Гайды, Личности, ЭГО, Новости, Ивенты, Тирлисты и Тимбилдер",
   "icons": [
     {
-      "src": "GLL.png",
-      "sizes": "64x64",
-      "type": "image/png"
+      "src": "GLLx200.png",
+      "sizes": "200x200",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
